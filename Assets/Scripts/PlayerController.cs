@@ -121,9 +121,31 @@ public class PlayerController : MonoBehaviour
         // After playing last note, wait before starting the melody audio
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
         playerAudio.PlayMelody(melody);
+
+        // Proximity check for objects affectable by melody
+        float interactionRadius = 5.0f; // Adjust this as needed
+        Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, interactionRadius);
+
+        foreach (Collider2D obj in nearbyObjects)
+        {
+            SignController sign = obj.GetComponent<SignController>();
+            if (sign != null)
+            {
+                // Trigger the sign's response to the song
+                sign.OnSongPlayed(melody);
+            }
+        }
+
         // After starting the melody audio, wait before giving control back to the player
         yield return new WaitForSeconds(AudioData.MelodyCooldownTime);
         CurrentState = PlayerState.Default;
+    }
+
+    // Debug proximity check
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, 5.0f); // Match the interaction radius
     }
 
     public void TakeDamage()
@@ -201,7 +223,7 @@ public class PlayerController : MonoBehaviour
             if (signController != null)
             {
                 Debug.Log($"Found SignController on object: {hit.gameObject.name}");
-                return signController.dialogue; // Return the assigned Dialogue ScriptableObject
+                return signController.CurrentDialogue; // Return the assigned Dialogue ScriptableObject
             }
         }
 
