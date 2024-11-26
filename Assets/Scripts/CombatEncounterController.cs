@@ -33,7 +33,10 @@ public class CombatEncounterController : MonoBehaviour
     {
         enemies.Remove(enemy.GetInstanceID());
         // Remove enemy GameObject instance from the scene
-        Destroy(enemy);
+        // NOTE: Destroying the game object was creating race conditions with trying to play
+        // an audio source on the object, so instead just disable the sprite renderer and collider.
+        enemy.GetComponent<SpriteRenderer>().enabled = false;
+        enemy.GetComponent<BoxCollider2D>().enabled = false;
 
         if (enemies.Count == 0)
         {
