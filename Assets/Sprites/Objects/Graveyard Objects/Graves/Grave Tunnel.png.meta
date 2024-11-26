@@ -297,7 +297,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grave Tunnel_0: 777486221463020095
+      Grave Tunnel_1: -2176571008599886440
+      Grave Tunnel_2: -543427632503964429
+      Grave Tunnel_3: 7723338210880728434
+      Grave Tunnel_4: -5906520779340988433
+      Grave Tunnel_5: 3821276257206050390
+      Grave Tunnel_6: -1119981726805491606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
