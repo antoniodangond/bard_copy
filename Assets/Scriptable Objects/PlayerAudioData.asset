@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2900150f5aa6d49d6bfdeef9898fcf8a, type: 3}
+  m_Name: PlayerAudioData
+  m_EditorClassIdentifier: 
+  Footsteps:
+  - Clip: {fileID: 8300000, guid: da634e615ac7849b6b7cca7b102d9315, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 3bc9a128dd4d041bd8634b8bcf9679c1, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: fe85553d42d3a4d8cb76a99b2392749b, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: f3b590fde9f9f4149a286b7c10b50100, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 0d27b4139fab1490caac82358ca0b1ff, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 6cd65111593894bd1b8a1487c93b2aba, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  MaxFootstepPitchVariation: 0.1
+  MaxFootstepVolumeVariation: 0.1
+  NoteB:
+    Clip: {fileID: 8300000, guid: 808a3f06b9fc744b797429cc71abd6f3, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  NoteC:
+    Clip: {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  NoteD:
+    Clip: {fileID: 8300000, guid: e6b8b24048a43284eb39e74b8d22691a, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  NoteE:
+    Clip: {fileID: 8300000, guid: 009a221bfd623428589c2b2eae236123, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  Melody1:
+    Clip: {fileID: 8300000, guid: fef5a12409920de48b22bd5209739c46, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  TimeBeforeMelody: 0.5
+  MelodyCooldownTime: 3
+  AttackChords:
+  - Clip: {fileID: 8300000, guid: 1e275852bd27f304aa88913d1aac9958, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: b039c6177d82a6247bd90e72d07f1da0, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 4f18bb8a4fd8f0548bdb311c460c379f, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 397adde8098213247bf7371e10580d1b, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: fc0effdf5015fcd42b2313495c7005f9, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 0
+  Hits:
+  - Clip: {fileID: 8300000, guid: c809d1970561247599e7a9ca9d29659c, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 575c922f0d52c4e4e8fbab4d88076bf7, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 2dc53c43a2b5b4ad484a2b821c3dcc83, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 54ab7e01dd24e4cafa078936a225ff64, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0

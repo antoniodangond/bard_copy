@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c15ad8df46854c8a9dd566ca38941e9, type: 3}
+  m_Name: EnemyAudioData
+  m_EditorClassIdentifier: 
+  Hits:
+  - Clip: {fileID: 8300000, guid: f67dcbf9a16df45ddb867bdc72b2748c, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 6279fe306b75c4563a9edc54a667fd52, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: f2497aca7d641472fb987da8f9301c70, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+  - Clip: {fileID: 8300000, guid: 45e43704835fe4178869912c8456ff8d, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0

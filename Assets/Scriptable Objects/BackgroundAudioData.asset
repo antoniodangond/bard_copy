@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb39467109d442aeafec3fa4d6a5fd5, type: 3}
+  m_Name: BackgroundAudioData
+  m_EditorClassIdentifier: 
+  BackgroundMusic:
+    Clip: {fileID: 8300000, guid: d673ea7e1c0b61d4184638c208951e91, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 1
+  BackgroundMusicInstrumentVolume: 0.5
+  BackgroundMusicInstrumentMelodyVolume: 0
+  BackgroundMusicPauseVolume: 0.5
