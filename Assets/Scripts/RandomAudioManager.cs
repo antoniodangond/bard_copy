@@ -49,7 +49,7 @@ public class RandomAudioManager : MonoBehaviour
             float randomDelay = Random.Range(minDelay,maxDelay);
             float clipLength = randomClip.length;
 
-            
+            yield return new WaitForSeconds(clipLength + randomDelay);
 
         }
     }

@@ -5,14 +5,21 @@ public class BackgroundAudio : AudioController
 {
     public BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
+    // public 
 
-    void Awake() {
+    void Awake() 
+    {
         // Instantiate audio source
         InitializeSound(AudioData.BackgroundMusic);
         if (LowPassFilter == null)
-    {
-        LowPassFilter = gameObject.AddComponent<AudioLowPassFilter>();
-    }
+        {
+            LowPassFilter = gameObject.AddComponent<AudioLowPassFilter>();
+        }
+        if (AudioData.RandomAmbienceBreaths.audioSource == null)
+        {
+            AudioData.RandomAmbienceBreaths.audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
         // Subscribe to custom event
         CustomEvents.OnPlayerStateChange.AddListener(OnPlayerStateChange);
         CustomEvents.OnPause.AddListener(OnPause);
