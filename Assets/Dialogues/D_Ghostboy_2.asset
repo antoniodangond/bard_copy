@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
   m_Name: D_Ghostboy_2
   m_EditorClassIdentifier: 
-  upLines:
-  - Mama. It's gonna be okay. I'm coming.
+  upLines: []
   downLines: []
   leftLines: []
   rightLines: []
+  universalLines:
+  - Mama. It's gonna be okay. I'm coming.
