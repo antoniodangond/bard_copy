@@ -208,6 +208,9 @@ MonoBehaviour:
   DialogueLayer:
     serializedVersion: 2
     m_Bits: 256
+  PushableLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   interactionZoneSize: {x: 2, y: 2}
   interactionOffset: 0.5
   InteractionYOffset: 2.01
