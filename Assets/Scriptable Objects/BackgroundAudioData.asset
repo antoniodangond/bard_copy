@@ -20,3 +20,20 @@ MonoBehaviour:
   BackgroundMusicInstrumentVolume: 0.5
   BackgroundMusicInstrumentMelodyVolume: 0
   BackgroundMusicPauseVolume: 0.5
+  OverworldAmbience:
+    Clip: {fileID: 8300000, guid: 1c502dbc3decc482d88d00f2e766902f, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+  AmbienceBreaths:
+  - {fileID: 8300000, guid: f26e85d6356874c0789f4d9e96d66288, type: 3}
+  - {fileID: 8300000, guid: 6e94b52d34ade4c7492f02b4d895f2fd, type: 3}
+  - {fileID: 8300000, guid: 5e9065e12b7494405970f6e6f2dfc1a7, type: 3}
+  - {fileID: 8300000, guid: 20219d4b86824449786cee95fe4ee170, type: 3}
+  RandomAmbienceBreaths: {fileID: 0}
+  AmbienceFrogs:
+  - {fileID: 8300000, guid: bb4e2cf9405314e1b9c3843c63a0a3f6, type: 3}
+  - {fileID: 8300000, guid: 545d8e939554a4edda098cc10bb4264d, type: 3}
+  - {fileID: 8300000, guid: cbd6c9bf152574cd38191a6833aaf33c, type: 3}
+  - {fileID: 8300000, guid: 5c62e5c5d9e684cb18fb6e2aec5803b5, type: 3}
+  RandomAmbienceFrogs: {fileID: 0}

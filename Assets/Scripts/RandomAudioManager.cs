@@ -15,7 +15,7 @@ public class RandomAudioManager : MonoBehaviour
     void Start()
     {
     }
-    void StartRandomAudio(AudioClip[] clips)
+    public void StartRandomAudio(AudioClip[] clips)
     {
         if (audioSource != null && clips.Length > 0)
         {
@@ -27,7 +27,7 @@ public class RandomAudioManager : MonoBehaviour
         }
     }
 
-    void StopRandomAudio()
+    public void StopRandomAudio()
     {
         if (playbackCoroutine != null)
         {
@@ -49,8 +49,7 @@ public class RandomAudioManager : MonoBehaviour
             float randomDelay = Random.Range(minDelay,maxDelay);
             float clipLength = randomClip.length;
 
-            
-
+            yield return new WaitForSeconds(clipLength + randomDelay);
         }
     }
 }

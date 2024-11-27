@@ -13,6 +13,9 @@ public class BackgroundAudioData : ScriptableObject
     // Volume to set background music when game is paused
     [Range (0f, 1f)]
     public float BackgroundMusicPauseVolume;
+    public Sound OverworldAmbience;
     public AudioClip[] AmbienceBreaths;
     public RandomAudioManager RandomAmbienceBreaths;
+    public AudioClip[] AmbienceFrogs;
+    public RandomAudioManager RandomAmbienceFrogs;
 }
