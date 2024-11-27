@@ -8,6 +8,7 @@ public class SignController : MonoBehaviour
     [SerializeField] private Dialogue updatedDialogue;
     [SerializeField] private Animator successAnimator; // Reference to the Animator for success animation
     private bool isDialogueUpdated = false;
+    public bool HasDialogueOnMelody = false;
 
     // Property to get the correct dialogue based on state
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;

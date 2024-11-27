@@ -131,14 +131,27 @@ public class PlayerController : MonoBehaviour
             SignController sign = obj.GetComponent<SignController>();
             if (sign != null)
             {
+                Debug.Log("Playing melody for sign");
                 // Trigger the sign's response to the song
                 sign.OnSongPlayed(melody);
+                if (sign.HasDialogueOnMelody)
+                {
+                    isPlayingLyre = false;
+                    CurrentState = PlayerState.Dialogue;
+                    playerAnimation.SetAnimationParams(movement, false);
+                    Debug.Log("About to exit");
+                    yield break;
+                }
+                   
             }
         }
+        Debug.Log("Did not find sign");
 
         // After starting the melody audio, wait before giving control back to the player
         yield return new WaitForSeconds(AudioData.MelodyCooldownTime);
+        isPlayingLyre = false;
         CurrentState = PlayerState.Default;
+        playerAnimation.SetAnimationParams(movement, false);
     }
 
     // Debug proximity check
