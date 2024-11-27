@@ -90,7 +90,8 @@ public class EnemyController : MonoBehaviour
         // Rotate transform again if necessary
         HandleRotation(direction);
         animator.SetBool(AnimatorParams.IsMoving, true);
-        // Calculate the exact travel point within the max distance
+        enemyAudio.PlayAttack();
+                // Calculate the exact travel point within the max distance
         travelPoint = (Vector2)transform.position + direction * MaxTravelDistance;
     }
 
