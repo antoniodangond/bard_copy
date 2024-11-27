@@ -8,4 +8,7 @@ public class EnemyAudioData : ScriptableObject
 
     [Header("States")]
     public Sound[] Aggro;
+
+    [Header("Attack")]
+    public Sound[] Attacks;
 }

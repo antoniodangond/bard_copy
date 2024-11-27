@@ -19,6 +19,10 @@ public class EnemyAudio : AudioController
         {
             InitializeSound(sound);
         }
+        foreach (Sound sound in AudioData.Attacks)
+        {
+            InitializeSound(sound);
+        }
     }
 
     public void PlayHit()
@@ -33,6 +37,11 @@ public class EnemyAudio : AudioController
         AudioData.Hits[clipIndex].Play();
         // Set lastHitClipIndex to the index just used
         lastHitClipIndex = clipIndex;
+    }
+    public void PlayAttack()
+    {
+        AudioData.Attacks[0].SetVolume(2f);
+        AudioData.Attacks[0].Play();
     }
 
     public void PlayAggro()
