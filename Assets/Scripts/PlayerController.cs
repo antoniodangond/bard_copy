@@ -38,13 +38,16 @@ public class PlayerController : MonoBehaviour
     // Set in editor
     public PlayerAudioData AudioData;
     public LayerMask DialogueLayer;
+    public LayerMask PushableLayer;
 
+    private Collider2D playerCollider;
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
     private PlayerMovement playerMovement;
     private Vector2 movement;
     private bool isPlayingLyre;
+    private Pushable pushable;
     private string[] Melodies = new string[1]{
         MelodyData.Melody1,
     };
@@ -62,6 +65,7 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerAudio = GetComponent<PlayerAudio>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerCollider = GetComponent<Collider2D>();
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
@@ -142,7 +146,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("About to exit");
                     yield break;
                 }
-                   
+
             }
         }
         Debug.Log("Did not find sign");
@@ -342,11 +346,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (Utils.HasTargetLayer(PushableLayer, other.gameObject))
+        {
+            pushable = other.gameObject.GetComponent<Pushable>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (pushable != null && Utils.HasTargetLayer(PushableLayer, other.gameObject))
+        {
+            pushable.Stop();
+            pushable = null;
+        }
+    }
+
     void FixedUpdate()
     {
         // Move player rigidbody during FixedUpdate so that movement
         // is independent of framerate
         playerMovement.Move(movement);
+        // If colliding with a pushable object while moving in a straight upward direction,
+        // attempt to move it
+        if (pushable != null && movement.x == 0 && movement.y == 1)
+        {
+            pushable.Move();
+        }
     }
-
 }
