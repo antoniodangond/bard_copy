@@ -80,6 +80,7 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = getDirectionToTarget(targetRigidbody);
         // Rotate transform if necessary
         HandleRotation(direction);
+        enemyAudio.PlayAggro();
         yield return new WaitForSeconds(AgroTimeBeforeAttack);
 
         // Start attack

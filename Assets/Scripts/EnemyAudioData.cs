@@ -5,4 +5,7 @@ public class EnemyAudioData : ScriptableObject
 {
     [Header("Combat")]
     public Sound[] Hits;
+
+    [Header("States")]
+    public Sound[] Aggro;
 }
