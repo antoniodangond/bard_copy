@@ -4,9 +4,9 @@ using UnityEngine;
 public class BackgroundAudioData : ScriptableObject
 {
     public Sound BackgroundMusic;
-    // Volume to set background music when player is in "Instrument" state
-    public Sound BackgroundMusicUnderword;
+    public Sound BackgroundMusicUnderworld;
     public Sound BackgroundMusicMausoleum;
+    // Volume to set background music when player is in "Instrument" state
     [Range (0f, 1f)]
     public float BackgroundMusicInstrumentVolume;
     // Volume to set background music when player is playing a Melody
