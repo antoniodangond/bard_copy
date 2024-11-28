@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BackgroundAudio : AudioController
 {
-    public BackgroundAudioData AudioData;
+    public static BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
 
     void Awake() 
@@ -69,6 +69,17 @@ public class BackgroundAudio : AudioController
     public void StopRandomFrogs()
     {
         AudioData.RandomAmbienceFrogs.StopRandomAudio();
+    }
+
+    public void ChangeBackgroundMusic(string tag)
+    {
+        // switch(tag)
+        // {
+        //     case "UndergroundMusic":
+
+
+        // }
+
     }
 
     public void OnPlayerStateChange(PlayerState playerState)
