@@ -8,16 +8,16 @@ public class AudioFader : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-     private IEnumerator FadeOutCoroutine(AudioSource source, float duration)
+    static public IEnumerator FadeOutCoroutine(AudioSource source, float duration)
     {
         float startVolume = source.volume;
 
@@ -31,7 +31,7 @@ public class AudioFader : MonoBehaviour
         // source.Stop(); // Optionally stop the audio once faded out
     }
 
-     private IEnumerator FadeInCoroutine(AudioSource source, float duration, float targetVolume)
+    static public IEnumerator FadeInCoroutine(AudioSource source, float duration, float targetVolume)
     {
         // float startVolume = source.volume;
 

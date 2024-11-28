@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 // Sound is a wrapper class for controlling an AudioSource
@@ -10,40 +11,40 @@ public class Sound
     [Range (0f, 1f)]
     public float DefaultVolume = 1f;
     public bool ShouldLoop = false;
-    public bool IsPlaying => source.isPlaying;
+    public bool IsPlaying => Source.isPlaying;
 
     // Set source in Initialize method
-    private AudioSource source;
+    public AudioSource Source;
 
     public void Initialize(AudioSource audioSource)
     {
         // Set audio source and its properties
-        source = audioSource;
-        source.clip = Clip;
-        source.pitch = DefaultPitch;
-        source.volume = DefaultVolume;
-        source.loop = ShouldLoop;
+        Source = audioSource;
+        Source.clip = Clip;
+        Source.pitch = DefaultPitch;
+        Source.volume = DefaultVolume;
+        Source.loop = ShouldLoop;
     }
 
     public void Play(float pitch = 1f, float volume = 1f)
     {
-        source.pitch = pitch;
-        source.volume = volume;
-        source.Play();
+        Source.pitch = pitch;
+        Source.volume = volume;
+        Source.Play();
     }
 
     public void Pause()
     {
-        source.Pause();
+        Source.Pause();
     }
 
     public void UnPause()
     {
-        source.UnPause();
+        Source.UnPause();
     }
 
     public void SetVolume(float volume)
     {
-        source.volume = volume;
+        Source.volume = volume;
     }
 }

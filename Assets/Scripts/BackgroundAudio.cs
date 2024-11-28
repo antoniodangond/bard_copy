@@ -1,15 +1,23 @@
-using UnityEditor.UI;
+using System.Collections;
 using UnityEngine;
 
 public class BackgroundAudio : AudioController
 {
     public static BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
+    public float FadeDuration;
 
-    void Awake() 
+    private AudioClip defaultBackgroundMusic;
+
+    void Awake()
     {
-        // Instantiate audio source
+        // Instantiate audio sources.
+        // Even though we have multiple AudioSources for each of the different background music clips,
+        // we'll just use the BackgroundMuisic Sound's AudioSource and change its AudioClip when we
+        // want to change background music.
         InitializeSound(AudioData.BackgroundMusic);
+        // Save the AudioClip as the default background music clip
+        defaultBackgroundMusic = AudioData.BackgroundMusic.Clip;
         InitializeSound(AudioData.OverworldAmbience);
         if (LowPassFilter == null)
         {
@@ -71,15 +79,29 @@ public class BackgroundAudio : AudioController
         AudioData.RandomAmbienceFrogs.StopRandomAudio();
     }
 
-    public void ChangeBackgroundMusic(string tag)
+    public IEnumerator ChangeBackgroundMusic(string tag)
     {
-        // switch(tag)
-        // {
-        //     case "UndergroundMusic":
-
-
-        // }
-
+        // Fade out the current background music
+        yield return StartCoroutine(AudioFader.FadeOutCoroutine(AudioData.BackgroundMusic.Source, FadeDuration));
+        // Change the backgroudn music clip
+        switch(tag)
+        {
+            case "Underworld":
+                AudioData.BackgroundMusic.Clip = AudioData.BackgroundMusicUnderworld.Clip;
+                break;
+            case "Mausoleum":
+                AudioData.BackgroundMusic.Clip = AudioData.BackgroundMusicMausoleum.Clip;
+                break;
+            case "Beach":
+                AudioData.BackgroundMusic.Clip = defaultBackgroundMusic;
+                break;
+            default:
+                // Use for Overworld
+                AudioData.BackgroundMusic.Clip = defaultBackgroundMusic;
+                break;
+        }
+        // Fade in the new background music clip
+        yield return StartCoroutine(AudioFader.FadeInCoroutine(AudioData.BackgroundMusic.Source, FadeDuration, AudioData.BackgroundMusic.DefaultVolume));
     }
 
     public void OnPlayerStateChange(PlayerState playerState)
