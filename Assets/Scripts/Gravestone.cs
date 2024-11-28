@@ -5,6 +5,8 @@ public class Gravestone : MonoBehaviour
     public float TotalDistance;
     public float MoveSpeed;
     public GameObject TeleporterObj;
+    public EnvironmentAudioData audioData;
+    public GraveAudio graveAudio;
 
     private Rigidbody2D rb;
     private float originalTransformY;
@@ -16,6 +18,17 @@ public class Gravestone : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         originalTransformY = transform.position.y;
         teleporter = TeleporterObj.GetComponent<Teleporter>();
+        graveAudio = gameObject.AddComponent<GraveAudio>();
+        graveAudio.audioData = new EnvironmentAudioData();
+        graveAudio.graveAudioSource = gameObject.AddComponent<AudioSource>();
+        if (audioData != null)
+        {
+            graveAudio.audioData = audioData;
+        }
+    else
+    {
+        Debug.LogError("EnvironmentAudioData is not assigned!");
+    }
     }
 
     public void Move()
@@ -24,6 +37,10 @@ public class Gravestone : MonoBehaviour
         {
             rb.linearVelocityY = MoveSpeed;
             distanceMoved += transform.position.y - originalTransformY;
+            if (!graveAudio.graveAudioSource.isPlaying)
+            {
+                graveAudio.PlayGravePushSound();
+            }
         }
         else {
             Stop();
