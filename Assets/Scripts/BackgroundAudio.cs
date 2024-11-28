@@ -7,17 +7,14 @@ public class BackgroundAudio : AudioController
     public AudioLowPassFilter LowPassFilter;
     public float FadeDuration;
 
-    private AudioClip defaultBackgroundMusic;
+    private Sound currentBackgroundMusic;
 
     void Awake()
     {
-        // Instantiate audio sources.
-        // Even though we have multiple AudioSources for each of the different background music clips,
-        // we'll just use the BackgroundMuisic Sound's AudioSource and change its AudioClip when we
-        // want to change background music.
+        // Instantiate audio sources
         InitializeSound(AudioData.BackgroundMusic);
-        // Save the AudioClip as the default background music clip
-        defaultBackgroundMusic = AudioData.BackgroundMusic.Clip;
+        InitializeSound(AudioData.BackgroundMusicUnderworld);
+        InitializeSound(AudioData.BackgroundMusicMausoleum);
         InitializeSound(AudioData.OverworldAmbience);
         if (LowPassFilter == null)
         {
@@ -45,9 +42,13 @@ public class BackgroundAudio : AudioController
         CustomEvents.OnPlayerStateChange.RemoveListener(OnPlayerStateChange);
     }
 
-    public void PlayBackgroundMusic()
+    public void StartBackgroundMusic()
     {
+        currentBackgroundMusic = AudioData.BackgroundMusic;
         AudioData.BackgroundMusic.Play();
+        // Play alternate bg clips at 0 volume
+        AudioData.BackgroundMusicUnderworld.Play(1f, 0f);
+        AudioData.BackgroundMusicMausoleum.Play(1f, 0f);
     }
 
     public void PlayOverworldAmbience()
@@ -79,29 +80,35 @@ public class BackgroundAudio : AudioController
         AudioData.RandomAmbienceFrogs.StopRandomAudio();
     }
 
-    public IEnumerator ChangeBackgroundMusic(string tag)
+    public IEnumerator ChangeBackgroundMusic(string region)
     {
         // Fade out the current background music
-        yield return StartCoroutine(AudioFader.FadeOutCoroutine(AudioData.BackgroundMusic.Source, FadeDuration));
         // Change the backgroudn music clip
-        switch(tag)
+        Sound newSound;
+        switch(region)
         {
             case "Underworld":
-                AudioData.BackgroundMusic.Clip = AudioData.BackgroundMusicUnderworld.Clip;
+                newSound = AudioData.BackgroundMusicUnderworld;
                 break;
             case "Mausoleum":
-                AudioData.BackgroundMusic.Clip = AudioData.BackgroundMusicMausoleum.Clip;
+                newSound = AudioData.BackgroundMusicMausoleum;
                 break;
             case "Beach":
-                AudioData.BackgroundMusic.Clip = defaultBackgroundMusic;
+                newSound = AudioData.BackgroundMusic;
                 break;
             default:
                 // Use for Overworld
-                AudioData.BackgroundMusic.Clip = defaultBackgroundMusic;
+                newSound = AudioData.BackgroundMusic;
                 break;
         }
         // Fade in the new background music clip
-        yield return StartCoroutine(AudioFader.FadeInCoroutine(AudioData.BackgroundMusic.Source, FadeDuration, AudioData.BackgroundMusic.DefaultVolume));
+        if (newSound != currentBackgroundMusic && newSound != null)
+        {
+            Debug.Log("playing new clip: " + newSound.Clip);
+            yield return StartCoroutine(AudioFader.FadeOutCoroutine(currentBackgroundMusic.Source, FadeDuration));
+            currentBackgroundMusic = newSound;
+            yield return StartCoroutine(AudioFader.FadeInCoroutine(newSound.Source, FadeDuration, newSound.DefaultVolume));
+        }
     }
 
     public void OnPlayerStateChange(PlayerState playerState)
