@@ -10,18 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
-  m_Name: D_EurydiceGrave
+  m_Name: D_Grave_17
   m_EditorClassIdentifier: 
   upLines:
-  - Orpheus. I have found a way. Beyond life and death.
-  - A place where we will never part...
-  - Use your LYRE to quell lost souls.
-  - '[Press LEFT CLICK to STRUM]'
-  - '[Press SPACE to PLAY]'
-  downLines:
-  - This is the back of Eurydice's grave.
-  leftLines:
-  - The side of the grave. Cold and rough.
-  rightLines:
-  - The side of the grave. Cold and rough.
+  - A stranger's grave.
+  downLines: []
+  leftLines: []
+  rightLines: []
   universalLines: []
