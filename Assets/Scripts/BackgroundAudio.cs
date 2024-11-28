@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BackgroundAudio : AudioController
 {
-    public static BackgroundAudioData AudioData;
+    public BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
     public float FadeDuration;
 
