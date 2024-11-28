@@ -316,7 +316,7 @@ public class PlayerController : MonoBehaviour
 
             // Set animation params after determining isPlayingLyre
             playerAnimation.SetAnimationParams(movement, isPlayingLyre);
-            playerAudio.PlayWalkingAudio(movement);
+            // playerAudio.PlayWalkingAudio(movement);
         }
         else if (CurrentState == PlayerState.Instrument)
         {

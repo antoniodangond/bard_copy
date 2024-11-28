@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ghost Boy idle complete 5_0: 7966234519162021106
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
