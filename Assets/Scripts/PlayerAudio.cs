@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerAudio : AudioController
 {
     public PlayerAudioData AudioData;
+    private string currentTerrain = "Grass";
 
     // Store last played clip indexes to avoid playing it twice in a row
     private int lastWalkingClipIndex = 0;
@@ -30,6 +32,9 @@ public class PlayerAudio : AudioController
         InitializeSound(AudioData.NoteD);
         InitializeSound(AudioData.NoteE);
         InitializeSound(AudioData.Melody1);
+
+        AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomFootsteps.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlayWalkingAudio(Vector2 movement)
@@ -59,6 +64,37 @@ public class PlayerAudio : AudioController
         AudioData.Footsteps[clipIndex].Play(pitch, volume);
         // Set lastWalkingClipIndex to the index just used
         lastWalkingClipIndex = clipIndex;
+    }
+
+    public void PlayFootstep()
+    {
+        AudioClip[] currentClips;
+
+        switch(currentTerrain)
+        {
+            case "Grass":
+                currentClips = AudioData.GrassFootsteps;
+                break;
+            case "Stone":
+                currentClips = AudioData.StoneFootsteps;
+                break;
+            default:
+                currentClips = AudioData.GrassFootsteps; // default
+                break;
+        }
+
+        // Select a clip at randomm from array of footsteps
+        var randomClip = currentClips[Random.Range(0, currentClips.Length)];
+
+        // Assign footstep to audiosource
+        AudioData.RandomFootsteps.audioSource.clip = randomClip;
+        // Randomize pitch
+        AudioData.RandomFootsteps.audioSource.pitch = Random.Range(0.8f, 1.15f);
+        // Randomize Volume
+        AudioData.RandomFootsteps.audioSource.pitch = Random.Range(0.8f, 1.15f);
+        // Play footstep
+        AudioData.RandomFootsteps.audioSource.Play();
+
     }
 
     public void PlayNote(string noteName)

@@ -5,6 +5,8 @@ public class PlayerAudioData : ScriptableObject
 {
     [Header("Footsteps")]
     public Sound[] Footsteps;
+    public AudioClip[] GrassFootsteps;
+    public AudioClip[] StoneFootsteps;
     [Range (0f, 1f)]
     public float MaxFootstepPitchVariation;
     [Range (0f, 1f)]
@@ -26,4 +28,7 @@ public class PlayerAudioData : ScriptableObject
     [Header("Combat")]
     public Sound[] AttackChords;
     public Sound[] Hits;
+
+    [Header ("Audio Managers")]
+    public RandomAudioManager RandomFootsteps;
 }
