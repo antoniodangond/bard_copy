@@ -40,14 +40,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
-    private Collider2D playerCollider;
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
     private PlayerMovement playerMovement;
     private Vector2 movement;
     private bool isPlayingLyre;
-    private Pushable pushable;
+    private Gravestone gravestone;
     private string[] Melodies = new string[1]{
         MelodyData.Melody1,
     };
@@ -65,7 +64,6 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerAudio = GetComponent<PlayerAudio>();
         playerMovement = GetComponent<PlayerMovement>();
-        playerCollider = GetComponent<Collider2D>();
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
@@ -350,16 +348,16 @@ public class PlayerController : MonoBehaviour
     {
         if (Utils.HasTargetLayer(PushableLayer, other.gameObject))
         {
-            pushable = other.gameObject.GetComponent<Pushable>();
+            gravestone = other.gameObject.GetComponent<Gravestone>();
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (pushable != null && Utils.HasTargetLayer(PushableLayer, other.gameObject))
+        if (gravestone != null && Utils.HasTargetLayer(PushableLayer, other.gameObject))
         {
-            pushable.Stop();
-            pushable = null;
+            gravestone.Stop();
+            gravestone = null;
         }
     }
 
@@ -370,9 +368,9 @@ public class PlayerController : MonoBehaviour
         playerMovement.Move(movement);
         // If colliding with a pushable object while moving in a straight upward direction,
         // attempt to move it
-        if (pushable != null && movement.x == 0 && movement.y == 1)
+        if (gravestone != null && movement.x == 0 && movement.y == 1)
         {
-            pushable.Move();
+            gravestone.Move();
         }
     }
 }

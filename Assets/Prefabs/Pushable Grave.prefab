@@ -224,3 +224,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TotalDistance: 80
   MoveSpeed: 1
+  TeleporterObj: {fileID: 6181774036189400203, guid: a66045574ff634f039a6162b59eb1ae3, type: 3}
