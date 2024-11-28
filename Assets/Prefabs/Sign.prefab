@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 6465725449022251311, guid: 3a55371ea300b024bbc02f85742c08f7, type: 3}
+  m_Sprite: {fileID: 3334738622998220081, guid: 2bee0d9c7371b4b90930eddb38fe9ee6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,8 +129,8 @@ BoxCollider2D:
   m_Offset: {x: -0.14, y: 0.8}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.14, y: 5.12}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.17, y: 3.75}
     newSize: {x: 4.14, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -214,8 +214,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 3.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.14, y: 5.12}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 2.17, y: 3.75}
     newSize: {x: 4.14, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -235,4 +235,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: e74f1ebe35d6f5245a659df8bdec4d6d, type: 2}
+  defaultDialogue: {fileID: 0}
+  updatedDialogue: {fileID: 0}
+  successAnimator: {fileID: 0}
+  HasDialogueOnMelody: 0
+  signName: 
+  audioSources: []

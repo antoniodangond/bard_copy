@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
-  m_Name: Sign_Test0
+  m_Name: D_GraveyardSign
   m_EditorClassIdentifier: 
   upLines:
-  - Cleveland ->
-  - <- Allentown
+  - 'SOUTH: VILLAGE'
+  - 'NORTH: MAUSOLEUM'
   downLines:
-  - Try pushing the northwesternmost grave. There is a secret entrance!
+  - Push the northwesternmost grave.
   leftLines: []
   rightLines: []
+  universalLines: []

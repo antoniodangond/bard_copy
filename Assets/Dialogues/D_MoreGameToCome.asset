@@ -10,10 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
-  m_Name: D_Scroll
+  m_Name: D_MoreGameToCome
   m_EditorClassIdentifier: 
   upLines:
-  - 'SONG OF DECAY: A D S W'
-  downLines: []
+  - Thanks for playing!
+  - More to come, stay tuned!!!
+  downLines:
+  - 'ART: Drew DeBakker'
+  - 'PROGRAMMING: Antonio Dangond'
+  - 'COMPOSER: Mikel Dale'
+  - 'SOUND DESIGNER: Paul Naser'
+  - 'NARRATIVE DESIGNER: Andrew Sego'
   leftLines: []
   rightLines: []
+  universalLines: []
