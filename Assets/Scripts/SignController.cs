@@ -9,6 +9,8 @@ public class SignController : MonoBehaviour
     [SerializeField] private Animator successAnimator; // Reference to the Animator for success animation
     private bool isDialogueUpdated = false;
     public bool HasDialogueOnMelody = false;
+    public string signName;
+    public AudioSource sound;
 
     // Property to get the correct dialogue based on state
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
@@ -32,6 +34,12 @@ public class SignController : MonoBehaviour
                 Debug.Log($"{gameObject.name}'s dialogue has been updated!");
 
                 //Add visual/audio feedback of SUCCESS here
+                if (signName == "Log")
+                {
+                    successAnimator = gameObject.GetComponent<Animator>();
+                    sound = gameObject.GetComponent<AudioSource>();
+
+                }
 
 
                 // STEP 1: Autoplay the updated dialogue 
