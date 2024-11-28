@@ -37,6 +37,20 @@ MonoBehaviour:
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+  GrassFootsteps:
+  - {fileID: 8300000, guid: da634e615ac7849b6b7cca7b102d9315, type: 3}
+  - {fileID: 8300000, guid: 3bc9a128dd4d041bd8634b8bcf9679c1, type: 3}
+  - {fileID: 8300000, guid: fe85553d42d3a4d8cb76a99b2392749b, type: 3}
+  - {fileID: 8300000, guid: f3b590fde9f9f4149a286b7c10b50100, type: 3}
+  - {fileID: 8300000, guid: 0d27b4139fab1490caac82358ca0b1ff, type: 3}
+  - {fileID: 8300000, guid: 6cd65111593894bd1b8a1487c93b2aba, type: 3}
+  StoneFootsteps:
+  - {fileID: 8300000, guid: 5bf850f6b1333475887c4406d9aca393, type: 3}
+  - {fileID: 8300000, guid: 87fd230c0f08b4f98b255a65c1cd33e6, type: 3}
+  - {fileID: 8300000, guid: 8ae0cff7aa4984a319dcf50c6e6ee120, type: 3}
+  - {fileID: 8300000, guid: ec178887f1c034a2d9128d2e9b52b9d2, type: 3}
+  - {fileID: 8300000, guid: d55a25dacaee2488aaf14ad4838f7881, type: 3}
+  - {fileID: 8300000, guid: b2d4d24c6562a4ebeb5678abd4453204, type: 3}
   MaxFootstepPitchVariation: 0.1
   MaxFootstepVolumeVariation: 0.1
   NoteB:
@@ -104,3 +118,4 @@ MonoBehaviour:
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+  RandomFootsteps: {fileID: 0}
