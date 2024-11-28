@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SignController : MonoBehaviour
@@ -10,7 +11,8 @@ public class SignController : MonoBehaviour
     private bool isDialogueUpdated = false;
     public bool HasDialogueOnMelody = false;
     public string signName;
-    public AudioSource sound;
+    // public AudioSource sound;
+    public AudioSource[] audioSources;
 
     // Property to get the correct dialogue based on state
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
@@ -34,11 +36,36 @@ public class SignController : MonoBehaviour
                 Debug.Log($"{gameObject.name}'s dialogue has been updated!");
 
                 //Add visual/audio feedback of SUCCESS here
-                if (signName == "Log")
+                 switch (signName)
                 {
-                    successAnimator = gameObject.GetComponent<Animator>();
-                    sound = gameObject.GetComponent<AudioSource>();
+                    case "Log":
+                        successAnimator = gameObject.GetComponent<Animator>();
+                        // sound = gameObject.GetComponent<AudioSource>();
+                        // sound.volume = .8f;
+                        // sound.PlayDelayed(0.15f);
+                        audioSources = GetComponents<AudioSource>();
+                        foreach (var audiosource in audioSources)
+                        {
+                            audiosource.volume = .8f;
+                            audiosource.PlayDelayed(0.15f);
+                            audiosource.Play();
+                            Debug.Log(audiosource);
+                        }
+                        break;
 
+                    case "Ghostboy":
+                        successAnimator = gameObject.GetComponent<Animator>();
+                        Debug.Log(successAnimator);
+                        // sound = gameObject.GetComponent<AudioSource>();
+                        // optional_sound = gameObject.AddComponent<AudioSource>();
+                        audioSources = GetComponents<AudioSource>();
+                        foreach (var audiosource in audioSources)
+                        {
+                            audiosource.Play();
+                            Debug.Log(audiosource);
+                        }
+                        // optional_sound.Play();
+                        break;
                 }
 
 
@@ -57,6 +84,7 @@ public class SignController : MonoBehaviour
     private IEnumerator PlaySuccessAnimation()
     {
         // Trigger success animation
+        
         successAnimator.SetTrigger("Success");
 
         // Wait for the animation to complete
