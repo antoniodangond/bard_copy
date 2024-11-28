@@ -12065,6 +12065,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3744789010451527298, guid: 10e184911303d4c4980a70c69941b6df, type: 3}
+      propertyPath: region
+      value: Beach
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744789010451527298, guid: 10e184911303d4c4980a70c69941b6df, type: 3}
       propertyPath: BackgroundAudioObj
       value: 
       objectReference: {fileID: 1101522020}
@@ -15829,6 +15833,10 @@ PrefabInstance:
     - target: {fileID: 4575828241941410748, guid: fa5bea8fd6c94c74c9981c05b45499fb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5873447409422900793, guid: fa5bea8fd6c94c74c9981c05b45499fb, type: 3}
+      propertyPath: region
+      value: Overworld
       objectReference: {fileID: 0}
     - target: {fileID: 5873447409422900793, guid: fa5bea8fd6c94c74c9981c05b45499fb, type: 3}
       propertyPath: BackgroundAudioObj
@@ -21660,6 +21668,10 @@ PrefabInstance:
     - target: {fileID: 3152248948929662077, guid: 55b4e14147389b44aa18797ee540f849, type: 3}
       propertyPath: m_Name
       value: MausoleumRegion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833406274931319437, guid: 55b4e14147389b44aa18797ee540f849, type: 3}
+      propertyPath: region
+      value: Mausoleum
       objectReference: {fileID: 0}
     - target: {fileID: 3833406274931319437, guid: 55b4e14147389b44aa18797ee540f849, type: 3}
       propertyPath: BackgroundAudioObj

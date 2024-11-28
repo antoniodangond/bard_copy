@@ -4,19 +4,6 @@ using UnityEngine.iOS;
 
 public class AudioFader : MonoBehaviour
 {
-    // public BackgroundAudio audioData;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     static public IEnumerator FadeOutCoroutine(AudioSource source, float duration)
     {
         float startVolume = source.volume;
@@ -33,8 +20,6 @@ public class AudioFader : MonoBehaviour
 
     static public IEnumerator FadeInCoroutine(AudioSource source, float duration, float targetVolume)
     {
-        // float startVolume = source.volume;
-
         while (source.volume < targetVolume)
         {
             source.volume += Time.deltaTime / duration;

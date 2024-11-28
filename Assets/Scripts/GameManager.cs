@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         backgroundAudio = GetComponent<BackgroundAudio>();
-        
+
         // Subscribe to custom event
         CustomEvents.OnCombatEncounterCleared.AddListener(OnCombatEncounterCleared);
     }
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Start() {
         // Start background music
-        backgroundAudio.PlayBackgroundMusic();
+        backgroundAudio.StartBackgroundMusic();
         backgroundAudio.PlayOverworldAmbience();
         backgroundAudio.PlayRandomBreaths();
         backgroundAudio.PlayRandomFrogs();
