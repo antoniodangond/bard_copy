@@ -107,8 +107,8 @@ TextureImporter:
         y: 0
         width: 302
         height: 439
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 83863f7fb7f5c4097b73d9386667db97
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pirate Idle 1_0: -5120409863154010927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
