@@ -48,7 +48,6 @@ public class SignController : MonoBehaviour
                         {
                             audiosource.volume = .8f;
                             audiosource.PlayDelayed(0.15f);
-                            audiosource.Play();
                             Debug.Log(audiosource);
                         }
                         break;
@@ -62,7 +61,7 @@ public class SignController : MonoBehaviour
                         foreach (var audiosource in audioSources)
                         {
                             audiosource.Play();
-                            Debug.Log(audiosource);
+                            Debug.Log(audiosource.clip);
                         }
                         // optional_sound.Play();
                         break;

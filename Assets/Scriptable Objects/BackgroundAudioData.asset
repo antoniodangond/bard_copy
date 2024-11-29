@@ -39,6 +39,12 @@ MonoBehaviour:
     DefaultVolume: 1
     ShouldLoop: 1
     Source: {fileID: 0}
+  UnderworldAmbience:
+    Clip: {fileID: 8300000, guid: ead5f31c19bac4a00aed818ca8ec29a9, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+    Source: {fileID: 0}
   AmbienceBreaths:
   - {fileID: 8300000, guid: f26e85d6356874c0789f4d9e96d66288, type: 3}
   - {fileID: 8300000, guid: 6e94b52d34ade4c7492f02b4d895f2fd, type: 3}

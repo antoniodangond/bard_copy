@@ -8,6 +8,7 @@ public class BackgroundAudio : AudioController
     public float FadeDuration;
 
     private Sound currentBackgroundMusic;
+    private Sound currentAmbience;
 
     void Awake()
     {
@@ -16,6 +17,7 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.BackgroundMusicUnderworld);
         InitializeSound(AudioData.BackgroundMusicMausoleum);
         InitializeSound(AudioData.OverworldAmbience);
+        InitializeSound(AudioData.UnderworldAmbience);
         if (LowPassFilter == null)
         {
             LowPassFilter = gameObject.AddComponent<AudioLowPassFilter>();
@@ -50,10 +52,17 @@ public class BackgroundAudio : AudioController
         AudioData.BackgroundMusicUnderworld.Play(1f, 0f);
         AudioData.BackgroundMusicMausoleum.Play(1f, 0f);
     }
+    
+    public void StartAmbience()
+    {
+        currentAmbience = AudioData.OverworldAmbience;
+        AudioData.OverworldAmbience.Play();
+        // Play alternate bg clips at 0 volume
+        AudioData.UnderworldAmbience.Play(1f, 0f);
+    }
 
     public void PlayOverworldAmbience()
     {
-
         AudioData.OverworldAmbience.Play();
     }
 
@@ -85,29 +94,54 @@ public class BackgroundAudio : AudioController
         // Fade out the current background music
         // Change the backgroudn music clip
         Sound newSound;
+        Sound newAmbience;
         switch(region)
         {
             case "Underworld":
+                StopRandomBreaths();
+                StopRandomFrogs();
                 newSound = AudioData.BackgroundMusicUnderworld;
+                newAmbience = AudioData.UnderworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Stone";
+                PlayRandomBreaths();
                 break;
             case "Mausoleum":
+                StopRandomFrogs();
+                StopRandomBreaths();
                 newSound = AudioData.BackgroundMusicMausoleum;
+                newAmbience = AudioData.UnderworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Stone";
+                
                 break;
             case "Beach":
+                StopRandomFrogs();
+                StopRandomBreaths();
                 newSound = AudioData.BackgroundMusic;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Sand";
+                PlayRandomBreaths();
                 break;
             default:
                 // Use for Overworld
+                StopRandomBreaths();
                 newSound = AudioData.BackgroundMusic;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Grass";
+                PlayRandomBreaths();
+                PlayRandomFrogs();
                 break;
         }
         // Fade in the new background music clip
         if (newSound != currentBackgroundMusic && newSound != null)
         {
-            Debug.Log("playing new clip: " + newSound.Clip);
+            // Debug.Log("playing new clip: " + newSound.Clip);
+            // Debug.Log("playing new clip: " + newAmbience.Clip);
             yield return StartCoroutine(AudioFader.FadeOutCoroutine(currentBackgroundMusic.Source, FadeDuration));
+            yield return StartCoroutine(AudioFader.FadeOutCoroutine(currentAmbience.Source, FadeDuration));
             currentBackgroundMusic = newSound;
+            currentAmbience = newAmbience;
             yield return StartCoroutine(AudioFader.FadeInCoroutine(newSound.Source, FadeDuration, newSound.DefaultVolume));
+            yield return StartCoroutine(AudioFader.FadeInCoroutine(newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));
         }
     }
 

@@ -17,26 +17,32 @@ MonoBehaviour:
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 3bc9a128dd4d041bd8634b8bcf9679c1, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: fe85553d42d3a4d8cb76a99b2392749b, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: f3b590fde9f9f4149a286b7c10b50100, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 0d27b4139fab1490caac82358ca0b1ff, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 6cd65111593894bd1b8a1487c93b2aba, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   GrassFootsteps:
   - {fileID: 8300000, guid: da634e615ac7849b6b7cca7b102d9315, type: 3}
   - {fileID: 8300000, guid: 3bc9a128dd4d041bd8634b8bcf9679c1, type: 3}
@@ -49,8 +55,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 87fd230c0f08b4f98b255a65c1cd33e6, type: 3}
   - {fileID: 8300000, guid: 8ae0cff7aa4984a319dcf50c6e6ee120, type: 3}
   - {fileID: 8300000, guid: ec178887f1c034a2d9128d2e9b52b9d2, type: 3}
-  - {fileID: 8300000, guid: d55a25dacaee2488aaf14ad4838f7881, type: 3}
   - {fileID: 8300000, guid: b2d4d24c6562a4ebeb5678abd4453204, type: 3}
+  SandFootsteps:
+  - {fileID: 8300000, guid: cc1c66268bb5146c2a82e5ba7259dcde, type: 3}
+  - {fileID: 8300000, guid: 021d9a147a28742c780f3419299479e8, type: 3}
+  - {fileID: 8300000, guid: 3fccdea8039604cf9a35ed9ed7f2a5a6, type: 3}
+  - {fileID: 8300000, guid: c997509d6096c4a44871fc32a431c669, type: 3}
+  - {fileID: 8300000, guid: 386733aeafc454ba48cccf6db3f29290, type: 3}
+  - {fileID: 8300000, guid: 3340fcb5d6c764f3aba9f708fc627b28, type: 3}
   MaxFootstepPitchVariation: 0.1
   MaxFootstepVolumeVariation: 0.1
   NoteB:
@@ -58,26 +70,31 @@ MonoBehaviour:
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   NoteC:
     Clip: {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   NoteD:
     Clip: {fileID: 8300000, guid: e6b8b24048a43284eb39e74b8d22691a, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   NoteE:
     Clip: {fileID: 8300000, guid: 009a221bfd623428589c2b2eae236123, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   Melody1:
     Clip: {fileID: 8300000, guid: fef5a12409920de48b22bd5209739c46, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   TimeBeforeMelody: 0.5
   MelodyCooldownTime: 3
   AttackChords:
@@ -85,37 +102,46 @@ MonoBehaviour:
     DefaultPitch: 1
     DefaultVolume: 0.5
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: b039c6177d82a6247bd90e72d07f1da0, type: 3}
     DefaultPitch: 1
     DefaultVolume: 0.5
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 4f18bb8a4fd8f0548bdb311c460c379f, type: 3}
     DefaultPitch: 1
     DefaultVolume: 0.5
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 397adde8098213247bf7371e10580d1b, type: 3}
     DefaultPitch: 1
     DefaultVolume: 0.5
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: fc0effdf5015fcd42b2313495c7005f9, type: 3}
     DefaultPitch: 1
     DefaultVolume: 0.5
     ShouldLoop: 0
+    Source: {fileID: 0}
   Hits:
   - Clip: {fileID: 8300000, guid: c809d1970561247599e7a9ca9d29659c, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 575c922f0d52c4e4e8fbab4d88076bf7, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 2dc53c43a2b5b4ad484a2b821c3dcc83, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   - Clip: {fileID: 8300000, guid: 54ab7e01dd24e4cafa078936a225ff64, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
+    Source: {fileID: 0}
   RandomFootsteps: {fileID: 0}
