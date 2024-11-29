@@ -14,22 +14,25 @@ public class EnemyController : MonoBehaviour
     public LayerMask PlayerLayer;
     public float AgroTimeBeforeAttack;
     public float AttackCooldownTime;
-    public float MaxTravelDistance;
     public float MoveSpeed;
+    public float AttackDurationSeconds;
 
     // TODO: make customizable in editor
     private float health = 1f;
     private EnemyState currentState = EnemyState.Default;
-    private Vector2 travelPoint;
+    private Vector2 targetDirection;
     private GameObject target;
     private CircleCollider2D circleCollider2D;
     private Animator animator;
     private bool isFacingRight = false;
     private EnemyAudio enemyAudio;
+    private Rigidbody2D rb;
 
     void Awake()
     {
         enemyAudio = GetComponent<EnemyAudio>();
+        isFacingRight = transform.rotation.eulerAngles.y == 180;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Start()
@@ -75,6 +78,7 @@ public class EnemyController : MonoBehaviour
     {
         // Enter agro state and handle facing direction if necessary
         Rigidbody2D targetRigidbody = other.GetComponent<Rigidbody2D>();
+        Debug.Log("Enemy aggro");
         currentState = EnemyState.Agro;
         // Calculate the direction towards the target, in case we need to change facing direction
         Vector2 direction = getDirectionToTarget(targetRigidbody);
@@ -84,15 +88,17 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(AgroTimeBeforeAttack);
 
         // Start attack
+        Debug.Log("Enemy attack");
         currentState = EnemyState.Attacking;
         // Calculate the direction towards the target again, in case the player has moved
-        direction = getDirectionToTarget(targetRigidbody);
+        targetDirection = getDirectionToTarget(targetRigidbody);
         // Rotate transform again if necessary
         HandleRotation(direction);
         animator.SetBool(AnimatorParams.IsMoving, true);
         enemyAudio.PlayAttack();
-                // Calculate the exact travel point within the max distance
-        travelPoint = (Vector2)transform.position + direction * MaxTravelDistance;
+        // After attack duration, begin cooldown
+        yield return new WaitForSeconds(AttackDurationSeconds);
+        StartCoroutine(AttackCooldown());
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -106,9 +112,13 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator AttackCooldown()
     {
+        Debug.Log("Enemy cooldown");
         currentState = EnemyState.AttackCooldown;
+        // Reset target direction
+        targetDirection = Vector2.zero;
         animator.SetBool(AnimatorParams.IsMoving, false);
         yield return new WaitForSeconds(AttackCooldownTime);
+        Debug.Log("Enemy default");
         currentState = EnemyState.Default;
         // Check if player is still in agro range. If so, attack again
         Collider2D[] hitPlayers = Physics2D.OverlapCircleAll(transform.position, circleCollider2D.radius, PlayerLayer);
@@ -146,14 +156,7 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (currentState == EnemyState.Attacking)
-        {
-            transform.position = Vector2.Lerp(transform.position, travelPoint, MoveSpeed * Time.fixedDeltaTime);
-            // Stop once close enough to avoid overshooting
-            if (Vector2.Distance(transform.position, travelPoint) < 0.1f)
-            {
-                StartCoroutine(AttackCooldown());
-            }
-        }
+        // Move only if attacking
+        rb.linearVelocity = currentState == EnemyState.Attacking ? targetDirection * MoveSpeed : Vector2.zero;
     }
 }

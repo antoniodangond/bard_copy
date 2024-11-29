@@ -27,6 +27,10 @@ public class EnemyAudio : AudioController
 
     public void PlayHit()
     {
+        if (AudioData.Hits.Length == 0) {
+            Debug.LogError("Enemy audio 'hits' length is 0");
+            return;
+        }
         // Prevent playing the same clip twice in a row
         int clipIndex = lastHitClipIndex;
         while (clipIndex == lastHitClipIndex)
@@ -40,12 +44,20 @@ public class EnemyAudio : AudioController
     }
     public void PlayAttack()
     {
+        if (AudioData.Attacks.Length == 0) {
+            Debug.LogError("Enemy audio 'attacks' length is 0");
+            return;
+        }
         AudioData.Attacks[0].SetVolume(2f);
         AudioData.Attacks[0].Play();
     }
 
     public void PlayAggro()
     {
+        if (AudioData.Aggro.Length == 0) {
+            Debug.LogError("Enemy audio 'aggro' length is 0");
+            return;
+        }
         AudioData.Aggro[0].SetVolume(2f);
         AudioData.Aggro[0].Play();
     }
