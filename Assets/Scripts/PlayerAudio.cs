@@ -1,10 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class PlayerAudio : AudioController
 {
     public PlayerAudioData AudioData;
-    private string currentTerrain = "Grass";
+    public static PlayerAudio instance;
+    public string currentTerrain;
 
     // Store last played clip indexes to avoid playing it twice in a row
     private int lastWalkingClipIndex = 0;
@@ -13,8 +15,20 @@ public class PlayerAudio : AudioController
 
     // TODO: refactor to use less audio sources and just change clips
     void Awake() {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            // Destroy any duplicate instances to enforce singleton pattern
+            Debug.LogWarning("Duplicate PlayerAudio instance detected. Destroying the new instance.");
+            Destroy(gameObject);
+            return;
+        }
         // TODO: improve this
         // Instantiate audio sources
+
         foreach (Sound sound in AudioData.Footsteps)
         {
             InitializeSound(sound);
@@ -78,6 +92,9 @@ public class PlayerAudio : AudioController
             case "Stone":
                 currentClips = AudioData.StoneFootsteps;
                 break;
+            case "Sand":
+                currentClips = AudioData.SandFootsteps;
+                break;
             default:
                 currentClips = AudioData.GrassFootsteps; // default
                 break;
@@ -91,7 +108,14 @@ public class PlayerAudio : AudioController
         // Randomize pitch
         AudioData.RandomFootsteps.audioSource.pitch = Random.Range(0.8f, 1.15f);
         // Randomize Volume
-        AudioData.RandomFootsteps.audioSource.pitch = Random.Range(0.8f, 1.15f);
+        if (currentTerrain == "Stone")
+        {
+            AudioData.RandomFootsteps.audioSource.volume = Random.Range(1.15f, 1.5f);
+        }
+        else
+        {
+            AudioData.RandomFootsteps.audioSource.volume = Random.Range(0.8f, 1.15f);
+        }
         // Play footstep
         AudioData.RandomFootsteps.audioSource.Play();
 

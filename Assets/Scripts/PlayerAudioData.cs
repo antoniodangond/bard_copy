@@ -7,6 +7,7 @@ public class PlayerAudioData : ScriptableObject
     public Sound[] Footsteps;
     public AudioClip[] GrassFootsteps;
     public AudioClip[] StoneFootsteps;
+    public AudioClip[] SandFootsteps;
     [Range (0f, 1f)]
     public float MaxFootstepPitchVariation;
     [Range (0f, 1f)]

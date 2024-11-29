@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
     void Start() {
         // Start background music
         backgroundAudio.StartBackgroundMusic();
-        backgroundAudio.PlayOverworldAmbience();
-        backgroundAudio.PlayRandomBreaths();
-        backgroundAudio.PlayRandomFrogs();
+        backgroundAudio.StartAmbience();
+        // backgroundAudio.PlayRandomBreaths();
+        // backgroundAudio.PlayRandomFrogs();
     }
 
     void OnCombatEncounterCleared(GameObject combatEncounter)

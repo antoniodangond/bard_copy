@@ -44,6 +44,7 @@ public class RandomAudioManager : MonoBehaviour
 
             audioSource.clip = randomClip;
             audioSource.Play();
+            // Debug.Log($"Played {audioSource.clip}");
 
 
             float randomDelay = Random.Range(minDelay,maxDelay);
