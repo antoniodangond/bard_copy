@@ -194,7 +194,8 @@ public class PlayerController : MonoBehaviour
 
     private Dialogue checkForDialogueCollision()
     {
-        Vector3 interactPos = transform.position + new Vector3(0, InteractionYOffset, 0); // Player's center position + y offset
+        float interactionYOffset = FacingDirection == FacingDirection.Down ? InteractionYOffsetFacingDown : InteractionYOffset;
+        Vector3 interactPos = transform.position + new Vector3(0, interactionYOffset, 0); // Player's center position + y offset
 
         // Define the size of the rectangle (adjust dynamically based on FacingDirection)
         Vector2 interactionZoneSize;
@@ -271,7 +272,8 @@ public class PlayerController : MonoBehaviour
     //Interaction zone adjustable in Inspector
     [SerializeField] private Vector2 interactionZoneSize = new Vector2(1f, 0.5f); // Width and Height
     [SerializeField] private float interactionOffset = 0.5f; // Distance from the player's center
-    [SerializeField] public float InteractionYOffset; // Add vertical offset from the player's center
+    [SerializeField] public float InteractionYOffset; // Add vertical offset from the player's center while facing up
+    [SerializeField] public float InteractionYOffsetFacingDown; // Add vertical offset from the player's center while facing down
 
     void Update()
     {
