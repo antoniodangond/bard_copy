@@ -133,10 +133,10 @@ public class PlayerController : MonoBehaviour
             if (sign != null)
             {
                 Debug.Log("Playing melody for sign");
+                sign.OnSongPlayed(melody);
                 // Trigger the sign's response to the song
                 if (sign.HasDialogueOnMelody)
                 {
-                    sign.OnSongPlayed(melody);
                     shouldPlayNormalMelody = !sign.IsPlayingSuccessAudio;
                     isPlayingLyre = false;
                     CurrentState = PlayerState.Dialogue;
@@ -242,7 +242,7 @@ public class PlayerController : MonoBehaviour
             if (signController != null)
             {
                 Debug.Log($"Found SignController on object: {hit.gameObject.name}");
-                return signController.CurrentDialogue; // Return the assigned Dialogue ScriptableObject
+                return signController.GetDialogue(); // Return the assigned Dialogue ScriptableObject
             }
         }
 

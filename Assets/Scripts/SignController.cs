@@ -27,6 +27,11 @@ public class SignController : MonoBehaviour
         }
     }
 
+    public Dialogue GetDialogue()
+    {
+        return CurrentDialogue == null ? defaultDialogue : CurrentDialogue;
+    }
+
     // Method called when a song is played nearby
     public void OnSongPlayed(string melody)
     {
@@ -71,7 +76,7 @@ public class SignController : MonoBehaviour
                 }
 
 
-                // STEP 1: Autoplay the updated dialogue 
+                // STEP 1: Autoplay the updated dialogue
                 DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
 
                 // Step 2: Play success animation (if exists)
@@ -86,7 +91,7 @@ public class SignController : MonoBehaviour
     private IEnumerator PlaySuccessAnimation()
     {
         // Trigger success animation
-        
+
         successAnimator.SetTrigger("Success");
 
         // Wait for the animation to complete
