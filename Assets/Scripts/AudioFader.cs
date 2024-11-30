@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.iOS;
 
 public class AudioFader : MonoBehaviour
 {
