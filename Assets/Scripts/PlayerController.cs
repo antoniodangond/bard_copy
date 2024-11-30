@@ -122,12 +122,11 @@ public class PlayerController : MonoBehaviour
         CurrentState = PlayerState.InstrumentMelody;
         // After playing last note, wait before starting the melody audio
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
-        playerAudio.PlayMelody(melody);
 
         // Proximity check for objects affectable by melody
         float interactionRadius = 5.0f; // Adjust this as needed
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, interactionRadius);
-
+        bool shouldPlayNormalMelody = true;
         foreach (Collider2D obj in nearbyObjects)
         {
             SignController sign = obj.GetComponent<SignController>();
@@ -135,9 +134,10 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Playing melody for sign");
                 // Trigger the sign's response to the song
-                sign.OnSongPlayed(melody);
                 if (sign.HasDialogueOnMelody)
                 {
+                    sign.OnSongPlayed(melody);
+                    shouldPlayNormalMelody = !sign.IsPlayingSuccessAudio;
                     isPlayingLyre = false;
                     CurrentState = PlayerState.Dialogue;
                     playerAnimation.SetAnimationParams(movement, false);
@@ -146,6 +146,10 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
+        }
+        if (shouldPlayNormalMelody)
+        {
+            playerAudio.PlayMelody(melody);
         }
         Debug.Log("Did not find sign");
 

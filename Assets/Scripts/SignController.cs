@@ -11,6 +11,7 @@ public class SignController : MonoBehaviour
     private bool isDialogueUpdated = false;
     public bool HasDialogueOnMelody = false;
     public string signName;
+    public bool IsPlayingSuccessAudio = false;
     // public AudioSource sound;
     public AudioSource[] audioSources;
 
@@ -19,7 +20,8 @@ public class SignController : MonoBehaviour
 
     public void Interact()
     {
-        if (CurrentDialogue != null) // Use the property to fetch the correct dialogue
+        Dialogue dialogue = CurrentDialogue == null ? defaultDialogue : CurrentDialogue;
+        if (dialogue != null) // Use the property to fetch the correct dialogue
         {
             DialogueManager.StartDialogue(CurrentDialogue, PlayerController.FacingDirection);
         }
@@ -55,6 +57,7 @@ public class SignController : MonoBehaviour
                     case "Ghostboy":
                         successAnimator = gameObject.GetComponent<Animator>();
                         Debug.Log(successAnimator);
+                        IsPlayingSuccessAudio = true;
                         // sound = gameObject.GetComponent<AudioSource>();
                         // optional_sound = gameObject.AddComponent<AudioSource>();
                         audioSources = GetComponents<AudioSource>();
@@ -92,6 +95,12 @@ public class SignController : MonoBehaviour
 
         // Step 3: Delete this object
         Debug.Log($"{gameObject.name} has completed its success sequence and will be destroyed.");
-        Destroy(gameObject);
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        var colliders = gameObject.GetComponents<BoxCollider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            collider.enabled = false;
+        }
+
     }
 }
