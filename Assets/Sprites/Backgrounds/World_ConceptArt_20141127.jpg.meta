@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8ab70ddeae420452da5e3419a681d6e1
+guid: 8e5aeb4ce759b934aa099d04a989074f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2263371467652189571
-    second: Pirate Complete 4_0
+      213: -686289662585840687
+    second: World_ConceptArt_20141127_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pirate Complete 4_0
+      name: World_ConceptArt_20141127_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 302
-        height: 439
+        width: 3014
+        height: 2200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 38dc924ab5c196f10800000000000000
-      internalID: 2263371467652189571
+      spriteID: 1db5c80203fc976f0800000000000000
+      internalID: -686289662585840687
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Pirate Complete 4_0: 2263371467652189571
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

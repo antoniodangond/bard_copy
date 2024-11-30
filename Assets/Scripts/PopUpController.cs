@@ -9,12 +9,7 @@ public class PopUpController : MonoBehaviour
 
     void Start()
     {
-        // Check if the scene was entered from the start menu
-        if (SceneTracker.Instance != null && SceneTracker.Instance.CameFromStartMenu)
-        {
-            ShowPopUp();
-            SceneTracker.Instance.ResetTracker(); // Ensure it only triggers once
-        }
+            // ShowPopUp();
     }
 
     void Update()
