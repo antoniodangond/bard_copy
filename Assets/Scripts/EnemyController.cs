@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
         health -= damage;
         if (health <= 0f)
         {
+            Debug.Log("Enemy dead");
             currentState = EnemyState.Dead;
             animator.SetBool(AnimatorParams.IsDead, true);
             // TODO: BUG - don't destroy game object before attempting to play hit
@@ -76,6 +77,8 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator StartAttack(GameObject other)
     {
+        // Exit early if enemy has died
+        if (currentState == EnemyState.Dead) { yield break; }
         // Enter agro state and handle facing direction if necessary
         Rigidbody2D targetRigidbody = other.GetComponent<Rigidbody2D>();
         Debug.Log("Enemy aggro");
@@ -88,6 +91,8 @@ public class EnemyController : MonoBehaviour
         yield return new WaitForSeconds(AgroTimeBeforeAttack);
 
         // Start attack
+        // Exit early if enemy has died
+        if (currentState == EnemyState.Dead) { yield break; }
         Debug.Log("Enemy attack");
         currentState = EnemyState.Attacking;
         // Calculate the direction towards the target again, in case the player has moved
@@ -112,12 +117,16 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator AttackCooldown()
     {
+        // Exit early if enemy has died
+        if (currentState == EnemyState.Dead) { yield break; }
         Debug.Log("Enemy cooldown");
         currentState = EnemyState.AttackCooldown;
         // Reset target direction
         targetDirection = Vector2.zero;
         animator.SetBool(AnimatorParams.IsMoving, false);
         yield return new WaitForSeconds(AttackCooldownTime);
+        // Exit early if enemy has died
+        if (currentState == EnemyState.Dead) { yield break; }
         Debug.Log("Enemy default");
         currentState = EnemyState.Default;
         // Check if player is still in agro range. If so, attack again
