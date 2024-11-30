@@ -214,6 +214,7 @@ MonoBehaviour:
   interactionZoneSize: {x: 2, y: 2}
   interactionOffset: 0.5
   InteractionYOffset: 2.01
+  InteractionYOffsetFacingDown: 1.8
 --- !u!114 &2947611010104209421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioData: {fileID: 11400000, guid: 2e2e86869796548869e37110561c8381, type: 2}
+  currentTerrain: 
 --- !u!114 &8454525523054177503
 MonoBehaviour:
   m_ObjectHideFlags: 0
