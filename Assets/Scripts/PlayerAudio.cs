@@ -117,6 +117,8 @@ public class PlayerAudio : AudioController
             AudioData.RandomFootsteps.audioSource.volume = Random.Range(0.8f, 1.15f);
         }
         // Play footstep
+        Debug.Log("about to play");
+        Debug.Log(AudioData.RandomFootsteps.audioSource.clip);
         AudioData.RandomFootsteps.audioSource.Play();
 
     }

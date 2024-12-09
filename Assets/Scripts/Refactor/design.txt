@@ -1,0 +1,57 @@
+State machines for different objects:
+
+Player
+- Default
+- Attacking (?) - shares movment with default, and playing footsteps
+  - or can only attack in Default state?
+- Instrument
+- PlayingMelody
+- PlayingMelodyQuest (?)
+  - could be for specifically playing quest complete melody?
+- Dialogue
+
+- AttackCooldown?
+- Damaged
+- Dead
+
+PlayerAudio? - could have states for footstep types
+- Overworld
+- Underworld
+- Cathedral
+- Beach
+
+Enemy
+- Default
+- Aggro
+- Attacking
+- AttackCooldown
+- Dead / (Dying?)
+    - or both? Dead just responsible for removing game object at appropriate time?
+
+
+
+New controller set-up?
+- Movement
+- Attack
+  - remove weapon?
+- Animation
+- Audio
+- Dialogue
+- Health?
+  - does this need its own?
+
+
+Other classes
+
+- Dialogueable
+- Pushable
+
+
+Game Manager
+- should know about game state
+  - default
+  - paused (freeze time)
+  - instrument (should this stop snakes?)
+  - instrument melody
+    - this should stop snakes
+    - everything in the game should stop except player- is there a way to freeze time for everything except one object?

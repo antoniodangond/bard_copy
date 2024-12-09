@@ -44,8 +44,8 @@ public class PlayerInputManager : MonoBehaviour
     // Public properties for reading captured input
     public static Vector2 Movement;
     public static bool WasAttackPressed;
-    public bool MenuOpened { get; private set; }
-    public bool MenuClosed { get; private set; }
+    public static bool MenuOpened { get; private set; }
+    public static bool MenuClosed { get; private set; }
     public static bool WasToggleInstrumentPressed;
     public static string NotePressed;
     public static bool WasDialoguePressed;
