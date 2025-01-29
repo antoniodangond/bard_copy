@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     public float AttackDurationSeconds;
 
     // TODO: make customizable in editor
-    private float health = 1f;
+    public float Health = 1f;
     private EnemyState currentState = EnemyState.Default;
     private Vector2 targetDirection;
     private GameObject target;
@@ -49,8 +49,8 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0f)
+        Health -= damage;
+        if (Health <= 0f)
         {
             Debug.Log("Enemy dead");
             currentState = EnemyState.Dead;
