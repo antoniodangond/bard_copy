@@ -17,8 +17,7 @@ public class EnemyController : MonoBehaviour
     public float MoveSpeed;
     public float AttackDurationSeconds;
 
-    // TODO: make customizable in editor
-    public float Health = 1f;
+    public float Health;
     private EnemyState currentState = EnemyState.Default;
     private Vector2 targetDirection;
     private GameObject target;
