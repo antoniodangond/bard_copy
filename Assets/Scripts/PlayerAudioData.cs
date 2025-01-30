@@ -19,6 +19,7 @@ public class PlayerAudioData : ScriptableObject
     public Sound NoteD;
     public Sound NoteE;
     public Sound Melody1;
+    public Sound Melody2;
     // Time between last note of Melody trigger and Melody being played
     [Range (0f, 1f)]
     public float TimeBeforeMelody;

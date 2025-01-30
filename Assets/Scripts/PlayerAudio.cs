@@ -13,6 +13,7 @@ public class PlayerAudio : AudioController
     private int lastAttackChordClipIndex = 0;
     private int lastHitClipIndex = 0;
 
+
     // TODO: refactor to use less audio sources and just change clips
     void Awake() {
         if (instance == null)
@@ -46,6 +47,7 @@ public class PlayerAudio : AudioController
         InitializeSound(AudioData.NoteD);
         InitializeSound(AudioData.NoteE);
         InitializeSound(AudioData.Melody1);
+        InitializeSound(AudioData.Melody2);
 
         AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomFootsteps.audioSource = gameObject.AddComponent<AudioSource>();
@@ -155,6 +157,9 @@ public class PlayerAudio : AudioController
         {
             case MelodyData.Melody1:
                 AudioData.Melody1.Play();
+                break;
+            case MelodyData.Melody2:
+                AudioData.Melody2.Play();
                 break;
             default:
                 break;

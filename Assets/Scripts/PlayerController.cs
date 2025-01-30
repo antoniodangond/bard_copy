@@ -47,8 +47,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool isPlayingLyre;
     private Gravestone gravestone;
-    private string[] Melodies = new string[1]{
-        MelodyData.Melody1,
+    private string[] Melodies = new string[2]{
+        MelodyData.Melody1, MelodyData.Melody2
     };
     private Queue<string> lastPlayedNotes = new Queue<string>(new string[MelodyData.MelodyLength]{
         null,
@@ -97,6 +97,9 @@ public class PlayerController : MonoBehaviour
         {
             CurrentState = PlayerState.Default;
             isPlayingLyre = false;
+
+            // Clear the note queue when lyre is put away (to prevent accidental triggers)
+            lastPlayedNotes.Clear();
         }
         // Set animation params after determining movement and isPlayingLyre
         playerAnimation.SetAnimationParams(movement, isPlayingLyre);
@@ -111,6 +114,7 @@ public class PlayerController : MonoBehaviour
             string melodyInputsString = string.Join("", melodyInputs);
             if (lastPlayedNotesString == melodyInputsString)
             {
+                Debug.Log("melody played");
                 return melody;
             }
         }
@@ -122,6 +126,9 @@ public class PlayerController : MonoBehaviour
         CurrentState = PlayerState.InstrumentMelody;
         // After playing last note, wait before starting the melody audio
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
+
+        // Clears note queue when melody is completed 
+        lastPlayedNotes.Clear();
 
         // Proximity check for objects affectable by melody
         float interactionRadius = 5.0f; // Adjust this as needed

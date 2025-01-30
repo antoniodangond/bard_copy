@@ -5,23 +5,31 @@ using UnityEngine;
 
 public class SignController : MonoBehaviour
 {
-    [SerializeField] private Dialogue defaultDialogue; // Renamed from `dialogue` for clarity
+    [Header("Dialogue Settings")]
+    [SerializeField] private Dialogue defaultDialogue;
     [SerializeField] private Dialogue updatedDialogue;
-    [SerializeField] private Animator successAnimator; // Reference to the Animator for success animation
-    private bool isDialogueUpdated = false;
-    public bool HasDialogueOnMelody = false;
-    public string signName;
-    public bool IsPlayingSuccessAudio = false;
-    // public AudioSource sound;
-    public AudioSource[] audioSources;
+    [SerializeField] private bool isDialogueUpdated = false;
 
-    // Property to get the correct dialogue based on state
+    [Header("Sign Properties")]
+    public string signName;
+    public bool HasDialogueOnMelody = false;
+    public bool IsPlayingSuccessAudio = false;
+
+    [Header("Audio Settings")]
+    [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
+    [SerializeField] private float soundPlayDelay = 0.15f;  // Adjustable in Inspector
+    [SerializeField] private AudioSource[] audioSources;
+
+    [Header("Animation Settings")]
+    [SerializeField] private Animator successAnimator;
+
+    // Property to get correct dialogue
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
 
     public void Interact()
     {
-        Dialogue dialogue = CurrentDialogue == null ? defaultDialogue : CurrentDialogue;
-        if (dialogue != null) // Use the property to fetch the correct dialogue
+        Dialogue dialogue = CurrentDialogue ?? defaultDialogue;
+        if (dialogue != null)
         {
             DialogueManager.StartDialogue(CurrentDialogue, PlayerController.FacingDirection);
         }
@@ -29,83 +37,65 @@ public class SignController : MonoBehaviour
 
     public Dialogue GetDialogue()
     {
-        return CurrentDialogue == null ? defaultDialogue : CurrentDialogue;
+        return CurrentDialogue ?? defaultDialogue;
     }
 
     // Method called when a song is played nearby
     public void OnSongPlayed(string melody)
     {
-        if (melody == MelodyData.Melody1) // Check if it's the correct song
+        if (isDialogueUpdated) return; // Prevent multiple activations
+
+        switch (melody)
         {
-            if (!isDialogueUpdated) // Prevent triggering multiple times
-            {
-                isDialogueUpdated = true;
-                Debug.Log($"{gameObject.name}'s dialogue has been updated!");
+            case MelodyData.Melody1:
+                if (signName == "Log") { HandleSuccessFeedback(); }
+                if (signName == "Ghostboy") { HandleSuccessFeedback(); }
+                break;
 
-                //Add visual/audio feedback of SUCCESS here
-                 switch (signName)
-                {
-                    case "Log":
-                        successAnimator = gameObject.GetComponent<Animator>();
-                        // sound = gameObject.GetComponent<AudioSource>();
-                        // sound.volume = .8f;
-                        // sound.PlayDelayed(0.15f);
-                        audioSources = GetComponents<AudioSource>();
-                        foreach (var audiosource in audioSources)
-                        {
-                            audiosource.volume = .8f;
-                            audiosource.PlayDelayed(0.15f);
-                            Debug.Log(audiosource);
-                        }
-                        break;
+            case MelodyData.Melody2:
+                if (signName == "Pirate") { HandleSuccessFeedback(); }
+                break;
+        }
+    }
 
-                    case "Ghostboy":
-                        successAnimator = gameObject.GetComponent<Animator>();
-                        Debug.Log(successAnimator);
-                        IsPlayingSuccessAudio = true;
-                        // sound = gameObject.GetComponent<AudioSource>();
-                        // optional_sound = gameObject.AddComponent<AudioSource>();
-                        audioSources = GetComponents<AudioSource>();
-                        foreach (var audiosource in audioSources)
-                        {
-                            audiosource.Play();
-                            Debug.Log(audiosource.clip);
-                        }
-                        // optional_sound.Play();
-                        break;
-                }
+    private void HandleSuccessFeedback()
+    {
+        isDialogueUpdated = true;
+        successAnimator = gameObject.GetComponent<Animator>();
+        audioSources = GetComponents<AudioSource>();
 
+        // Play all available sounds using inspector-defined volume & delay
+        foreach (var audiosource in audioSources)
+        {
+            audiosource.volume = soundVolume;  // Uses adjustable volume
+            audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
+            Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
+        }
 
-                // STEP 1: Autoplay the updated dialogue
-                DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
+        // STEP 1: Autoplay updated dialogue
+        DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
 
-                // Step 2: Play success animation (if exists)
-                if (successAnimator != null)
-                {
-                    StartCoroutine(PlaySuccessAnimation());
-                }
-            }
+        // STEP 2: Play success animation
+        if (successAnimator != null)
+        {
+            StartCoroutine(PlaySuccessAnimation());
         }
     }
 
     private IEnumerator PlaySuccessAnimation()
     {
-        // Trigger success animation
-
         successAnimator.SetTrigger("Success");
 
-        // Wait for the animation to complete
+        // Wait for animation to complete
         AnimatorStateInfo stateInfo = successAnimator.GetCurrentAnimatorStateInfo(0);
         yield return new WaitForSeconds(stateInfo.length);
 
-        // Step 3: Delete this object
-        Debug.Log($"{gameObject.name} has completed its success sequence and will be destroyed.");
+        // Disable object
+        Debug.Log($"{gameObject.name} has completed its success sequence and will be disabled.");
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        var colliders = gameObject.GetComponents<BoxCollider2D>();
-        foreach (Collider2D collider in colliders)
+        foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
         {
             collider.enabled = false;
         }
-
     }
 }
