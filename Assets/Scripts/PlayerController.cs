@@ -8,6 +8,8 @@ public enum PlayerState {
     Dialogue,
     Instrument,
     InstrumentMelody,
+    Stunned,
+    Dead
 }
 
 public enum FacingDirection {
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
+    public float Health;
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
