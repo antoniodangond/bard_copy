@@ -65,7 +65,7 @@ public class EnemyController : MonoBehaviour
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             // TODO: improve this so that player can only take damage once per attack
-            playerController.TakeDamage();
+            StartCoroutine(playerController.TakeDamage());
         }
     }
 

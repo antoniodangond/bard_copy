@@ -177,10 +177,27 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 5.0f); // Match the interaction radius
     }
 
-    public void TakeDamage()
+    public IEnumerator TakeDamage()
     {
-        playerAttack.TakeDamage();
-        playerAudio.PlayHit();
+        Health -= 1;
+
+        if (CurrentState == PlayerState.Default)
+        {
+            // TODO: implement "stunned" state
+            CurrentState = PlayerState.Stunned;
+            StartCoroutine(playerAttack.DamageColorChangeRoutine());
+            playerAudio.PlayHit();
+            yield return StartCoroutine(playerAttack.AttackCooldown());
+            Debug.Log("Ouch!");
+            CurrentState = PlayerState.Default;
+            Debug.Log($"Player health: {Health}"); 
+        }
+        // TODO: Implement Player Death
+        // else if (Health <= 0)
+        // {
+        //     // PlayerController.CurrentState = PlayerState.Dead;
+        //     Debug.Log("Dead!");
+        // }
     }
 
     public void OnAttackFinished()

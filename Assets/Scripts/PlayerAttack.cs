@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -11,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     public float attackCoolDownTime;
 
     private WeaponController weaponController;
-    private PlayerController playerController;
     // Access Sprite Renderer, default color and time to have character briefly flash red when damaged
     private SpriteRenderer spriteRenderer;
     private Color defaultSpriteColor;
@@ -21,12 +19,11 @@ public class PlayerAttack : MonoBehaviour
     void Awake()
     {
         weaponController = Weapon.GetComponent<WeaponController>();
-        playerController = gameObject.GetComponent<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSpriteColor = spriteRenderer.color;
     }
 
-    private IEnumerator AttackCooldown()
+    public IEnumerator AttackCooldown()
     {
         CanAttack = false;
         yield return new WaitForSeconds(attackCoolDownTime);
@@ -40,12 +37,7 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(AttackCooldown());
     }
 
-    public void DamageColorChange()
-    {
-        StartCoroutine(DamageColorChangeRoutine());
-    }
-
-    private IEnumerator DamageColorChangeRoutine()
+    public IEnumerator DamageColorChangeRoutine()
     {
         float elapsedTime = 0f;
 
@@ -64,28 +56,6 @@ public class PlayerAttack : MonoBehaviour
         
         // Reset to default color
         spriteRenderer.color = defaultSpriteColor;
-    }
-
-    public void TakeDamage()
-    {
-        playerController.Health -= 1;
-
-        if (playerController.Health > 0)
-        {
-            // TODO: implement "stunned" state
-            PlayerController.CurrentState = PlayerState.Stunned;
-            DamageColorChange();
-            StartCoroutine(AttackCooldown());
-            Debug.Log("Ouch!");
-            PlayerController.CurrentState = PlayerState.Default;
-            Debug.Log($"Player health: {playerController.Health}"); 
-        }
-        else if (playerController.Health <= 0)
-        {
-            PlayerController.CurrentState = PlayerState.Dead;
-            spriteRenderer.enabled = !spriteRenderer.enabled;
-            Debug.Log("Dead!");
-        }
     }
 
 }
