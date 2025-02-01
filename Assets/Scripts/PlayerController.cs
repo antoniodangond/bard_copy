@@ -42,11 +42,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
-    public float Health;
+    public float MaxHealth;
+    private float currentHealth;
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
     private PlayerMovement playerMovement;
+    private PlayerHealthUI playerHealthUI;
     private Vector2 movement;
     private bool isPlayingLyre;
     private Gravestone gravestone;
@@ -67,9 +69,12 @@ public class PlayerController : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerAudio = GetComponent<PlayerAudio>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerHealthUI = GetComponent<PlayerHealthUI>();
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
+        currentHealth = MaxHealth;
+        playerHealthUI.UpdateHealthUI(currentHealth);
     }
 
     void OnDestroy()
@@ -179,7 +184,8 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator TakeDamage()
     {
-        Health -= 1;
+        currentHealth -= 1;
+        playerHealthUI.UpdateHealthUI(currentHealth);
 
         if (CurrentState == PlayerState.Default)
         {
@@ -190,7 +196,7 @@ public class PlayerController : MonoBehaviour
             yield return StartCoroutine(playerAttack.AttackCooldown());
             Debug.Log("Ouch!");
             CurrentState = PlayerState.Default;
-            Debug.Log($"Player health: {Health}"); 
+            Debug.Log($"Player health: {currentHealth}"); 
         }
         // TODO: Implement Player Death
         // else if (Health <= 0)
