@@ -80,6 +80,7 @@ public class RandomAudioManager : MonoBehaviour
                 audioSource.volume = Random.Range(0.75f, 1.25f);
             }
             audioSource.Play();
+            lastPlayedClip = randomClip;
         }
         else
         {

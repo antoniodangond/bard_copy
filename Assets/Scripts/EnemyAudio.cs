@@ -4,25 +4,13 @@ public class EnemyAudio : AudioController
 {
     public EnemyAudioData AudioData;
 
-    // Store last played clip indexes to avoid playing it twice in a row
-    private int lastHitClipIndex = 0;
-
-    // TODO: refactor to use less audio sources and just change clips
     void Awake() {
-        // TODO: improve this
-        // Instantiate audio sources
-        foreach (Sound sound in AudioData.Hits)
-        {
-            InitializeSound(sound);
-        }
-        foreach (Sound sound in AudioData.Aggro)
-        {
-            InitializeSound(sound);
-        }
-        foreach (Sound sound in AudioData.Attacks)
-        {
-            InitializeSound(sound);
-        }
+        AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
+        AudioData.RandomAggro = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomAggro.audioSource = gameObject.AddComponent<AudioSource>();
+        AudioData.RandomAttacks = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomAttacks.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlayHit()
@@ -31,16 +19,7 @@ public class EnemyAudio : AudioController
             Debug.LogError("Enemy audio 'hits' length is 0");
             return;
         }
-        // Prevent playing the same clip twice in a row
-        int clipIndex = lastHitClipIndex;
-        while (clipIndex == lastHitClipIndex)
-        {
-            clipIndex = Random.Range(0, AudioData.Hits.Length);
-        }
-        // Play the sound with default pitch and volume
-        AudioData.Hits[clipIndex].Play();
-        // Set lastHitClipIndex to the index just used
-        lastHitClipIndex = clipIndex;
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.15f, true);
     }
     public void PlayAttack()
     {
@@ -48,8 +27,7 @@ public class EnemyAudio : AudioController
             Debug.LogError("Enemy audio 'attacks' length is 0");
             return;
         }
-        AudioData.Attacks[0].SetVolume(2f);
-        AudioData.Attacks[0].Play();
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Attacks, 0.8f, 1.15f, true);
     }
 
     public void PlayAggro()
@@ -58,8 +36,7 @@ public class EnemyAudio : AudioController
             Debug.LogError("Enemy audio 'aggro' length is 0");
             return;
         }
-        AudioData.Aggro[0].SetVolume(2f);
-        AudioData.Aggro[0].Play();
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true);
     }
 
     // TODO: implement
