@@ -32,6 +32,10 @@ public class PlayerAudio : AudioController
 
         AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomFootsteps.audioSource = gameObject.AddComponent<AudioSource>();
+        AudioData.RandomAttackChords = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomAttackChords.audioSource = gameObject.AddComponent<AudioSource>();
+        AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlayFootstep()
@@ -111,11 +115,20 @@ public class PlayerAudio : AudioController
 
     public void PlayAttackChord()
     {
+        if (AudioData.AttackChords.Length == 0) {
+            Debug.LogError("Player audio 'Attack Chords' length is 0");
+            return;
+        }
         AudioData.RandomAttackChords.PlayRandomAudioNoDelayWithFX(AudioData.AttackChords, 1, 1, true);
     }
 
     public void PlayHit()
     {
+        if (AudioData.AttackChords.Length == 0) 
+        {
+            Debug.LogError("Player audio 'Hits' length is 0");
+            return;
+        }
         AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.25f, true);
     }
 
