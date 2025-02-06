@@ -102,24 +102,15 @@ public class PlayerAudio : AudioController
                 break;
         }
 
-        // Select a clip at randomm from array of footsteps
-        var randomClip = currentClips[Random.Range(0, currentClips.Length)];
-
-        // Assign footstep to audiosource
-        AudioData.RandomFootsteps.audioSource.clip = randomClip;
-        // Randomize pitch
-        AudioData.RandomFootsteps.audioSource.pitch = Random.Range(0.8f, 1.15f);
-        // Randomize Volume
+        // Stone footsteps were too quiet so add a case where there is no voume modulation
         if (currentTerrain == "Stone")
         {
-            AudioData.RandomFootsteps.audioSource.volume = Random.Range(1.15f, 1.5f);
+            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, false);
         }
         else
         {
-            AudioData.RandomFootsteps.audioSource.volume = Random.Range(0.8f, 1.15f);
+            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, true);
         }
-        // Play footstep
-        AudioData.RandomFootsteps.audioSource.Play();
 
     }
 
