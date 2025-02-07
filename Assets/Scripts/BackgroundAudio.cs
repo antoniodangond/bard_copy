@@ -69,14 +69,14 @@ public class BackgroundAudio : AudioController
     public void PlayRandomBreaths()
     {
         AudioData.RandomAmbienceBreaths.audioSource.volume = .7f;
-        AudioData.RandomAmbienceBreaths.StartRandomAudio(AudioData.AmbienceBreaths);
+        AudioData.RandomAmbienceBreaths.StartRandomAudioWithDelay(AudioData.AmbienceBreaths);
     }
     public void PlayRandomFrogs()
     {
         AudioData.RandomAmbienceFrogs.minDelay = .4f;
         AudioData.RandomAmbienceFrogs.maxDelay = 5f;
         AudioData.RandomAmbienceFrogs.audioSource.volume = .2f;
-        AudioData.RandomAmbienceFrogs.StartRandomAudio(AudioData.AmbienceFrogs);
+        AudioData.RandomAmbienceFrogs.StartRandomAudioWithDelay(AudioData.AmbienceFrogs);
     }
 
     public void StopRandomBreaths()

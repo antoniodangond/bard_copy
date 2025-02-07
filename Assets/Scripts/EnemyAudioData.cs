@@ -4,11 +4,19 @@ using UnityEngine;
 public class EnemyAudioData : ScriptableObject
 {
     [Header("Combat")]
-    public Sound[] Hits;
+    // public Sound[] Hits;
+    public AudioClip[] Hits;
 
     [Header("States")]
-    public Sound[] Aggro;
+    // public Sound[] Aggro;
+    public AudioClip[] Aggro;
 
     [Header("Attack")]
-    public Sound[] Attacks;
+    // public Sound[] Attacks;
+    public AudioClip[] Attacks;
+
+    [Header ("Audio Managers")]
+    public RandomAudioManager RandomHits;
+    public RandomAudioManager RandomAggro;
+    public RandomAudioManager RandomAttacks;
 }
