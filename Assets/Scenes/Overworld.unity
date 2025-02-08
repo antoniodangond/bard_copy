@@ -6497,22 +6497,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2282598973215270436, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: m_Size.y
-      value: 0.61930746
-      objectReference: {fileID: 0}
-    - target: {fileID: 2282598973215270436, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.31890747
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: moveSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: shouldRotateOnTurn
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
@@ -6552,18 +6536,6 @@ PrefabInstance:
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: Health
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8443585188686732594, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
-      propertyPath: colorChangeDuration
-      value: 0.248
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
