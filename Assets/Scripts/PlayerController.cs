@@ -186,25 +186,41 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator TakeDamage()
     {
-        Health -= 1;
-
         if (CurrentState == PlayerState.Default)
         {
-            // TODO: implement "stunned" state
-            CurrentState = PlayerState.Stunned;
-            StartCoroutine(playerAttack.DamageColorChangeRoutine());
-            playerAudio.PlayHit();
-            yield return StartCoroutine(playerAttack.AttackCooldown());
-            Debug.Log("Ouch!");
-            CurrentState = PlayerState.Default;
-            Debug.Log($"Player health: {Health}"); 
+            Health -= 1;
+            if (Health > 0)
+            {
+                StartCoroutine(HandleStun());
+            }
+            else
+            {
+                HandleDeath();
+            }
         }
-        // TODO: Implement Player Death
-        // else if (Health <= 0)
-        // {
-        //     // PlayerController.CurrentState = PlayerState.Dead;
-        //     Debug.Log("Dead!");
-        // }
+        return null;
+    }
+
+    private IEnumerator HandleStun()
+    {
+        CurrentState = PlayerState.Stunned;
+        StartCoroutine(playerAttack.DamageColorChangeRoutine());
+        playerAudio.PlayHit();
+        yield return StartCoroutine(playerAttack.AttackCooldown());
+        CurrentState = PlayerState.Default;
+    }
+
+    private void HandleDeath()
+    {
+        CurrentState = PlayerState.Dead;
+        if (LastCheckpoint != null)
+        {
+            // Teleport player to last teleporter touched
+            LastCheckpoint.TeleportPlayer(gameObject);
+        }
+        // Reset health and state
+        Health = MaxHealth;
+        CurrentState = PlayerState.Default;
     }
 
     public void OnAttackFinished()
