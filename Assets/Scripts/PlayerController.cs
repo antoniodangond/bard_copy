@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
+    public float MaxHealth;
+    // Make Health public so it's easily editable in the Inspector
     public float Health;
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
@@ -70,6 +72,8 @@ public class PlayerController : MonoBehaviour
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
+        // Set health to max
+        Health = MaxHealth;
     }
 
     void OnDestroy()
@@ -130,7 +134,7 @@ public class PlayerController : MonoBehaviour
         // After playing last note, wait before starting the melody audio
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
 
-        // Clears note queue when melody is completed 
+        // Clears note queue when melody is completed
         lastPlayedNotes.Clear();
 
         // Proximity check for objects affectable by melody

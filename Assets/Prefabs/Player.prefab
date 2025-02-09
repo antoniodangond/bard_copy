@@ -211,6 +211,7 @@ MonoBehaviour:
   PushableLayer:
     serializedVersion: 2
     m_Bits: 1024
+  MaxHealth: 5
   Health: 5
   interactionZoneSize: {x: 2, y: 2}
   interactionOffset: 0.5
