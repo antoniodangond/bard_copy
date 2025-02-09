@@ -213,6 +213,7 @@ MonoBehaviour:
     m_Bits: 1024
   MaxHealth: 5
   Health: 5
+  LastCheckpoint: {fileID: 0}
   interactionZoneSize: {x: 2, y: 2}
   interactionOffset: 0.5
   InteractionYOffset: 2.01

@@ -45,6 +45,9 @@ public class PlayerController : MonoBehaviour
     public float MaxHealth;
     // Make Health public so it's easily editable in the Inspector
     public float Health;
+    // On death, teleport player to last checkpoint touched
+    public Checkpoint LastCheckpoint;
+
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
