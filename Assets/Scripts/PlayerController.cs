@@ -42,7 +42,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
+    public float MaxHealth;
+    // Make Health public so it's easily editable in the Inspector
     public float Health;
+    // On death, teleport player to last checkpoint touched
+    public Checkpoint LastCheckpoint;
+
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
@@ -70,6 +75,8 @@ public class PlayerController : MonoBehaviour
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
+        // Set health to max
+        Health = MaxHealth;
     }
 
     void OnDestroy()
@@ -130,7 +137,7 @@ public class PlayerController : MonoBehaviour
         // After playing last note, wait before starting the melody audio
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
 
-        // Clears note queue when melody is completed 
+        // Clears note queue when melody is completed
         lastPlayedNotes.Clear();
 
         // Proximity check for objects affectable by melody
@@ -179,25 +186,41 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator TakeDamage()
     {
-        Health -= 1;
-
         if (CurrentState == PlayerState.Default)
         {
-            // TODO: implement "stunned" state
-            CurrentState = PlayerState.Stunned;
-            StartCoroutine(playerAttack.DamageColorChangeRoutine());
-            playerAudio.PlayHit();
-            yield return StartCoroutine(playerAttack.AttackCooldown());
-            Debug.Log("Ouch!");
-            CurrentState = PlayerState.Default;
-            Debug.Log($"Player health: {Health}"); 
+            Health -= 1;
+            if (Health > 0)
+            {
+                StartCoroutine(HandleStun());
+            }
+            else
+            {
+                HandleDeath();
+            }
         }
-        // TODO: Implement Player Death
-        // else if (Health <= 0)
-        // {
-        //     // PlayerController.CurrentState = PlayerState.Dead;
-        //     Debug.Log("Dead!");
-        // }
+        return null;
+    }
+
+    private IEnumerator HandleStun()
+    {
+        CurrentState = PlayerState.Stunned;
+        StartCoroutine(playerAttack.DamageColorChangeRoutine());
+        playerAudio.PlayHit();
+        yield return StartCoroutine(playerAttack.AttackCooldown());
+        CurrentState = PlayerState.Default;
+    }
+
+    private void HandleDeath()
+    {
+        CurrentState = PlayerState.Dead;
+        if (LastCheckpoint != null)
+        {
+            // Teleport player to last teleporter touched
+            LastCheckpoint.TeleportPlayer(gameObject);
+        }
+        // Reset health and state
+        Health = MaxHealth;
+        CurrentState = PlayerState.Default;
     }
 
     public void OnAttackFinished()
