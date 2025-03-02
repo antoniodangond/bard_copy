@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3876878832285376387}
   - component: {fileID: 5543807370154970379}
   - component: {fileID: -3051095790048990004}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NotePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774192415872680047}
   - component: {fileID: 9045627658968305116}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NoteSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

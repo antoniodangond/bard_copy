@@ -1,30 +1,38 @@
 using System.Collections;
 using UnityEngine;
 
+[System.Serializable]
+public struct NoteData
+{
+    public AudioClip noteSound;
+    public float noteTiming;
+}
+
 public class CrowSong : MonoBehaviour
 {
     [Header("Note Display Settings")]
     [SerializeField] private GameObject notePrefab;
-    [SerializeField] private Transform beakPositionLeft;
-    [SerializeField] private Transform beakPositionRight;
     [SerializeField] private float noteSpawnInterval = 0.75f;
     [SerializeField] private float noteLifetime = 2f;
+    [SerializeField] private Vector3 noteSpawnOffset = new Vector3(0, 0.5f, 0); // Adjustable in Editor
 
-    [Header("Animation Settings")]
-    [SerializeField] private Animator crowAnimator; // Animator reference
+    [Header("Note Settings")]
+    [SerializeField] private NoteData[] noteSequence; // Notes Assignments & Timings  
+
+    [Header("Movement Settings")]
+    [SerializeField] private float movementAngle = 0f; // Rotation of Note Path  
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] noteSounds;
     [SerializeField, Range(0f, 1f)] private float maxVolume = 1.0f;
-    [SerializeField, Range(1f, 10f)] private float maxHearingRadius = 5.0f;
-    private int currentFrame = 0; // Stores the current animation frame
+    [SerializeField, Range(1f, 30f)] private float maxHearingRadius = 20.0f;
 
     [Header("Visual Settings")]
     [SerializeField, Range(0f, 1f)] private float minOpacity = 0.2f;
 
     [Header("Song Settings")]
     [SerializeField] private string[] songSequence = { "NoteB", "NoteE", "NoteD", "NoteC" };
+
     private bool isSinging = false;
     private Transform player;
 
@@ -39,69 +47,55 @@ public class CrowSong : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
+        if (player == null || isSinging) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
 
-        if (distance <= maxHearingRadius && !isSinging)
+        if (distance <= maxHearingRadius)
         {
             StartCoroutine(PlaySong(distance));
         }
-
-        UpdateBeakPosition(); // Dynamically update beak position
     }
-
-    private void UpdateBeakPosition()
-    {
-        if (crowAnimator == null)
-        {
-            Debug.LogError("Animator not assigned to CrowSong!");
-            return;
-        }
-
-        // Get normalized time (0 to 1), then scale it to frame count (4 frames)
-        float normalizedTime = crowAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        int currentFrame = Mathf.FloorToInt((normalizedTime % 1) * 4); // Modulo keeps looping cleanly
-
-        if (currentFrame == 0 || currentFrame == 1) // Left frames
-        {
-            beakPositionLeft.gameObject.SetActive(true);
-            beakPositionRight.gameObject.SetActive(false);
-        }
-        else if (currentFrame == 2 || currentFrame == 3) // Right frames
-        {
-            beakPositionLeft.gameObject.SetActive(false);
-            beakPositionRight.gameObject.SetActive(true);
-        }
-    }
-
 
     private IEnumerator PlaySong(float distance)
     {
         isSinging = true;
+        double nextPlayTime = AudioSettings.dspTime; // Get precise audio time
 
-        for (int i = 0; i < songSequence.Length; i++)
+        // For each note in the sequence
+        for (int i = 0; i < noteSequence.Length; i++)
         {
-            string note = songSequence[i];
-            Debug.Log($"Spawning Note: {note}");
+            NoteData noteData = noteSequence[i];
 
-            // Ensure the beak position is updated before spawning
-            UpdateBeakPosition();
+            // Always spawn notes towards the right
+            Vector3 moveDirection = Vector3.right;
+            Vector3 spawnPosition = transform.position + noteSpawnOffset;
 
-            // Select the correct beak position at the moment of spawning
-            Transform beakPosition = (currentFrame == 0 || currentFrame == 1) ? beakPositionLeft : beakPositionRight;
-
-            SpawnNoteVisual(note, beakPosition.position, distance);
-            PlayNoteSound(i, distance);
-
-            yield return new WaitForSeconds(noteSpawnInterval);
+            // Spawn note & schedule sound
+            StartCoroutine(SpawnNoteWithDelay(noteData, spawnPosition, distance, moveDirection, nextPlayTime, i));
+            nextPlayTime += noteData.noteTiming;
+            yield return new WaitForSeconds(noteData.noteTiming);
         }
 
         isSinging = false;
     }
 
 
-    private void SpawnNoteVisual(string noteName, Vector3 spawnPosition, float distance)
+    private IEnumerator SpawnNoteWithDelay(NoteData noteData, Vector3 spawnPosition, float distance, Vector3 moveDirection, double scheduledTime, int noteIndex)
+    {
+        while (AudioSettings.dspTime < scheduledTime)
+        {
+            yield return null;
+        }
+
+        PlayNoteSoundScheduled(noteData, scheduledTime);
+
+        // Use the note name from `songSequence` at the correct index
+        string spriteNoteName = songSequence[noteIndex % songSequence.Length];
+        SpawnNoteVisual(spriteNoteName, spawnPosition, distance, moveDirection);
+    }
+
+    private void SpawnNoteVisual(string noteName, Vector3 spawnPosition, float distance, Vector3 moveDirection)
     {
         if (notePrefab == null)
         {
@@ -110,11 +104,24 @@ public class CrowSong : MonoBehaviour
         }
 
         GameObject note = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-        NoteDisplay noteDisplay = note.GetComponent<NoteDisplay>();
 
+        // Set sorting order to be in front of the crow
+        SpriteRenderer noteRenderer = note.GetComponent<SpriteRenderer>();
+        if (noteRenderer != null)
+        {
+            noteRenderer.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
+        }
+        else
+        {
+            Debug.LogError("NotePrefab is missing a SpriteRenderer!");
+        }
+
+        note.transform.SetParent(transform, true); // Keep world position even if parented
+
+        NoteDisplay noteDisplay = note.GetComponent<NoteDisplay>();
         if (noteDisplay != null)
         {
-            noteDisplay.Initialize(noteLifetime, noteName, distance, maxHearingRadius, minOpacity);
+            noteDisplay.Initialize(noteLifetime, noteName, distance, maxHearingRadius, minOpacity, moveDirection);
         }
         else
         {
@@ -122,16 +129,31 @@ public class CrowSong : MonoBehaviour
         }
     }
 
-    private void PlayNoteSound(int noteIndex, float distance)
+    private Vector3 RotateVector(Vector3 vector, float angle)
     {
-        if (audioSource == null || noteSounds == null || noteIndex >= noteSounds.Length)
+        float rad = angle * Mathf.Deg2Rad; // Convert degrees to radians
+        float cos = Mathf.Cos(rad);
+        float sin = Mathf.Sin(rad);
+
+        return new Vector3(
+            vector.x * cos - vector.y * sin,
+            vector.x * sin + vector.y * cos,
+            vector.z
+        );
+    }
+
+    private void PlayNoteSoundScheduled(NoteData noteData, double scheduledTime)
+    {
+        if (audioSource == null || noteData.noteSound == null)
         {
-            Debug.LogError("AudioSource or NoteSounds array is missing or index is out of bounds.");
+            Debug.LogError("Missing AudioSource or Note Sound.");
             return;
         }
 
-        float volume = Mathf.Lerp(minOpacity, maxVolume, 1 - (distance / maxHearingRadius));
-        audioSource.PlayOneShot(noteSounds[noteIndex], volume);
+        audioSource.clip = noteData.noteSound;
+        audioSource.PlayScheduled(scheduledTime);
+
+        Debug.Log($"Scheduled {noteData.noteSound.name} to play at {scheduledTime}");
     }
 
     void OnDrawGizmosSelected()

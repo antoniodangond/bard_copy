@@ -6214,37 +6214,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3594859159269561785, guid: 859c234214669476186e24188d770445, type: 3}
   m_PrefabInstance: {fileID: 825548770}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &566361879
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 566361880}
-  m_Layer: 0
-  m_Name: Beak Position L
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &566361880
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566361879}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.572, y: 1.573, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1343692205}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &568534663 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -6519,7 +6488,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000c70c6061517bfc5f
+  m_ApplyToSortingLayers: 00000000c70c6061517bfc5fd3621899
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -14557,8 +14526,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 408703632}
-  - {fileID: 566361880}
-  - {fileID: 1797786424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1343692207
@@ -14574,19 +14541,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notePrefab: {fileID: 375291404946720462, guid: 8b01a98b8ef889d41843d3662df4fee4, type: 3}
-  beakPositionLeft: {fileID: 566361880}
-  beakPositionRight: {fileID: 1797786424}
   noteSpawnInterval: 0.75
   noteLifetime: 1.5
-  crowAnimator: {fileID: 1343692203}
+  noteSpawnOffset: {x: 1, y: 2, z: 0}
+  noteSequence:
+  - noteSound: {fileID: 8300000, guid: fd8af44ffd46be74f96c3e1e9ffe2b75, type: 3}
+    noteTiming: 1
+  - noteSound: {fileID: 8300000, guid: 0c02541e9e5bdfa459c2a3b31e029207, type: 3}
+    noteTiming: 1
+  - noteSound: {fileID: 8300000, guid: 3e75a30692a2d9049a3cec8f58e30eb1, type: 3}
+    noteTiming: 0.5
+  - noteSound: {fileID: 8300000, guid: 851b7af645ee84e4eb687b429ad338b4, type: 3}
+    noteTiming: 2
+  movementAngle: 0
   audioSource: {fileID: 408703631}
-  noteSounds:
-  - {fileID: 8300000, guid: acba77d1fe25b464996648bd1b5a4953, type: 3}
-  - {fileID: 8300000, guid: 903cf39b772275e4ebbde99b559e7629, type: 3}
-  - {fileID: 8300000, guid: d4472de48153bee489be1c5f00ef78e7, type: 3}
-  - {fileID: 8300000, guid: d83b154d613e1a04f9d5da6ba560132e, type: 3}
   maxVolume: 1
-  maxHearingRadius: 5
+  maxHearingRadius: 20
   minOpacity: 0.2
   songSequence:
   - NoteC
@@ -19447,37 +19417,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
   m_PrefabInstance: {fileID: 82463874}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1797786423
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1797786424}
-  m_Layer: 0
-  m_Name: Beak Position R
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1797786424
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1797786423}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.933, y: 1.595, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1343692205}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1799992999
 PrefabInstance:
   m_ObjectHideFlags: 0

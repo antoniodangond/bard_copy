@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Notes
+    uniqueID: 2568512211
+    locked: 0
   - name: Background
     uniqueID: 1633684679
     locked: 0
