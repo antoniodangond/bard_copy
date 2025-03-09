@@ -19,10 +19,10 @@ public class MelodyData
     };
     private static string[] melody2Inputs = new string[MelodyLength]{
         NoteC,
+        NoteE,
         NoteC,
-        NoteC,
-        NoteC,
-        NoteC,
+        NoteD,
+        NoteB,
     };
     public static Dictionary<string, string[]> MelodyInputs = new Dictionary<string, string[]>(){
         { Melody1, melody1Inputs }, { Melody2, melody2Inputs }
