@@ -96,7 +96,7 @@ MonoBehaviour:
     ShouldLoop: 0
     Source: {fileID: 0}
   Melody2:
-    Clip: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 6bb1c90739b8e844380b76f629dd5068, type: 3}
     DefaultPitch: 1
     DefaultVolume: 1
     ShouldLoop: 0
