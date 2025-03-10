@@ -138,7 +138,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
 
         // Clears note queue when melody is completed
-        lastPlayedNotes.Clear();
+        // The below appears to have been causing a bug where only the first melody played would
+        //     trigger the melody
+        // I think this functionality is taken care of by the fact that the queue gets cleared
+        //     when the player puts the lyre away, which happens automatically after the song
+        //     is played?
+        // Would love to hear others' thoughts
+        // lastPlayedNotes.Clear();
 
         // Proximity check for objects affectable by melody
         float interactionRadius = 5.0f; // Adjust this as needed
