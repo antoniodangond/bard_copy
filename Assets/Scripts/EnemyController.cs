@@ -26,12 +26,17 @@ public class EnemyController : MonoBehaviour
     private bool isFacingRight = false;
     private EnemyAudio enemyAudio;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Color defaultSpriteColor;
+    private float colorChangeDuration = 0.25f;
 
     void Awake()
     {
         enemyAudio = GetComponent<EnemyAudio>();
         isFacingRight = transform.rotation.eulerAngles.y == 180;
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultSpriteColor = spriteRenderer.color;
     }
 
     void Start()
@@ -49,6 +54,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Health -= damage;
+        StartCoroutine(EnemyDamageColorChangeRoutine());
         if (Health <= 0f)
         {
             Debug.Log("Enemy dead");
@@ -57,6 +63,28 @@ public class EnemyController : MonoBehaviour
             // TODO: BUG - don't destroy game object before attempting to play hit
             // enemyAudio.PlayHit();
         }
+    }
+
+    public IEnumerator EnemyDamageColorChangeRoutine()
+    {
+        float elapsedTime = 0f;
+        Debug.Log("Coroutine triggered");
+
+        while (elapsedTime < colorChangeDuration)
+        {
+            // Calculate t based on elapsed time
+            float t = elapsedTime / colorChangeDuration;
+
+            // Lerp between defaultSpriteColor and Color.red
+            spriteRenderer.color = Color.Lerp(defaultSpriteColor, Color.red, t);
+
+            // Increment elapsed time
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+        
+        // Reset to default color
+        spriteRenderer.color = defaultSpriteColor;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
