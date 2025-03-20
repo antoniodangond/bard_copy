@@ -16,20 +16,14 @@ public class SignController : MonoBehaviour
     public bool IsPlayingSuccessAudio = false;
 
     [Header("Audio Settings")]
-    [SerializeField] private float soundVolume = 0.8f;
-    [SerializeField] private float soundPlayDelay = 0.15f;
+    [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
+    [SerializeField] private float soundPlayDelay = 0.15f;  // Adjustable in Inspector
     [SerializeField] private AudioSource[] audioSources;
 
     [Header("Animation Settings")]
     [SerializeField] private Animator successAnimator;
-    [SerializeField] private string successAnimationName = "Success"; // Ensure this matches the animation name
 
-    private void Awake()
-    {
-        successAnimator = GetComponent<Animator>();
-        audioSources = GetComponents<AudioSource>();
-    }
-
+    // Property to get correct dialogue
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
 
     public void Interact()
@@ -46,6 +40,7 @@ public class SignController : MonoBehaviour
         return CurrentDialogue ?? defaultDialogue;
     }
 
+    // Method called when a song is played nearby
     public void OnSongPlayed(string melody)
     {
         if (isDialogueUpdated) return; // Prevent multiple activations
@@ -53,10 +48,12 @@ public class SignController : MonoBehaviour
         switch (melody)
         {
             case MelodyData.Melody1:
-                if (signName == "Log" || signName == "Ghostboy") HandleSuccessFeedback();
+                if (signName == "Log") { HandleSuccessFeedback(); }
+                if (signName == "Ghostboy") { HandleSuccessFeedback(); }
                 break;
+
             case MelodyData.Melody2:
-                if (signName == "Pirate") HandleSuccessFeedback();
+                if (signName == "Pirate") { HandleSuccessFeedback(); }
                 break;
         }
     }
@@ -64,26 +61,24 @@ public class SignController : MonoBehaviour
     private void HandleSuccessFeedback()
     {
         isDialogueUpdated = true;
+        successAnimator = gameObject.GetComponent<Animator>();
+        audioSources = GetComponents<AudioSource>();
 
-        // Play sounds
+        // Play all available sounds using inspector-defined volume & delay
         foreach (var audiosource in audioSources)
         {
-            audiosource.volume = soundVolume;
-            audiosource.PlayDelayed(soundPlayDelay);
+            audiosource.volume = soundVolume;  // Uses adjustable volume
+            audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
+            Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
-        // Start dialogue
+        // STEP 1: Autoplay updated dialogue
         DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
 
-        // Play animation
+        // STEP 2: Play success animation
         if (successAnimator != null)
         {
             StartCoroutine(PlaySuccessAnimation());
-        }
-        else
-        {
-            Debug.LogWarning($"{gameObject.name} has no assigned success animation.");
-            RemoveObject();
         }
     }
 
@@ -91,29 +86,11 @@ public class SignController : MonoBehaviour
     {
         successAnimator.SetTrigger("Success");
 
-        // Get animation clip length dynamically
-        float animationLength = GetAnimationLength(successAnimationName);
-        yield return new WaitForSeconds(animationLength);
+        // Wait for animation to complete
+        AnimatorStateInfo stateInfo = successAnimator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(stateInfo.length);
 
-        RemoveObject();
-    }
-
-    private float GetAnimationLength(string animationName)
-    {
-        if (successAnimator == null) return 0.5f; // Fallback duration
-
-        RuntimeAnimatorController controller = successAnimator.runtimeAnimatorController;
-        foreach (AnimationClip clip in controller.animationClips)
-        {
-            if (clip.name == animationName) return clip.length;
-        }
-
-        Debug.LogWarning($"Animation '{animationName}' not found for {gameObject.name}");
-        return 0.5f; // Default to 0.5s if animation is missing
-    }
-
-    private void RemoveObject()
-    {
+        // Disable object
         Debug.Log($"{gameObject.name} has completed its success sequence and will be disabled.");
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
