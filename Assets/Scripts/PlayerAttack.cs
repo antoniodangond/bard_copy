@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,13 +10,20 @@ public class PlayerAttack : MonoBehaviour
     public float attackCoolDownTime;
 
     private WeaponController weaponController;
+    // Access Sprite Renderer, default color and time to have character briefly flash red when damaged
+    private SpriteRenderer spriteRenderer;
+    private Color defaultSpriteColor;
+    [Range(0f, 1f)]
+    public float colorChangeDuration;
 
     void Awake()
     {
         weaponController = Weapon.GetComponent<WeaponController>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultSpriteColor = spriteRenderer.color;
     }
 
-    private IEnumerator AttackCooldown()
+    public IEnumerator AttackCooldown()
     {
         CanAttack = false;
         yield return new WaitForSeconds(attackCoolDownTime);
@@ -29,9 +37,25 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(AttackCooldown());
     }
 
-    public void TakeDamage()
+    public IEnumerator DamageColorChangeRoutine()
     {
-        // TODO: implement "stunned" state
-        Debug.Log("Ouch!");
+        float elapsedTime = 0f;
+
+        while (elapsedTime < colorChangeDuration)
+        {
+            // Calculate t based on elapsed time
+            float t = elapsedTime / colorChangeDuration;
+
+            // Lerp between defaultSpriteColor and Color.red
+            spriteRenderer.color = Color.Lerp(defaultSpriteColor, Color.red, t);
+
+            // Increment elapsed time
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+        
+        // Reset to default color
+        spriteRenderer.color = defaultSpriteColor;
     }
+
 }

@@ -8,13 +8,6 @@ public class PlayerAudio : AudioController
     public static PlayerAudio instance;
     public string currentTerrain;
 
-    // Store last played clip indexes to avoid playing it twice in a row
-    private int lastWalkingClipIndex = 0;
-    private int lastAttackChordClipIndex = 0;
-    private int lastHitClipIndex = 0;
-
-
-    // TODO: refactor to use less audio sources and just change clips
     void Awake() {
         if (instance == null)
         {
@@ -30,18 +23,6 @@ public class PlayerAudio : AudioController
         // TODO: improve this
         // Instantiate audio sources
 
-        foreach (Sound sound in AudioData.Footsteps)
-        {
-            InitializeSound(sound);
-        }
-        foreach (Sound sound in AudioData.AttackChords)
-        {
-            InitializeSound(sound);
-        }
-        foreach (Sound sound in AudioData.Hits)
-        {
-            InitializeSound(sound);
-        }
         InitializeSound(AudioData.NoteB);
         InitializeSound(AudioData.NoteC);
         InitializeSound(AudioData.NoteD);
@@ -51,35 +32,10 @@ public class PlayerAudio : AudioController
 
         AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomFootsteps.audioSource = gameObject.AddComponent<AudioSource>();
-    }
-
-    public void PlayWalkingAudio(Vector2 movement)
-    {
-        // Don't attempt to play walking audio if not moving
-        // or if a walking clip is currently playing
-        if(
-            movement.sqrMagnitude == 0 ||
-            AudioData.Footsteps[lastWalkingClipIndex].IsPlaying
-        )
-        {
-            return;
-        }
-
-        // Prevent playing the same clip twice in a row
-        int clipIndex = lastWalkingClipIndex;
-        while (clipIndex == lastWalkingClipIndex)
-        {
-            clipIndex = Random.Range(0, AudioData.Footsteps.Length);
-        }
-        Sound sound = AudioData.Footsteps[clipIndex];
-        // Randomize pitch in either direction of the default pitch
-        float pitch = Random.Range(sound.DefaultPitch - AudioData.MaxFootstepPitchVariation, sound.DefaultPitch + AudioData.MaxFootstepPitchVariation);
-        // Randomize volume, but don't exceed the default volume
-        float volume = Random.Range(sound.DefaultVolume - AudioData.MaxFootstepVolumeVariation, sound.DefaultVolume);
-        // Play the sound with new pitch and volume
-        AudioData.Footsteps[clipIndex].Play(pitch, volume);
-        // Set lastWalkingClipIndex to the index just used
-        lastWalkingClipIndex = clipIndex;
+        AudioData.RandomAttackChords = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomAttackChords.audioSource = gameObject.AddComponent<AudioSource>();
+        AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlayFootstep()
@@ -102,24 +58,15 @@ public class PlayerAudio : AudioController
                 break;
         }
 
-        // Select a clip at randomm from array of footsteps
-        var randomClip = currentClips[Random.Range(0, currentClips.Length)];
-
-        // Assign footstep to audiosource
-        AudioData.RandomFootsteps.audioSource.clip = randomClip;
-        // Randomize pitch
-        AudioData.RandomFootsteps.audioSource.pitch = Random.Range(0.8f, 1.15f);
-        // Randomize Volume
+        // Stone footsteps were too quiet so add a case where there is no voume modulation
         if (currentTerrain == "Stone")
         {
-            AudioData.RandomFootsteps.audioSource.volume = Random.Range(1.15f, 1.5f);
+            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, false);
         }
         else
         {
-            AudioData.RandomFootsteps.audioSource.volume = Random.Range(0.8f, 1.15f);
+            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, true);
         }
-        // Play footstep
-        AudioData.RandomFootsteps.audioSource.Play();
 
     }
 
@@ -168,30 +115,21 @@ public class PlayerAudio : AudioController
 
     public void PlayAttackChord()
     {
-        // Prevent playing the same clip twice in a row
-        int clipIndex = lastAttackChordClipIndex;
-        while (clipIndex == lastAttackChordClipIndex)
-        {
-            clipIndex = Random.Range(0, AudioData.AttackChords.Length);
+        if (AudioData.AttackChords.Length == 0) {
+            Debug.LogError("Player audio 'Attack Chords' length is 0");
+            return;
         }
-        // Play the sound with default pitch and volume
-        AudioData.AttackChords[clipIndex].Play();
-        // Set lastAttackChordClipIndex to the index just used
-        lastAttackChordClipIndex = clipIndex;
+        AudioData.RandomAttackChords.PlayRandomAudioNoDelayWithFX(AudioData.AttackChords, 1, 1, true);
     }
 
     public void PlayHit()
     {
-        // Prevent playing the same clip twice in a row
-        int clipIndex = lastHitClipIndex;
-        while (clipIndex == lastHitClipIndex)
+        if (AudioData.AttackChords.Length == 0) 
         {
-            clipIndex = Random.Range(0, AudioData.Hits.Length);
+            Debug.LogError("Player audio 'Hits' length is 0");
+            return;
         }
-        // Play the sound with default pitch and volume
-        AudioData.Hits[clipIndex].Play();
-        // Set lastHitClipIndex to the index just used
-        lastHitClipIndex = clipIndex;
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.25f, true);
     }
 
     // TODO: implement

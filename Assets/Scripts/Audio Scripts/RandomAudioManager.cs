@@ -5,21 +5,21 @@ using UnityEngine;
 public class RandomAudioManager : MonoBehaviour
 {
     public AudioSource audioSource;
-    // public AudioClip[] clips;
     public float minDelay = 3f;
     public float maxDelay = 9f;
     private Coroutine playbackCoroutine;
+    private AudioClip lastPlayedClip;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
     }
-    public void StartRandomAudio(AudioClip[] clips)
+    public void StartRandomAudioWithDelay(AudioClip[] clips)
     {
         if (audioSource != null && clips.Length > 0)
         {
-            playbackCoroutine = StartCoroutine(PlayRandomAudio(clips));
+            playbackCoroutine = StartCoroutine(PlayRandomAudioWithDelay(clips));
         }
         else
         {
@@ -36,7 +36,7 @@ public class RandomAudioManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayRandomAudio(AudioClip[] clips)
+    private IEnumerator PlayRandomAudioWithDelay(AudioClip[] clips)
     {
         while(true)
         {
@@ -51,6 +51,41 @@ public class RandomAudioManager : MonoBehaviour
             float clipLength = randomClip.length;
 
             yield return new WaitForSeconds(clipLength + randomDelay);
+        }
+    }
+
+    public void PlayRandomAudioNoDelayWithFX(AudioClip[] clips, float minPitch, float maxPitch, bool volMod)
+    {
+        AudioClip randomClip;
+        if (audioSource != null && clips.Length > 0)
+        {
+
+            if (clips.Length == 1)
+            {
+                audioSource.clip = clips[0];
+                audioSource.Play();
+                lastPlayedClip = clips[0];
+                return;
+            }
+            
+            do 
+            {
+                randomClip = clips[Random.Range(0,clips.Length)];
+            }
+            while (randomClip == lastPlayedClip);
+            audioSource.clip = randomClip;
+            audioSource.pitch = Random.Range(minPitch, maxPitch);
+            if (volMod)
+            {
+                audioSource.volume = Random.Range(0.75f, 1.25f);
+            }
+            audioSource.Play();
+            lastPlayedClip = randomClip;
+        }
+        else
+        {
+            Debug.LogError("AudioSource or SoundClips not set!");
+            return;
         }
     }
 }

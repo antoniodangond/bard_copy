@@ -8,6 +8,8 @@ public enum PlayerState {
     Dialogue,
     Instrument,
     InstrumentMelody,
+    Stunned,
+    Dead
 }
 
 public enum FacingDirection {
@@ -40,6 +42,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
+    public float MaxHealth;
+    // Make Health public so it's easily editable in the Inspector
+    public float Health;
+    // On death, teleport player to last checkpoint touched
+    public Checkpoint LastCheckpoint;
+
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
@@ -67,6 +75,8 @@ public class PlayerController : MonoBehaviour
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
+        // Set health to max
+        Health = MaxHealth;
     }
 
     void OnDestroy()
@@ -127,8 +137,14 @@ public class PlayerController : MonoBehaviour
         // After playing last note, wait before starting the melody audio
         yield return new WaitForSeconds(AudioData.TimeBeforeMelody);
 
-        // Clears note queue when melody is completed 
-        lastPlayedNotes.Clear();
+        // Clears note queue when melody is completed
+        // The below appears to have been causing a bug where only the first melody played would
+        //     trigger the melody
+        // I think this functionality is taken care of by the fact that the queue gets cleared
+        //     when the player puts the lyre away, which happens automatically after the song
+        //     is played?
+        // Would love to hear others' thoughts
+        // lastPlayedNotes.Clear();
 
         // Proximity check for objects affectable by melody
         float interactionRadius = 5.0f; // Adjust this as needed
@@ -174,10 +190,43 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 5.0f); // Match the interaction radius
     }
 
-    public void TakeDamage()
+    public IEnumerator TakeDamage()
     {
-        playerAttack.TakeDamage();
+        if (CurrentState == PlayerState.Default)
+        {
+            Health -= 1;
+            if (Health > 0)
+            {
+                StartCoroutine(HandleStun());
+            }
+            else
+            {
+                HandleDeath();
+            }
+        }
+        return null;
+    }
+
+    private IEnumerator HandleStun()
+    {
+        CurrentState = PlayerState.Stunned;
+        StartCoroutine(playerAttack.DamageColorChangeRoutine());
         playerAudio.PlayHit();
+        yield return StartCoroutine(playerAttack.AttackCooldown());
+        CurrentState = PlayerState.Default;
+    }
+
+    private void HandleDeath()
+    {
+        CurrentState = PlayerState.Dead;
+        if (LastCheckpoint != null)
+        {
+            // Teleport player to last teleporter touched
+            LastCheckpoint.TeleportPlayer(gameObject);
+        }
+        // Reset health and state
+        Health = MaxHealth;
+        CurrentState = PlayerState.Default;
     }
 
     public void OnAttackFinished()

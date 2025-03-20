@@ -17,8 +17,7 @@ public class EnemyController : MonoBehaviour
     public float MoveSpeed;
     public float AttackDurationSeconds;
 
-    // TODO: make customizable in editor
-    private float health = 1f;
+    public float Health;
     private EnemyState currentState = EnemyState.Default;
     private Vector2 targetDirection;
     private GameObject target;
@@ -27,12 +26,17 @@ public class EnemyController : MonoBehaviour
     private bool isFacingRight = false;
     private EnemyAudio enemyAudio;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Color defaultSpriteColor;
+    private float colorChangeDuration = 0.25f;
 
     void Awake()
     {
         enemyAudio = GetComponent<EnemyAudio>();
         isFacingRight = transform.rotation.eulerAngles.y == 180;
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultSpriteColor = spriteRenderer.color;
     }
 
     void Start()
@@ -49,8 +53,9 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0f)
+        Health -= damage;
+        StartCoroutine(EnemyDamageColorChangeRoutine());
+        if (Health <= 0f)
         {
             Debug.Log("Enemy dead");
             currentState = EnemyState.Dead;
@@ -60,13 +65,35 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public IEnumerator EnemyDamageColorChangeRoutine()
+    {
+        float elapsedTime = 0f;
+        Debug.Log("Coroutine triggered");
+
+        while (elapsedTime < colorChangeDuration)
+        {
+            // Calculate t based on elapsed time
+            float t = elapsedTime / colorChangeDuration;
+
+            // Lerp between defaultSpriteColor and Color.red
+            spriteRenderer.color = Color.Lerp(defaultSpriteColor, Color.red, t);
+
+            // Increment elapsed time
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+        
+        // Reset to default color
+        spriteRenderer.color = defaultSpriteColor;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (currentState == EnemyState.Attacking && Utils.HasTargetLayer(PlayerLayer, collision.gameObject))
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             // TODO: improve this so that player can only take damage once per attack
-            playerController.TakeDamage();
+            StartCoroutine(playerController.TakeDamage());
         }
     }
 
