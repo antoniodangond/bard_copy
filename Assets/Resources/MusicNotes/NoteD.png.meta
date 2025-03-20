@@ -161,8 +161,14 @@ TextureImporter:
       entries: []
     nameFileIdTable:
 <<<<<<< Updated upstream:Assets/Resources/MusicNotes/NoteD.png.meta
+<<<<<<< Updated upstream:Assets/Resources/MusicNotes/NoteD.png.meta
       S_0: -1182827721247122346
       S_1: 4240220511655738080
+=======
+      Pixel Heart Sprite Sheet 32x32_0: 9139294957729004389
+      Pixel Heart Sprite Sheet 32x32_1: -7234348896261954332
+      Pixel Heart Sprite Sheet 32x32_2: 4458994651616342869
+>>>>>>> Stashed changes:Assets/Sprites/Player/Player Stats/Pixel Heart Sprite Sheet 32x32.png.meta
 =======
       Pixel Heart Sprite Sheet 32x32_0: 9139294957729004389
       Pixel Heart Sprite Sheet 32x32_1: -7234348896261954332

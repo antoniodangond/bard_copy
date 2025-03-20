@@ -991,10 +991,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5727693904789395805, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       propertyPath: soundPlayDelay
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5727693904789395805, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
       propertyPath: defaultDialogue
@@ -24658,4 +24661,7 @@ SceneRoots:
   - {fileID: 559793368}
   - {fileID: 1925125192}
   - {fileID: 206142787}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
