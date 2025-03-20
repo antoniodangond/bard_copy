@@ -28,13 +28,9 @@ public class PlayerAudioData : ScriptableObject
     public float MelodyCooldownTime;
 
     [Header("Combat")]
-    // public Sound[] AttackChords;
-    public AudioClip[] AttackChords;
-    // public Sound[] Hits;
-    public AudioClip[] Hits;
+    public Sound[] AttackChords;
+    public Sound[] Hits;
 
     [Header ("Audio Managers")]
     public RandomAudioManager RandomFootsteps;
-    public RandomAudioManager RandomAttackChords;
-    public RandomAudioManager RandomHits;
 }
