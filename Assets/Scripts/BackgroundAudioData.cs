@@ -17,8 +17,13 @@ public class BackgroundAudioData : ScriptableObject
     public float BackgroundMusicPauseVolume;
     public Sound OverworldAmbience;
     public Sound UnderworldAmbience;
+    public Sound BeachAmbience;
     public AudioClip[] AmbienceBreaths;
     public RandomAudioManager RandomAmbienceBreaths;
     public AudioClip[] AmbienceFrogs;
     public RandomAudioManager RandomAmbienceFrogs;
+    public AudioClip[] AmbienceLoudBirds;
+    public RandomAudioManager RandomAmbienceLoudBirds;
+    public AudioClip[] AmbienceQuietBirds;
+    public RandomAudioManager RandomAmbienceQuietBirds;
 }

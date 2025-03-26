@@ -68,7 +68,7 @@ public class EnemyController : MonoBehaviour
     public IEnumerator EnemyDamageColorChangeRoutine()
     {
         float elapsedTime = 0f;
-        Debug.Log("Coroutine triggered");
+        //Debug.Log("Coroutine triggered");
 
         while (elapsedTime < colorChangeDuration)
         {

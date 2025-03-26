@@ -45,6 +45,12 @@ MonoBehaviour:
     DefaultVolume: 1
     ShouldLoop: 1
     Source: {fileID: 0}
+  BeachAmbience:
+    Clip: {fileID: 8300000, guid: 9d99d909619104223a522f56128f67c0, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+    Source: {fileID: 0}
   AmbienceBreaths:
   - {fileID: 8300000, guid: f26e85d6356874c0789f4d9e96d66288, type: 3}
   - {fileID: 8300000, guid: 6e94b52d34ade4c7492f02b4d895f2fd, type: 3}
@@ -57,3 +63,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cbd6c9bf152574cd38191a6833aaf33c, type: 3}
   - {fileID: 8300000, guid: 5c62e5c5d9e684cb18fb6e2aec5803b5, type: 3}
   RandomAmbienceFrogs: {fileID: 0}
+  AmbienceLoudBirds:
+  - {fileID: 8300000, guid: 17fcd2b1b8b604b6189e1291d9d10001, type: 3}
+  - {fileID: 8300000, guid: c67c265c5d2ab4fb18a9fa1d07918b05, type: 3}
+  - {fileID: 8300000, guid: d8db516bcb6ef4d2b90737b25b6daf4a, type: 3}
+  RandomAmbienceLoudBirds: {fileID: 0}
+  AmbienceQuietBirds:
+  - {fileID: 8300000, guid: e8c335eefb86449ecb16a996cc946494, type: 3}
+  - {fileID: 8300000, guid: 02c0bab70697c45b6a2d890a28b1aa6a, type: 3}
+  - {fileID: 8300000, guid: 82c10a7db5ed241639ddf501ef44a331, type: 3}
+  - {fileID: 8300000, guid: 419aa361ae0304b9ab99196bfcfca4b7, type: 3}
+  - {fileID: 8300000, guid: 9b871cdb819314b9f9e1be494086517c, type: 3}
+  RandomAmbienceQuietBirds: {fileID: 0}
