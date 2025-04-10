@@ -62,7 +62,7 @@ public class DialogueManager : MonoBehaviour
         }
         if (dialogue == null)
         {
-            Debug.LogError("Attempted to start dialogue with a null Dialogue object!");
+            Debug.Log("Attempted to start dialogue with a null Dialogue object!");
             return;
         }
 
