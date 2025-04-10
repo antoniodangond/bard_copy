@@ -195,6 +195,7 @@ public class PlayerController : MonoBehaviour
         if (CurrentState == PlayerState.Default)
         {
             Health -= 1;
+            PlayerUIManager.Instance.UpdateHealthUI((int)Health);
             if (Health > 0)
             {
                 StartCoroutine(HandleStun());
