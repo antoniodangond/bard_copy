@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
         }
         // Reset health and state
         Health = MaxHealth;
+        PlayerUIManager.Instance.UpdateHealthUI((int)Health);
         CurrentState = PlayerState.Default;
     }
 
