@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool isPlayingLyre;
     private Gravestone gravestone;
+    public bool isTakingDamage;
     private string[] Melodies = new string[2]{
         MelodyData.Melody1, MelodyData.Melody2
     };
@@ -190,8 +191,10 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 5.0f); // Match the interaction radius
     }
 
-    public IEnumerator TakeDamage()
+    public IEnumerator TakeDamageRoutine()
     {
+        isTakingDamage = true;
+
         if (CurrentState == PlayerState.Default)
         {
             Health -= 1;
@@ -205,7 +208,8 @@ public class PlayerController : MonoBehaviour
                 HandleDeath();
             }
         }
-        return null;
+        yield return new WaitForSeconds(0.2f);
+        isTakingDamage = false;
     }
 
     private IEnumerator HandleStun()
