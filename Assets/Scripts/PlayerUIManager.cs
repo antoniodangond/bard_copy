@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,13 +31,20 @@ public class PlayerUIManager : MonoBehaviour
     private ImagePool fullHearts;
     public GameObject fullHeartObj; // Assign in inspector
     private Transform fullHeartStartLocation;
-    private float spacing = 75f;
     private int maxHearts = 5;
-    public float radius = 100f; // Radius for arranging UI Hearts in a circle
     private List<Image> currentHearts = new List<Image>();
     private ImagePool emptyHearts;
     public GameObject emptyHeartObj; // Assign in inspector
     private Transform emptyHeartStartLocation;
+    [Header ("Health UI Settings")]
+    // Below are for orienting the Health UI elements in a fan like shape
+    [SerializeField]public float xspacing = 75f;
+    [SerializeField]public float baseRotation = -45f; // Start at 45 degrees left
+    [SerializeField]public float rotationStep = 15f;    // End at 45 degrees right
+    [SerializeField]public float radius = 150f;     // Distance from center
+    [SerializeField]public float baseScale = 0.8f; // Start at 80% of full size
+    [SerializeField]public float scaleStep = 0.1f; // End 120% of full size
+    [SerializeField] private float overlapAmount = 0.7f; // 0=no overlap, 1=full overlap
 
     void Awake()
     {
@@ -72,13 +80,34 @@ public class PlayerUIManager : MonoBehaviour
         currentHearts.Clear();
 
         // Create new hearts with staggered positions
-        for (int i = 0; i < currentHealth; i++)
+        for (int i = 0; i < maxHearts; i++)
         {
             Image heart = fullHearts.GetImage();
             heart.transform.SetParent(fullHeartStartLocation, false);
             
             RectTransform rt = heart.GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(-i * spacing, 0);
+            // Calculate rotation angle (evenly distributed between start/end angles)
+            float rotation = baseRotation + (i * rotationStep);
+            float xPos = i * xspacing;
+            float scale = baseScale + (i * scaleStep);
+            
+             // Position (stacked leftward with overlap)
+            xPos = -i * xspacing * overlapAmount;
+            
+            // Apply transformations
+            rt.anchoredPosition = new Vector2(xPos, 0);
+            rt.localEulerAngles = new Vector3(0, 0, rotation);
+            rt.localScale = Vector3.one * scale;
+            rt.SetAsLastSibling(); // Bring to front
+
+             // Ensure pivot point is centered
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchorMin = new Vector2(0.5f, 0.5f);
+            rt.anchorMax = new Vector2(0.5f, 0.5f);
+
+            // Set heart visibility based on current health
+            heart.gameObject.SetActive(i < currentHealth);
+            heart.color = i < currentHealth ? Color.white : new Color(1,1,1,0.2f);
             
             currentHearts.Add(heart);
         }
