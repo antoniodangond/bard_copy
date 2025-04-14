@@ -32,9 +32,11 @@ public class PlayerAudioData : ScriptableObject
     public AudioClip[] AttackChords;
     // public Sound[] Hits;
     public AudioClip[] Hits;
+    public AudioClip[] PlayerSounds;
 
-    [Header ("Audio Managers")]
+    [Header ("Audio Managers and sources")]
     public RandomAudioManager RandomFootsteps;
     public RandomAudioManager RandomAttackChords;
     public RandomAudioManager RandomHits;
+    public AudioSource PlayerSoundsSource;
 }

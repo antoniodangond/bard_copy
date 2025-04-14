@@ -41,6 +41,6 @@ public class PlayerMovement : MonoBehaviour
         // Normalize movement vector to set mangitutude to 1. This prevents speed
         // increase when moving diagonally. Set linear velocity to movement vector,
         // so that physics are respected.
-        rb.linearVelocity = movement.normalized * moveSpeed;
+        rb.linearVelocity = movement * moveSpeed;
     }
 }

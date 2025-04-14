@@ -7818,6 +7818,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3995807479069213493, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: playerSoundLibrary.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3995807479069213493, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: playerSoundLibrary.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ad7b4fccee7f446bb189dde905bb714, type: 3}
+    - target: {fileID: 3995807479069213493, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: playerSoundLibrary.Array.data[0].name
+      value: PlayerDeath
+      objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01

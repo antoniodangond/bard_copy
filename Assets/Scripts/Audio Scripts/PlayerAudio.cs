@@ -2,8 +2,16 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[System.Serializable]
+public class NamedAudioClip
+{
+    public string name;
+    public AudioClip clip;
+}
+
 public class PlayerAudio : AudioController
 {
+    [SerializeField] private NamedAudioClip[] playerSoundLibrary;
     public PlayerAudioData AudioData;
     public static PlayerAudio instance;
     public string currentTerrain;
@@ -31,11 +39,9 @@ public class PlayerAudio : AudioController
         InitializeSound(AudioData.Melody2);
 
         AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomFootsteps.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAttackChords = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAttackChords.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
+        AudioData.PlayerSoundsSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlayFootstep()
@@ -130,6 +136,26 @@ public class PlayerAudio : AudioController
             return;
         }
         AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.25f, true);
+    }
+    
+    public void PlayPlayerSound(string clipname, float vol_mult)
+    {
+        if (AudioData.PlayerSounds.Length == 0) 
+        {
+            Debug.LogError("Player audio 'Player Sounds' length is 0");
+            return;
+        }
+        foreach (var sound in playerSoundLibrary)
+        {
+            if (sound.name == clipname)
+            {
+                AudioData.PlayerSoundsSource.PlayOneShot(sound.clip, vol_mult);
+            }
+            else
+            {
+                Debug.LogError($"sound {clipname} not found!");
+            }
+        }
     }
 
     // TODO: implement

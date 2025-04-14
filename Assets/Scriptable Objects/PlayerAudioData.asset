@@ -114,6 +114,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 575c922f0d52c4e4e8fbab4d88076bf7, type: 3}
   - {fileID: 8300000, guid: 2dc53c43a2b5b4ad484a2b821c3dcc83, type: 3}
   - {fileID: 8300000, guid: 54ab7e01dd24e4cafa078936a225ff64, type: 3}
+  PlayerSounds:
+  - {fileID: 8300000, guid: 7ad7b4fccee7f446bb189dde905bb714, type: 3}
   RandomFootsteps: {fileID: 0}
   RandomAttackChords: {fileID: 0}
   RandomHits: {fileID: 0}
