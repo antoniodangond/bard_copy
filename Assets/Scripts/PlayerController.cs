@@ -224,6 +224,7 @@ public class PlayerController : MonoBehaviour
     private void HandleDeath()
     {
         CurrentState = PlayerState.Dead;
+        playerAudio.PlayPlayerSound("PlayerDeath", 0.75f);
         if (LastCheckpoint != null)
         {
             // Teleport player to last teleporter touched
@@ -392,6 +393,10 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayNote(notePressed);
                 // Remove 1st note from queue, and add new note to end of queue,
                 // so that the new 1st note is now the 4th-last note played
+
+                // BUG: if player initiates play, plays notes w/o successfully playing song
+                //    then initiates play again, "InvalidOperationException: Queue Empty" error is logged
+                
                 lastPlayedNotes.Dequeue();
                 lastPlayedNotes.Enqueue(notePressed);
                 // Check if should play Melody
