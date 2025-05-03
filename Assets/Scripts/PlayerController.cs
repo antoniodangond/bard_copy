@@ -59,13 +59,8 @@ public class PlayerController : MonoBehaviour
     private string[] Melodies = new string[2]{
         MelodyData.Melody1, MelodyData.Melody2
     };
-    private Queue<string> lastPlayedNotes = new Queue<string>(new string[MelodyData.MelodyLength]{
-        null,
-        null,
-        null,
-        null,
-        null,
-    });
+    // Track the notes played while in Instrument mode
+    private Queue<string> lastPlayedNotes;
 
     void Awake()
     {
@@ -78,6 +73,8 @@ public class PlayerController : MonoBehaviour
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
         // Set health to max
         Health = MaxHealth;
+        // Initialize lastPlayedNotes to a queue of null values
+        lastPlayedNotes = BuildEmptyNotesQueue();
     }
 
     void OnDestroy()
@@ -91,6 +88,16 @@ public class PlayerController : MonoBehaviour
     {
         CurrentState = PlayerState.Default;
         Debug.Log("dialogue completed");
+    }
+
+    private Queue<string> BuildEmptyNotesQueue() {
+        return new Queue<string>(new string[MelodyData.MelodyLength]{
+            null,
+            null,
+            null,
+            null,
+            null,
+        });
     }
 
     private void ToggleInstrument()
@@ -110,7 +117,7 @@ public class PlayerController : MonoBehaviour
             isPlayingLyre = false;
 
             // Clear the note queue when lyre is put away (to prevent accidental triggers)
-            lastPlayedNotes.Clear();
+            lastPlayedNotes = BuildEmptyNotesQueue();
         }
         // Set animation params after determining movement and isPlayingLyre
         playerAnimation.SetAnimationParams(movement, isPlayingLyre);
@@ -393,10 +400,6 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayNote(notePressed);
                 // Remove 1st note from queue, and add new note to end of queue,
                 // so that the new 1st note is now the 4th-last note played
-
-                // BUG: if player initiates play, plays notes w/o successfully playing song
-                //    then initiates play again, "InvalidOperationException: Queue Empty" error is logged
-                
                 lastPlayedNotes.Dequeue();
                 lastPlayedNotes.Enqueue(notePressed);
                 // Check if should play Melody
