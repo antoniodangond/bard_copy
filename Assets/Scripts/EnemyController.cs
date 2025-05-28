@@ -89,12 +89,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (currentState == EnemyState.Attacking && Utils.HasTargetLayer(PlayerLayer, collision.gameObject))
+        // Turning off the EnemyState check for now to make combat feel a little more responsive
+        if (/*currentState == EnemyState.Attacking && */Utils.HasTargetLayer(PlayerLayer, collision.gameObject))
         {
             PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
             // TODO: improve this so that player can only take damage once per attack
             DamagePlayer(playerController);
-            
+
         }
     }
     
