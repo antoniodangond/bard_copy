@@ -48,19 +48,18 @@ public class SignController : MonoBehaviour
         switch (melody)
         {
             case MelodyData.Melody1:
-                if (signName == "Log") { HandleSuccessFeedback(); }
-                if (signName == "Ghostboy") { HandleSuccessFeedback(); }
+                if (signName == "Log") { HandleSuccessFeedback(signName); }
+                if (signName == "Ghostboy") { HandleSuccessFeedback(signName); }
                 break;
 
             case MelodyData.Melody2:
-                if (signName == "Pirate") { HandleSuccessFeedback(); }
+                if (signName == "Pirate") { HandleSuccessFeedback(signName); }
                 break;
         }
     }
 
-    private void HandleSuccessFeedback()
+    private void HandleSuccessFeedback(string signName)
     {
-        isDialogueUpdated = true;
         successAnimator = gameObject.GetComponent<Animator>();
         audioSources = GetComponents<AudioSource>();
 
@@ -72,8 +71,13 @@ public class SignController : MonoBehaviour
             Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
-        // STEP 1: Autoplay updated dialogue
-        DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
+        if (signName != "Log")
+        {
+            HasDialogueOnMelody = true;
+            isDialogueUpdated = true;
+            // STEP 1: Autoplay updated dialogue
+            DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
+        }
 
         // STEP 2: Play success animation
         if (successAnimator != null)

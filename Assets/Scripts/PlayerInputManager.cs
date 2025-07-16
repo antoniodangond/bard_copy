@@ -234,7 +234,7 @@ public class PlayerInputManager : MonoBehaviour
         // movement magnitude from being less than 1
         isSprinting = sprintAction.IsPressed();
         Movement = moveAction.ReadValue<Vector2>() * (isSprinting ? 1.5f : 1.0f);
-        Debug.Log($"movement speed is {Movement}");
+        // Debug.Log($"movement speed is {Movement}");
         WasAttackPressed = attackAction.WasPressedThisFrame();
         MenuOpened = OpenMenuAction.WasPressedThisFrame();
         MenuClosed = CloseMenuAction.WasPressedThisFrame();
