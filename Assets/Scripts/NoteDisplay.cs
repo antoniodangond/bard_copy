@@ -1,85 +1,103 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteDisplay : MonoBehaviour
 {
+    [Header("Movement")]
+    [SerializeField] private float speed = 1.5f;
+
+    [Header("Fade & Lifetime")]
+    [SerializeField] private float defaultLifetime = 2f;
+    [SerializeField, Range(0f, 1f)] private float minOpacity = 0.2f;
+
+    [Header("Sprites Per Note")]
+    [SerializeField] private Sprite noteB_Layer0;
+    [SerializeField] private Sprite noteB_Layer1;
+    [SerializeField] private Sprite noteC_Layer0;
+    [SerializeField] private Sprite noteC_Layer1;
+    [SerializeField] private Sprite noteD_Layer0;
+    [SerializeField] private Sprite noteD_Layer1;
+    [SerializeField] private Sprite noteE_Layer0;
+    [SerializeField] private Sprite noteE_Layer1;
+
+    [Header("Child Renderers")]
+    [SerializeField] private SpriteRenderer layer0Renderer;
+    [SerializeField] private SpriteRenderer layer1Renderer;
+
     private float lifetime;
-    private Vector3 moveDirection;
-    private float moveSpeed = 1.5f;
-    private SpriteRenderer sr;
-
-    // In NoteDisplay.cs (or wherever you're handling note motion)
-    [SerializeField] private float speed = 1f;           // Horizontal speed
-    [SerializeField] private float wobbleAmplitude = 0.2f;
-    [SerializeField] private float wobbleFrequency = 2f;
-
     private float elapsedTime = 0f;
-    private Vector3 startPosition;
+    private Vector3 moveDirection;
+    private bool particlesSpawned = false;
 
-    void Start()
+    private Dictionary<string, (Sprite, Sprite)> spriteMap;
+
+    public void Initialize(float lifetime, string noteName, float distance, float maxDistance, float minOpacityOverride, Vector3 moveDirection)
     {
-        startPosition = transform.position;
+        this.lifetime = lifetime > 0 ? lifetime : defaultLifetime;
+        this.moveDirection = moveDirection;
+        this.minOpacity = minOpacityOverride;
+
+        SetupSpriteMap();
+
+        // Opacity fade based on distance
+        float alpha = Mathf.Lerp(1f, minOpacity, distance / maxDistance);
+        ApplyOpacity(alpha);
+
+        // Set layered sprites
+        if (spriteMap.TryGetValue(noteName, out var spritePair))
+        {
+            layer0Renderer.sprite = spritePair.Item1;
+            layer1Renderer.sprite = spritePair.Item2;
+        }
+        else
+        {
+            Debug.LogWarning($"NoteDisplay: Missing sprite pair for {noteName}");
+        }
+    }
+
+    private void SetupSpriteMap()
+    {
+        spriteMap = new Dictionary<string, (Sprite, Sprite)>
+        {
+            { "NoteB", (noteB_Layer0, noteB_Layer1) },
+            { "NoteC", (noteC_Layer0, noteC_Layer1) },
+            { "NoteD", (noteD_Layer0, noteD_Layer1) },
+            { "NoteE", (noteE_Layer0, noteE_Layer1) },
+        };
+    }
+
+    private void ApplyOpacity(float alpha)
+    {
+        if (layer0Renderer != null)
+        {
+            Color c = layer0Renderer.color;
+            c.a = alpha;
+            layer0Renderer.color = c;
+        }
+        if (layer1Renderer != null)
+        {
+            Color c = layer1Renderer.color;
+            c.a = alpha;
+            layer1Renderer.color = c;
+        }
     }
 
     void Update()
     {
         elapsedTime += Time.deltaTime;
 
-        // Basic horizontal movement
-        Vector3 move = Vector3.right * speed * Time.deltaTime;
+        transform.position += moveDirection * speed * Time.deltaTime;
 
-        // Vertical wobble via sine
-        float wobbleOffset = wobbleAmplitude * Mathf.Sin(wobbleFrequency * elapsedTime);
-
-        // Apply movement + wobble
-        transform.position += move;
-        transform.position = new Vector3(
-            transform.position.x,
-            startPosition.y + wobbleOffset,
-            transform.position.z
-        );
-    }
-
-
-    public void Initialize(float duration, string noteName, float distance, float maxDistance, float minOpacity, Vector3 direction)
-    {
-        lifetime = duration;
-        moveDirection = direction.normalized;
-        sr = GetComponent<SpriteRenderer>();
-
-        SetSprite(noteName);
-        AdjustOpacity(distance, maxDistance, minOpacity);
-
-        Destroy(gameObject, lifetime);
-    }
-
-    private void SetSprite(string noteName)
-    {
-        if (sr == null)
+        if (elapsedTime >= lifetime && !particlesSpawned)
         {
-            sr = GetComponent<SpriteRenderer>();
-        }
-
-        Debug.Log($"Attempting to load sprite for note: {noteName}");
-        Sprite noteSprite = Resources.Load<Sprite>($"MusicNotes/{noteName}");
-
-        if (noteSprite != null)
-        {
-            sr.sprite = noteSprite;
-            Debug.Log($"Successfully assigned sprite for {noteName}");
-        }
-        else
-        {
-            Debug.LogError($"Sprite for {noteName} not found in Resources/MusicNotes! Check spelling.");
+            TriggerParticles();
+            Destroy(gameObject);
         }
     }
 
-    private void AdjustOpacity(float distance, float maxDistance, float minOpacity)
+    private void TriggerParticles()
     {
-        if (sr == null) return;
-
-        float opacity = Mathf.Lerp(minOpacity, 1f, 1 - (distance / maxDistance));
-        Color newColor = sr.color;
-        newColor.a = opacity;
-        sr.color = newColor;
+        // You can instantiate your particle prefab here if needed
+        particlesSpawned = true;
     }
 }
