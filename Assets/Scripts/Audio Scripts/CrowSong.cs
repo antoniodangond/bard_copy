@@ -38,10 +38,28 @@ public class CrowSong : MonoBehaviour
 
     void Start()
     {
+        void Start()
+        {
+            if (notePrefab == null)
+            {
+                notePrefab = Resources.Load<GameObject>("Prefabs");
+                Debug.LogWarning("CrowSong: notePrefab was null. Loaded via Resources.");
+            }
+        }
+
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         if (player == null)
         {
             Debug.LogError("Player not found! Ensure the player is tagged correctly.");
+        }
+
+        if (notePrefab == null)
+        {
+            Debug.LogError("CrowSong: NotePrefab is NULL in Start()");
+        }
+        else
+        {
+            Debug.Log("CrowSong: NotePrefab is assigned correctly: " + notePrefab.name);
         }
     }
 
@@ -60,40 +78,50 @@ public class CrowSong : MonoBehaviour
     private IEnumerator PlaySong(float distance)
     {
         isSinging = true;
-        double nextPlayTime = AudioSettings.dspTime; // Get precise audio time
 
-        // For each note in the sequence
+        double startTime = AudioSettings.dspTime;
+
         for (int i = 0; i < noteSequence.Length; i++)
         {
             NoteData noteData = noteSequence[i];
+            double scheduledTime = startTime + GetCumulativeTiming(i);
 
-            // Always spawn notes towards the right
-            Vector3 moveDirection = Vector3.right;
-            Vector3 spawnPosition = transform.position + noteSpawnOffset;
-
-            // Spawn note & schedule sound
-            StartCoroutine(SpawnNoteWithDelay(noteData, spawnPosition, distance, moveDirection, nextPlayTime, i));
-            nextPlayTime += noteData.noteTiming;
-            yield return new WaitForSeconds(noteData.noteTiming);
+            StartCoroutine(ScheduleNote(noteData, i, distance, scheduledTime));
         }
+
+        // Wait until song ends before resetting
+        double totalDuration = GetCumulativeTiming(noteSequence.Length);
+        yield return new WaitForSeconds((float)totalDuration + 0.2f);
 
         isSinging = false;
     }
 
-
-    private IEnumerator SpawnNoteWithDelay(NoteData noteData, Vector3 spawnPosition, float distance, Vector3 moveDirection, double scheduledTime, int noteIndex)
+    private double GetCumulativeTiming(int index)
     {
-        while (AudioSettings.dspTime < scheduledTime)
+        double total = 0;
+        for (int i = 0; i < index; i++)
         {
-            yield return null;
+            total += noteSequence[i].noteTiming;
         }
+        return total;
+    }
 
+    private IEnumerator ScheduleNote(NoteData noteData, int index, float distance, double scheduledTime)
+    {
+        // Wait until it's time for this note
+        while (AudioSettings.dspTime < scheduledTime)
+            yield return null;
+
+        // Play audio
         PlayNoteSoundScheduled(noteData, scheduledTime);
 
-        // Use the note name from `songSequence` at the correct index
-        string spriteNoteName = songSequence[noteIndex % songSequence.Length];
+        // Spawn visual
+        string spriteNoteName = songSequence[index % songSequence.Length];
+        Vector3 moveDirection = Vector3.right;
+        Vector3 spawnPosition = transform.position + noteSpawnOffset;
         SpawnNoteVisual(spriteNoteName, spawnPosition, distance, moveDirection);
     }
+
 
     private void SpawnNoteVisual(string noteName, Vector3 spawnPosition, float distance, Vector3 moveDirection)
     {
@@ -106,15 +134,21 @@ public class CrowSong : MonoBehaviour
         GameObject note = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
 
         // Set sorting order to be in front of the crow
-        SpriteRenderer noteRenderer = note.GetComponent<SpriteRenderer>();
-        if (noteRenderer != null)
+        // Adjust all SpriteRenderers inside the note prefab (e.g., Layer0, Layer1)
+        SpriteRenderer[] renderers = note.GetComponentsInChildren<SpriteRenderer>();
+        if (renderers.Length > 0)
         {
-            noteRenderer.sortingOrder = GetComponent<SpriteRenderer>().sortingOrder + 1;
+            int baseSorting = GetComponent<SpriteRenderer>()?.sortingOrder ?? 0;
+            foreach (SpriteRenderer r in renderers)
+            {
+                r.sortingOrder = baseSorting + 1;
+            }
         }
         else
         {
-            Debug.LogError("NotePrefab is missing a SpriteRenderer!");
+            Debug.LogError("NotePrefab has no SpriteRenderers in children!");
         }
+
 
         note.transform.SetParent(transform, true); // Keep world position even if parented
 

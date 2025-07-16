@@ -17343,21 +17343,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34b6ea11d2564944e91c497ab244964c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notePrefab: {fileID: 0}
+  notePrefab: {fileID: 8601049720501432927, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
   noteSpawnInterval: 0.75
   noteLifetime: 2
-  noteSpawnOffset: {x: 0, y: 0.5, z: 0}
-  noteSequence: []
+  noteSpawnOffset: {x: 0.25, y: 1.25, z: 0}
+  noteSequence:
+  - noteSound: {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
+    noteTiming: 0.75
+  - noteSound: {fileID: 8300000, guid: 009a221bfd623428589c2b2eae236123, type: 3}
+    noteTiming: 0.75
+  - noteSound: {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
+    noteTiming: 0.75
+  - noteSound: {fileID: 8300000, guid: e6b8b24048a43284eb39e74b8d22691a, type: 3}
+    noteTiming: 0.75
+  - noteSound: {fileID: 8300000, guid: 808a3f06b9fc744b797429cc71abd6f3, type: 3}
+    noteTiming: 0.75
   movementAngle: 0
   audioSource: {fileID: 1766655997}
-  maxVolume: 1
+  maxVolume: 0.5
   maxHearingRadius: 20
   minOpacity: 0.2
   songSequence:
-  - NoteB
-  - NoteE
-  - NoteD
   - NoteC
+  - NoteE
+  - NoteC
+  - NoteD
+  - NoteB
 --- !u!1001 &1349076210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25762,6 +25773,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1001 &1932685663
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.1387
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 29.432283
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04349929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8601049720501432927, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: m_Name
+      value: BirdNoteDisplay
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
 --- !u!1001 &1940083346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29673,3 +29741,4 @@ SceneRoots:
   - {fileID: 2040737504}
   - {fileID: 559793368}
   - {fileID: 924841169}
+  - {fileID: 1932685663}
