@@ -3274,7 +3274,7 @@ MonoBehaviour:
   m_text: TESTING TESTING TESTING. This is what font will look like. Even if I have
     multiple lines, like this...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3eccb3147c8fecb41a098dd426f1114c, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -3340,7 +3340,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: -134.237}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &240208546
@@ -25820,6 +25820,34 @@ PrefabInstance:
     - target: {fileID: 6447514540464043563, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: rotationSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: waveAmplitude
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: waveFrequency
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: wobbleFrequency
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: wobbleAngleRange
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8308453827166662016, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
+      propertyPath: applyRotationWobble
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8601049720501432927, guid: 6f7cd8839cdf87a4f862e867d8ab443b, type: 3}
       propertyPath: m_Name
