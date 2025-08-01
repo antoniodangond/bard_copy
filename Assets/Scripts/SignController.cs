@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class SignController : MonoBehaviour
 {
@@ -54,6 +56,7 @@ public class SignController : MonoBehaviour
 
             case MelodyData.Melody2:
                 if (signName == "Pirate") { HandleSuccessFeedback(signName); }
+                if (signName == "Vines") { HandleSuccessFeedback(signName); }
                 break;
         }
     }
@@ -71,7 +74,7 @@ public class SignController : MonoBehaviour
             Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
-        if (signName != "Log")
+        if ( signName != "Log" || signName != "Vines")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;
@@ -82,11 +85,11 @@ public class SignController : MonoBehaviour
         // STEP 2: Play success animation
         if (successAnimator != null)
         {
-            StartCoroutine(PlaySuccessAnimation());
+            StartCoroutine(PlaySuccessAnimation(signName));
         }
     }
 
-    private IEnumerator PlaySuccessAnimation()
+    private IEnumerator PlaySuccessAnimation(string signName)
     {
         successAnimator.SetTrigger("Success");
 
@@ -96,7 +99,11 @@ public class SignController : MonoBehaviour
 
         // Disable object
         Debug.Log($"{gameObject.name} has completed its success sequence and will be disabled.");
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        // if (signName != "Vines")
+        // {
+        //     gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        // }
+        // else {gameObject.GetComponent<SpriteRenderer>().enabled = false;}
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
         {
             collider.enabled = false;
