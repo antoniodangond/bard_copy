@@ -37,10 +37,32 @@ public class SignController : MonoBehaviour
         }
     }
 
-    public Dialogue GetDialogue()
+    public Dialogue GetDialogueFromApproach(Transform playerTransform)
     {
-        return CurrentDialogue ?? defaultDialogue;
+        Vector2 delta = playerTransform.position - transform.position;
+
+        FacingDirection approachedFrom;
+
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+            approachedFrom = delta.x > 0 ? FacingDirection.Left : FacingDirection.Right;
+        else
+            approachedFrom = delta.y > 0 ? FacingDirection.Down : FacingDirection.Up;
+
+        return (isDialogueUpdated ? updatedDialogue : defaultDialogue)?.GetLines(approachedFrom) != null
+            ? (isDialogueUpdated ? updatedDialogue : defaultDialogue)
+            : null;
     }
+
+    public FacingDirection GetApproachDirection(Transform player)
+    {
+        Vector2 delta = player.position - transform.position;
+
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+            return delta.x > 0 ? FacingDirection.Left : FacingDirection.Right;
+        else
+            return delta.y > 0 ? FacingDirection.Down : FacingDirection.Up;
+    }
+
 
     // Method called when a song is played nearby
     public void OnSongPlayed(string melody)

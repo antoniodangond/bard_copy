@@ -5110,7 +5110,8 @@ GameObject:
   - component: {fileID: 350932936}
   - component: {fileID: 350932938}
   - component: {fileID: 350932937}
-  m_Layer: 0
+  - component: {fileID: 350932939}
+  m_Layer: 8
   m_Name: Grave 10_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5233,6 +5234,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &350932939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350932935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDialogue: {fileID: 11400000, guid: 99f138eb3c915c742b8b2ca520256c7f, type: 2}
+  updatedDialogue: {fileID: 0}
+  isDialogueUpdated: 0
+  signName: Grave10
+  HasDialogueOnMelody: 0
+  IsPlayingSuccessAudio: 0
+  soundVolume: 0.8
+  soundPlayDelay: 0.15
+  audioSources: []
+  successAnimator: {fileID: 0}
 --- !u!1001 &357376825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8261,6 +8284,14 @@ PrefabInstance:
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: isTakingDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: interactionZoneSize.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21565,7 +21596,7 @@ GameObject:
   - component: {fileID: 1617830507}
   - component: {fileID: 1617830509}
   - component: {fileID: 1617830508}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grave 9_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

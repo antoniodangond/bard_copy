@@ -262,82 +262,62 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Dialogue checkForDialogueCollision()
+    private (Dialogue, SignController) checkForDialogueCollision()
     {
-        float interactionYOffset = FacingDirection == FacingDirection.Down ? InteractionYOffsetFacingDown : InteractionYOffset;
-        Vector3 interactPos = transform.position + new Vector3(0, interactionYOffset, 0); // Player's center position + y offset
+        float yOffset = FacingDirection == FacingDirection.Down ? InteractionYOffsetFacingDown : InteractionYOffset;
+        Vector3 interactPos = transform.position + new Vector3(0, yOffset, 0);
 
-        // Define the size of the rectangle (adjust dynamically based on FacingDirection)
-        Vector2 interactionZoneSize;
+        Vector2 adjustedZoneSize = interactionZoneSize;
+        if (FacingDirection == FacingDirection.Left || FacingDirection == FacingDirection.Right)
+            adjustedZoneSize = new Vector2(interactionZoneSize.y, interactionZoneSize.x);
 
         switch (FacingDirection)
         {
-            case FacingDirection.Up:
-            case FacingDirection.Down:
-                interactionZoneSize = new Vector2(0.5f, 1f); // Narrow width, taller height
-                break;
-            case FacingDirection.Left:
-            case FacingDirection.Right:
-                interactionZoneSize = new Vector2(1f, 0.5f); // Wider width, shorter height
-                break;
-            default:
-                interactionZoneSize = new Vector2(0.5f, 0.5f); // Default size (failsafe)
-                break;
+            case FacingDirection.Up: interactPos += Vector3.up * interactionOffset; break;
+            case FacingDirection.Down: interactPos += Vector3.down * interactionOffset; break;
+            case FacingDirection.Left: interactPos += Vector3.left * interactionOffset; break;
+            case FacingDirection.Right: interactPos += Vector3.right * interactionOffset; break;
         }
 
-        // Offset the interaction rectangle based on FacingDirection
-        switch (FacingDirection)
-        {
-            case FacingDirection.Up:
-                interactPos += Vector3.up * interactionOffset;
-                break;
-            case FacingDirection.Down:
-                interactPos += Vector3.down * interactionOffset;
-                break;
-            case FacingDirection.Left:
-                interactPos += Vector3.left * interactionOffset;
-                break;
-            case FacingDirection.Right:
-                interactPos += Vector3.right * interactionOffset;
-                break;
-        }
+        DebugDrawRectangle(interactPos, adjustedZoneSize, Color.red);
 
-        // DEBUG: Make interaction zone visible in Scene view via red rectangle
-        DebugDrawRectangle(interactPos, interactionZoneSize, Color.red);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(interactPos, adjustedZoneSize, 0f, DialogueLayer);
 
-        //Check for interactable objects in the interaction zone
-        Collider2D hit = Physics2D.OverlapBox(interactPos, interactionZoneSize, 0, DialogueLayer);
-        if (hit != null)
+        foreach (Collider2D hit in hits)
         {
-            SignController signController = hit.GetComponent<SignController>();
-            if (signController != null)
+            SignController sign = hit.GetComponentInParent<SignController>();
+            if (sign != null)
             {
-                Debug.Log($"Found SignController on object: {hit.gameObject.name}");
-                return signController.GetDialogue(); // Return the assigned Dialogue ScriptableObject
+                Dialogue dialogue = sign.GetDialogueFromApproach(transform);
+                if (dialogue != null)
+                {
+                    Debug.Log($"Found SignController on: {sign.gameObject.name}");
+                    return (dialogue, sign);
+                }
             }
         }
 
-        Debug.Log("No interactable object found in the interaction zone.");
-        return null;
+        return (null, null);
     }
 
 
 
-    //DEBUG: Make interaction zone visible in Scene view via red rectangle
+
+    // Helper method to draw a wireframe rectangle using Debug.DrawLine
     private void DebugDrawRectangle(Vector3 center, Vector2 size, Color color, float duration = 0.1f)
     {
-        // Calculate the corners of the rectangle
         Vector3 topLeft = center + new Vector3(-size.x / 2, size.y / 2, 0);
         Vector3 topRight = center + new Vector3(size.x / 2, size.y / 2, 0);
         Vector3 bottomLeft = center + new Vector3(-size.x / 2, -size.y / 2, 0);
         Vector3 bottomRight = center + new Vector3(size.x / 2, -size.y / 2, 0);
 
-        // Draw the edges of the rectangle with a longer duration
         Debug.DrawLine(topLeft, topRight, color, duration);
         Debug.DrawLine(topRight, bottomRight, color, duration);
         Debug.DrawLine(bottomRight, bottomLeft, color, duration);
         Debug.DrawLine(bottomLeft, topLeft, color, duration);
     }
+
+
 
     //Interaction zone adjustable in Inspector
     [SerializeField] private Vector2 interactionZoneSize = new Vector2(1f, 0.5f); // Width and Height
@@ -347,35 +327,30 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Handle pause state
         if (PlayerInputManager.isPaused)
-        {
             return;
-        }
-        // Check if instrument was toggled
+
         if (PlayerInputManager.WasToggleInstrumentPressed)
         {
             ToggleInstrument();
         }
 
-        // Perform actions depending on player state
         if (CurrentState == PlayerState.Default)
         {
             if (PlayerInputManager.WasDialoguePressed)
             {
-                Dialogue dialogue = checkForDialogueCollision();
-                if (dialogue != null)
+                var (dialogue, sign) = checkForDialogueCollision();
+                if (dialogue != null && sign != null)
                 {
                     CurrentState = PlayerState.Dialogue;
                     CustomEvents.OnDialogueStart?.Invoke(dialogue);
 
-                    // Pass facing direction to the DialogueManager
-                    DialogueManager.StartDialogue(dialogue, FacingDirection);
+                    FacingDirection approachedFrom = sign.GetApproachDirection(transform);
+                    DialogueManager.StartDialogue(dialogue, approachedFrom);
                 }
             }
 
             movement = PlayerInputManager.Movement;
-            // If moving, set FacingDirection
             if (movement != Vector2.zero)
             {
                 FacingDirection = determineFacingDirection(movement);
@@ -388,9 +363,7 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayAttackChord();
             }
 
-            // Set animation params after determining isPlayingLyre
             playerAnimation.SetAnimationParams(movement, isPlayingLyre);
-            // playerAudio.PlayWalkingAudio(movement);
         }
         else if (CurrentState == PlayerState.Instrument)
         {
@@ -398,15 +371,11 @@ public class PlayerController : MonoBehaviour
             if (notePressed is not null)
             {
                 playerAudio.PlayNote(notePressed);
-                // Remove 1st note from queue, and add new note to end of queue,
-                // so that the new 1st note is now the 4th-last note played
                 lastPlayedNotes.Dequeue();
                 lastPlayedNotes.Enqueue(notePressed);
-                // Check if should play Melody
                 string melodyToPlay = FindMelodyToPlay(lastPlayedNotes);
                 if (melodyToPlay != null)
                 {
-                    // Start coroutine to change state, play song, and then return to default state
                     StartCoroutine(PlayMelodyAfterDelay(melodyToPlay));
                 }
             }
@@ -419,6 +388,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
