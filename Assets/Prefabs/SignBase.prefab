@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5356270970978262254}
   - component: {fileID: 5187566337484092070}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1223886786689972409}
   - component: {fileID: 5928255056853060441}
   - component: {fileID: 5898494637424342509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SignBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.7, y: -0.1, z: 0}
-  m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4598045956234470288}
