@@ -17517,15 +17517,15 @@ MonoBehaviour:
   noteLifetime: 2
   noteSpawnOffset: {x: 0.25, y: 1.25, z: 0}
   noteSequence:
-  - noteSound: {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
+  - noteSound: {fileID: 8300000, guid: aafe5af6932a541988ce9699fdf96278, type: 3}
     noteTiming: 0.75
-  - noteSound: {fileID: 8300000, guid: 009a221bfd623428589c2b2eae236123, type: 3}
+  - noteSound: {fileID: 8300000, guid: 219a8b49191964e04b517db5cc05a3ea, type: 3}
     noteTiming: 0.75
-  - noteSound: {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
+  - noteSound: {fileID: 8300000, guid: aafe5af6932a541988ce9699fdf96278, type: 3}
     noteTiming: 0.75
-  - noteSound: {fileID: 8300000, guid: e6b8b24048a43284eb39e74b8d22691a, type: 3}
+  - noteSound: {fileID: 8300000, guid: 0ea6ebd794d8548bd918e2555d245102, type: 3}
     noteTiming: 0.75
-  - noteSound: {fileID: 8300000, guid: 808a3f06b9fc744b797429cc71abd6f3, type: 3}
+  - noteSound: {fileID: 8300000, guid: 20af671188e694cd2aae7707fc6b30d4, type: 3}
     noteTiming: 0.75
   movementAngle: 0
   audioSource: {fileID: 1766655997}
