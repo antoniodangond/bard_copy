@@ -96,7 +96,7 @@ public class SignController : MonoBehaviour
             Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
-        if ( signName != "Log" || signName != "Vines")
+        if ( signName != "Log")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;

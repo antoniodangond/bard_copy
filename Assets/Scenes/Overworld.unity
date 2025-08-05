@@ -26775,6 +26775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Log
       objectReference: {fileID: 0}
+    - target: {fileID: 8491766454030751383, guid: e7fe9a838174cd4438c3b254ca31f072, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4069514681867365980, guid: 6136abf38c2a646639187cf9587a4852, type: 3}
     - target: {fileID: 9032527340922731884, guid: e7fe9a838174cd4438c3b254ca31f072, type: 3}
       propertyPath: signName
       value: Log
