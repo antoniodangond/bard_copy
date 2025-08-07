@@ -90,7 +90,7 @@ public class SignController : MonoBehaviour
 
     private void HandleSuccessFeedback(string signName)
     {
-        successAnimator = GetComponentInChildren<Animator>();
+        successAnimator = gameObject.GetComponent<Animator>();
         audioSources = GetComponents<AudioSource>();
 
         // Play all available sounds using inspector-defined volume & delay
