@@ -82,7 +82,7 @@ public class SignController : MonoBehaviour
                 break;
 
             case MelodyData.Melody2:
-                if (signName == "Pirate") { HandleSuccessFeedback(signName); }
+                if (signName == "Captain") { HandleSuccessFeedback(signName); }
                 if (signName == "Vines") { HandleSuccessFeedback(signName); }
                 break;
         }
