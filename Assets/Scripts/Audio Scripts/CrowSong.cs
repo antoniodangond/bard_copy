@@ -38,13 +38,10 @@ public class CrowSong : MonoBehaviour
 
     void Start()
     {
-        void Start()
+        if (notePrefab == null)
         {
-            if (notePrefab == null)
-            {
-                notePrefab = Resources.Load<GameObject>("Prefabs");
-                Debug.LogWarning("CrowSong: notePrefab was null. Loaded via Resources.");
-            }
+            notePrefab = Resources.Load<GameObject>("Prefabs");
+            Debug.LogWarning("CrowSong: notePrefab was null. Loaded via Resources.");
         }
 
         player = GameObject.FindGameObjectWithTag("Player")?.transform;

@@ -16,6 +16,7 @@ public class SignController : MonoBehaviour
     public string signName;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
+    public SpriteRenderer spriteRenderer;
 
     [Header("Audio Settings")]
     [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
@@ -28,6 +29,10 @@ public class SignController : MonoBehaviour
     // Property to get correct dialogue
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
 
+    public void Awake()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
     public void Interact()
     {
         Dialogue dialogue = CurrentDialogue ?? defaultDialogue;
@@ -85,7 +90,7 @@ public class SignController : MonoBehaviour
 
     private void HandleSuccessFeedback(string signName)
     {
-        successAnimator = gameObject.GetComponent<Animator>();
+        successAnimator = GetComponentInChildren<Animator>();
         audioSources = GetComponents<AudioSource>();
 
         // Play all available sounds using inspector-defined volume & delay
@@ -126,6 +131,7 @@ public class SignController : MonoBehaviour
         //     gameObject.GetComponent<SpriteRenderer>().enabled = false;
         // }
         // else {gameObject.GetComponent<SpriteRenderer>().enabled = false;}
+        spriteRenderer.enabled = false;
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
         {
             collider.enabled = false;
