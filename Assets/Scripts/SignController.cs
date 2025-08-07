@@ -126,12 +126,10 @@ public class SignController : MonoBehaviour
 
         // Disable object
         Debug.Log($"{gameObject.name} has completed its success sequence and will be disabled.");
-        // if (signName != "Vines")
-        // {
-        //     gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        // }
-        // else {gameObject.GetComponent<SpriteRenderer>().enabled = false;}
-        spriteRenderer.enabled = false;
+        if (signName != "Vines")
+        {
+            spriteRenderer.enabled = false;
+        }
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
         {
             collider.enabled = false;
