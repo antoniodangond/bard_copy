@@ -1202,6 +1202,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5187566337484092070, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5120409863154010927, guid: 571fdd88157d24ff0a556ff8474b6a6c, type: 3}
     - target: {fileID: 5727693904789395805, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: dialogue
       value: 
@@ -1283,6 +1287,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 69826031}
+    - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 69826036}
   m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
 --- !u!1 &69826021 stripped
 GameObject:
@@ -1505,6 +1512,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &69826036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69826021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDialogue: {fileID: 11400000, guid: 51f1a9dfb447d124ea0ba8772f6cc8f6, type: 2}
+  updatedDialogue: {fileID: 11400000, guid: 4a3029da38caf73408400e30f3fb85c6, type: 2}
+  isDialogueUpdated: 0
+  signName: Captain
+  HasDialogueOnMelody: 0
+  IsPlayingSuccessAudio: 0
+  spriteRenderer: {fileID: 0}
+  soundVolume: 0.8
+  soundPlayDelay: 0.15
+  audioSources: []
+  successAnimator: {fileID: 0}
 --- !u!1001 &76001315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2681,7 +2711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9213398412280628274, guid: ee35a22c9c046446c9f2e4b25053cb69, type: 3}
       propertyPath: ShouldStartActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9213398412280628274, guid: ee35a22c9c046446c9f2e4b25053cb69, type: 3}
       propertyPath: DestinationTeleporter
@@ -7013,6 +7043,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6839393333599276937, guid: eb3351900948d4d9da995026d32a65a1, type: 3}
   m_PrefabInstance: {fileID: 50164355}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &502554798
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.430305
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.2663112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Name
+      value: Vines
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1447954869}
+    - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1447954874}
+  m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
 --- !u!1001 &503723660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13373,6 +13466,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5187566337484092070, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4418458111331290430, guid: 519c2d513fc11442a95b3e6eaea60e7f, type: 3}
     - target: {fileID: 5727693904789395805, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: dialogue
       value: 
@@ -13446,6 +13543,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1697296439}
+    - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1697296444}
   m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
 --- !u!1001 &1025823173
 PrefabInstance:
@@ -19384,6 +19484,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
   m_PrefabInstance: {fileID: 1447815705}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1447954868 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+  m_PrefabInstance: {fileID: 502554798}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1447954869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447954868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDialogue: {fileID: 0}
+  updatedDialogue: {fileID: 0}
+  isDialogueUpdated: 0
+  signName: Vines
+  HasDialogueOnMelody: 0
+  IsPlayingSuccessAudio: 0
+  spriteRenderer: {fileID: 0}
+  soundVolume: 0.8
+  soundPlayDelay: 0.15
+  audioSources: []
+  successAnimator: {fileID: 0}
+--- !u!95 &1447954874
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447954868}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1448264434
 GameObject:
   m_ObjectHideFlags: 0
@@ -22714,6 +22864,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1697296444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697296422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDialogue: {fileID: 11400000, guid: 86bde63293557df42b0b53296fde7f07, type: 2}
+  updatedDialogue: {fileID: 11400000, guid: 88596675bd5015d46b98cfe47751e39d, type: 2}
+  isDialogueUpdated: 0
+  signName: Ghostboy
+  HasDialogueOnMelody: 0
+  IsPlayingSuccessAudio: 0
+  spriteRenderer: {fileID: 0}
+  soundVolume: 0.8
+  soundPlayDelay: 0.15
+  audioSources: []
+  successAnimator: {fileID: 0}
 --- !u!1001 &1700373733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29867,3 +30040,4 @@ SceneRoots:
   - {fileID: 559793368}
   - {fileID: 924841169}
   - {fileID: 1932685663}
+  - {fileID: 502554798}

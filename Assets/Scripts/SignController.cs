@@ -101,7 +101,7 @@ public class SignController : MonoBehaviour
             Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
-        if ( signName != "Log")
+        if ( signName != "Log" &&  signName != "Vines")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;
@@ -133,6 +133,7 @@ public class SignController : MonoBehaviour
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
         {
             collider.enabled = false;
+            Debug.Log("Collider Disabled");
         }
     }
 }
