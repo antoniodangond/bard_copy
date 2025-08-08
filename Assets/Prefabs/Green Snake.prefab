@@ -218,11 +218,11 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 8
-  AgroTimeBeforeAttack: 1
-  AttackCooldownTime: 1
+  AgroTimeBeforeAttack: 0.4
+  AttackCooldownTime: 0.5
   MoveSpeed: 5
   AttackDurationSeconds: 2
-  Health: 3
+  Health: 5
 --- !u!114 &3039504290632459600
 MonoBehaviour:
   m_ObjectHideFlags: 0

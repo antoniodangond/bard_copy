@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool isPlayingLyre;
     private Gravestone gravestone;
+    [HideInInspector]
     public bool isTakingDamage;
     private string[] Melodies = new string[2]{
         MelodyData.Melody1, MelodyData.Melody2
