@@ -88,7 +88,7 @@ public class CrowSong : MonoBehaviour
 
         // Wait until song ends before resetting
         double totalDuration = GetCumulativeTiming(noteSequence.Length);
-        yield return new WaitForSeconds((float)totalDuration + 0.2f);
+        yield return new WaitForSeconds((float)totalDuration + 0.5f);
 
         isSinging = false;
     }
