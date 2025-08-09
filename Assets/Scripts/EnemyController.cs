@@ -54,6 +54,12 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Health -= damage;
+        // Trying to create a "Knockback" effect when enemy is damaged
+        if (isFacingRight)
+        {
+            gameObject.transform.position += Vector3.up * 1.5f;
+        }
+
         StartCoroutine(EnemyDamageColorChangeRoutine());
         if (Health <= 0f)
         {
@@ -120,7 +126,6 @@ public class EnemyController : MonoBehaviour
         if (currentState == EnemyState.Dead) { yield break; }
         // Enter agro state and handle facing direction if necessary
         Rigidbody2D targetRigidbody = other.GetComponent<Rigidbody2D>();
-        // Debug.Log("Enemy aggro");
         currentState = EnemyState.Agro;
         // Calculate the direction towards the target, in case we need to change facing direction
         Vector2 direction = getDirectionToTarget(targetRigidbody);
