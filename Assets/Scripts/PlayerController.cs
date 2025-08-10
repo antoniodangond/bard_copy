@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        isTakingDamage = false;
+        // Debug.Log(isTakingDamage); // For some reason this kept getting set to true at start of game
         playerAnimation = GetComponent<PlayerAnimation>();
         playerAttack = GetComponent<PlayerAttack>();
         playerAudio = GetComponent<PlayerAudio>();

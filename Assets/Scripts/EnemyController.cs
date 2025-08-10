@@ -51,7 +51,31 @@ public class EnemyController : MonoBehaviour
         CustomEvents.OnEnemyDeath?.Invoke(gameObject);
     }
 
-    public void TakeDamage(float damage)
+    public void KnockBack(PlayerController playerController)
+    {
+        if (playerController.transform.position.x > gameObject.transform.position.x)
+        {
+            Debug.Log("Player is to the right of the enemy");
+        }
+        else
+        {
+            Debug.Log("Player is to the left of the enemy");
+        }
+
+        if (playerController.transform.position.y > gameObject.transform.position.y)
+        {
+            Debug.Log("Player is above the enemy");
+        }
+        else
+        {
+            Debug.Log("Player is below the enemy");
+        }
+        Vector3 playerPosition = playerController.transform.position;
+        Vector3 enemyPosition = gameObject.transform.position;
+        Debug.Log($"Player is at {playerPosition} and enemy is at {enemyPosition}");
+    }
+
+    public void TakeDamage(float damage, PlayerController playerController)
     {
         Health -= damage;
         // Trying to create a "Knockback" effect when enemy is damaged
@@ -59,6 +83,7 @@ public class EnemyController : MonoBehaviour
         {
             gameObject.transform.position += Vector3.up * 1.5f;
         }
+        KnockBack(playerController);
 
         StartCoroutine(EnemyDamageColorChangeRoutine());
         if (Health <= 0f)
@@ -74,7 +99,6 @@ public class EnemyController : MonoBehaviour
     public IEnumerator EnemyDamageColorChangeRoutine()
     {
         float elapsedTime = 0f;
-        //Debug.Log("Coroutine triggered");
 
         while (elapsedTime < colorChangeDuration)
         {
@@ -110,7 +134,8 @@ public class EnemyController : MonoBehaviour
     {
         if (playerController.isTakingDamage)
             {
-                return;
+            Debug.Log("Bug");
+;                return;
             }
         StartCoroutine(playerController.TakeDamageRoutine());
     }

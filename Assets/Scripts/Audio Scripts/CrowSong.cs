@@ -56,7 +56,7 @@ public class CrowSong : MonoBehaviour
         }
         else
         {
-            Debug.Log("CrowSong: NotePrefab is assigned correctly: " + notePrefab.name);
+            // Debug.Log("CrowSong: NotePrefab is assigned correctly: " + notePrefab.name);
         }
     }
 
@@ -184,7 +184,7 @@ public class CrowSong : MonoBehaviour
         audioSource.clip = noteData.noteSound;
         audioSource.PlayScheduled(scheduledTime);
 
-        Debug.Log($"Scheduled {noteData.noteSound.name} to play at {scheduledTime}");
+        // Debug.Log($"Scheduled {noteData.noteSound.name} to play at {scheduledTime}");
     }
 
     void OnDrawGizmosSelected()

@@ -19,7 +19,7 @@ public class RegionBoundary : MonoBehaviour
     {
         if (Utils.HasTargetLayer(playerLayer, other.gameObject))
         {
-            Debug.Log("enter trigger " + region);
+            // Debug.Log("enter trigger " + region);
             StartCoroutine(backgroundAudio.ChangeBackgroundMusic(region));
         }
 
@@ -28,7 +28,7 @@ public class RegionBoundary : MonoBehaviour
     {
         if (Utils.HasTargetLayer(playerLayer, other.gameObject))
         {
-            Debug.Log("exit trigger " + region);
+            // Debug.Log("exit trigger " + region);
         }
     }
 }

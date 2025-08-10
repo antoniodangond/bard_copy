@@ -8466,11 +8466,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: isTakingDamage
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: interactionZoneSize.y
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: attackCoolDownTime
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
