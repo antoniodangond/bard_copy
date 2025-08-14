@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
+// using System.Numerics;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public enum EnemyState {
+public enum EnemyState
+{
     Default,
     Agro,
     Attacking,
@@ -16,7 +20,6 @@ public class EnemyController : MonoBehaviour
     public float AttackCooldownTime;
     public float MoveSpeed;
     public float AttackDurationSeconds;
-
     public float Health;
     private EnemyState currentState = EnemyState.Default;
     private Vector2 targetDirection;
@@ -24,8 +27,13 @@ public class EnemyController : MonoBehaviour
     private CircleCollider2D circleCollider2D;
     private Animator animator;
     private bool isFacingRight = false;
+    private Vector2 knockBackDirection;
+    private float knockBackForce;
+    private float knockBackTime;
+    private bool isBeingKnockedBack= false;
     private EnemyAudio enemyAudio;
     private Rigidbody2D rb;
+    private PlayerController PlayerController;
     private SpriteRenderer spriteRenderer;
     private Color defaultSpriteColor;
     private float colorChangeDuration = 0.25f;
@@ -37,6 +45,7 @@ public class EnemyController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSpriteColor = spriteRenderer.color;
+        knockBackTime = 0.25f;
     }
 
     void Start()
@@ -53,39 +62,42 @@ public class EnemyController : MonoBehaviour
 
     public void KnockBack(PlayerController playerController)
     {
-        if (playerController.transform.position.x > gameObject.transform.position.x)
+        isBeingKnockedBack = true;
+        Vector2 playerTransform = playerController.transform.position;
+        Vector2 enemyTransform = gameObject.transform.position;
+        // Debug.Log($"player vector 2 is {playerTransform} and enemy's is {enemyTransform}");
+        knockBackDirection = (enemyTransform - playerTransform).normalized;
+        // Debug.Log($"knock back dir is {knockBackDirection}");
+        knockBackForce = 10f;
+        StartCoroutine(KnockBackAction(knockBackDirection));
+    }
+    
+
+    public IEnumerator KnockBackAction(Vector2 hitDirection)
+    {
+        float _elapsedTime = 0f;
+
+        Vector2 hitForce = hitDirection * knockBackForce;
+        while (_elapsedTime < knockBackTime)
         {
-            Debug.Log("Player is to the right of the enemy");
-        }
-        else
-        {
-            Debug.Log("Player is to the left of the enemy");
+            // Iterate the timer
+            _elapsedTime += Time.fixedDeltaTime;
+
+            // Apply Knock Back
+            rb.linearVelocity = hitForce;
+
+            yield return new WaitForFixedUpdate();
         }
 
-        if (playerController.transform.position.y > gameObject.transform.position.y)
-        {
-            Debug.Log("Player is above the enemy");
-        }
-        else
-        {
-            Debug.Log("Player is below the enemy");
-        }
-        Vector3 playerPosition = playerController.transform.position;
-        Vector3 enemyPosition = gameObject.transform.position;
-        Debug.Log($"Player is at {playerPosition} and enemy is at {enemyPosition}");
+        isBeingKnockedBack = false;
     }
 
     public void TakeDamage(float damage, PlayerController playerController)
     {
         Health -= damage;
-        // Trying to create a "Knockback" effect when enemy is damaged
-        if (isFacingRight)
-        {
-            gameObject.transform.position += Vector3.up * 1.5f;
-        }
-        KnockBack(playerController);
 
         StartCoroutine(EnemyDamageColorChangeRoutine());
+
         if (Health <= 0f)
         {
             // Debug.Log("Enemy dead");
@@ -94,6 +106,7 @@ public class EnemyController : MonoBehaviour
             // TODO: BUG - don't destroy game object before attempting to play hit
             // enemyAudio.PlayHit();
         }
+        KnockBack(playerController);
     }
 
     public IEnumerator EnemyDamageColorChangeRoutine()
@@ -134,8 +147,7 @@ public class EnemyController : MonoBehaviour
     {
         if (playerController.isTakingDamage)
             {
-            Debug.Log("Bug");
-;                return;
+                return;
             }
         StartCoroutine(playerController.TakeDamageRoutine());
     }
@@ -234,7 +246,20 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Debug.Log($"Is being knocked back is {isBeingKnockedBack}");
         // Move only if attacking
-        rb.linearVelocity = currentState == EnemyState.Attacking ? targetDirection * MoveSpeed : Vector2.zero;
+        if (currentState == EnemyState.Attacking && !isBeingKnockedBack)
+        {
+            rb.linearVelocity = targetDirection * MoveSpeed;
+        }
+        else if (isBeingKnockedBack)
+        {
+            // Don't update linear velocity while being knocked back
+        }
+        else
+        {
+            // stop moving after knock back
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 }
