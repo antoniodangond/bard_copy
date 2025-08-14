@@ -246,7 +246,7 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log($"Is being knocked back is {isBeingKnockedBack}");
+        // Debug.Log($"Is being knocked back is {isBeingKnockedBack}");
         // Move only if attacking
         if (currentState == EnemyState.Attacking && !isBeingKnockedBack)
         {
@@ -258,7 +258,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            // stop moving after knock back
+            // Stop moving after knock back or attack
             rb.linearVelocity = Vector2.zero;
         }
     }

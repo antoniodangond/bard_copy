@@ -36,7 +36,9 @@ public class CombatEncounterController : MonoBehaviour
         // NOTE: Destroying the game object was creating race conditions with trying to play
         // an audio source on the object, so instead just disable the sprite renderer and collider.
         enemy.GetComponent<SpriteRenderer>().enabled = false;
-        enemy.GetComponent<BoxCollider2D>().enabled = false;
+        // Trying to replace this with a polygon collider
+        // enemy.GetComponent<BoxCollider2D>().enabled = false;
+        enemy.GetComponent<PolygonCollider2D>().enabled = false;
 
         if (enemies.Count == 0)
         {
