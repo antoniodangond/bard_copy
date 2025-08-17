@@ -109,6 +109,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f18bb8a4fd8f0548bdb311c460c379f, type: 3}
   - {fileID: 8300000, guid: 397adde8098213247bf7371e10580d1b, type: 3}
   - {fileID: 8300000, guid: fc0effdf5015fcd42b2313495c7005f9, type: 3}
+  - {fileID: 8300000, guid: ebe35c645b2f2fa4fa4a39099c53534b, type: 3}
+  - {fileID: 8300000, guid: 57d54ae5e1247ac4dac7958e1c51d048, type: 3}
+  - {fileID: 8300000, guid: 34a62ad3ed933794791c6394032a38ec, type: 3}
+  - {fileID: 8300000, guid: 1067deed6469bc941919608c286d337a, type: 3}
+  - {fileID: 8300000, guid: 37dbe933aa6122744b7a4ab19aa84558, type: 3}
   Hits:
   - {fileID: 8300000, guid: c809d1970561247599e7a9ca9d29659c, type: 3}
   - {fileID: 8300000, guid: 575c922f0d52c4e4e8fbab4d88076bf7, type: 3}
@@ -119,3 +124,4 @@ MonoBehaviour:
   RandomFootsteps: {fileID: 0}
   RandomAttackChords: {fileID: 0}
   RandomHits: {fileID: 0}
+  PlayerSoundsSource: {fileID: 0}
