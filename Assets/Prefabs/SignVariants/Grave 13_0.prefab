@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3914798863833915759
+--- !u!1001 &4409956088315350117
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223886786689972409, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
-      value: 1.8
+      value: 1.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223886786689972409, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Size.y
+      value: 1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223886786689972409, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Offset.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223886786689972409, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,28 +66,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
-      value: 2.69
+      value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.y
-      value: 3.61
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: m_Center.x
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Center.y
-      value: 1.78
+      value: 1.98
       objectReference: {fileID: 0}
     - target: {fileID: 5187566337484092070, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7031207543356682735, guid: 2962fa94041054eb5b80295748eb9ddc, type: 3}
+      objectReference: {fileID: 3787016296719372412, guid: 92a985dd639fb4c41bce81da715fa266, type: 3}
     - target: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Name
-      value: Grave 15_0
+      value: Grave 13_0
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 30f324c9d4b7f8f46933a376c453ff85, type: 2}
+      objectReference: {fileID: 11400000, guid: a5af77d4ddbd40342aa2816b753e17b8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

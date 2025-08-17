@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1223886786689972409}
   - component: {fileID: 5928255056853060441}
   - component: {fileID: 5898494637424342509}
+  - component: {fileID: 8469450189710251890}
   m_Layer: 8
   m_Name: SignBase
   m_TagString: Untagged
@@ -208,6 +209,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320b2c85f0f5f974aae5744eb8a6f6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8469450189710251890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728063005897266008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultDialogue: {fileID: 0}
+  updatedDialogue: {fileID: 0}
+  isDialogueUpdated: 0
+  signName: 
+  HasDialogueOnMelody: 0
+  IsPlayingSuccessAudio: 0
+  spriteRenderer: {fileID: 0}
+  soundVolume: 0.8
+  soundPlayDelay: 0.15
+  audioSources: []
+  successAnimator: {fileID: 0}
 --- !u!1 &8625808475103900238
 GameObject:
   m_ObjectHideFlags: 0

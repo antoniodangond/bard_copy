@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3914798863833915759
+--- !u!1001 &7301374089118607974
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,10 +8,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1223886786689972409, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
-      propertyPath: m_Size.x
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 1530922684326905548, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -52,30 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
-      propertyPath: m_Size.x
-      value: 2.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
-      propertyPath: m_Size.y
-      value: 3.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 1550962306099720047, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
-      propertyPath: m_Center.y
-      value: 1.78
-      objectReference: {fileID: 0}
     - target: {fileID: 5187566337484092070, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7031207543356682735, guid: 2962fa94041054eb5b80295748eb9ddc, type: 3}
+      objectReference: {fileID: -8664548019166541145, guid: db09d60d04c634f1d98fa6dc815d1179, type: 3}
     - target: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Name
-      value: Grave 15_0
+      value: Grave 4_0
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 30f324c9d4b7f8f46933a376c453ff85, type: 2}
+      objectReference: {fileID: 11400000, guid: e6403cb0b0e3205429fbc308e17a8f49, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
