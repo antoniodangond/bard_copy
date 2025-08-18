@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: D_PushableGrave
   m_EditorClassIdentifier: 
   upLines:
-  - A normal grave. Seems... oddly pushable.
+  - Here lies Philemon, blacksmith and cobbler.
+  - '"What seems steadfast may yet be guided by gentle hands".'
   downLines:
   - How did you get back here?
   leftLines:
   - You can't seem to read anything as this is the side of a grave.
   rightLines:
   - You can't seem to read anything as this is the side of a grave.
+  universalLines: []

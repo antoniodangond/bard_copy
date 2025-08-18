@@ -265,6 +265,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Get player's direction relative to object position
+    private FacingDirection GetRelativeDirection(Vector2 delta)
+    {
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+            return delta.x > 0 ? FacingDirection.Right : FacingDirection.Left;
+        else
+            return delta.y > 0 ? FacingDirection.Up : FacingDirection.Down;
+    }
+
+    //Check to see if player is facing an object w/ dialogue
     private (Dialogue, SignController) checkForDialogueCollision()
     {
         float yOffset = FacingDirection == FacingDirection.Down ? InteractionYOffsetFacingDown : InteractionYOffset;
@@ -291,6 +301,12 @@ public class PlayerController : MonoBehaviour
             SignController sign = hit.GetComponentInParent<SignController>();
             if (sign != null)
             {
+                // Filter out signs that are not in front of the player
+                Vector2 toSign = sign.transform.position - transform.position;
+                FacingDirection trueApproach = GetRelativeDirection(toSign);
+
+                if (trueApproach != FacingDirection) continue; // not facing the object!
+
                 Dialogue dialogue = sign.GetDialogueFromApproach(transform);
                 if (dialogue != null)
                 {
@@ -302,6 +318,7 @@ public class PlayerController : MonoBehaviour
 
         return (null, null);
     }
+
 
 
 
