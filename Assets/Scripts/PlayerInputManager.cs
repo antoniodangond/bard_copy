@@ -232,8 +232,10 @@ public class PlayerInputManager : MonoBehaviour
     {
         // Move action composite mode should be set to "digital" to prevent diagonal
         // movement magnitude from being less than 1
+        // Remove sprint action and try to refactor as a dash with cooldown
         isSprinting = sprintAction.IsPressed();
-        Movement = moveAction.ReadValue<Vector2>() * (isSprinting ? 1.5f : 1.0f);
+        // Movement = moveAction.ReadValue<Vector2>() * (isSprinting ? 1.5f : 1.0f);
+        Movement = moveAction.ReadValue<Vector2>();
         // Debug.Log($"movement speed is {Movement}");
         WasAttackPressed = attackAction.WasPressedThisFrame();
         MenuOpened = OpenMenuAction.WasPressedThisFrame();
