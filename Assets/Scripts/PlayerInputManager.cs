@@ -20,7 +20,7 @@ static class Actions
     public const string Attack = "Attack";
     public const string OpenMenu = "OpenMenu";
     public const string Dialogue = "Dialogue";
-    public const string Sprint = "Sprint";
+    public const string Dash = "Dash";
     // Instrument actions
     public const string ToggleInstrument = "ToggleInstrument";
     public const string NoteB = "NoteB";
@@ -51,7 +51,8 @@ public class PlayerInputManager : MonoBehaviour
     public static bool WasToggleInstrumentPressed;
     public static string NotePressed;
     public static bool WasDialoguePressed;
-    public static bool isSprinting;
+    public static bool wasDashPressed;
+    public static bool canDash;
 
     // Input Action Map
     private InputActionMap currentActionMap;
@@ -61,7 +62,7 @@ public class PlayerInputManager : MonoBehaviour
     private InputAction attackAction;
     private InputAction OpenMenuAction;
     private InputAction dialogueAction;
-    private InputAction sprintAction;
+    private InputAction dashAction;
     // Instrument actions
     private InputAction toggleInstrumentAction;
     private InputAction noteBAction;
@@ -81,7 +82,7 @@ public class PlayerInputManager : MonoBehaviour
         attackAction = playerActionMap.FindAction(Actions.Attack);
         OpenMenuAction = playerActionMap.FindAction(Actions.OpenMenu);
         dialogueAction = playerActionMap.FindAction(Actions.Dialogue);
-        sprintAction = playerActionMap.FindAction(Actions.Sprint);
+        dashAction = playerActionMap.FindAction(Actions.Dash);
         // Instrument actions
         InputActionMap instrumentActionMap = InputActionAsset.FindActionMap(ActionMaps.Instrument);
         toggleInstrumentAction = instrumentActionMap.FindAction(Actions.ToggleInstrument);
@@ -110,7 +111,7 @@ public class PlayerInputManager : MonoBehaviour
     {
         // Enable actions to ensure they can read values
         moveAction.Enable();
-        sprintAction.Enable();
+        dashAction.Enable();
         OpenMenuAction.Enable();
         toggleInstrumentAction.Enable();
         noteBAction.Enable();
@@ -232,8 +233,12 @@ public class PlayerInputManager : MonoBehaviour
     {
         // Move action composite mode should be set to "digital" to prevent diagonal
         // movement magnitude from being less than 1
+
         // Remove sprint action and try to refactor as a dash with cooldown
-        isSprinting = sprintAction.IsPressed();
+        wasDashPressed = dashAction.WasPressedThisFrame();
+        // if (wasDashPressed) {canDash = false;}
+        // else {canDash = true;}
+
         // Movement = moveAction.ReadValue<Vector2>() * (isSprinting ? 1.5f : 1.0f);
         Movement = moveAction.ReadValue<Vector2>();
         // Debug.Log($"movement speed is {Movement}");

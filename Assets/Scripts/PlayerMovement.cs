@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
+
 // using System.Numerics;
 using UnityEngine;
 
@@ -7,9 +9,8 @@ public class PlayerMovement : MonoBehaviour
     // Set shouldRotateOnTurn to true if only 1 animation is used for horizontal movement
     public bool shouldRotateOnTurn = false;
     private bool isFacingRight = false;
-    private float dashTime = 3f;
-    private float dashAmount = 25f;
-    private float dashForce;
+    private float dashTime = 1f;
+    private float dashAmount = 50f;
     private Vector2 dashDirection;
 
     public float moveSpeed;
@@ -25,35 +26,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash(Vector2 movement)
     {
-        // In case movement doesn't work
-        // Vector2 transformValue = gameObject.transform.position;
-        // switch (PlayerController.FacingDirection)
+        dashDirection = movement;
+        // if (PlayerInputManager.canDash)
         // {
-        //     case FacingDirection.Up:
-        //         dashDirection = (transformValue + new Vector2(0, 5)).normalized;
-        //         break;
-        //     case FacingDirection.Down:
-        //         dashDirection = (transformValue - new Vector2(0, 5)).normalized;
-        //         break;
-        //     case FacingDirection.Left:
-
-        //         dashDirection = (transformValue - new Vector2(5, 0)).normalized;
-        //         break;
-        //     case FacingDirection.Right:
-        //         dashDirection = (transformValue + new Vector2(5, 0)).normalized;
-        //         break;
-        //     default:
-        //         break;
+            StartCoroutine(DashRoutine(dashDirection));
         // }
-        dashDirection = (movement * dashAmount).normalized;
-        dashForce = 10f;
-        StartCoroutine(DashRoutine(dashDirection));
     }
 
     private IEnumerator DashRoutine(Vector2 movement)
     {
         float _elapsedTime = 0;
-        Vector2 Force = movement * dashForce;
+        Vector2 Force = movement.normalized * dashAmount;
         while (_elapsedTime < dashTime)
         {
             // Increment timer
@@ -89,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         // Normalize movement vector to set mangitutude to 1. This prevents speed
         // increase when moving diagonally. Set linear velocity to movement vector,
         // so that physics are respected.
-        if (PlayerInputManager.isSprinting)
+        if (PlayerInputManager.wasDashPressed)
         {
             Dash(movement);
         }
