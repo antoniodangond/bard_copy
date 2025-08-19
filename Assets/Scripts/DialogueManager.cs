@@ -130,7 +130,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void EndDialogue()
+    public void EndDialogue()
     {
         dialogueBox.SetActive(false); // Hide the dialogue box
 

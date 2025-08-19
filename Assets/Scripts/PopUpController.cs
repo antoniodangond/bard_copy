@@ -3,33 +3,22 @@ using UnityEngine;
 
 public class PopUpController : MonoBehaviour
 {
-    [SerializeField] private GameObject popUpPanel; // Assign in the Inspector
-    // [SerializeField] private float delay = 2f;       // Delay before deactivation in seconds
      [SerializeField] private KeyCode deactivateKey = KeyCode.Z;
+
+     [Header("Dialogue Settings")]
+    [SerializeField] private Dialogue defaultDialogue;
 
     void Start()
     {
-            // ShowPopUp();
+        DialogueManager.StartDialogue(defaultDialogue, FacingDirection.Up);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(deactivateKey)) // Check if the key is pressed
         {
-            popUpPanel.SetActive(false);
-        }
-    }
-
-    private void ShowPopUp()
-    {
-        if (popUpPanel != null)
-        {
-            popUpPanel.SetActive(true); // Show the pop-up
-            // DeactivateAfterDelay();
-        }
-        else
-        {
-            Debug.LogWarning("Pop-up panel not assigned!");
+            DialogueManager.Instance.EndDialogue();
+            Destroy(gameObject);
         }
     }
 
