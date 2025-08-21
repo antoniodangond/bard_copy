@@ -9,13 +9,16 @@ public class PlayerMovement : MonoBehaviour
     // Set shouldRotateOnTurn to true if only 1 animation is used for horizontal movement
     public bool shouldRotateOnTurn = false;
     private bool isFacingRight = false;
-    private float dashTime = 1f;
-    private float dashAmount = 50f;
-    private Vector2 dashDirection;
-
+    public float dashCooldownTime = 1f;
+    private float dashAmount = 100f;
+    private bool canDash;
     public float moveSpeed;
     public Rigidbody2D rb;
 
+    private void Awake()
+    {
+        canDash = true;
+    }
     private void RotateTransform(bool shouldFaceRight)
     {
         float yRotation = shouldFaceRight ? 180f : 0f;
@@ -24,28 +27,31 @@ public class PlayerMovement : MonoBehaviour
         isFacingRight = shouldFaceRight;
     }
 
-    private void Dash(Vector2 movement)
+    public void Dash(Vector2 movement)
     {
-        dashDirection = movement;
-        // if (PlayerInputManager.canDash)
-        // {
-            StartCoroutine(DashRoutine(dashDirection));
-        // }
+        if (canDash == true)
+        {
+            Debug.Log("Dash!");
+            canDash = false;
+            Vector2 Force = movement.normalized * dashAmount;
+            rb.linearVelocity = Force;
+            StartCoroutine(DashCooldownRoutine());
+        }
+        else {return;}
     }
 
-    private IEnumerator DashRoutine(Vector2 movement)
+    private IEnumerator DashCooldownRoutine()
     {
         float _elapsedTime = 0;
-        Vector2 Force = movement.normalized * dashAmount;
-        while (_elapsedTime < dashTime)
+        // PlayerInputManager.Instance.CanDash = 
+        while (_elapsedTime < dashCooldownTime)
         {
             // Increment timer
-            _elapsedTime += Time.fixedDeltaTime;
+            _elapsedTime += Time.deltaTime;
 
-            // Apply dash
-            rb.linearVelocity = Force;
             yield return new WaitForFixedUpdate();
         }
+        canDash = true;
     }
 
     private void HandleRotation(Vector2 movement)
@@ -72,10 +78,6 @@ public class PlayerMovement : MonoBehaviour
         // Normalize movement vector to set mangitutude to 1. This prevents speed
         // increase when moving diagonally. Set linear velocity to movement vector,
         // so that physics are respected.
-        if (PlayerInputManager.wasDashPressed)
-        {
-            Dash(movement);
-        }
-        else { rb.linearVelocity = movement * moveSpeed; }
+        rb.linearVelocity = movement * moveSpeed;
     }
 }

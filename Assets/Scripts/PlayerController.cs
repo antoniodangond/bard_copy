@@ -431,7 +431,12 @@ public class PlayerController : MonoBehaviour
     {
         // Move player rigidbody during FixedUpdate so that movement
         // is independent of framerate
-        playerMovement.Move(movement);
+        if (PlayerInputManager.wasDashPressed)
+        {
+            playerMovement.Dash(movement);
+        }
+        else {playerMovement.Move(movement);}
+        
         // If colliding with a pushable object while moving in a straight upward direction,
         // attempt to move it
         if (gravestone != null && movement.x == 0 && movement.y == 1)

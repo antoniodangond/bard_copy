@@ -1168,6 +1168,18 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: signName
+      value: Captain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: defaultDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 51f1a9dfb447d124ea0ba8772f6cc8f6, type: 2}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: updatedDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 4a3029da38caf73408400e30f3fb85c6, type: 2}
     - target: {fileID: 8980723282171336176, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
       value: 2.208828
@@ -1209,9 +1221,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 69826031}
-    - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 69826036}
   m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
 --- !u!1 &69826021 stripped
 GameObject:
@@ -1434,29 +1443,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &69826036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69826021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultDialogue: {fileID: 11400000, guid: 51f1a9dfb447d124ea0ba8772f6cc8f6, type: 2}
-  updatedDialogue: {fileID: 11400000, guid: 4a3029da38caf73408400e30f3fb85c6, type: 2}
-  isDialogueUpdated: 0
-  signName: Captain
-  HasDialogueOnMelody: 0
-  IsPlayingSuccessAudio: 0
-  spriteRenderer: {fileID: 0}
-  soundVolume: 0.8
-  soundPlayDelay: 0.15
-  audioSources: []
-  successAnimator: {fileID: 0}
 --- !u!1001 &76001315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14128,6 +14114,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 4418458111331290430, guid: 519c2d513fc11442a95b3e6eaea60e7f, type: 3}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: signName
+      value: Ghostboy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: defaultDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 86bde63293557df42b0b53296fde7f07, type: 2}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: updatedDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 88596675bd5015d46b98cfe47751e39d, type: 2}
     - target: {fileID: 8980723282171336176, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
       value: 3.138575
@@ -14169,9 +14167,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1697296439}
-    - targetCorrespondingSourceObject: {fileID: 7728063005897266008, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1697296444}
   m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
 --- !u!4 &1020398240 stripped
 Transform:
@@ -24794,29 +24789,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1697296444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697296422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultDialogue: {fileID: 11400000, guid: 86bde63293557df42b0b53296fde7f07, type: 2}
-  updatedDialogue: {fileID: 11400000, guid: 88596675bd5015d46b98cfe47751e39d, type: 2}
-  isDialogueUpdated: 0
-  signName: Ghostboy
-  HasDialogueOnMelody: 0
-  IsPlayingSuccessAudio: 0
-  spriteRenderer: {fileID: 0}
-  soundVolume: 0.8
-  soundPlayDelay: 0.15
-  audioSources: []
-  successAnimator: {fileID: 0}
 --- !u!1001 &1700373733
 PrefabInstance:
   m_ObjectHideFlags: 0

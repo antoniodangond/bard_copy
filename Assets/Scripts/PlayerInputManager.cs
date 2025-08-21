@@ -52,7 +52,6 @@ public class PlayerInputManager : MonoBehaviour
     public static string NotePressed;
     public static bool WasDialoguePressed;
     public static bool wasDashPressed;
-    public static bool canDash;
 
     // Input Action Map
     private InputActionMap currentActionMap;
@@ -236,9 +235,6 @@ public class PlayerInputManager : MonoBehaviour
 
         // Remove sprint action and try to refactor as a dash with cooldown
         wasDashPressed = dashAction.WasPressedThisFrame();
-        // if (wasDashPressed) {canDash = false;}
-        // else {canDash = true;}
-
         // Movement = moveAction.ReadValue<Vector2>() * (isSprinting ? 1.5f : 1.0f);
         Movement = moveAction.ReadValue<Vector2>();
         // Debug.Log($"movement speed is {Movement}");
