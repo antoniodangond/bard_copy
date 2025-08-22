@@ -29,25 +29,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash(Vector2 movement)
     {
-        if (canDash == true)
+        if (canDash == true && PlayerController.isDashing == true)
         {
             Debug.Log("Dash!");
             canDash = false;
             Vector2 Force = movement.normalized * dashAmount;
             rb.linearVelocity = Force;
             StartCoroutine(DashCooldownRoutine());
+            PlayerController.isDashing = false;
         }
-        else {return;}
+        else { return; }
     }
 
     private IEnumerator DashCooldownRoutine()
     {
         float _elapsedTime = 0;
-        // PlayerInputManager.Instance.CanDash = 
         while (_elapsedTime < dashCooldownTime)
         {
             // Increment timer
-            _elapsedTime += Time.deltaTime;
+            _elapsedTime += Time.fixedDeltaTime;
 
             yield return new WaitForFixedUpdate();
         }

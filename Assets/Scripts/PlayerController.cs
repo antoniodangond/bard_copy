@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     private Vector2 movement;
     private bool isPlayingLyre;
+    public static bool isDashing;
     private Gravestone gravestone;
     [HideInInspector]
     public bool isTakingDamage;
@@ -383,6 +384,11 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayAttackChord();
             }
 
+            if (PlayerInputManager.wasDashPressed)
+            {
+                isDashing = true;
+            }
+
             playerAnimation.SetAnimationParams(movement, isPlayingLyre);
         }
         else if (CurrentState == PlayerState.Instrument)
@@ -431,7 +437,7 @@ public class PlayerController : MonoBehaviour
     {
         // Move player rigidbody during FixedUpdate so that movement
         // is independent of framerate
-        if (PlayerInputManager.wasDashPressed)
+        if (isDashing)
         {
             playerMovement.Dash(movement);
         }
