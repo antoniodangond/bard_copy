@@ -1,6 +1,5 @@
 using System.Collections;
 using Unity.VisualScripting;
-
 // using System.Numerics;
 using UnityEngine;
 
@@ -10,15 +9,23 @@ public class PlayerMovement : MonoBehaviour
     public bool shouldRotateOnTurn = false;
     private bool isFacingRight = false;
     public float dashCooldownTime = 1f;
-    private float dashAmount = 100f;
-    private bool canDash;
+    public float dashTime = 1f;
+    private float dashAmount = 150f;
     public float moveSpeed;
+    // private Vector2[] dashDirections = new Vector2[]
+    // {
+    //     new Vector2(0,0) // Nothing
+    //     , new Vector2(1,0) // Right
+    //     , new Vector2(1,1) // Top-Right
+    //     , new Vector2(0,1) // Up
+    //     , new Vector2(-1,1) // Top-Left
+    //     , new Vector2(-1,0) // Left
+    //     , new Vector2(-1,-1) // Down-Left
+    //     , new Vector2(0,-1) // Down
+    //     , new Vector2(1,-1) // Down-Right
+    // };
     public Rigidbody2D rb;
 
-    private void Awake()
-    {
-        canDash = true;
-    }
     private void RotateTransform(bool shouldFaceRight)
     {
         float yRotation = shouldFaceRight ? 180f : 0f;
@@ -29,16 +36,41 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash(Vector2 movement)
     {
-        if (canDash == true && PlayerController.isDashing == true)
+        if (PlayerController.canDash == true && PlayerController.isDashing == true)
         {
-            Debug.Log("Dash!");
-            canDash = false;
-            Vector2 Force = movement.normalized * dashAmount;
-            rb.linearVelocity = Force;
+            Vector2 dashDirection = movement;
+            // Vector2 closestDirection = Vector2.zero;
+            // float minDistance = Vector2.Distance(movement, dashDirections[0]);
+            // for (int i = 0; i < dashDirections.Length; i++)
+            // {
+            //     if (movement == dashDirections[i])
+            //     {
+            //         dashDirection = movement + dashDirections[i];
+            //     }
+            // }
+            Debug.Log(movement);
+            Debug.Log(dashDirection);
+            StartCoroutine(DashRoutine(dashDirection));
             StartCoroutine(DashCooldownRoutine());
             PlayerController.isDashing = false;
         }
         else { return; }
+    }
+
+    private IEnumerator DashRoutine(Vector2 movement)
+    {
+        float _elapsedTime = 0f;
+        PlayerController.canDash = false;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        while (_elapsedTime < dashTime)
+        {
+            _elapsedTime += Time.fixedDeltaTime;
+            Vector2 Force = new Vector2(movement.normalized.x * dashAmount, movement.normalized.y * dashAmount);
+            rb.linearVelocity = Force;
+            yield return new WaitForFixedUpdate();
+        }
+        rb.gravityScale = originalGravity;
     }
 
     private IEnumerator DashCooldownRoutine()
@@ -51,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
             yield return new WaitForFixedUpdate();
         }
-        canDash = true;
+        PlayerController.canDash = true;
     }
 
     private void HandleRotation(Vector2 movement)

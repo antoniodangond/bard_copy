@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool isPlayingLyre;
     public static bool isDashing;
+    public static bool canDash;
     private Gravestone gravestone;
     [HideInInspector]
     public bool isTakingDamage;
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         Health = MaxHealth;
         // Initialize lastPlayedNotes to a queue of null values
         lastPlayedNotes = BuildEmptyNotesQueue();
+        canDash = true;
     }
 
     void OnDestroy()
@@ -384,7 +386,7 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayAttackChord();
             }
 
-            if (PlayerInputManager.wasDashPressed)
+            if (PlayerInputManager.wasDashPressed && canDash)
             {
                 isDashing = true;
             }
