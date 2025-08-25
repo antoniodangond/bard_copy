@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PopUpController : MonoBehaviour
 {
-     [SerializeField] private KeyCode deactivateKey = KeyCode.Z;
 
      [Header("Dialogue Settings")]
     [SerializeField] private Dialogue defaultDialogue;
@@ -15,21 +15,10 @@ public class PopUpController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(deactivateKey)) // Check if the key is pressed
+        if (PlayerInputManager.WasDialoguePressed)
         {
             DialogueManager.Instance.EndDialogue();
             Destroy(gameObject);
         }
     }
-
-    //  public void DeactivateAfterDelay()
-    // {
-    //     StartCoroutine(DeactivateCanvasCoroutine());
-    // }
-
-    // private IEnumerator DeactivateCanvasCoroutine()
-    // {
-    //     yield return new WaitForSeconds(delay); // Wait for the specified delay
-    //     popUpPanel.SetActive(false);          // Deactivate the canvas
-    // }
 }
