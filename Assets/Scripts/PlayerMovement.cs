@@ -9,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public bool shouldRotateOnTurn = false;
     private bool isFacingRight = false;
     public float dashCooldownTime = 1f;
-    public float dashTime = 1f;
-    private float dashAmount = 150f;
+    public float dashTime = 0.25f;
+    private float dashAmount = 35f;
+    private TrailRenderer trailRenderer;
     public float moveSpeed;
     // private Vector2[] dashDirections = new Vector2[]
     // {
@@ -26,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
     // };
     public Rigidbody2D rb;
 
+    private void Awake()
+    {
+        trailRenderer = gameObject.GetComponent<TrailRenderer>();
+    }
+
     private void RotateTransform(bool shouldFaceRight)
     {
         float yRotation = shouldFaceRight ? 180f : 0f;
@@ -39,17 +45,6 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerController.canDash == true && PlayerController.isDashing == true)
         {
             Vector2 dashDirection = movement;
-            // Vector2 closestDirection = Vector2.zero;
-            // float minDistance = Vector2.Distance(movement, dashDirections[0]);
-            // for (int i = 0; i < dashDirections.Length; i++)
-            // {
-            //     if (movement == dashDirections[i])
-            //     {
-            //         dashDirection = movement + dashDirections[i];
-            //     }
-            // }
-            Debug.Log(movement);
-            Debug.Log(dashDirection);
             StartCoroutine(DashRoutine(dashDirection));
             StartCoroutine(DashCooldownRoutine());
             PlayerController.isDashing = false;
@@ -65,9 +60,14 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         while (_elapsedTime < dashTime)
         {
+            trailRenderer.emitting = true;
             _elapsedTime += Time.fixedDeltaTime;
-            Vector2 Force = new Vector2(movement.normalized.x * dashAmount, movement.normalized.y * dashAmount);
+            Vector2 Force = movement.normalized * moveSpeed * dashAmount;
             rb.linearVelocity = Force;
+            if (_elapsedTime >= 0.2f)
+            {
+                trailRenderer.emitting = false;
+            }
             yield return new WaitForFixedUpdate();
         }
         rb.gravityScale = originalGravity;
