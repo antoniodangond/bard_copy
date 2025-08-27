@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public ContactFilter2D contactFilter;
     // Set shouldRotateOnTurn to true if only 1 animation is used for horizontal movement
     public bool shouldRotateOnTurn = false;
     private bool isFacingRight = false;
@@ -42,9 +43,33 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash(Vector2 movement)
     {
+        if (movement.normalized == new Vector2(0, 0))
+        {
+            switch (PlayerController.FacingDirection)
+            {
+                case FacingDirection.Up:
+                    movement = new Vector2(0, 1);
+                    break;
+                case FacingDirection.Right:
+                    movement = new Vector2(1, 0);
+                    break;
+                case FacingDirection.Down:
+                    movement = new Vector2(0, -1);
+                    break;
+                case FacingDirection.Left:
+                    movement = new Vector2(-1, 0);
+                    break;
+                default:
+                    break;
+            }
+        }
+        RaycastHit2D raycastHit = Physics2D.Raycast(gameObject.transform.position, movement.normalized, 10f);
+        Debug.Log(raycastHit.collider);
+        Debug.DrawRay(gameObject.transform.position, movement.normalized * 20f, Color.yellow);
         if (PlayerController.canDash == true && PlayerController.isDashing == true)
         {
             Vector2 dashDirection = movement;
+            Debug.Log("hi");
             StartCoroutine(DashRoutine(dashDirection));
             StartCoroutine(DashCooldownRoutine());
             PlayerController.isDashing = false;
