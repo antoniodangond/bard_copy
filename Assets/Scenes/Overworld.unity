@@ -8748,6 +8748,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: contactFilter.useLayerMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: contactFilter.layerMask.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 3995807479069213493, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: playerSoundLibrary.Array.size
       value: 1

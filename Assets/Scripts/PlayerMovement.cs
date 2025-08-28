@@ -63,13 +63,12 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
-        RaycastHit2D raycastHit = Physics2D.Raycast(gameObject.transform.position, movement.normalized, 10f);
+        RaycastHit2D raycastHit = Physics2D.Raycast(gameObject.transform.position, movement.normalized, 5f, 1<<11);
         Debug.Log(raycastHit.collider);
-        Debug.DrawRay(gameObject.transform.position, movement.normalized * 20f, Color.yellow);
+        Debug.DrawRay(gameObject.transform.position, movement.normalized * 5f, Color.yellow, 1f);
         if (PlayerController.canDash == true && PlayerController.isDashing == true)
         {
             Vector2 dashDirection = movement;
-            Debug.Log("hi");
             StartCoroutine(DashRoutine(dashDirection));
             StartCoroutine(DashCooldownRoutine());
             PlayerController.isDashing = false;
