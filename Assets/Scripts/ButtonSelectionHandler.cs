@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class ButtonSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
@@ -26,8 +27,8 @@ public class ButtonSelectionHandler : MonoBehaviour, IPointerEnterHandler, IPoin
         // select the button
         eventData.selectedObject = gameObject;
         audioSource.volume = 0.3f;
-        Debug.Log(audioSource.volume)
-;        audioSource.Play();
+        Debug.Log(audioSource.volume);
+        audioSource.Play();
         buttonImage.color = selectedColor;
     }
 
