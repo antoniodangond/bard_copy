@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     public float MoveSpeed;
     public float AttackDurationSeconds;
     public float Health;
+    [SerializeField] private ParticleSystem damageParticles;
+    private ParticleSystem damageParticlesInstance;
     private EnemyState currentState = EnemyState.Default;
     private Vector2 targetDirection;
     private GameObject target;
@@ -92,10 +94,19 @@ public class EnemyController : MonoBehaviour
         isBeingKnockedBack = false;
     }
 
+    private void SpawnDamageParticles()
+    {
+        damageParticlesInstance = Instantiate(damageParticles, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        ParticleSystem.ShapeModule ps = damageParticles.shape;
+        Vector3 currentRotation = ps.rotation;
+        currentRotation += new Vector3(0, 0, 0.4f);
+        ps.rotation = currentRotation;
+    }
+
     public void TakeDamage(float damage, PlayerController playerController)
     {
         Health -= damage;
-
+        SpawnDamageParticles();
         StartCoroutine(EnemyDamageColorChangeRoutine());
 
         if (Health <= 0f)

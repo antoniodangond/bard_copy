@@ -21,6 +21,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
+      propertyPath: damageParticles
+      value: 
+      objectReference: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}
+    - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
       propertyPath: AttackCooldownTime
       value: 0.3
       objectReference: {fileID: 0}
@@ -91,6 +95,10 @@ PrefabInstance:
     - target: {fileID: 3594859159269561785, guid: 859c234214669476186e24188d770445, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603837403979830540, guid: 859c234214669476186e24188d770445, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

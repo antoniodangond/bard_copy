@@ -177,6 +177,7 @@ MonoBehaviour:
   MoveSpeed: 5
   AttackDurationSeconds: 2
   Health: 5
+  damageParticles: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}
 --- !u!114 &3039504290632459600
 MonoBehaviour:
   m_ObjectHideFlags: 0
