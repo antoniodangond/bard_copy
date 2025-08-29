@@ -63,9 +63,9 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
-        RaycastHit2D raycastHit = Physics2D.Raycast(gameObject.transform.position, movement.normalized, 5f, 1<<11);
-        Debug.Log(raycastHit.collider);
-        Debug.DrawRay(gameObject.transform.position, movement.normalized * 5f, Color.yellow, 1f);
+        //no longer needed now that collision detection is continuous
+        // RaycastHit2D raycastHit = Physics2D.Raycast(gameObject.transform.position, movement.normalized, 5f, 1<<11);
+        // Debug.DrawRay(gameObject.transform.position, movement.normalized * 5f, Color.yellow, 1f);
         if (PlayerController.canDash == true && PlayerController.isDashing == true)
         {
             Vector2 dashDirection = movement;
@@ -84,6 +84,15 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         while (_elapsedTime < dashTime)
         {
+            // Since changing the collision detection mode this is unnecessary,
+            // but in case there is a desire to improve efficiency later,
+            // I'm leaving this as a starting point
+
+            // if (collider != null && rb.IsTouching(collider))
+            // {
+            //     // rb.linearVelocity = new Vector2(0, 0).normalized;
+            //     break;
+            // }
             trailRenderer.emitting = true;
             _elapsedTime += Time.fixedDeltaTime;
             Vector2 Force = movement.normalized * moveSpeed * dashAmount;

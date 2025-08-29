@@ -4597,6 +4597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 4204401437748988813, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.8981843
@@ -8736,6 +8740,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4468816675970380767, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1030398134614253474, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_Name
       value: Player
