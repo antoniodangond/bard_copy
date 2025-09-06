@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isFacingRight = false;
     public float dashCooldownTime = 1f;
     public float dashTime = 0.25f;
-    private float dashAmount = 35f;
+    private float dashAmount = 15f;
     private TrailRenderer trailRenderer;
     public float moveSpeed;
     // private Vector2[] dashDirections = new Vector2[]
