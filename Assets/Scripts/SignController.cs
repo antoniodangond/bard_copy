@@ -101,7 +101,7 @@ public class SignController : MonoBehaviour
             Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
-        if ( signName != "Log" &&  signName != "Vines")
+        if (signName != "Log" && signName != "Vines")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;
@@ -114,7 +114,7 @@ public class SignController : MonoBehaviour
         {
             StartCoroutine(PlaySuccessAnimation(signName));
         }
-	else {Debug.Log("null");}
+        else { Debug.Log("null"); }
     }
 
     private IEnumerator PlaySuccessAnimation(string signName)
@@ -132,6 +132,11 @@ public class SignController : MonoBehaviour
         //     spriteRenderer.enabled = false;
         // }
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
+        {
+            collider.enabled = false;
+            Debug.Log("Collider Disabled");
+        }
+        foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
         {
             collider.enabled = false;
             Debug.Log("Collider Disabled");
