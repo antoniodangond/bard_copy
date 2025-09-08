@@ -671,7 +671,7 @@ ParticleSystem:
     radiusThickness: 0.4
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 136.40001}
+    m_Rotation: {x: 0, y: 0, z: 186.79924}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
@@ -1375,7 +1375,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.70440245, g: 0.2582175, b: 0.2060044, a: 1}
+        key0: {r: 0.9308176, g: 0.15434472, b: 0.032197986, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 0.6666667}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -1391,8 +1391,8 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 4498
-        atime1: 40735
+        atime0: 23259
+        atime1: 50886
         atime2: 0
         atime3: 0
         atime4: 0
