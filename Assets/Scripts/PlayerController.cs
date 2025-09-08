@@ -435,6 +435,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public static Vector2 getFacingDirectionVector2()
+    {
+        switch (FacingDirection)
+            {
+                case FacingDirection.Up:
+                    return new Vector2(0, 1);
+                case FacingDirection.Right:
+                    return new Vector2(1, 0);
+                case FacingDirection.Down:
+                    return new Vector2(0, -1);
+                case FacingDirection.Left:
+                    return new Vector2(-1, 0);
+                default:
+                    return new Vector2(0,0);
+            }
+    }
+
     void FixedUpdate()
     {
         // Move player rigidbody during FixedUpdate so that movement

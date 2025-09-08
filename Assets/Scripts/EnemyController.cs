@@ -94,19 +94,22 @@ public class EnemyController : MonoBehaviour
         isBeingKnockedBack = false;
     }
 
-    private void SpawnDamageParticles()
+    private void SpawnDamageParticles(Vector2 attackDirection)
     {
-        damageParticlesInstance = Instantiate(damageParticles, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        Quaternion spawnRotation = Quaternion.FromToRotation(Vector2.up, attackDirection);
+
+        damageParticlesInstance = Instantiate(damageParticles, transform.position + new Vector3(0, 1, 0), spawnRotation);
         ParticleSystem.ShapeModule ps = damageParticles.shape;
         Vector3 currentRotation = ps.rotation;
         currentRotation += new Vector3(0, 0, 0.4f);
         ps.rotation = currentRotation;
     }
 
-    public void TakeDamage(float damage, PlayerController playerController)
+    public void TakeDamage(float damage, PlayerController playerController, Vector2 attackDirection)
     {
+
         Health -= damage;
-        SpawnDamageParticles();
+        SpawnDamageParticles(attackDirection);
         StartCoroutine(EnemyDamageColorChangeRoutine());
 
         if (Health <= 0f)

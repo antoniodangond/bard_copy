@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(LayerMask))]
 public class WeaponController : MonoBehaviour
@@ -6,6 +7,7 @@ public class WeaponController : MonoBehaviour
     public float AttackRange;
     public LayerMask enemyLayer;
     public PlayerController playerController;
+    private Vector2 attackDirection;
     Vector3 transformValue;
 
     // TODO: make customizable in editor
@@ -48,8 +50,14 @@ public class WeaponController : MonoBehaviour
             {
                 continue;
             }
+            if (PlayerInputManager.Movement == new Vector2(0, 0))
+            {
+                attackDirection = PlayerController.getFacingDirectionVector2();
+            }
+            else { attackDirection = PlayerInputManager.Movement; }
+            // Vector2 attackDirection = PlayerController.getFacingDirectionVector2(PlayerController.FacingDirection);
             EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
-            enemyController.TakeDamage(damage, playerController);
+            enemyController.TakeDamage(damage, playerController, attackDirection);
         }
     }
 
