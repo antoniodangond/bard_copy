@@ -35,7 +35,6 @@ public class EnemyController : MonoBehaviour
     private bool isBeingKnockedBack= false;
     private EnemyAudio enemyAudio;
     private Rigidbody2D rb;
-    private PlayerController PlayerController;
     private SpriteRenderer spriteRenderer;
     private Color defaultSpriteColor;
     private float colorChangeDuration = 0.25f;
@@ -99,10 +98,6 @@ public class EnemyController : MonoBehaviour
         Quaternion spawnRotation = Quaternion.FromToRotation(Vector2.up, attackDirection);
 
         damageParticlesInstance = Instantiate(damageParticles, transform.position + new Vector3(0, 1, 0), spawnRotation);
-        ParticleSystem.ShapeModule ps = damageParticles.shape;
-        Vector3 currentRotation = ps.rotation;
-        currentRotation += new Vector3(0, 0, 0.4f);
-        ps.rotation = currentRotation;
     }
 
     public void TakeDamage(float damage, PlayerController playerController, Vector2 attackDirection)

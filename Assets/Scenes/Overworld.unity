@@ -8784,6 +8784,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4468816675970380767, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4468816675970380767, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4468816675970380767, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
@@ -8799,6 +8807,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: dashParticles
+      value: 
+      objectReference: {fileID: 5974238658672876685, guid: f00333a5a738f1c40b0524c564d41d0d, type: 3}
+    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: dashParticles_1
+      value: 
+      objectReference: {fileID: 5974238658672876685, guid: f00333a5a738f1c40b0524c564d41d0d, type: 3}
+    - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: dashParticles_2
+      value: 
+      objectReference: {fileID: 5974238658672876685, guid: db059de7f68a6414e8894700bae6f6b9, type: 3}
     - target: {fileID: 2947611010104209421, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: contactFilter.useLayerMask
       value: 1

@@ -12,25 +12,17 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldownTime = 1f;
     public float dashTime = 0.25f;
     private float dashAmount = 15f;
-    private TrailRenderer trailRenderer;
+    // private TrailRenderer trailRenderer;
+    [SerializeField] private ParticleSystem dashParticles_1;
+    [SerializeField] private ParticleSystem dashParticles_2;
+    private ParticleSystem dashParticles_1_Instance;
+    private ParticleSystem dashParticles_2_Instance;
     public float moveSpeed;
-    // private Vector2[] dashDirections = new Vector2[]
-    // {
-    //     new Vector2(0,0) // Nothing
-    //     , new Vector2(1,0) // Right
-    //     , new Vector2(1,1) // Top-Right
-    //     , new Vector2(0,1) // Up
-    //     , new Vector2(-1,1) // Top-Left
-    //     , new Vector2(-1,0) // Left
-    //     , new Vector2(-1,-1) // Down-Left
-    //     , new Vector2(0,-1) // Down
-    //     , new Vector2(1,-1) // Down-Right
-    // };
     public Rigidbody2D rb;
 
     private void Awake()
     {
-        trailRenderer = gameObject.GetComponent<TrailRenderer>();
+        // trailRenderer = gameObject.GetComponent<TrailRenderer>();
     }
 
     private void RotateTransform(bool shouldFaceRight)
@@ -41,27 +33,27 @@ public class PlayerMovement : MonoBehaviour
         isFacingRight = shouldFaceRight;
     }
 
+    private void spawndashParticles_1(Vector2 movement)
+    {
+        Quaternion spawnRotation_1 = Quaternion.FromToRotation(movement * -1, movement);
+        Quaternion spawnRotation_2 = Quaternion.FromToRotation(Vector2.right, movement);
+        Vector3 new_move = movement;
+        var shape = dashParticles_1.shape;
+        SpriteRenderer spr = gameObject.GetComponent<SpriteRenderer>();
+        shape.spriteRenderer = spr;
+        shape.rotation = PlayerController.getFacingDirectionVector2();
+        dashParticles_1_Instance = Instantiate(dashParticles_1, transform.position + new Vector3(0, 1, 0), spawnRotation_1);
+        dashParticles_1_Instance.transform.parent = gameObject.transform;
+        dashParticles_2_Instance = Instantiate(dashParticles_2, transform.position + new_move, spawnRotation_2);
+        dashParticles_2_Instance.transform.parent = gameObject.transform;
+       
+    }
+
     public void Dash(Vector2 movement)
     {
         if (movement.normalized == new Vector2(0, 0))
         {
-            switch (PlayerController.FacingDirection)
-            {
-                case FacingDirection.Up:
-                    movement = new Vector2(0, 1);
-                    break;
-                case FacingDirection.Right:
-                    movement = new Vector2(1, 0);
-                    break;
-                case FacingDirection.Down:
-                    movement = new Vector2(0, -1);
-                    break;
-                case FacingDirection.Left:
-                    movement = new Vector2(-1, 0);
-                    break;
-                default:
-                    break;
-            }
+            movement = PlayerController.getFacingDirectionVector2();
         }
         //no longer needed now that collision detection is continuous
         // RaycastHit2D raycastHit = Physics2D.Raycast(gameObject.transform.position, movement.normalized, 5f, 1<<11);
@@ -69,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerController.canDash == true && PlayerController.isDashing == true)
         {
             Vector2 dashDirection = movement;
+            spawndashParticles_1(dashDirection * -1);
             StartCoroutine(DashRoutine(dashDirection));
             StartCoroutine(DashCooldownRoutine());
             PlayerController.isDashing = false;
@@ -93,14 +86,15 @@ public class PlayerMovement : MonoBehaviour
             //     // rb.linearVelocity = new Vector2(0, 0).normalized;
             //     break;
             // }
-            trailRenderer.emitting = true;
+            // Particle system looks cooler than trail renderer, so disabling for now
+            // trailRenderer.emitting = true;
             _elapsedTime += Time.fixedDeltaTime;
             Vector2 Force = movement.normalized * moveSpeed * dashAmount;
             rb.linearVelocity = Force;
-            if (_elapsedTime >= 0.2f)
-            {
-                trailRenderer.emitting = false;
-            }
+            // if (_elapsedTime >= 0.2f)
+            // {
+            //     trailRenderer.emitting = false;
+            // }
             yield return new WaitForFixedUpdate();
         }
         rb.gravityScale = originalGravity;
