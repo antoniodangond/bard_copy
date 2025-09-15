@@ -10,7 +10,7 @@ public class Dialogue : ScriptableObject
     [SerializeField] private List<string> rightLines;
 
     // Combined list for single-direction lines
-    [SerializeField] private List<string> universalLines = new List<string>();
+    [SerializeField] public List<string> universalLines = new List<string>();
 
     // Get lines for the specified direction
     public List<string> GetLines(FacingDirection direction)

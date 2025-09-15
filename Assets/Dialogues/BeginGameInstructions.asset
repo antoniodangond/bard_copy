@@ -16,5 +16,4 @@ MonoBehaviour:
   downLines: []
   leftLines: []
   rightLines: []
-  universalLines:
-  - Press Z to interact!
+  universalLines: []
