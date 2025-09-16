@@ -4,10 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue System/Dialogue")]
 public class Dialogue : ScriptableObject
 {
-    [SerializeField] private List<string> upLines;
-    [SerializeField] private List<string> downLines;
-    [SerializeField] private List<string> leftLines;
-    [SerializeField] private List<string> rightLines;
+    [SerializeField] public List<string> upLines;
+    [SerializeField] public List<string> downLines;
+    [SerializeField] public List<string> leftLines;
+    [SerializeField] public List<string> rightLines;
 
     // Combined list for single-direction lines
     [SerializeField] public List<string> universalLines = new List<string>();

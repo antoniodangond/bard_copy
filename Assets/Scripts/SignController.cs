@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Timeline;
 
 public class SignController : MonoBehaviour
@@ -14,6 +15,11 @@ public class SignController : MonoBehaviour
 
     [Header("Sign Properties")]
     public string signName;
+    public PlayerInput playerInput;
+    private string attackButton_1;
+    private string attackButton_2;
+    private string toggleInstrumentButton;
+    private string lyreButtons;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
     public SpriteRenderer spriteRenderer;
@@ -32,6 +38,8 @@ public class SignController : MonoBehaviour
     public void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        handleTutorialDialog(signName);
+
     }
     public void Interact()
     {
@@ -140,6 +148,58 @@ public class SignController : MonoBehaviour
         {
             collider.enabled = false;
             Debug.Log("Collider Disabled");
+        }
+    }
+    private void handleTutorialDialog(string signName)
+    {
+        if (signName == "E_Grave")
+        {
+            // clear dialogue lines set last time
+            // because these will update depensing on what controller is connected
+            defaultDialogue.upLines.Clear();
+
+            defaultDialogue.upLines.Add("Orpheus. I have found a way. Beyond life and death.");
+            defaultDialogue.upLines.Add("A place where we will never part...");
+            defaultDialogue.upLines.Add("Use your LYRE to quell lost souls.");
+            if (Gamepad.current == null)
+            {
+                attackButton_1 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(0);
+                attackButton_2 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(1);
+                toggleInstrumentButton = playerInput.actions.FindActionMap("Instrument").FindAction("ToggleInstrument").GetBindingDisplayString(0);
+                setLyreButtons(false);
+
+                defaultDialogue.upLines.Add($"[Press {attackButton_1} or {attackButton_2} to ATATCK]");
+                defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
+            }
+            else
+            {
+                attackButton_1 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2);
+                toggleInstrumentButton = playerInput.actions.FindActionMap("Instrument").FindAction("ToggleInstrument").GetBindingDisplayString(1);
+                setLyreButtons(true);
+
+                defaultDialogue.upLines.Add($"[Press {attackButton_1} to ATATCK]");
+                defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
+            }
+        }
+        else { return; }
+    }
+
+    private void setLyreButtons(bool gamepadActive)
+    {
+        if (!gamepadActive)
+        {
+            lyreButtons = playerInput.actions.FindActionMap("Instrument").FindAction("NoteB").GetBindingDisplayString(0);
+            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteC").GetBindingDisplayString(0);
+            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteD").GetBindingDisplayString(0);
+            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteE").GetBindingDisplayString(0);
+        }
+        else
+        {
+            lyreButtons = playerInput.actions.FindActionMap("Instrument").FindAction("NoteB").GetBindingDisplayString(1);
+            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteC").GetBindingDisplayString(1);
+            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteD").GetBindingDisplayString(1);
+            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteE").GetBindingDisplayString(1);
+            
         }
     }
 }
