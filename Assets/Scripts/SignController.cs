@@ -168,7 +168,7 @@ public class SignController : MonoBehaviour
                 toggleInstrumentButton = playerInput.actions.FindActionMap("Instrument").FindAction("ToggleInstrument").GetBindingDisplayString(0);
                 setLyreButtons(false);
 
-                defaultDialogue.upLines.Add($"[Press {attackButton_1} or {attackButton_2} to ATATCK]");
+                defaultDialogue.upLines.Add($"[Press {attackButton_1} or {attackButton_2} to ATTACK]");
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
             }
             else
@@ -177,7 +177,7 @@ public class SignController : MonoBehaviour
                 toggleInstrumentButton = playerInput.actions.FindActionMap("Instrument").FindAction("ToggleInstrument").GetBindingDisplayString(1);
                 setLyreButtons(true);
 
-                defaultDialogue.upLines.Add($"[Press {attackButton_1} to ATATCK]");
+                defaultDialogue.upLines.Add($"[Press {attackButton_1} to ATTACK]");
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
             }
         }
