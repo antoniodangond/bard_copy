@@ -9499,6 +9499,7 @@ MonoBehaviour:
   updatedDialogue: {fileID: 0}
   isDialogueUpdated: 0
   signName: 
+  playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
   spriteRenderer: {fileID: 0}
@@ -9749,6 +9750,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &683017117 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5325535466554732230, guid: 0b0d1e7cfe5d045e0b280095e1ba701f, type: 3}
+  m_PrefabInstance: {fileID: 2081065499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &703148646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13240,6 +13252,7 @@ MonoBehaviour:
   updatedDialogue: {fileID: 0}
   isDialogueUpdated: 0
   signName: BeachStatue
+  playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
   spriteRenderer: {fileID: 0}
@@ -13336,6 +13349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultDialogue: {fileID: 11400000, guid: 385f109c9b595d94cb862f13543b57f8, type: 2}
+  playerInput: {fileID: 683017117}
 --- !u!1001 &930936472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13918,6 +13932,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: signName
+      value: SongDecay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 683017117}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 
@@ -20809,6 +20831,10 @@ PrefabInstance:
       propertyPath: signName
       value: E_Grave
       objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 683017117}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 

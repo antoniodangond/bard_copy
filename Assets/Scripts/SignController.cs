@@ -158,6 +158,8 @@ public class SignController : MonoBehaviour
             // because these will update depensing on what controller is connected
             defaultDialogue.upLines.Clear();
 
+            string[] lyreNotes = new string[] { "NoteB", "NoteC", "NoteD", "NoteE" };
+
             defaultDialogue.upLines.Add("Orpheus. I have found a way. Beyond life and death.");
             defaultDialogue.upLines.Add("A place where we will never part...");
             defaultDialogue.upLines.Add("Use your LYRE to quell lost souls.");
@@ -165,8 +167,8 @@ public class SignController : MonoBehaviour
             {
                 attackButton_1 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(0);
                 attackButton_2 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(1);
-                toggleInstrumentButton = playerInput.actions.FindActionMap("Instrument").FindAction("ToggleInstrument").GetBindingDisplayString(0);
-                setLyreButtons(false);
+                toggleInstrumentButton = getCorrectButton("Instrument", "ToggleInstrument", "Keyboard");
+                setLyreButtons(false, lyreNotes);
 
                 defaultDialogue.upLines.Add($"[Press {attackButton_1} or {attackButton_2} to ATTACK]");
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
@@ -174,32 +176,74 @@ public class SignController : MonoBehaviour
             else
             {
                 attackButton_1 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2);
-                toggleInstrumentButton = playerInput.actions.FindActionMap("Instrument").FindAction("ToggleInstrument").GetBindingDisplayString(1);
-                setLyreButtons(true);
+                toggleInstrumentButton = getCorrectButton("Instrument", "ToggleInstrument", "Gamepad");
+                setLyreButtons(true, lyreNotes);
 
                 defaultDialogue.upLines.Add($"[Press {attackButton_1} to ATTACK]");
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
             }
         }
+        else if (signName == "SongDecay")
+        {
+            // clear lines because these will update depending on what controller (or keyboard) is connected
+            defaultDialogue.universalLines.Clear();
+
+            // initialize varibale for song
+            string[] songOfDecay = new string[] { "NoteC", "NoteB", "NoteC", "NoteD", "NoteE"};
+            if (Gamepad.current == null)
+            {
+                setLyreButtons(false, songOfDecay);
+            }
+            else
+            {
+                setLyreButtons(true, songOfDecay);
+            }
+            defaultDialogue.universalLines.Add("SONG OF DECAY");
+            defaultDialogue.universalLines.Add(lyreButtons);
+        }
         else { return; }
     }
 
-    private void setLyreButtons(bool gamepadActive)
+    private void setLyreButtons(bool gamepadActive, string[] notes)
     {
-        if (!gamepadActive)
+        for (int i = 0; i < notes.Length; i++)
         {
-            lyreButtons = playerInput.actions.FindActionMap("Instrument").FindAction("NoteB").GetBindingDisplayString(0);
-            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteC").GetBindingDisplayString(0);
-            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteD").GetBindingDisplayString(0);
-            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteE").GetBindingDisplayString(0);
+            if (!gamepadActive)
+            {
+                if (i == 0)
+                {
+                    lyreButtons = getCorrectButton("Instrument", notes[i], "Keyboard");
+                }
+                else
+                {
+                    lyreButtons = lyreButtons + ", " + getCorrectButton("Instrument", notes[i], "Keyboard");
+                }
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    lyreButtons = getCorrectButton("Instrument", notes[i], "Gamepad");
+
+                }
+                else
+                {
+                    lyreButtons = lyreButtons + ", " + getCorrectButton("Instrument", notes[i], "Gamepad");
+                }
+            }
+        }
+    }
+
+    // Doesn't work for attack action 
+    private string getCorrectButton(string actionMap, string action, string controlScheme)
+    {
+        if (controlScheme == "Keyboard")
+        {
+            return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(0);
         }
         else
         {
-            lyreButtons = playerInput.actions.FindActionMap("Instrument").FindAction("NoteB").GetBindingDisplayString(1);
-            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteC").GetBindingDisplayString(1);
-            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteD").GetBindingDisplayString(1);
-            lyreButtons = lyreButtons + ", " + playerInput.actions.FindActionMap("Instrument").FindAction("NoteE").GetBindingDisplayString(1);
-            
+            return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(1);
         }
     }
 }

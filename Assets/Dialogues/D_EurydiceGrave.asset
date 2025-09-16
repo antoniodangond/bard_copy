@@ -12,12 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
   m_Name: D_EurydiceGrave
   m_EditorClassIdentifier: 
-  upLines:
-  - Orpheus. I have found a way. Beyond life and death.
-  - A place where we will never part...
-  - Use your LYRE to quell lost souls.
-  - '[Press LEFT CLICK or ENTER to ATTACK]'
-  - '[Press SPACE to enter PLAY mode. Use W,A,S,D to play NOTES]'
+  upLines: []
   downLines:
   - This is the back of Eurydice's grave.
   leftLines:
