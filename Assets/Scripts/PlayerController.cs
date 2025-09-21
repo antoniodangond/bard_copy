@@ -54,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     private Vector2 movement;
     private bool isPlayingLyre;
+    private bool isAttacking;
     public static bool isDashing;
     public static bool canDash;
     private Gravestone gravestone;
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
     };
     // Track the notes played while in Instrument mode
     private Queue<string> lastPlayedNotes;
+    [SerializeField] private ParticleSystem attackParticles;
+    private ParticleSystem attackParticlesInstance;
 
     void Awake()
     {
@@ -112,21 +115,23 @@ public class PlayerController : MonoBehaviour
         {
             CurrentState = PlayerState.Instrument;
             isPlayingLyre = true;
+            isAttacking = false;
             // reset movement when switching to Instrument state
             movement = Vector2.zero;
             // stop walking animation
-            playerAnimation.SetAnimationParams(movement, isPlayingLyre);
+            playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
         }
         else if (CurrentState == PlayerState.Instrument)
         {
             CurrentState = PlayerState.Default;
             isPlayingLyre = false;
+            isAttacking = false;
 
             // Clear the note queue when lyre is put away (to prevent accidental triggers)
             lastPlayedNotes = BuildEmptyNotesQueue();
         }
         // Set animation params after determining movement and isPlayingLyre
-        playerAnimation.SetAnimationParams(movement, isPlayingLyre);
+        playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
     }
 
     private string FindMelodyToPlay(Queue<string> lastPlayedNotes)
@@ -176,8 +181,9 @@ public class PlayerController : MonoBehaviour
                 {
                     shouldPlayNormalMelody = !sign.IsPlayingSuccessAudio;
                     isPlayingLyre = false;
+                    isAttacking = false;
                     CurrentState = PlayerState.Dialogue;
-                    playerAnimation.SetAnimationParams(movement, false);
+                    playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
                     Debug.Log("About to exit");
                     yield break;
                 }
@@ -188,13 +194,14 @@ public class PlayerController : MonoBehaviour
         {
             playerAudio.PlayMelody(melody);
         }
-        Debug.Log("Did not find sign");
+        // Debug.Log("Did not find sign");
 
         // After starting the melody audio, wait before giving control back to the player
         yield return new WaitForSeconds(AudioData.MelodyCooldownTime);
         isPlayingLyre = false;
+        isAttacking = false;
         CurrentState = PlayerState.Default;
-        playerAnimation.SetAnimationParams(movement, false);
+        playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
     }
 
     // Debug proximity check
@@ -382,8 +389,11 @@ public class PlayerController : MonoBehaviour
             if (PlayerInputManager.WasAttackPressed && PlayerAttack.CanAttack)
             {
                 isPlayingLyre = true;
+                isAttacking = true;
                 playerAttack.Attack();
                 playerAudio.PlayAttackChord();
+                Quaternion spawnRotation_1 = Quaternion.FromToRotation(movement * -1, movement);
+                attackParticlesInstance = Instantiate(attackParticles, transform.position + new Vector3(0, 1, 0), spawnRotation_1);
             }
 
             if (PlayerInputManager.wasDashPressed && canDash)
@@ -391,7 +401,7 @@ public class PlayerController : MonoBehaviour
                 isDashing = true;
             }
 
-            playerAnimation.SetAnimationParams(movement, isPlayingLyre);
+            playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
         }
         else if (CurrentState == PlayerState.Instrument)
         {

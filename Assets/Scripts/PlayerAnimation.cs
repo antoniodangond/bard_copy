@@ -4,13 +4,31 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
+    public PlayerController playerController;
 
-    public void SetAnimationParams(Vector2 movement, bool IsPlayingLyre)
+    public void SetAnimationParams(Vector2 movement, bool IsPlayingLyre, bool isAttacking)
     {
         // Use movement.sqrMagnitutde as a proxy for "is moving"
         animator.SetFloat(AnimatorParams.Speed, movement.sqrMagnitude);
-        // Set lyre animation state
         animator.SetBool(AnimatorParams.IsPlayingLyre, IsPlayingLyre);
+        // Set lyre animation state
+        if (IsPlayingLyre && isAttacking)
+        {
+            // don't play an animation, spawn particles instead
+            // animator.SetBool(AnimatorParams.IsPlayingLyre, false);
+            // animator.SetBool(AnimatorParams.IsAttacking, true);
+
+        }
+        else if (IsPlayingLyre)
+        {
+            animator.SetBool(AnimatorParams.IsPlayingLyre, true);
+            animator.SetBool(AnimatorParams.IsAttacking, false);
+        }
+        else
+        {
+            animator.SetBool(AnimatorParams.IsPlayingLyre, false);
+            animator.SetBool(AnimatorParams.IsAttacking, false);
+        }
         // Only set direction when moving, so that idle animation
         // will play in the last moved direction
         if (movement.sqrMagnitude > 0)
