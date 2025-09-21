@@ -1615,7 +1615,6 @@ GameObject:
   m_Component:
   - component: {fileID: 75698403}
   - component: {fileID: 75698406}
-  - component: {fileID: 75698405}
   - component: {fileID: 75698404}
   m_Layer: 0
   m_Name: Tree Stump (4)
@@ -1633,7 +1632,7 @@ Transform:
   m_GameObject: {fileID: 75698402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.67, y: -20.62, z: -0.10674973}
+  m_LocalPosition: {x: 9.7, y: -20.85, z: -0.10674973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1673,45 +1672,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.025009155, y: 0.4622929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.79589844, y: 0.38770628}
   m_EdgeRadius: 0
---- !u!50 &75698405
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75698402}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &75698406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1766,7 +1738,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &76001315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1840,6 +1812,7 @@ GameObject:
   - component: {fileID: 76853204}
   - component: {fileID: 76853206}
   - component: {fileID: 76853205}
+  - component: {fileID: 76853207}
   m_Layer: 0
   m_Name: Cactus 3_0
   m_TagString: Untagged
@@ -1856,11 +1829,11 @@ Transform:
   m_GameObject: {fileID: 76853203}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.18124, y: -58.531033, z: -0.10674973}
+  m_LocalPosition: {x: -53.56815, y: -36.46708, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &76853205
 BoxCollider2D:
@@ -1962,7 +1935,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
+--- !u!50 &76853207
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76853203}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &78090202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6669,11 +6669,11 @@ Transform:
   m_GameObject: {fileID: 376843292}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.053284, y: -51.522003, z: -0.10674973}
+  m_LocalPosition: {x: -57.696106, y: -29.45805, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &376843294
 SpriteRenderer:
@@ -8045,7 +8045,6 @@ GameObject:
   m_Component:
   - component: {fileID: 456864617}
   - component: {fileID: 456864620}
-  - component: {fileID: 456864619}
   - component: {fileID: 456864618}
   m_Layer: 0
   m_Name: Tree Stump (6)
@@ -8063,7 +8062,7 @@ Transform:
   m_GameObject: {fileID: 456864616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.49, y: -22.54, z: -0.10674973}
+  m_LocalPosition: {x: 5.52, y: -22.76, z: -0.10674973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8103,45 +8102,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.030788422, y: 0.4517758}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.85369873, y: 0.45695448}
   m_EdgeRadius: 0
---- !u!50 &456864619
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456864616}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &456864620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8196,7 +8168,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &460227911
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9077,11 +9049,11 @@ Transform:
   m_GameObject: {fileID: 491003813}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.73, y: -65.58, z: -0.10674973}
+  m_LocalPosition: {x: -71.01939, y: -43.516045, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &491003815
 BoxCollider2D:
@@ -9137,7 +9109,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491003813}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -9210,7 +9182,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &491013502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -10498,7 +10470,6 @@ GameObject:
   m_Component:
   - component: {fileID: 598923939}
   - component: {fileID: 598923942}
-  - component: {fileID: 598923941}
   - component: {fileID: 598923940}
   m_Layer: 0
   m_Name: Tree Stump (3)
@@ -10556,45 +10527,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.02500534, y: 0.47385168}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.86525726, y: 0.41082287}
   m_EdgeRadius: 0
---- !u!50 &598923941
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 598923938}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &598923942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10649,7 +10593,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &599525482
 GameObject:
   m_ObjectHideFlags: 0
@@ -12793,11 +12737,11 @@ Transform:
   m_GameObject: {fileID: 728934368}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.39, y: -60.79, z: -0.10674973}
+  m_LocalPosition: {x: -52.35939, y: -38.726044, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &728934370
 PolygonCollider2D:
@@ -12919,7 +12863,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728934368}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -12992,7 +12936,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &742824217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17596,7 +17540,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 969064800}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -17715,7 +17659,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &969064804
 Transform:
   m_ObjectHideFlags: 0
@@ -17741,7 +17685,6 @@ GameObject:
   m_Component:
   - component: {fileID: 980483564}
   - component: {fileID: 980483567}
-  - component: {fileID: 980483566}
   - component: {fileID: 980483565}
   m_Layer: 0
   m_Name: Tree Stump (5)
@@ -17759,7 +17702,7 @@ Transform:
   m_GameObject: {fileID: 980483563}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.82, y: -19.59, z: -0.10674973}
+  m_LocalPosition: {x: 4.82, y: -19.78, z: -0.10674973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17799,45 +17742,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.02501297, y: 0.4796319}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.8421402, y: 0.39926434}
   m_EdgeRadius: 0
---- !u!50 &980483566
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980483563}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &980483567
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17892,7 +17808,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &984543197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18029,7 +17945,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.00031280518, y: 0.12051916}
+  m_Offset: {x: -0.00030899048, y: 0.06850386}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.4467163, y: 0.099364355}
@@ -18039,7 +17955,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.0002289, y: 0.60497}
+  m_Size: {x: 0.8846359, y: 0.50093937}
   m_EdgeRadius: 0
 --- !u!212 &986526775
 SpriteRenderer:
@@ -19768,7 +19684,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1089090760}
   - component: {fileID: 1089090763}
-  - component: {fileID: 1089090762}
   - component: {fileID: 1089090761}
   m_Layer: 0
   m_Name: Tree Stump
@@ -19786,7 +19701,7 @@ Transform:
   m_GameObject: {fileID: 1089090759}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.684727, y: -15.813503, z: -0.10674973}
+  m_LocalPosition: {x: 25.41, y: -16.02, z: -0.10674973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19826,45 +19741,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.030790329, y: 0.45651293}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.7149925, y: 0.4223814}
   m_EdgeRadius: 0
---- !u!50 &1089090762
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089090759}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &1089090763
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19919,7 +19807,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1092669033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -20334,11 +20222,11 @@ Transform:
   m_GameObject: {fileID: 1125266063}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.124725, y: -26.943502, z: -0.10674973}
+  m_LocalPosition: {x: -59.624664, y: -4.879549, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &1125266069
 PolygonCollider2D:
@@ -22555,20 +22443,13 @@ Transform:
   - {fileID: 1270766168}
   - {fileID: 286057726}
   - {fileID: 334459596}
-  - {fileID: 1125266068}
-  - {fileID: 1416420867}
-  - {fileID: 1089090760}
   - {fileID: 1550990252}
   - {fileID: 1632640464}
   - {fileID: 598923939}
   - {fileID: 75698403}
   - {fileID: 980483564}
   - {fileID: 456864617}
-  - {fileID: 376843293}
-  - {fileID: 728934369}
-  - {fileID: 76853204}
-  - {fileID: 1928328696}
-  - {fileID: 491003814}
+  - {fileID: 1089090760}
   m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1250176168
@@ -22883,7 +22764,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0047912598, y: 0.10704231}
+  m_Offset: {x: 0.016403198, y: 0.112847805}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.46391758, y: 0.10049935}
@@ -22893,7 +22774,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.95825195, y: 0.63669586}
+  m_Size: {x: 0.9350281, y: 0.508975}
   m_EdgeRadius: 0
 --- !u!212 &1268122651
 SpriteRenderer:
@@ -26662,11 +26543,11 @@ Transform:
   m_GameObject: {fileID: 1416420865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.31472, y: -40.543503, z: -0.10674973}
+  m_LocalPosition: {x: -66.43467, y: -18.47955, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1416420868
 Rigidbody2D:
@@ -26676,7 +26557,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1416420865}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -27200,7 +27081,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422154016}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -27273,7 +27154,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1422154020
 Transform:
   m_ObjectHideFlags: 0
@@ -29838,7 +29719,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1550990252}
   - component: {fileID: 1550990255}
-  - component: {fileID: 1550990254}
   - component: {fileID: 1550990253}
   m_Layer: 0
   m_Name: Tree Stump (1)
@@ -29856,7 +29736,7 @@ Transform:
   m_GameObject: {fileID: 1550990251}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.36, y: -19.82, z: -0.10674973}
+  m_LocalPosition: {x: 21.34, y: -20.01, z: -0.10674973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -29896,45 +29776,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.019227982, y: 0.47385216}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.6687584, y: 0.4339409}
   m_EdgeRadius: 0
---- !u!50 &1550990254
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550990251}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &1550990255
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29989,7 +29842,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &1555426844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30442,7 +30295,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6350760632899830259, guid: b8c2c0c1a349244d1b5e98401d4a9b84, type: 3}
+  m_Sprite: {fileID: 3878765962245647171, guid: 7aa3055a72a2d4f2eb4caae99423aa28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31753,7 +31606,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1632640464}
   - component: {fileID: 1632640467}
-  - component: {fileID: 1632640466}
   - component: {fileID: 1632640465}
   m_Layer: 0
   m_Name: Tree Stump (2)
@@ -31771,7 +31623,7 @@ Transform:
   m_GameObject: {fileID: 1632640463}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.4, y: -17.51, z: -0.10674973}
+  m_LocalPosition: {x: 16.4, y: -17.77, z: -0.10674973}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31811,45 +31663,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.030788422, y: 0.21955585}
+  m_Offset: {x: -0.013446808, y: 0.49696922}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50000006, y: 0.11183892}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.38, y: 1.93}
     newSize: {x: 1.38, y: 1.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85369873, y: 0.48017693}
+  m_Size: {x: 0.68032074, y: 0.4339409}
   m_EdgeRadius: 0
---- !u!50 &1632640466
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632640463}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &1632640467
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -31904,7 +31729,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &1632948913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33600,6 +33425,13 @@ Transform:
   - {fileID: 2080500930}
   - {fileID: 953740563}
   - {fileID: 1247354287}
+  - {fileID: 1125266068}
+  - {fileID: 1416420867}
+  - {fileID: 376843293}
+  - {fileID: 728934369}
+  - {fileID: 76853204}
+  - {fileID: 1928328696}
+  - {fileID: 491003814}
   - {fileID: 1908301870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37189,11 +37021,11 @@ Transform:
   m_GameObject: {fileID: 1928328695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.149353, y: -62.825138, z: -0.10674973}
+  m_LocalPosition: {x: -66.60004, y: -40.761185, z: 0.05767961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1247354287}
+  m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1928328697
 Rigidbody2D:
@@ -37203,7 +37035,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1928328695}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -37322,7 +37154,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1001 &1932685663
 PrefabInstance:
   m_ObjectHideFlags: 0
