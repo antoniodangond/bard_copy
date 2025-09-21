@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Desert Rocks 3_0: -2115602156256426679
+      Desert Rocks 3_1: -5411547977906502541
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
