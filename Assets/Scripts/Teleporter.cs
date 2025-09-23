@@ -10,8 +10,9 @@ public class Teleporter : MonoBehaviour
     public GameObject LandingPoint;
     public LayerMask PlayerLayer;
     public bool ShouldStartActive = true;
-
-    private Teleporter destinationTeleporter;
+    [HideInInspector]
+    public Teleporter destinationTeleporter;
+    public bool hasBeenEntered = false;
     private bool isActive;
     private GameObject player;
 
@@ -29,6 +30,7 @@ public class Teleporter : MonoBehaviour
             Debug.Log("Player entered " + gameObject.name);
             if (isActive)
             {
+                hasBeenEntered = true;
                 TeleportPlayer(other.gameObject);
             }
             else

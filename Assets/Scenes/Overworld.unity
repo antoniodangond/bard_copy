@@ -1188,13 +1188,29 @@ PrefabInstance:
       value: Captain
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: teleporter
+      value: 
+      objectReference: {fileID: 275839347}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: teleporterObj
+      value: 
+      objectReference: {fileID: 275839343}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 51f1a9dfb447d124ea0ba8772f6cc8f6, type: 2}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: teleporterToObj
+      value: 
+      objectReference: {fileID: 714777880}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: updatedDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 4a3029da38caf73408400e30f3fb85c6, type: 2}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: teleporterFromObj
+      value: 
+      objectReference: {fileID: 275839343}
     - target: {fileID: 8980723282171336176, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
       value: 2.208828
@@ -3653,7 +3669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9213398412280628274, guid: ee35a22c9c046446c9f2e4b25053cb69, type: 3}
       propertyPath: ShouldStartActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9213398412280628274, guid: ee35a22c9c046446c9f2e4b25053cb69, type: 3}
       propertyPath: DestinationTeleporter
@@ -5396,6 +5412,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6918373197042011075, guid: ee35a22c9c046446c9f2e4b25053cb69, type: 3}
   m_PrefabInstance: {fileID: 275839342}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &275839347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9213398412280628274, guid: ee35a22c9c046446c9f2e4b25053cb69, type: 3}
+  m_PrefabInstance: {fileID: 275839342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275839343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619e4a8146a224edb96a28224174d34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &277558613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13157,11 +13184,13 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
-  spriteRenderer: {fileID: 0}
   soundVolume: 0.8
   soundPlayDelay: 0.15
   audioSources: []
   successAnimator: {fileID: 0}
+  teleporterFromObj: {fileID: 0}
+  teleporterToObj: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1001 &665421157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18830,11 +18859,13 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
-  spriteRenderer: {fileID: 0}
   soundVolume: 0.8
   soundPlayDelay: 0.15
   audioSources: []
   successAnimator: {fileID: 0}
+  teleporterFromObj: {fileID: 0}
+  teleporterToObj: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1 &926508395
 GameObject:
   m_ObjectHideFlags: 0
@@ -44378,11 +44409,13 @@ MonoBehaviour:
   playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
-  spriteRenderer: {fileID: 0}
   soundVolume: 0.8
   soundPlayDelay: 0.15
   audioSources: []
   successAnimator: {fileID: 0}
+  teleporterFromObj: {fileID: 0}
+  teleporterToObj: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!1001 &2081065499
 PrefabInstance:
   m_ObjectHideFlags: 0

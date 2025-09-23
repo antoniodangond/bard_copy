@@ -22,7 +22,6 @@ public class SignController : MonoBehaviour
     private string lyreButtons;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
-    public SpriteRenderer spriteRenderer;
 
     [Header("Audio Settings")]
     [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
@@ -31,6 +30,12 @@ public class SignController : MonoBehaviour
 
     [Header("Animation Settings")]
     [SerializeField] private Animator successAnimator;
+    [Header("GameObjects to Effect")]
+    [SerializeField] public GameObject teleporterFromObj;
+    [SerializeField] public GameObject teleporterToObj;
+    private Teleporter teleporterFrom;
+    private Teleporter teleporterTo;
+    public SpriteRenderer spriteRenderer;
 
     // Property to get correct dialogue
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
@@ -39,6 +44,11 @@ public class SignController : MonoBehaviour
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         handleTutorialDialog(signName);
+        if (signName == "Captain")
+        {
+            teleporterFrom = teleporterFromObj.GetComponent<Teleporter>();
+            teleporterTo = teleporterToObj.GetComponent<Teleporter>();
+        }
 
     }
     public void Interact()
@@ -115,6 +125,11 @@ public class SignController : MonoBehaviour
             isDialogueUpdated = true;
             // STEP 1: Autoplay updated dialogue
             DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
+        }
+        if (signName == "Captain")
+        {
+            teleporterFrom.Activate();
+            teleporterTo.Activate();
         }
 
         // STEP 2: Play success animation
