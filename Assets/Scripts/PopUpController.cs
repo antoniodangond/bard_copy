@@ -32,8 +32,11 @@ public class PopUpController : MonoBehaviour
     {
         if (PlayerInputManager.WasDialoguePressed)
         {
-            DialogueManager.Instance.EndDialogue();
+            if (DialogueManager.Instance != null)
+                DialogueManager.Instance.EndDialogue();
+
             Destroy(gameObject);
         }
     }
+
 }

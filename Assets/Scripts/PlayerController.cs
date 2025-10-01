@@ -373,10 +373,10 @@ public class PlayerController : MonoBehaviour
                 if (dialogue != null && sign != null)
                 {
                     CurrentState = PlayerState.Dialogue;
-                    CustomEvents.OnDialogueStart?.Invoke(dialogue);
 
                     FacingDirection approachedFrom = sign.GetApproachDirection(transform);
-                    DialogueManager.StartDialogue(dialogue, approachedFrom);
+                    sign.BeginDialogue(approachedFrom);
+
                 }
             }
 

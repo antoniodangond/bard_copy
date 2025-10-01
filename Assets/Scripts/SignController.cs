@@ -13,6 +13,11 @@ public class SignController : MonoBehaviour
     [SerializeField] private Dialogue updatedDialogue;
     [SerializeField] private bool isDialogueUpdated = false;
 
+    [Header("Choice (optional)")]
+    [SerializeField] private bool askYesNoAfterDialogue = false;
+    [TextArea][SerializeField] private string choicePrompt = "Receive the blessing?";
+    [SerializeField] private bool disableAfterYes = false;
+
     [Header("Sign Properties")]
     public string signName;
     public PlayerInput playerInput;
@@ -51,11 +56,24 @@ public class SignController : MonoBehaviour
         }
 
     }
+
+    private bool waitingForChoice = false;
+
+    void OnEnable()
+    {
+        CustomEvents.OnDialogueEnd.AddListener(OnAnyDialogueEnded);
+    }
+    void OnDisable()
+    {
+        CustomEvents.OnDialogueEnd.RemoveListener(OnAnyDialogueEnded);
+    }
+
     public void Interact()
     {
         Dialogue dialogue = CurrentDialogue ?? defaultDialogue;
         if (dialogue != null)
         {
+            waitingForChoice = askYesNoAfterDialogue;
             DialogueManager.StartDialogue(CurrentDialogue, PlayerController.FacingDirection);
         }
     }
@@ -261,4 +279,64 @@ public class SignController : MonoBehaviour
             return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(1);
         }
     }
+
+    private void OnAnyDialogueEnded(Dialogue finished)
+    {
+        // Only the sign that began the dialogue may proceed
+        if (DialogueManager.CurrentSpeaker != this) return;
+
+        // Only proceed if this particular sign wanted a choice
+        if (!waitingForChoice) return;
+
+        waitingForChoice = false;
+
+        // Find the UI safely (handles inactive panel too)
+        var ui = DialogueChoiceUI.Instance;
+#if UNITY_2023_1_OR_NEWER
+    if (ui == null) ui = FindFirstObjectByType<DialogueChoiceUI>(FindObjectsInactive.Include);
+#else
+        if (ui == null) ui = FindObjectOfType<DialogueChoiceUI>(true);
+#endif
+        if (ui == null)
+        {
+            Debug.LogError("[Sign] DialogueChoiceUI not found in scene.");
+            return;
+        }
+
+        Debug.Log("[Sign] Opening Yes/No prompt");
+        ui.Ask(choicePrompt, OnChoiceAnswered, 0);
+    }
+
+    private void OnChoiceAnswered(DialogueChoice choice)
+    {
+        if (choice == DialogueChoice.Yes)
+        {
+            // Do statue thing(s): unlock ability, trigger VFX, etc.
+            // Example hook points:
+            // playerAbilities.UnlockDash();
+            // successAnimator?.SetTrigger("Success");
+            // isDialogueUpdated = true;
+
+            if (disableAfterYes)
+            {
+                foreach (var c in GetComponents<Collider2D>()) c.enabled = false;
+                if (spriteRenderer) spriteRenderer.enabled = false;
+                enabled = false;
+            }
+        }
+        else
+        {
+            // Optional: nothing or set a “come back later” flag
+        }
+    }
+    
+    public void BeginDialogue(FacingDirection direction)
+    {
+        waitingForChoice = askYesNoAfterDialogue;
+        DialogueManager.SetCurrentSpeaker(this);
+        Debug.Log($"[Sign] BeginDialogue on {name} | askYesNoAfterDialogue={askYesNoAfterDialogue}");
+        DialogueManager.StartDialogue(CurrentDialogue, direction);
+    }
+
+
 }

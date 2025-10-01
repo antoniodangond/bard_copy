@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+[DefaultExecutionOrder(-900)]
 
 public class MenuManager : MonoBehaviour
 {

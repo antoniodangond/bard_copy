@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+[DefaultExecutionOrder(-1000)]
 
 public class DialogueManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class DialogueManager : MonoBehaviour
     private List<string> currentLines;
     private int currentLineIndex;
     private bool isTyping = false;
+    public static SignController CurrentSpeaker { get; private set; }
+    public static void SetCurrentSpeaker(SignController speaker) => CurrentSpeaker = speaker;
+
+
+    public static bool IsOpen => Instance != null && Instance.currentLines != null && Instance.currentLines.Count > 0;
 
     void Awake()
     {
@@ -56,32 +62,37 @@ public class DialogueManager : MonoBehaviour
     public static void StartDialogue(Dialogue dialogue, FacingDirection direction)
     {
         if (Instance == null)
+#if UNITY_2023_1_OR_NEWER
+        Instance = Object.FindFirstObjectByType<DialogueManager>();
+#else
+            Instance = Object.FindObjectOfType<DialogueManager>();
+#endif
+
+        if (Instance == null)
         {
-            Debug.LogError("DialogueManager Instance is null!");
+            Debug.LogError("DialogueManager Instance is null! Ensure a DialogueManager is in the scene and enabled.");
             return;
         }
         if (dialogue == null)
         {
-            Debug.Log("Attempted to start dialogue with a null Dialogue object!");
+            Debug.LogWarning("Attempted to start dialogue with a null Dialogue object!");
             return;
         }
 
-        // Set up direction and lines
         Instance.currentDialogue = dialogue;
         Instance.currentDirection = direction;
         Instance.currentLines = dialogue.GetLines(direction);
         Instance.currentLineIndex = 0;
 
-        // Trigger the OnDialogueStart event
         CustomEvents.OnDialogueStart?.Invoke(dialogue);
-
-        // Show the first line
         Instance.DisplayLine();
     }
 
+
+
     private void DisplayLine()
     {
-        if (currentLineIndex < currentLines.Count)
+        if (currentLines != null && currentLineIndex < currentLines.Count)
         {
             StartCoroutine(TypeLine(currentLines[currentLineIndex]));
         }
@@ -90,6 +101,7 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
         }
     }
+
 
     private System.Collections.IEnumerator TypeLine(string line)
     {
@@ -110,36 +122,49 @@ public class DialogueManager : MonoBehaviour
 
     public static void AdvanceCurrentDialogue()
     {
+        if (Instance == null) return;
+
+        // If no dialogue is active, ignore the call safely.
+        if (Instance.currentLines == null || Instance.currentLines.Count == 0)
+        {
+            return;
+        }
+
         if (Instance.isTyping)
         {
-            // Skip to the end of the current line if typing
             Instance.StopAllCoroutines();
             Instance.dialogueText.text = Instance.currentLines[Instance.currentLineIndex];
             Instance.isTyping = false;
+            return;
         }
-        else if (Instance.currentLineIndex + 1 < Instance.currentLines.Count)
+
+        if (Instance.currentLineIndex + 1 < Instance.currentLines.Count)
         {
-            // Advance to the next line
             Instance.currentLineIndex++;
             Instance.DisplayLine();
         }
         else
         {
-            // End dialogue if no more lines
             Instance.EndDialogue();
         }
     }
 
+
     public void EndDialogue()
     {
-        dialogueBox.SetActive(false); // Hide the dialogue box
+        dialogueBox.SetActive(false);
 
-        //Reset dialogue variables (so as to allow repeats)
+        var finishedDialogue = currentDialogue;
+
         currentDialogue = null;
         currentLines = null;
         currentLineIndex = 0;
 
-        //Notify other systems that dialogue has ended
-        CustomEvents.OnDialogueEnd?.Invoke(currentDialogue);
+        CustomEvents.OnDialogueEnd?.Invoke(finishedDialogue);
+
+        // clear AFTER listeners have had a chance to read it
+        CurrentSpeaker = null;
     }
+
+
 }
