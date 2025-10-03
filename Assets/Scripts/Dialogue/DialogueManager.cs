@@ -156,13 +156,15 @@ public class DialogueManager : MonoBehaviour
 
         var finishedDialogue = currentDialogue;
 
+        // Reset internal dialogue state
         currentDialogue = null;
         currentLines = null;
         currentLineIndex = 0;
 
+        // IMPORTANT: Invoke end event while CurrentSpeaker is still set
         CustomEvents.OnDialogueEnd?.Invoke(finishedDialogue);
 
-        // clear AFTER listeners have had a chance to read it
+        // Now it's safe to clear
         CurrentSpeaker = null;
     }
 

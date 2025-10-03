@@ -17,6 +17,7 @@ public class SignController : MonoBehaviour
     [SerializeField] private bool askYesNoAfterDialogue = false;
     [TextArea][SerializeField] private string choicePrompt = "Receive the blessing?";
     [SerializeField] private bool disableAfterYes = false;
+    [SerializeField] private ChoiceReward choiceReward;
 
     [Header("Sign Properties")]
     public string signName;
@@ -70,13 +71,22 @@ public class SignController : MonoBehaviour
 
     public void Interact()
     {
-        Dialogue dialogue = CurrentDialogue ?? defaultDialogue;
-        if (dialogue != null)
+        // If reward exists and already taken, don’t show the choice box
+        if (choiceReward != null && choiceReward.IsAlreadyClaimed())
         {
-            waitingForChoice = askYesNoAfterDialogue;
-            DialogueManager.StartDialogue(CurrentDialogue, PlayerController.FacingDirection);
+            // Optionally, show a simple one-liner dialogue here instead:
+            //   "The statue is silent."
+            Dialogue dialogue = CurrentDialogue ?? defaultDialogue;
+            if (dialogue != null)
+                DialogueManager.StartDialogue(dialogue, PlayerController.FacingDirection);
+            return;
         }
+
+        DialogueManager.StartDialogue(CurrentDialogue, PlayerController.FacingDirection);
+        // Make sure your code sets waitingForChoice = true only if reward not claimed
+        waitingForChoice = (choiceReward != null) && !choiceReward.IsAlreadyClaimed();
     }
+
 
     public Dialogue GetDialogueFromApproach(Transform playerTransform)
     {
@@ -280,6 +290,8 @@ public class SignController : MonoBehaviour
         }
     }
 
+    private Coroutine pendingChoice;
+
     private void OnAnyDialogueEnded(Dialogue finished)
     {
         // Only the sign that began the dialogue may proceed
@@ -290,7 +302,15 @@ public class SignController : MonoBehaviour
 
         waitingForChoice = false;
 
-        // Find the UI safely (handles inactive panel too)
+        if (pendingChoice != null) StopCoroutine(pendingChoice);
+        pendingChoice = StartCoroutine(ShowChoiceNextFrame());
+    }
+
+    private IEnumerator ShowChoiceNextFrame()
+    {
+        // Let DialogueManager teardown & canvases rebuild fully first
+        yield return new WaitForEndOfFrame();
+
         var ui = DialogueChoiceUI.Instance;
 #if UNITY_2023_1_OR_NEWER
     if (ui == null) ui = FindFirstObjectByType<DialogueChoiceUI>(FindObjectsInactive.Include);
@@ -300,22 +320,18 @@ public class SignController : MonoBehaviour
         if (ui == null)
         {
             Debug.LogError("[Sign] DialogueChoiceUI not found in scene.");
-            return;
+            yield break;
         }
 
-        Debug.Log("[Sign] Opening Yes/No prompt");
         ui.Ask(choicePrompt, OnChoiceAnswered, 0);
     }
+
 
     private void OnChoiceAnswered(DialogueChoice choice)
     {
         if (choice == DialogueChoice.Yes)
         {
-            // Do statue thing(s): unlock ability, trigger VFX, etc.
-            // Example hook points:
-            // playerAbilities.UnlockDash();
-            // successAnimator?.SetTrigger("Success");
-            // isDialogueUpdated = true;
+            StartCoroutine(BestowRoutine());   // <-- do the thing
 
             if (disableAfterYes)
             {
@@ -326,15 +342,60 @@ public class SignController : MonoBehaviour
         }
         else
         {
-            // Optional: nothing or set a “come back later” flag
+            // do nothing / optional line
         }
     }
-    
+
+
+    private IEnumerator BestowRoutine()
+    {
+        if (choiceReward == null) yield break;
+
+        // snapshot current gates (optional)
+        var hadDash = PlayerController.canDash;
+        var hadAOE = PlayerController.AbilityGate.AOEUnlocked;
+
+        // play VFX/SFX + explanatory dialogue inside the reward
+        yield return StartCoroutine(choiceReward.BestowAndExplain());
+
+        // persist & apply gates immediately
+        foreach (var upg in choiceReward.upgrades)
+        {
+            if (upg == null) continue;
+
+            // persist to PlayerProgress (no save system needed yet)
+            PlayerProgress.Instance?.Unlock(upg);
+
+            // runtime gates
+            if (upg.id == "dash") PlayerController.canDash = true;
+            if (upg.id == "aoe") PlayerController.AbilityGate.AOEUnlocked = true;
+        }
+
+        // If the reward is now claimed, prevent re-offering
+        if (choiceReward.IsAlreadyClaimed())
+        {
+            // If you want this sign to change its dialogue after being claimed:
+            // isDialogueUpdated = true;
+
+            // If this sign should not show Yes/No again:
+            // askYesNoAfterDialogue = false;
+        }
+    }
+
+
     public void BeginDialogue(FacingDirection direction)
     {
-        waitingForChoice = askYesNoAfterDialogue;
+        bool alreadyClaimed = (choiceReward != null) && choiceReward.IsAlreadyClaimed();
+
+        // Only ask if configured to ask AND not already claimed
+        waitingForChoice = askYesNoAfterDialogue &&
+                   (choiceReward == null || !choiceReward.IsAlreadyClaimed());
+
+        Debug.Log($"[Sign] BeginDialogue {name} ask={askYesNoAfterDialogue} " +
+                  $"hasReward={choiceReward != null} claimed={(choiceReward != null && choiceReward.IsAlreadyClaimed())} " +
+                  $"waiting={waitingForChoice}");
+
         DialogueManager.SetCurrentSpeaker(this);
-        Debug.Log($"[Sign] BeginDialogue on {name} | askYesNoAfterDialogue={askYesNoAfterDialogue}");
         DialogueManager.StartDialogue(CurrentDialogue, direction);
     }
 

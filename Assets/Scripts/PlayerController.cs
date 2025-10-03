@@ -57,6 +57,16 @@ public class PlayerController : MonoBehaviour
     private bool isAttacking;
     public static bool isDashing;
     public static bool canDash;
+
+    [SerializeField] private UpgradeSO dashUpgrade;
+
+    public static class AbilityGate // Might move canDash in here... This is where we will store ability unlocks
+    {
+        public static bool AOEUnlocked;
+
+    }
+
+
     private Gravestone gravestone;
     [HideInInspector]
     public bool isTakingDamage;
@@ -83,7 +93,20 @@ public class PlayerController : MonoBehaviour
         Health = MaxHealth;
         // Initialize lastPlayedNotes to a queue of null values
         lastPlayedNotes = BuildEmptyNotesQueue();
-        canDash = true;
+
+        // --- Hard reset statics so domain-reload quirks can’t leak previous values ---
+        canDash = false;
+        AbilityGate.AOEUnlocked = false;
+
+        // Re-apply gates from progress (if any)
+        if (PlayerProgress.Instance != null && dashUpgrade != null)
+        {
+            canDash = PlayerProgress.Instance.HasUpgrade(dashUpgrade);
+        }
+
+        // Optional: quick debug
+        Debug.Log($"[PlayerController] Start gates => canDash={canDash}, AOE={AbilityGate.AOEUnlocked}");
+
     }
 
     void OnDestroy()

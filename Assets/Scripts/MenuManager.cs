@@ -30,16 +30,15 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         buttonStates = new Dictionary<GameObject, (Vector3, Vector3)>();
-
-        // Find all ButtonSelectionHandler scripts, including inactive ones
         buttons = FindObjectsByType<ButtonSelectionHandler>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
-        foreach (var button in buttons)
+        foreach (var h in buttons)
         {
-            // var buttonGameObject = button.gameObject;
-            buttonStates[button.gameObject] = (button.gameObject.transform.position, button.gameObject.transform.localScale);
+            var tgt = h.animTarget ? h.animTarget.gameObject : h.gameObject;
+            buttonStates[tgt] = (tgt.transform.position, tgt.transform.localScale);
         }
     }
+
     public void TriggerButtonAnimation(GameObject button, bool startingAnimation)
     {
         if (buttonStates.ContainsKey(button))
@@ -96,6 +95,24 @@ public class MenuManager : MonoBehaviour
             yield return null;
         }
 
+    }
+
+    public void RegisterAnimTarget(GameObject target)
+    {
+        if (target == null) return;
+        if (!buttonStates.ContainsKey(target))
+        {
+            buttonStates[target] = (target.transform.position, target.transform.localScale);
+        }
+    }
+
+    public void EnsureRegistered(GameObject target)
+    {
+        if (target == null) return;
+        if (!buttonStates.ContainsKey(target))
+        {
+            buttonStates[target] = (target.transform.position, target.transform.localScale);
+        }
     }
 
 }
