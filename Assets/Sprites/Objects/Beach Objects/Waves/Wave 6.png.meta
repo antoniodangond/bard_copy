@@ -1,0 +1,3679 @@
+fileFormatVersion: 2
+guid: 6c4d75375b8874897950b451ce24354e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2486416814105232043
+    second: Wave 6_0
+  - first:
+      213: 4581975620162759951
+    second: Wave 6_1
+  - first:
+      213: 5174526498956272051
+    second: Wave 6_2
+  - first:
+      213: 8236995391634188660
+    second: Wave 6_3
+  - first:
+      213: 768878305421086614
+    second: Wave 6_4
+  - first:
+      213: -8569570616154457593
+    second: Wave 6_5
+  - first:
+      213: 6197912099700408454
+    second: Wave 6_6
+  - first:
+      213: -3201295953690606881
+    second: Wave 6_7
+  - first:
+      213: -1915328250062958565
+    second: Wave 6_8
+  - first:
+      213: 2824984445754320093
+    second: Wave 6_9
+  - first:
+      213: 6163159275112649536
+    second: Wave 6_10
+  - first:
+      213: 8179596522821346140
+    second: Wave 6_11
+  - first:
+      213: 3160858880073512340
+    second: Wave 6_12
+  - first:
+      213: 8949066249932998822
+    second: Wave 6_13
+  - first:
+      213: 6188874331342904367
+    second: Wave 6_14
+  - first:
+      213: 318869726674442692
+    second: Wave 6_15
+  - first:
+      213: -1490273295304646999
+    second: Wave 6_16
+  - first:
+      213: 2369333824019070700
+    second: Wave 6_17
+  - first:
+      213: -2102456498269127151
+    second: Wave 6_18
+  - first:
+      213: -4377512903162951054
+    second: Wave 6_19
+  - first:
+      213: -3852210881614915392
+    second: Wave 6_20
+  - first:
+      213: -5144907356064350335
+    second: Wave 6_21
+  - first:
+      213: 6457148483570176266
+    second: Wave 6_22
+  - first:
+      213: 4938016297226742003
+    second: Wave 6_23
+  - first:
+      213: -6803722032457681095
+    second: Wave 6_24
+  - first:
+      213: -8007634217397553611
+    second: Wave 6_25
+  - first:
+      213: 1181389206800911182
+    second: Wave 6_26
+  - first:
+      213: 3903649542012895309
+    second: Wave 6_27
+  - first:
+      213: 3564802003585581513
+    second: Wave 6_28
+  - first:
+      213: -4457864963968360555
+    second: Wave 6_29
+  - first:
+      213: 6658845489311846812
+    second: Wave 6_30
+  - first:
+      213: 3876165967809125862
+    second: Wave 6_31
+  - first:
+      213: 3152110910759178328
+    second: Wave 6_32
+  - first:
+      213: 1047227881894948493
+    second: Wave 6_33
+  - first:
+      213: 5991817424415572766
+    second: Wave 6_34
+  - first:
+      213: -7091124377424136482
+    second: Wave 6_35
+  - first:
+      213: 5278272144984587731
+    second: Wave 6_36
+  - first:
+      213: -6755027315112320716
+    second: Wave 6_37
+  - first:
+      213: 161092517967765458
+    second: Wave 6_38
+  - first:
+      213: 7170563542896827587
+    second: Wave 6_39
+  - first:
+      213: -3771738401236853215
+    second: Wave 6_40
+  - first:
+      213: 6360533365212222344
+    second: Wave 6_41
+  - first:
+      213: -3959622591326569993
+    second: Wave 6_42
+  - first:
+      213: -3829058419633540516
+    second: Wave 6_43
+  - first:
+      213: 8127518966838789336
+    second: Wave 6_44
+  - first:
+      213: -4742772801270385526
+    second: Wave 6_45
+  - first:
+      213: -3430635775823099990
+    second: Wave 6_46
+  - first:
+      213: -7830065746516644824
+    second: Wave 6_47
+  - first:
+      213: 1459601874199663314
+    second: Wave 6_48
+  - first:
+      213: -8476917200338818320
+    second: Wave 6_49
+  - first:
+      213: -2967206110107650900
+    second: Wave 6_50
+  - first:
+      213: 396545372894550029
+    second: Wave 6_51
+  - first:
+      213: -6422651118978123056
+    second: Wave 6_52
+  - first:
+      213: 8045111167676070237
+    second: Wave 6_53
+  - first:
+      213: 8105665135592776331
+    second: Wave 6_54
+  - first:
+      213: 659571417568527735
+    second: Wave 6_55
+  - first:
+      213: 6475599646465869039
+    second: Wave 6_56
+  - first:
+      213: 2562430916925852190
+    second: Wave 6_57
+  - first:
+      213: 8094561006561533576
+    second: Wave 6_58
+  - first:
+      213: 4499206655581268083
+    second: Wave 6_59
+  - first:
+      213: -7920227945015408578
+    second: Wave 6_60
+  - first:
+      213: 840410951182680100
+    second: Wave 6_61
+  - first:
+      213: -470476585925805884
+    second: Wave 6_62
+  - first:
+      213: 311839716060934211
+    second: Wave 6_63
+  - first:
+      213: -7275863992787989826
+    second: Wave 6_64
+  - first:
+      213: -2687189502716965983
+    second: Wave 6_65
+  - first:
+      213: -190382901966606181
+    second: Wave 6_66
+  - first:
+      213: 8321038029348122795
+    second: Wave 6_67
+  - first:
+      213: -2624207230441964898
+    second: Wave 6_68
+  - first:
+      213: 8482439127265353792
+    second: Wave 6_69
+  - first:
+      213: 3430284156777542639
+    second: Wave 6_70
+  - first:
+      213: -2852190271347720265
+    second: Wave 6_71
+  - first:
+      213: 6551190438057424401
+    second: Wave 6_72
+  - first:
+      213: 8520149043595966354
+    second: Wave 6_73
+  - first:
+      213: 5933311976158540084
+    second: Wave 6_74
+  - first:
+      213: -7216281614017017651
+    second: Wave 6_75
+  - first:
+      213: 4724023752299264635
+    second: Wave 6_76
+  - first:
+      213: 1507844268532553691
+    second: Wave 6_77
+  - first:
+      213: 6245204303642549978
+    second: Wave 6_78
+  - first:
+      213: -8946081108146360129
+    second: Wave 6_79
+  - first:
+      213: 1634128081392296130
+    second: Wave 6_80
+  - first:
+      213: 4738873221653044926
+    second: Wave 6_81
+  - first:
+      213: -8665549141421047352
+    second: Wave 6_82
+  - first:
+      213: 8202067605414442195
+    second: Wave 6_83
+  - first:
+      213: 3242895294294636980
+    second: Wave 6_84
+  - first:
+      213: -6989903299853497386
+    second: Wave 6_85
+  - first:
+      213: 7219169740408058886
+    second: Wave 6_86
+  - first:
+      213: -8783148617495222068
+    second: Wave 6_87
+  - first:
+      213: -4028634698003906514
+    second: Wave 6_88
+  - first:
+      213: -533148290709710539
+    second: Wave 6_89
+  - first:
+      213: 6987251395252462465
+    second: Wave 6_90
+  - first:
+      213: 7342965416681677263
+    second: Wave 6_91
+  - first:
+      213: 8505815731587186204
+    second: Wave 6_92
+  - first:
+      213: 3408700182243010006
+    second: Wave 6_93
+  - first:
+      213: -12330117060700767
+    second: Wave 6_94
+  - first:
+      213: -1536158699371598795
+    second: Wave 6_95
+  - first:
+      213: 8841059301808808646
+    second: Wave 6_96
+  - first:
+      213: 6773674443032660783
+    second: Wave 6_97
+  - first:
+      213: 9198299691631190141
+    second: Wave 6_98
+  - first:
+      213: 1916700745581712890
+    second: Wave 6_99
+  - first:
+      213: -4407619851606980835
+    second: Wave 6_100
+  - first:
+      213: 5611293145608180374
+    second: Wave 6_101
+  - first:
+      213: -8839744027333894082
+    second: Wave 6_102
+  - first:
+      213: -1443651491723647454
+    second: Wave 6_103
+  - first:
+      213: 8586540366972809083
+    second: Wave 6_104
+  - first:
+      213: 485270041821789928
+    second: Wave 6_105
+  - first:
+      213: 4764268281606284415
+    second: Wave 6_106
+  - first:
+      213: -8387585051518424631
+    second: Wave 6_107
+  - first:
+      213: 8368072035521282588
+    second: Wave 6_108
+  - first:
+      213: 3419980748385288124
+    second: Wave 6_109
+  - first:
+      213: -1457129147533163981
+    second: Wave 6_110
+  - first:
+      213: -6474332225240371250
+    second: Wave 6_111
+  - first:
+      213: -5674625514277006249
+    second: Wave 6_112
+  - first:
+      213: 3434947999693841574
+    second: Wave 6_113
+  - first:
+      213: -2809353830578789398
+    second: Wave 6_114
+  - first:
+      213: -6545161127329223277
+    second: Wave 6_115
+  - first:
+      213: -6902141403069288909
+    second: Wave 6_116
+  - first:
+      213: 2251489533526741156
+    second: Wave 6_117
+  - first:
+      213: 9095511712775307568
+    second: Wave 6_118
+  - first:
+      213: -4823383829442216635
+    second: Wave 6_119
+  - first:
+      213: 7582839872151886298
+    second: Wave 6_120
+  - first:
+      213: -5365692503880545401
+    second: Wave 6_121
+  - first:
+      213: 4960416752247000387
+    second: Wave 6_122
+  - first:
+      213: 3201602837061021592
+    second: Wave 6_123
+  - first:
+      213: 4162780190274447237
+    second: Wave 6_124
+  - first:
+      213: -5362287409719028462
+    second: Wave 6_125
+  - first:
+      213: 377190870065214743
+    second: Wave 6_126
+  - first:
+      213: 1142990918042746506
+    second: Wave 6_127
+  - first:
+      213: 1936001902585164785
+    second: Wave 6_128
+  - first:
+      213: -3947987098814545600
+    second: Wave 6_129
+  - first:
+      213: 7562456406821239485
+    second: Wave 6_130
+  - first:
+      213: 6972613395736628169
+    second: Wave 6_131
+  - first:
+      213: 4108860851809723420
+    second: Wave 6_132
+  - first:
+      213: -894157041252784324
+    second: Wave 6_133
+  - first:
+      213: 2928109063559580323
+    second: Wave 6_134
+  - first:
+      213: -5822816122916195034
+    second: Wave 6_135
+  - first:
+      213: 4935534322264144718
+    second: Wave 6_136
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.6655395, y: 0.9848227}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wave 6_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2427
+        height: 14155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55df2b7c4197e7dd0800000000000000
+      internalID: -2486416814105232043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_1
+      rect:
+        serializedVersion: 2
+        x: 2713
+        y: 12913
+        width: 94
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0d2d49dc82769f30800000000000000
+      internalID: 4581975620162759951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_2
+      rect:
+        serializedVersion: 2
+        x: 2761
+        y: 12930
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b1622b5f6c9fc740800000000000000
+      internalID: 5174526498956272051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_3
+      rect:
+        serializedVersion: 2
+        x: 2783
+        y: 12917
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 479a2eecaafaf4270800000000000000
+      internalID: 8236995391634188660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_4
+      rect:
+        serializedVersion: 2
+        x: 2796
+        y: 12939
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69fc02ebeba9baa00800000000000000
+      internalID: 768878305421086614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_5
+      rect:
+        serializedVersion: 2
+        x: 2799
+        y: 12919
+        width: 67
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70afc7a9de4c21980800000000000000
+      internalID: -8569570616154457593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_6
+      rect:
+        serializedVersion: 2
+        x: 2802
+        y: 12926
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6800dbb7738630650800000000000000
+      internalID: 6197912099700408454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_7
+      rect:
+        serializedVersion: 2
+        x: 2805
+        y: 12947
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd240639a46b293d0800000000000000
+      internalID: -3201295953690606881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_8
+      rect:
+        serializedVersion: 2
+        x: 2806
+        y: 12910
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b101ababa136b65e0800000000000000
+      internalID: -1915328250062958565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_9
+      rect:
+        serializedVersion: 2
+        x: 2812
+        y: 12921
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd4a031d26c543720800000000000000
+      internalID: 2824984445754320093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_10
+      rect:
+        serializedVersion: 2
+        x: 2814
+        y: 12903
+        width: 29
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0435e37f4b0f78550800000000000000
+      internalID: 6163159275112649536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_11
+      rect:
+        serializedVersion: 2
+        x: 2818
+        y: 12929
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5369cc33b3c38170800000000000000
+      internalID: 8179596522821346140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_12
+      rect:
+        serializedVersion: 2
+        x: 2831
+        y: 12923
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 495bbeb8760addb20800000000000000
+      internalID: 3160858880073512340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_13
+      rect:
+        serializedVersion: 2
+        x: 2837
+        y: 12919
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a881b21758713c70800000000000000
+      internalID: 8949066249932998822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_14
+      rect:
+        serializedVersion: 2
+        x: 2839
+        y: 12908
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2c1a3f0a6c43e550800000000000000
+      internalID: 6188874331342904367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_15
+      rect:
+        serializedVersion: 2
+        x: 2843
+        y: 12923
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c95e04b35adc6400800000000000000
+      internalID: 318869726674442692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_16
+      rect:
+        serializedVersion: 2
+        x: 2847
+        y: 12910
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ae9d1f655c715be0800000000000000
+      internalID: -1490273295304646999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_17
+      rect:
+        serializedVersion: 2
+        x: 2857
+        y: 12919
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee79f64f8091e020800000000000000
+      internalID: 2369333824019070700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_18
+      rect:
+        serializedVersion: 2
+        x: 2859
+        y: 12913
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11ef4f044f292d2e0800000000000000
+      internalID: -2102456498269127151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_19
+      rect:
+        serializedVersion: 2
+        x: 2860
+        y: 12920
+        width: 56
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a88472533ff33c0800000000000000
+      internalID: -4377512903162951054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_20
+      rect:
+        serializedVersion: 2
+        x: 2867
+        y: 12918
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c8d271fc923a8ac0800000000000000
+      internalID: -3852210881614915392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_21
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 12931
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f7d7fb40e9998b0800000000000000
+      internalID: -5144907356064350335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_22
+      rect:
+        serializedVersion: 2
+        x: 2873
+        y: 12922
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a01172995566c9950800000000000000
+      internalID: 6457148483570176266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_23
+      rect:
+        serializedVersion: 2
+        x: 2875
+        y: 12913
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f82a4bd8ab578440800000000000000
+      internalID: 4938016297226742003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_24
+      rect:
+        serializedVersion: 2
+        x: 2882
+        y: 12913
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9377cd0fbd25491a0800000000000000
+      internalID: -6803722032457681095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_25
+      rect:
+        serializedVersion: 2
+        x: 2889
+        y: 12909
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53671c40b1b2fd090800000000000000
+      internalID: -8007634217397553611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_26
+      rect:
+        serializedVersion: 2
+        x: 2892
+        y: 12920
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4b49dc6933256010800000000000000
+      internalID: 1181389206800911182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_27
+      rect:
+        serializedVersion: 2
+        x: 2893
+        y: 12949
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d408b47739c8c2630800000000000000
+      internalID: 3903649542012895309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_28
+      rect:
+        serializedVersion: 2
+        x: 2899
+        y: 12921
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c1c15ef888b87130800000000000000
+      internalID: 3564802003585581513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_29
+      rect:
+        serializedVersion: 2
+        x: 2899
+        y: 12915
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f910e1f6b7222c0800000000000000
+      internalID: -4457864963968360555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_30
+      rect:
+        serializedVersion: 2
+        x: 2903
+        y: 12903
+        width: 135
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9115a441b8f86c50800000000000000
+      internalID: 6658845489311846812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_31
+      rect:
+        serializedVersion: 2
+        x: 2904
+        y: 12930
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ed98b13968eac530800000000000000
+      internalID: 3876165967809125862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_32
+      rect:
+        serializedVersion: 2
+        x: 2906
+        y: 12947
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8501f683c2c8ebb20800000000000000
+      internalID: 3152110910759178328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_33
+      rect:
+        serializedVersion: 2
+        x: 2907
+        y: 12919
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8eab3bc530888e00800000000000000
+      internalID: 1047227881894948493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_34
+      rect:
+        serializedVersion: 2
+        x: 2919
+        y: 12915
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1349459336372350800000000000000
+      internalID: 5991817424415572766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_35
+      rect:
+        serializedVersion: 2
+        x: 2920
+        y: 12919
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed67589f2f3479d90800000000000000
+      internalID: -7091124377424136482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_36
+      rect:
+        serializedVersion: 2
+        x: 2924
+        y: 12931
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dd35a5ec80304940800000000000000
+      internalID: 5278272144984587731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_37
+      rect:
+        serializedVersion: 2
+        x: 2928
+        y: 12914
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4316ba252725142a0800000000000000
+      internalID: -6755027315112320716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_38
+      rect:
+        serializedVersion: 2
+        x: 2947
+        y: 12916
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df1175aac05c3200800000000000000
+      internalID: 161092517967765458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_39
+      rect:
+        serializedVersion: 2
+        x: 2948
+        y: 12922
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cc5bbd0d85f28360800000000000000
+      internalID: 7170563542896827587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_40
+      rect:
+        serializedVersion: 2
+        x: 2954
+        y: 12915
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ed39858e718abc0800000000000000
+      internalID: -3771738401236853215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_41
+      rect:
+        serializedVersion: 2
+        x: 2955
+        y: 12933
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8839e776567254850800000000000000
+      internalID: 6360533365212222344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_42
+      rect:
+        serializedVersion: 2
+        x: 2963
+        y: 12948
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f93e5f6b389c09c0800000000000000
+      internalID: -3959622591326569993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_43
+      rect:
+        serializedVersion: 2
+        x: 2964
+        y: 12922
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c52368197a37cdac0800000000000000
+      internalID: -3829058419633540516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_44
+      rect:
+        serializedVersion: 2
+        x: 2972
+        y: 12914
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d40dab507fbac070800000000000000
+      internalID: 8127518966838789336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_45
+      rect:
+        serializedVersion: 2
+        x: 2981
+        y: 12933
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84f4e9f3494e2eb0800000000000000
+      internalID: -4742772801270385526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_46
+      rect:
+        serializedVersion: 2
+        x: 2983
+        y: 12913
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa7415c20fee360d0800000000000000
+      internalID: -3430635775823099990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_47
+      rect:
+        serializedVersion: 2
+        x: 2987
+        y: 12909
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82cebe260b4065390800000000000000
+      internalID: -7830065746516644824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_48
+      rect:
+        serializedVersion: 2
+        x: 3009
+        y: 12931
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d25a29db2c814410800000000000000
+      internalID: 1459601874199663314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_49
+      rect:
+        serializedVersion: 2
+        x: 3013
+        y: 12918
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fae76b08b0fb5a80800000000000000
+      internalID: -8476917200338818320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_50
+      rect:
+        serializedVersion: 2
+        x: 3022
+        y: 12913
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca43aa783cd52d6d0800000000000000
+      internalID: -2967206110107650900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_51
+      rect:
+        serializedVersion: 2
+        x: 3024
+        y: 12918
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0854b86aefc08500800000000000000
+      internalID: 396545372894550029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_52
+      rect:
+        serializedVersion: 2
+        x: 3034
+        y: 12888
+        width: 201
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0da3b0106d82ed6a0800000000000000
+      internalID: -6422651118978123056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_53
+      rect:
+        serializedVersion: 2
+        x: 3035
+        y: 12921
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d593cdf6bf9f5af60800000000000000
+      internalID: 8045111167676070237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_54
+      rect:
+        serializedVersion: 2
+        x: 3047
+        y: 12899
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b82a643ce7b1d7070800000000000000
+      internalID: 8105665135592776331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_55
+      rect:
+        serializedVersion: 2
+        x: 3064
+        y: 12916
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7754c20b5b4472900800000000000000
+      internalID: 659571417568527735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_56
+      rect:
+        serializedVersion: 2
+        x: 3071
+        y: 12913
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe44e3bb193fdd950800000000000000
+      internalID: 6475599646465869039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_57
+      rect:
+        serializedVersion: 2
+        x: 3090
+        y: 12932
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1a08d4b7559f8320800000000000000
+      internalID: 2562430916925852190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_58
+      rect:
+        serializedVersion: 2
+        x: 3112
+        y: 12912
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88e14d04958a55070800000000000000
+      internalID: 8094561006561533576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_59
+      rect:
+        serializedVersion: 2
+        x: 2852
+        y: 12896
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 378aefc8d94607e30800000000000000
+      internalID: 4499206655581268083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_60
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 12907
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e380c3da5a2b51290800000000000000
+      internalID: -7920227945015408578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_61
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 12886
+        width: 22
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4208792be4db9ab00800000000000000
+      internalID: 840410951182680100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_62
+      rect:
+        serializedVersion: 2
+        x: 2900
+        y: 12900
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8f0cca9088879f0800000000000000
+      internalID: -470476585925805884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_63
+      rect:
+        serializedVersion: 2
+        x: 2912
+        y: 12910
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 340bbaec190e35400800000000000000
+      internalID: 311839716060934211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_64
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 12909
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eba01db6f30f60b90800000000000000
+      internalID: -7275863992787989826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_65
+      rect:
+        serializedVersion: 2
+        x: 2936
+        y: 12910
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab8566726f25bad0800000000000000
+      internalID: -2687189502716965983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_66
+      rect:
+        serializedVersion: 2
+        x: 2941
+        y: 12907
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b90f8f462cf9b5df0800000000000000
+      internalID: -190382901966606181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_67
+      rect:
+        serializedVersion: 2
+        x: 2954
+        y: 12907
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba0bfcd30044a7370800000000000000
+      internalID: 8321038029348122795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_68
+      rect:
+        serializedVersion: 2
+        x: 2958
+        y: 12892
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9abe747d61f49bd0800000000000000
+      internalID: -2624207230441964898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_69
+      rect:
+        serializedVersion: 2
+        x: 2977
+        y: 12900
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 040a681c17da7b570800000000000000
+      internalID: 8482439127265353792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_70
+      rect:
+        serializedVersion: 2
+        x: 2978
+        y: 12909
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe330632441da9f20800000000000000
+      internalID: 3430284156777542639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_71
+      rect:
+        serializedVersion: 2
+        x: 2993
+        y: 12898
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bf7e7c4f0cfa68d0800000000000000
+      internalID: -2852190271347720265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_72
+      rect:
+        serializedVersion: 2
+        x: 2997
+        y: 12908
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11639546ef08aea50800000000000000
+      internalID: 6551190438057424401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_73
+      rect:
+        serializedVersion: 2
+        x: 3010
+        y: 12901
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 297fbe8d966ad3670800000000000000
+      internalID: 8520149043595966354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_74
+      rect:
+        serializedVersion: 2
+        x: 3014
+        y: 12906
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43130886ecb575250800000000000000
+      internalID: 5933311976158540084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_75
+      rect:
+        serializedVersion: 2
+        x: 3094
+        y: 12913
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc845550b1e9adb90800000000000000
+      internalID: -7216281614017017651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_76
+      rect:
+        serializedVersion: 2
+        x: 3098
+        y: 12893
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7a3e42e29a1f8140800000000000000
+      internalID: 4724023752299264635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_77
+      rect:
+        serializedVersion: 2
+        x: 3110
+        y: 12906
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd7dd729f50fce410800000000000000
+      internalID: 1507844268532553691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_78
+      rect:
+        serializedVersion: 2
+        x: 2828
+        y: 12898
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adeda54c93c6ba650800000000000000
+      internalID: 6245204303642549978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_79
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 12903
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb07a1961a229d380800000000000000
+      internalID: -8946081108146360129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_80
+      rect:
+        serializedVersion: 2
+        x: 2843
+        y: 12897
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c0e0e005d69da610800000000000000
+      internalID: 1634128081392296130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_81
+      rect:
+        serializedVersion: 2
+        x: 2845
+        y: 12892
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe9d34661cd3c140800000000000000
+      internalID: 4738873221653044926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_82
+      rect:
+        serializedVersion: 2
+        x: 2852
+        y: 12896
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c148e9c7f8cdb780800000000000000
+      internalID: -8665549141421047352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_83
+      rect:
+        serializedVersion: 2
+        x: 2857
+        y: 12891
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d4777cd70993d170800000000000000
+      internalID: 8202067605414442195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_84
+      rect:
+        serializedVersion: 2
+        x: 2868
+        y: 12891
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9b73ca614110d20800000000000000
+      internalID: 3242895294294636980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_85
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 12897
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dbc6ed9bffdefe90800000000000000
+      internalID: -6989903299853497386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_86
+      rect:
+        serializedVersion: 2
+        x: 2884
+        y: 12873
+        width: 24
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604754e41a4af2460800000000000000
+      internalID: 7219169740408058886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_87
+      rect:
+        serializedVersion: 2
+        x: 2900
+        y: 12897
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc8ebb41edcfb1680800000000000000
+      internalID: -8783148617495222068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_88
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 12892
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e200aa7361a6718c0800000000000000
+      internalID: -4028634698003906514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_89
+      rect:
+        serializedVersion: 2
+        x: 2909
+        y: 12875
+        width: 35
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53914af4470e998f0800000000000000
+      internalID: -533148290709710539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_90
+      rect:
+        serializedVersion: 2
+        x: 2910
+        y: 12899
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 183206abf14b7f060800000000000000
+      internalID: 6987251395252462465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_91
+      rect:
+        serializedVersion: 2
+        x: 2929
+        y: 12870
+        width: 39
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc12a4b442477e560800000000000000
+      internalID: 7342965416681677263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_92
+      rect:
+        serializedVersion: 2
+        x: 2935
+        y: 12887
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1efe26975aba0670800000000000000
+      internalID: 8505815731587186204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_93
+      rect:
+        serializedVersion: 2
+        x: 2941
+        y: 12902
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d5676471c22e4f20800000000000000
+      internalID: 3408700182243010006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_94
+      rect:
+        serializedVersion: 2
+        x: 2944
+        y: 12897
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a5de88e2d134dff0800000000000000
+      internalID: -12330117060700767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_95
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 12887
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53c64554dc77eaae0800000000000000
+      internalID: -1536158699371598795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_96
+      rect:
+        serializedVersion: 2
+        x: 2974
+        y: 12890
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c22a72d790c1ba70800000000000000
+      internalID: 8841059301808808646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_97
+      rect:
+        serializedVersion: 2
+        x: 2977
+        y: 12877
+        width: 17
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2b8a19740de00e50800000000000000
+      internalID: 6773674443032660783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_98
+      rect:
+        serializedVersion: 2
+        x: 2981
+        y: 12897
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d702349b5dce6af70800000000000000
+      internalID: 9198299691631190141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_99
+      rect:
+        serializedVersion: 2
+        x: 2985
+        y: 12896
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af5df194c2d799a10800000000000000
+      internalID: 1916700745581712890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_100
+      rect:
+        serializedVersion: 2
+        x: 2985
+        y: 12878
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d178108f81df4d2c0800000000000000
+      internalID: -4407619851606980835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_101
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 12900
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6925f82d2615fdd40800000000000000
+      internalID: 5611293145608180374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_102
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 12878
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e30e16164abe25580800000000000000
+      internalID: -8839744027333894082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_103
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 12890
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2266958fd9e17fbe0800000000000000
+      internalID: -1443651491723647454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_104
+      rect:
+        serializedVersion: 2
+        x: 3001
+        y: 12897
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f67f668f4892770800000000000000
+      internalID: 8586540366972809083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_105
+      rect:
+        serializedVersion: 2
+        x: 3005
+        y: 12895
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ee3dee28860cb600800000000000000
+      internalID: 485270041821789928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_106
+      rect:
+        serializedVersion: 2
+        x: 3016
+        y: 12894
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74adcb82c41e1240800000000000000
+      internalID: 4764268281606284415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_107
+      rect:
+        serializedVersion: 2
+        x: 3022
+        y: 12888
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c92ed0c5df499b80800000000000000
+      internalID: -8387585051518424631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_108
+      rect:
+        serializedVersion: 2
+        x: 3031
+        y: 12882
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c12402c2e2d512470800000000000000
+      internalID: 8368072035521282588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_109
+      rect:
+        serializedVersion: 2
+        x: 3032
+        y: 12898
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbffd2eee56367f20800000000000000
+      internalID: 3419980748385288124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_110
+      rect:
+        serializedVersion: 2
+        x: 3046
+        y: 12885
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3320b61b2cc37cbe0800000000000000
+      internalID: -1457129147533163981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_111
+      rect:
+        serializedVersion: 2
+        x: 3063
+        y: 12900
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecfeea4c42d8626a0800000000000000
+      internalID: -6474332225240371250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_112
+      rect:
+        serializedVersion: 2
+        x: 3066
+        y: 12892
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7549624092eaf31b0800000000000000
+      internalID: -5674625514277006249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_113
+      rect:
+        serializedVersion: 2
+        x: 3070
+        y: 12893
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a4a0bfa1036baf20800000000000000
+      internalID: 3434947999693841574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_114
+      rect:
+        serializedVersion: 2
+        x: 3076
+        y: 12891
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae3e7ff539b2309d0800000000000000
+      internalID: -2809353830578789398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_115
+      rect:
+        serializedVersion: 2
+        x: 3087
+        y: 12888
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39da8d7e1aaea25a0800000000000000
+      internalID: -6545161127329223277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_116
+      rect:
+        serializedVersion: 2
+        x: 3089
+        y: 12899
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33ee98886faa630a0800000000000000
+      internalID: -6902141403069288909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_117
+      rect:
+        serializedVersion: 2
+        x: 3126
+        y: 12898
+        width: 17
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a01f554dc5ee3f10800000000000000
+      internalID: 2251489533526741156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_118
+      rect:
+        serializedVersion: 2
+        x: 3138
+        y: 12896
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031806276bfb93e70800000000000000
+      internalID: 9095511712775307568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_119
+      rect:
+        serializedVersion: 2
+        x: 3149
+        y: 12895
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54dbbb666f5ef0db0800000000000000
+      internalID: -4823383829442216635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_120
+      rect:
+        serializedVersion: 2
+        x: 2853
+        y: 12883
+        width: 25
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9184820b8ab3960800000000000000
+      internalID: 7582839872151886298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_121
+      rect:
+        serializedVersion: 2
+        x: 2902
+        y: 12883
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78b493ca81b3985b0800000000000000
+      internalID: -5365692503880545401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_122
+      rect:
+        serializedVersion: 2
+        x: 2955
+        y: 12874
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34d449731c0f6d440800000000000000
+      internalID: 4960416752247000387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_123
+      rect:
+        serializedVersion: 2
+        x: 2969
+        y: 12874
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89fa7e641d06e6c20800000000000000
+      internalID: 3201602837061021592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_124
+      rect:
+        serializedVersion: 2
+        x: 3018
+        y: 12886
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5876757178a25c930800000000000000
+      internalID: 4162780190274447237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_125
+      rect:
+        serializedVersion: 2
+        x: 3022
+        y: 12881
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215d520f2045595b0800000000000000
+      internalID: -5362287409719028462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_126
+      rect:
+        serializedVersion: 2
+        x: 3052
+        y: 12884
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 715f1ce091d0c3500800000000000000
+      internalID: 377190870065214743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_127
+      rect:
+        serializedVersion: 2
+        x: 3062
+        y: 12889
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8e7f632f28bcdf00800000000000000
+      internalID: 1142990918042746506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_128
+      rect:
+        serializedVersion: 2
+        x: 3068
+        y: 12886
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f3b118197f0eda10800000000000000
+      internalID: 1936001902585164785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_129
+      rect:
+        serializedVersion: 2
+        x: 3078
+        y: 12887
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0418555a6aee539c0800000000000000
+      internalID: -3947987098814545600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_130
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 12881
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbaf4fdc80e33f860800000000000000
+      internalID: 7562456406821239485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_131
+      rect:
+        serializedVersion: 2
+        x: 2879
+        y: 12879
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cb0301e0f2b3c060800000000000000
+      internalID: 6972613395736628169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_132
+      rect:
+        serializedVersion: 2
+        x: 2906
+        y: 12882
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14a0afcc2b950930800000000000000
+      internalID: 4108860851809723420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_133
+      rect:
+        serializedVersion: 2
+        x: 2906
+        y: 12870
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c37a6be88e05793f0800000000000000
+      internalID: -894157041252784324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_134
+      rect:
+        serializedVersion: 2
+        x: 3018
+        y: 12881
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aa0215fdabb2a820800000000000000
+      internalID: 2928109063559580323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_135
+      rect:
+        serializedVersion: 2
+        x: 2896
+        y: 12868
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 625b9293693313fa0800000000000000
+      internalID: -5822816122916195034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wave 6_136
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 12869
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4b7d47015a8e7440800000000000000
+      internalID: 4935534322264144718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Wave 6_0: -2486416814105232043
+      Wave 6_1: 4581975620162759951
+      Wave 6_10: 6163159275112649536
+      Wave 6_100: -4407619851606980835
+      Wave 6_101: 5611293145608180374
+      Wave 6_102: -8839744027333894082
+      Wave 6_103: -1443651491723647454
+      Wave 6_104: 8586540366972809083
+      Wave 6_105: 485270041821789928
+      Wave 6_106: 4764268281606284415
+      Wave 6_107: -8387585051518424631
+      Wave 6_108: 8368072035521282588
+      Wave 6_109: 3419980748385288124
+      Wave 6_11: 8179596522821346140
+      Wave 6_110: -1457129147533163981
+      Wave 6_111: -6474332225240371250
+      Wave 6_112: -5674625514277006249
+      Wave 6_113: 3434947999693841574
+      Wave 6_114: -2809353830578789398
+      Wave 6_115: -6545161127329223277
+      Wave 6_116: -6902141403069288909
+      Wave 6_117: 2251489533526741156
+      Wave 6_118: 9095511712775307568
+      Wave 6_119: -4823383829442216635
+      Wave 6_12: 3160858880073512340
+      Wave 6_120: 7582839872151886298
+      Wave 6_121: -5365692503880545401
+      Wave 6_122: 4960416752247000387
+      Wave 6_123: 3201602837061021592
+      Wave 6_124: 4162780190274447237
+      Wave 6_125: -5362287409719028462
+      Wave 6_126: 377190870065214743
+      Wave 6_127: 1142990918042746506
+      Wave 6_128: 1936001902585164785
+      Wave 6_129: -3947987098814545600
+      Wave 6_13: 8949066249932998822
+      Wave 6_130: 7562456406821239485
+      Wave 6_131: 6972613395736628169
+      Wave 6_132: 4108860851809723420
+      Wave 6_133: -894157041252784324
+      Wave 6_134: 2928109063559580323
+      Wave 6_135: -5822816122916195034
+      Wave 6_136: 4935534322264144718
+      Wave 6_14: 6188874331342904367
+      Wave 6_15: 318869726674442692
+      Wave 6_16: -1490273295304646999
+      Wave 6_17: 2369333824019070700
+      Wave 6_18: -2102456498269127151
+      Wave 6_19: -4377512903162951054
+      Wave 6_2: 5174526498956272051
+      Wave 6_20: -3852210881614915392
+      Wave 6_21: -5144907356064350335
+      Wave 6_22: 6457148483570176266
+      Wave 6_23: 4938016297226742003
+      Wave 6_24: -6803722032457681095
+      Wave 6_25: -8007634217397553611
+      Wave 6_26: 1181389206800911182
+      Wave 6_27: 3903649542012895309
+      Wave 6_28: 3564802003585581513
+      Wave 6_29: -4457864963968360555
+      Wave 6_3: 8236995391634188660
+      Wave 6_30: 6658845489311846812
+      Wave 6_31: 3876165967809125862
+      Wave 6_32: 3152110910759178328
+      Wave 6_33: 1047227881894948493
+      Wave 6_34: 5991817424415572766
+      Wave 6_35: -7091124377424136482
+      Wave 6_36: 5278272144984587731
+      Wave 6_37: -6755027315112320716
+      Wave 6_38: 161092517967765458
+      Wave 6_39: 7170563542896827587
+      Wave 6_4: 768878305421086614
+      Wave 6_40: -3771738401236853215
+      Wave 6_41: 6360533365212222344
+      Wave 6_42: -3959622591326569993
+      Wave 6_43: -3829058419633540516
+      Wave 6_44: 8127518966838789336
+      Wave 6_45: -4742772801270385526
+      Wave 6_46: -3430635775823099990
+      Wave 6_47: -7830065746516644824
+      Wave 6_48: 1459601874199663314
+      Wave 6_49: -8476917200338818320
+      Wave 6_5: -8569570616154457593
+      Wave 6_50: -2967206110107650900
+      Wave 6_51: 396545372894550029
+      Wave 6_52: -6422651118978123056
+      Wave 6_53: 8045111167676070237
+      Wave 6_54: 8105665135592776331
+      Wave 6_55: 659571417568527735
+      Wave 6_56: 6475599646465869039
+      Wave 6_57: 2562430916925852190
+      Wave 6_58: 8094561006561533576
+      Wave 6_59: 4499206655581268083
+      Wave 6_6: 6197912099700408454
+      Wave 6_60: -7920227945015408578
+      Wave 6_61: 840410951182680100
+      Wave 6_62: -470476585925805884
+      Wave 6_63: 311839716060934211
+      Wave 6_64: -7275863992787989826
+      Wave 6_65: -2687189502716965983
+      Wave 6_66: -190382901966606181
+      Wave 6_67: 8321038029348122795
+      Wave 6_68: -2624207230441964898
+      Wave 6_69: 8482439127265353792
+      Wave 6_7: -3201295953690606881
+      Wave 6_70: 3430284156777542639
+      Wave 6_71: -2852190271347720265
+      Wave 6_72: 6551190438057424401
+      Wave 6_73: 8520149043595966354
+      Wave 6_74: 5933311976158540084
+      Wave 6_75: -7216281614017017651
+      Wave 6_76: 4724023752299264635
+      Wave 6_77: 1507844268532553691
+      Wave 6_78: 6245204303642549978
+      Wave 6_79: -8946081108146360129
+      Wave 6_8: -1915328250062958565
+      Wave 6_80: 1634128081392296130
+      Wave 6_81: 4738873221653044926
+      Wave 6_82: -8665549141421047352
+      Wave 6_83: 8202067605414442195
+      Wave 6_84: 3242895294294636980
+      Wave 6_85: -6989903299853497386
+      Wave 6_86: 7219169740408058886
+      Wave 6_87: -8783148617495222068
+      Wave 6_88: -4028634698003906514
+      Wave 6_89: -533148290709710539
+      Wave 6_9: 2824984445754320093
+      Wave 6_90: 6987251395252462465
+      Wave 6_91: 7342965416681677263
+      Wave 6_92: 8505815731587186204
+      Wave 6_93: 3408700182243010006
+      Wave 6_94: -12330117060700767
+      Wave 6_95: -1536158699371598795
+      Wave 6_96: 8841059301808808646
+      Wave 6_97: 6773674443032660783
+      Wave 6_98: 9198299691631190141
+      Wave 6_99: 1916700745581712890
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
