@@ -31,7 +31,7 @@ public class WeaponController : MonoBehaviour
                 gameObject.transform.position = transformValue - new Vector3(0, 1, 0);
                 break;
             case FacingDirection.Left:
-                gameObject.transform.position = transformValue - new Vector3(1, 0, 0) + new Vector3 (0,0.5f,0);
+                gameObject.transform.position = transformValue - new Vector3(1, 0, 0) + new Vector3(0, 0.5f, 0);
                 break;
             case FacingDirection.Right:
                 gameObject.transform.position = transformValue + new Vector3(1, 0.5f, 0);
@@ -41,29 +41,58 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private Vector2 getAttackRangeV2() {
+    private Collider2D[] getHitColliders() {
         switch (PlayerController.FacingDirection)
         {
             case FacingDirection.Up:
-                return new Vector2(1, AttackRange + 2);
+                attackRangeV2 = new Vector2(2, AttackRange + 2);
+                return Physics2D.OverlapBoxAll(transform.position + new Vector3(0, 1, 0), attackRangeV2, 0, enemyLayer);
             // gameObject.transform.position = transformValue + new Vector3(0, 2, 0);
             case FacingDirection.Down:
-                return new Vector2(1, AttackRange * -1);
+                attackRangeV2 = new Vector2(2, AttackRange + 1);
+                return Physics2D.OverlapBoxAll(transform.position + new Vector3(0, -1, 0), attackRangeV2, 0, enemyLayer);
+            // return new Vector2(2.5f, AttackRange * -1);
             // gameObject.transform.position = transformValue - new Vector3(0, 1, 0);
             case FacingDirection.Left:
-                return new Vector2((AttackRange * -1) - 1, 1);
+                attackRangeV2 = new Vector2(AttackRange + 1, 2);
+                return Physics2D.OverlapBoxAll(transform.position + new Vector3(-1, 0, 0), attackRangeV2, 90, enemyLayer);
+            // return new Vector2((AttackRange * -1) - 1, 2.5f);
             // gameObject.transform.position = transformValue - new Vector3(1, 0, 0) + new Vector3 (0,0.5f,0);
             case FacingDirection.Right:
-                return new Vector2(AttackRange+ 1, 1);
+                attackRangeV2 = new Vector2(AttackRange + 1, 2);
+                return Physics2D.OverlapBoxAll(transform.position + new Vector3(1, 0, 0), attackRangeV2, -90, enemyLayer);
+            // return new Vector2(AttackRange+ 1, 2.5f);
             // gameObject.transform.position = transformValue + new Vector3(1, 0.5f, 0);
             default:
-                return new Vector2(0, 0);
+                return new Collider2D[0];
         }
     }
+    // trying to replace with the "getHitColliders" function, keeping in case I mess it up
+    // private Vector2 getAttackRangeV2() {
+    //     switch (PlayerController.FacingDirection)
+    //     {
+    //         case FacingDirection.Up:
+    //             return new Vector2(2.5f, AttackRange + 2);
+    //         // gameObject.transform.position = transformValue + new Vector3(0, 2, 0);
+    //         case FacingDirection.Down:
+    //             return new Vector2(2.5f, AttackRange * -1);
+    //         // gameObject.transform.position = transformValue - new Vector3(0, 1, 0);
+    //         case FacingDirection.Left:
+    //             return new Vector2((AttackRange * -1) - 1, 2.5f);
+    //         // gameObject.transform.position = transformValue - new Vector3(1, 0, 0) + new Vector3 (0,0.5f,0);
+    //         case FacingDirection.Right:
+    //             return new Vector2(AttackRange+ 1, 2.5f);
+    //         // gameObject.transform.position = transformValue + new Vector3(1, 0.5f, 0);
+    //         default:
+    //             return new Vector2(0, 0);
+    //     }
+    // }
     public void Attack()
     {
-        attackRangeV2 = getAttackRangeV2();
-        Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, attackRangeV2, 0, enemyLayer);
+        // attackRangeV2 = getAttackRangeV2();
+
+        // Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, attackRangeV2, 0, enemyLayer);
+        Collider2D[] hitColliders = getHitColliders();
         foreach (Collider2D hitCollider in hitColliders)
         {
             // Ignore enemy trigger colliders, which are just used for agro range
@@ -108,6 +137,6 @@ public class WeaponController : MonoBehaviour
     {
         Gizmos.color = Color.magenta;
         Vector3 attackRangeV3 = attackRangeV2;
-        Gizmos.DrawWireCube(transform.position, attackRangeV3);
+        Gizmos.DrawWireCube(gameObject.transform.position, attackRangeV3);
     }
 }
