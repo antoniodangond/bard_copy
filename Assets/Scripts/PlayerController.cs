@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
         // Initialize lastPlayedNotes to a queue of null values
         lastPlayedNotes = BuildEmptyNotesQueue();
 
-        // --- Hard reset statics so domain-reload quirks can’t leak previous values ---
+        // --- Hard reset statics so domain-reload quirks canï¿½t leak previous values ---
         canDash = false;
         AbilityGate.AOEUnlocked = false;
 
@@ -282,6 +282,7 @@ public class PlayerController : MonoBehaviour
     public void OnAttackFinished()
     {
         isPlayingLyre = false;
+        isAttacking = false;
     }
 
     private FacingDirection determineFacingDirection(Vector2 movement)
@@ -411,7 +412,7 @@ public class PlayerController : MonoBehaviour
 
             if (PlayerInputManager.WasAttackPressed && PlayerAttack.CanAttack)
             {
-                isPlayingLyre = true;
+                isPlayingLyre = false;
                 isAttacking = true;
                 playerAttack.Attack();
                 playerAudio.PlayAttackChord();

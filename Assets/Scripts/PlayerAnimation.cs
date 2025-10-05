@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -10,13 +11,13 @@ public class PlayerAnimation : MonoBehaviour
     {
         // Use movement.sqrMagnitutde as a proxy for "is moving"
         animator.SetFloat(AnimatorParams.Speed, movement.sqrMagnitude);
-        animator.SetBool(AnimatorParams.IsPlayingLyre, IsPlayingLyre);
+        // animator.SetBool(AnimatorParams.IsPlayingLyre, IsPlayingLyre);
         // Set lyre animation state
-        if (IsPlayingLyre && isAttacking)
+        if (isAttacking)
         {
             // don't play an animation, spawn particles instead
             // animator.SetBool(AnimatorParams.IsPlayingLyre, false);
-            // animator.SetBool(AnimatorParams.IsAttacking, true);
+            animator.SetBool(AnimatorParams.IsAttacking, true);
 
         }
         else if (IsPlayingLyre)
