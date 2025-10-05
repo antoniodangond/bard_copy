@@ -48,6 +48,22 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSpriteColor = spriteRenderer.color;
         knockBackTime = 0.25f;
+        if (enemyName == "Owl")
+        {
+            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("PhysicalBarrier");
+            foreach (GameObject item in gameObjects)
+            {
+                if (item.GetComponent<BoxCollider2D>() != null)
+                {
+                    Physics2D.IgnoreCollision(item.GetComponent<BoxCollider2D>(), gameObject.GetComponent<PolygonCollider2D>());
+                }
+                else if (item.GetComponent<PolygonCollider2D>() != null)
+                {
+                    Physics2D.IgnoreCollision(item.GetComponent<PolygonCollider2D>(), gameObject.GetComponent<PolygonCollider2D>());
+                }
+                else { continue; }
+            }
+        }
     }
 
     void Start()
@@ -142,6 +158,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "PhysicalBarrier" && enemyName == "Owl")
+        {
+            // Physics.IgnoreCollision(collision, gameObject.collision);
+            return;
+        }
         // Turning off the EnemyState check for now to make combat feel a little more responsive
         if (/*currentState == EnemyState.Attacking && */Utils.HasTargetLayer(PlayerLayer, collision.gameObject))
         {

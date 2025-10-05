@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StoneFloor
   - UndergroundMusic
+  - PhysicalBarrier
   layers:
   - Default
   - TransparentFX

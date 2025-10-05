@@ -1842,7 +1842,7 @@ GameObject:
   - component: {fileID: 76853207}
   m_Layer: 0
   m_Name: Cactus 3_0
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4231,7 +4231,7 @@ GameObject:
   - component: {fileID: 180841104}
   m_Layer: 0
   m_Name: Masked Tree 8
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6484,7 +6484,7 @@ GameObject:
   - component: {fileID: 293906827}
   m_Layer: 0
   m_Name: Masked Tree 2
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8391,7 +8391,7 @@ GameObject:
   - component: {fileID: 376843295}
   m_Layer: 0
   m_Name: Forest Rocks 3
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8671,7 +8671,7 @@ GameObject:
   - component: {fileID: 378892402}
   m_Layer: 0
   m_Name: Masked Tree 4
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11275,7 +11275,7 @@ GameObject:
   - component: {fileID: 491003815}
   m_Layer: 0
   m_Name: Cactus 1
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15714,7 +15714,7 @@ GameObject:
   - component: {fileID: 728934370}
   m_Layer: 0
   m_Name: Desert Rocks 2_0
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16166,7 +16166,7 @@ GameObject:
   - component: {fileID: 749684020}
   m_Layer: 0
   m_Name: Masked Tree 1
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18645,7 +18645,7 @@ GameObject:
   - component: {fileID: 831485714}
   m_Layer: 0
   m_Name: Masked Tree 9
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21875,7 +21875,7 @@ GameObject:
   - component: {fileID: 969064801}
   m_Layer: 0
   m_Name: Cactus 2_0
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24794,7 +24794,7 @@ GameObject:
   - component: {fileID: 1125266069}
   m_Layer: 0
   m_Name: Forest Rocks 1
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26857,7 +26857,7 @@ GameObject:
   - component: {fileID: 1215309069}
   m_Layer: 0
   m_Name: Masked Tree 10
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32119,7 +32119,7 @@ GameObject:
   - component: {fileID: 1416420869}
   m_Layer: 0
   m_Name: Forest Rocks 2
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32353,7 +32353,7 @@ GameObject:
   - component: {fileID: 1422154017}
   m_Layer: 0
   m_Name: Desert Rocks 1_0
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35795,7 +35795,7 @@ GameObject:
   - component: {fileID: 1558751822}
   m_Layer: 0
   m_Name: Masked Tree 5
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36854,7 +36854,7 @@ GameObject:
   - component: {fileID: 1594123993}
   m_Layer: 0
   m_Name: Masked Tree 7
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42207,7 +42207,7 @@ GameObject:
   - component: {fileID: 1841967182}
   m_Layer: 0
   m_Name: Masked Tree 3
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44120,7 +44120,7 @@ GameObject:
   - component: {fileID: 1928328697}
   m_Layer: 0
   m_Name: Desert Rocks 3
-  m_TagString: Untagged
+  m_TagString: PhysicalBarrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
