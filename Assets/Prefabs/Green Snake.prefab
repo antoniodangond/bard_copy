@@ -172,6 +172,7 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemyName: Snake
   AgroTimeBeforeAttack: 0.4
   AttackCooldownTime: 0.5
   MoveSpeed: 5

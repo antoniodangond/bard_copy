@@ -165,9 +165,10 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 8
+  enemyName: Owl
   AgroTimeBeforeAttack: 0.5
   AttackCooldownTime: 0
-  MoveSpeed: 4
+  MoveSpeed: 6
   AttackDurationSeconds: 1
   Health: 10
   damageParticles: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}

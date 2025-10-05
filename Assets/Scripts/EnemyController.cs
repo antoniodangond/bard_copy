@@ -16,6 +16,7 @@ public enum EnemyState
 public class EnemyController : MonoBehaviour
 {
     public LayerMask PlayerLayer;
+    public string enemyName;
     public float AgroTimeBeforeAttack;
     public float AttackCooldownTime;
     public float MoveSpeed;
@@ -166,6 +167,12 @@ public class EnemyController : MonoBehaviour
         return (targetRigidbody.position - (Vector2)transform.position).normalized;
     }
 
+    private float getAttackTime(Rigidbody2D targetRigidbody)
+    {
+        float travelDistance = Vector2.Distance(targetRigidbody.position, (Vector2)transform.position);
+        return (travelDistance / MoveSpeed) + 0.25f;
+    }
+
     private IEnumerator StartAttack(GameObject other)
     {
         // Exit early if enemy has died
@@ -192,7 +199,14 @@ public class EnemyController : MonoBehaviour
         animator.SetBool(AnimatorParams.IsMoving, true);
         enemyAudio.PlayAttack();
         // After attack duration, begin cooldown
-        yield return new WaitForSeconds(AttackDurationSeconds);
+        if (enemyName == "Owl")
+        {
+            yield return new WaitForSeconds(getAttackTime(targetRigidbody));
+        }
+        else
+        {
+            yield return new WaitForSeconds(AttackDurationSeconds);
+        }
         StartCoroutine(AttackCooldown());
     }
 
