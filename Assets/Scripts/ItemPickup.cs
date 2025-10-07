@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    public LayerMask playerLayer;
+    public string itemName;
     private BoxCollider2D boxCollider2D;
     private SpriteRenderer spriteRenderer;
-    public string itemName;
-    // this should be a reference to some more global tracker
     private bool collected;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -25,9 +24,11 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collected = true;
-        Debug.Log($"It's {collected}, you picked up the item!");
-        spriteRenderer.enabled = false;
-        // Destroy(gameObject);
+        if (collected == false && Utils.HasTargetLayer(playerLayer, collision.gameObject))
+        {
+            collected = true;
+            PlayerProgress.Instance.CollectItem(itemName);
+            Destroy(gameObject);
+        }
     }
 }

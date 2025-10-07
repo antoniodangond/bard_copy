@@ -147,4 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36562c8471ff3bf4f84447eeb07559fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
   itemName: Tablet

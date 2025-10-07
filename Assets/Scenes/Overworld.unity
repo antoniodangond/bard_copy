@@ -49804,6 +49804,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet1
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: playerLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.75
