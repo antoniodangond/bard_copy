@@ -158,11 +158,6 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PhysicalBarrier" && enemyName == "Owl")
-        {
-            // Physics.IgnoreCollision(collision, gameObject.collision);
-            return;
-        }
         // Turning off the EnemyState check for now to make combat feel a little more responsive
         if (/*currentState == EnemyState.Attacking && */Utils.HasTargetLayer(PlayerLayer, collision.gameObject))
         {
