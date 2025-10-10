@@ -10,31 +10,20 @@ public class PlayerProgress : MonoBehaviour
     private HashSet<string> claimedRewards = new HashSet<string>();
     private HashSet<string> collectedTablets = new HashSet<string>();
     private int numTabletsCollected;
-    private int lastNumTabletsCollected;
 
     void Awake()
     {
         numTabletsCollected = 0;
-        lastNumTabletsCollected = numTabletsCollected;
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
         Load();
     }
 
-    public void CollectItem(string itemPickup)
+    public void CollectTablet(string itemPickup)
     {
         numTabletsCollected += 1;
         collectedTablets.Add(itemPickup);
-    }
-
-    private void Update()
-    {
-        if (numTabletsCollected > lastNumTabletsCollected)
-        {
-            Debug.Log(collectedTablets.Count);
-            lastNumTabletsCollected += 1;
-        }
     }
 
     public bool HasUpgrade(UpgradeSO u) => u != null && upgrades.Contains(u.id);
