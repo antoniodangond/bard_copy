@@ -10678,7 +10678,7 @@ Transform:
   m_GameObject: {fileID: 471366968}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.8, y: -35.8, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11793,7 +11793,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -61.8, y: -35.8, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13774,6 +13774,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 623408357670243729, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: attackParticles
+      value: 
+      objectReference: {fileID: 5974238658672876685, guid: 3bdc102c6032b9b4abfbfab3de15b5ba, type: 3}
     - target: {fileID: 1030398134614253474, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -13820,11 +13824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -37.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13869,7 +13873,7 @@ PrefabInstance:
     - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: attackParticles
       value: 
-      objectReference: {fileID: 5974238658672876685, guid: f00333a5a738f1c40b0524c564d41d0d, type: 3}
+      objectReference: {fileID: 5974238658672876685, guid: 3bdc102c6032b9b4abfbfab3de15b5ba, type: 3}
     - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: interactionZoneSize.y
       value: 3

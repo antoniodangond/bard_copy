@@ -75,8 +75,6 @@ public class PlayerController : MonoBehaviour
     };
     // Track the notes played while in Instrument mode
     private Queue<string> lastPlayedNotes;
-    [SerializeField] private ParticleSystem attackParticles;
-    private ParticleSystem attackParticlesInstance;
 
     void Awake()
     {
@@ -416,8 +414,6 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 playerAttack.Attack();
                 playerAudio.PlayAttackChord();
-                Quaternion spawnRotation_1 = Quaternion.FromToRotation(movement * -1, movement);
-                attackParticlesInstance = Instantiate(attackParticles, transform.position + new Vector3(0, 1, 0), spawnRotation_1);
             }
 
             if (PlayerInputManager.wasDashPressed && canDash)

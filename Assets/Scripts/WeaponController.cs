@@ -10,6 +10,8 @@ public class WeaponController : MonoBehaviour
     public PlayerController playerController;
     private Vector2 attackDirection;
     Vector3 transformValue;
+    [SerializeField] private ParticleSystem attackParticles;
+    private ParticleSystem attackParticlesInstance;
 
     // TODO: make customizable in editor
     private float damage = 1f;
@@ -108,7 +110,12 @@ public class WeaponController : MonoBehaviour
             // Vector2 attackDirection = PlayerController.getFacingDirectionVector2(PlayerController.FacingDirection);
             EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
             enemyController.TakeDamage(damage, playerController, attackDirection);
+            // Quaternion spawnRotation_1 = Quaternion.FromToRotation(movement * -1, movement);
         }
+        Vector3 attackDirectionV3 = attackDirection;
+        Debug.Log(attackParticles);
+        // spawn particles in same direction as player attack but higher up since transform position is at player's feet
+        attackParticlesInstance = Instantiate(attackParticles, transform.position + (attackDirectionV3*2) + new Vector3 (0,1.5f,0), playerController.transform.rotation);
     }
     // saving old code for attack as it. This will be the AOE attack that the player will get in the dungeon
     // will be renamed accordingly
