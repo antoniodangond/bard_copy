@@ -35,15 +35,16 @@ public class PlayerUIManager : MonoBehaviour
     private Transform fullHeartStartLocation;
     private int maxHearts = 5;
     private List<Image> currentHearts = new List<Image>();
-    private ImagePool emptyHearts;
-    public GameObject emptyHeartObj; // Assign in inspector
-    private Transform emptyHeartStartLocation;
+    // private ImagePool emptyHearts;
+    // public GameObject emptyHeartObj; // Assign in inspector
+    // private Transform emptyHeartStartLocation;
     // Tablets Info
     private int totalTablets = 5;
+    private Transform collectedTabletStartLocation;
     private ImagePool collectedTabletsImages;
     public GameObject collectedTabletObj; // Assign in inspector
-    // private int numCollectedTablets = 0;
     private Dictionary<String, Vector2> tabletImageLocations = new Dictionary<String, Vector2>();
+    private List<Image> currentTabletImages = new List<Image>();
     [Header("Health UI Settings")]
     // Below are for orienting the Health UI elements in a fan like shape
     [SerializeField] public float xspacing = 75f;
@@ -85,6 +86,9 @@ public class PlayerUIManager : MonoBehaviour
         fullHeartStartLocation = gameObject.transform.GetChild(0).GetChild(1);
         fullHearts = new ImagePool(fullHeartObj.GetComponent<Image>(), fullHeartStartLocation, 5);
         UpdateHealthUI(maxHearts);
+
+        collectedTabletStartLocation = gameObject.transform.GetChild(1).GetChild(1);
+        collectedTabletsImages = new ImagePool(collectedTabletObj.GetComponent<Image>(), collectedTabletStartLocation, 5);
     }
 
     private void UpdateTabletDrawLocations()
@@ -150,13 +154,26 @@ public class PlayerUIManager : MonoBehaviour
         }
     }
 
-    public void UpdateCollectedTabletsUI(int numTabletsCollected, HashSet<String> collectedTablets)
+    public void UpdateCollectedTabletsUI(int numTabletsCollected, String[] collectedTablets)
     {
-        
+        // Return all tablets to pool
+        foreach (Image tablet in currentTabletImages)
+        {
+            collectedTabletsImages.ReturnImage(tablet);
+        }
+        currentTabletImages.Clear();
+
         for (int i = 0; i < numTabletsCollected; i++)
         {
-            
+            Image tablet = collectedTabletsImages.GetImage();
+            if (collectedTablets[i] != null)
+            {
+                RectTransform rt = tablet.GetComponent<RectTransform>();
+                rt.anchoredPosition = tabletImageLocations[collectedTablets[i]];
+                // tablet.transform.position = ;
+                tablet.gameObject.SetActive(i < numTabletsCollected);
+                currentTabletImages.Add(tablet);
+            }
         }
-        
     }
 }

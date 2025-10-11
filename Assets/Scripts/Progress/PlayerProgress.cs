@@ -1,4 +1,5 @@
 // Assets/Scripts/Progress/PlayerProgress.cs
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class PlayerProgress : MonoBehaviour
 
     private HashSet<string> upgrades = new HashSet<string>();
     private HashSet<string> claimedRewards = new HashSet<string>();
-    private HashSet<string> collectedTablets = new HashSet<string>();
+    private string[] collectedTablets = new string[5]{null,null,null,null,null};
     private int numTabletsCollected;
 
     void Awake()
@@ -23,7 +24,10 @@ public class PlayerProgress : MonoBehaviour
     public void CollectTablet(string itemPickup)
     {
         numTabletsCollected += 1;
-        collectedTablets.Add(itemPickup);
+        // replace null placeholder objects in tablets array with picked up tablet names
+        int indexToReplace = Array.IndexOf(collectedTablets, null);
+        if (indexToReplace != -1) { collectedTablets[indexToReplace] = itemPickup; }
+        PlayerUIManager.Instance.UpdateCollectedTabletsUI(numTabletsCollected, collectedTablets);
     }
 
     public bool HasUpgrade(UpgradeSO u) => u != null && upgrades.Contains(u.id);
