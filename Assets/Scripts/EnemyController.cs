@@ -78,6 +78,13 @@ public class EnemyController : MonoBehaviour
         CustomEvents.OnEnemyDeath?.Invoke(gameObject);
     }
 
+    private IEnumerator handleDeathRoutine()
+    {
+        enemyAudio.PlayHit();
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
+
     public void KnockBack(PlayerController playerController)
     {
         isBeingKnockedBack = true;
@@ -130,7 +137,7 @@ public class EnemyController : MonoBehaviour
             currentState = EnemyState.Dead;
             animator.SetBool(AnimatorParams.IsDead, true);
             // TODO: BUG - don't destroy game object before attempting to play hit
-            // enemyAudio.PlayHit();
+            StartCoroutine(handleDeathRoutine());
         }
         KnockBack(playerController);
     }
