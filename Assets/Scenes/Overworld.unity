@@ -10678,7 +10678,7 @@ Transform:
   m_GameObject: {fileID: 471366968}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: -61.8, y: -35.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11793,7 +11793,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: -61.8, y: -35.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13820,11 +13820,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -61.8
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -37.8
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -49979,6 +49979,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Owl 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2112998710197078634, guid: 846fa56a04249e24ea143e3db4168563, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393741463941741019, guid: 846fa56a04249e24ea143e3db4168563, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2592668655578596891, guid: 846fa56a04249e24ea143e3db4168563, type: 3}
       propertyPath: m_LocalPosition.x
       value: -76.71
@@ -50026,6 +50034,10 @@ PrefabInstance:
     - target: {fileID: 4489756671084348847, guid: 846fa56a04249e24ea143e3db4168563, type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7750294134580799998, guid: 846fa56a04249e24ea143e3db4168563, type: 3}
+      propertyPath: AttackCooldownTime
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
