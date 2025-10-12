@@ -27,16 +27,16 @@ public class WeaponController : MonoBehaviour
         switch (PlayerController.FacingDirection)
         {
             case FacingDirection.Up:
-                gameObject.transform.position = transformValue + new Vector3(0, 2, 0);
+                gameObject.transform.position = transformValue + new Vector3(0, 4, 0);
                 break;
             case FacingDirection.Down:
                 gameObject.transform.position = transformValue - new Vector3(0, 1, 0);
                 break;
             case FacingDirection.Left:
-                gameObject.transform.position = transformValue - new Vector3(1, 0, 0) + new Vector3(0, 0.5f, 0);
+                gameObject.transform.position = transformValue - new Vector3(2f, 0, 0) + new Vector3(0, 1.5f, 0);
                 break;
             case FacingDirection.Right:
-                gameObject.transform.position = transformValue + new Vector3(1, 0.5f, 0);
+                gameObject.transform.position = transformValue + new Vector3(2f, 1.5f, 0);
                 break;
             default:
                 break;
@@ -57,12 +57,12 @@ public class WeaponController : MonoBehaviour
             // return new Vector2(2.5f, AttackRange * -1);
             // gameObject.transform.position = transformValue - new Vector3(0, 1, 0);
             case FacingDirection.Left:
-                attackRangeV2 = new Vector2(AttackRange + 1, 2);
+                attackRangeV2 = new Vector2(AttackRange + 1.5f, 2);
                 return Physics2D.OverlapBoxAll(transform.position + new Vector3(-1, 0, 0), attackRangeV2, 90, enemyLayer);
             // return new Vector2((AttackRange * -1) - 1, 2.5f);
             // gameObject.transform.position = transformValue - new Vector3(1, 0, 0) + new Vector3 (0,0.5f,0);
             case FacingDirection.Right:
-                attackRangeV2 = new Vector2(AttackRange + 1, 2);
+                attackRangeV2 = new Vector2(AttackRange + 1.5f, 2);
                 return Physics2D.OverlapBoxAll(transform.position + new Vector3(1, 0, 0), attackRangeV2, -90, enemyLayer);
             // return new Vector2(AttackRange+ 1, 2.5f);
             // gameObject.transform.position = transformValue + new Vector3(1, 0.5f, 0);
