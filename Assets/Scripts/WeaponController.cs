@@ -106,17 +106,17 @@ public class WeaponController : MonoBehaviour
         {
             case FacingDirection.Up:
                 heightOffset = new Vector3(0, 0, 0);
-                eulerAngles.z += 70f;
+                eulerAngles.z += 90f;
                 particleRotation = Quaternion.Euler(eulerAngles);
                 break;
             case FacingDirection.Down:
                 heightOffset = new Vector3(0, 0, 0);
-                eulerAngles.z -= 110f;
+                eulerAngles.z -= 90f;
                 particleRotation = Quaternion.Euler(eulerAngles);
                 break;
             case FacingDirection.Left:
                 heightOffset = new Vector3(0, 1.5f, 0);
-                eulerAngles.z += 210f;
+                eulerAngles.z += 180f;
                 particleRotation = Quaternion.Euler(eulerAngles);
                 break;
             case FacingDirection.Right:
@@ -129,19 +129,14 @@ public class WeaponController : MonoBehaviour
                 break;
         }
         attackDirection = getAttackDirection();
-        Vector3 particleSpawnOffset = (Vector3) attackDirection + heightOffset;
+        // Vector3 particleSpawnOffset = (Vector3) attackDirection + heightOffset;
         // Vector3 particleSpawnPosition = transform.position + particleSpawnOffset;
-        Vector3 particleSpawnPosition = transform.position + heightOffset;
+        Vector3 particleSpawnPosition = transform.position - (Vector3) attackDirection + heightOffset;
         // attackParticles.velocityOverLifetime.x
 
         // Rotate particle system to face the attack direction
         // float angle = Mathf.Atan2(attackDirection.y, attackDirection.x) * Mathf.Rad2Deg;
         // Quaternion particleRotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
-
-       
-
-
-
         attackParticlesInstance = Instantiate(attackParticles, particleSpawnPosition, particleRotation);
         // attackParticlesInstance = Instantiate(attackParticles, particleSpawnPosition, playerController.transform.rotation);
     }
