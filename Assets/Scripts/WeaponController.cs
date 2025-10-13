@@ -131,7 +131,7 @@ public class WeaponController : MonoBehaviour
         attackDirection = getAttackDirection();
         // Vector3 particleSpawnOffset = (Vector3) attackDirection + heightOffset;
         // Vector3 particleSpawnPosition = transform.position + particleSpawnOffset;
-        Vector3 particleSpawnPosition = transform.position - (Vector3) attackDirection + heightOffset;
+        Vector3 particleSpawnPosition = transform.position - (Vector3)attackDirection; //+ heightOffset;
         // attackParticles.velocityOverLifetime.x
 
         // Rotate particle system to face the attack direction

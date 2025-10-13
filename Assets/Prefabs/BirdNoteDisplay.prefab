@@ -221,15 +221,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  waveFrequency: 2
+  waveAmplitude: 0.1
+  applyRotationWobble: 1
+  wobbleFrequency: 2
+  wobbleAngleRange: 10
   defaultLifetime: 2
   minOpacity: 0.2
   noteB_Layer0: {fileID: -243099114694839562, guid: 0d593c9bcc7b24168a33972a4899528c, type: 3}
-  noteB_Layer1: {fileID: -4830938959515655954, guid: 0d593c9bcc7b24168a33972a4899528c, type: 3}
+  noteB_Layer1: {fileID: 0}
   noteC_Layer0: {fileID: -8680797543115379092, guid: d0fcb1b6396764bbfb019fc0e0a87e66, type: 3}
-  noteC_Layer1: {fileID: 4251871941529161494, guid: d0fcb1b6396764bbfb019fc0e0a87e66, type: 3}
+  noteC_Layer1: {fileID: 0}
   noteD_Layer0: {fileID: -1182827721247122346, guid: b75b10ff03fa8488eaca866fb3355edd, type: 3}
-  noteD_Layer1: {fileID: 4240220511655738080, guid: b75b10ff03fa8488eaca866fb3355edd, type: 3}
+  noteD_Layer1: {fileID: 0}
   noteE_Layer0: {fileID: -962488092458481032, guid: 3a19e112e85fc4adeaf61dcbfc782249, type: 3}
-  noteE_Layer1: {fileID: -2687585069076979077, guid: 3a19e112e85fc4adeaf61dcbfc782249, type: 3}
+  noteE_Layer1: {fileID: 0}
   layer0Renderer: {fileID: 2070578461017327062}
   layer1Renderer: {fileID: 2631622824957855180}

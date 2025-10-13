@@ -128,6 +128,7 @@ public class EnemyController : MonoBehaviour
     {
 
         Health -= damage;
+        enemyAudio.PlayHit();
         SpawnDamageParticles(attackDirection);
         StartCoroutine(EnemyDamageColorChangeRoutine());
 
