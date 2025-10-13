@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1292727320217147026}
   - component: {fileID: 4489756671084348847}
   - component: {fileID: 2393741463941741019}
+  - component: {fileID: 5005210956341512186}
   m_Layer: 0
   m_Name: Owl 1
   m_TagString: Untagged
@@ -435,3 +436,18 @@ PolygonCollider2D:
       - {x: 0.30273634, y: -0.38112122}
       - {x: 0.33273634, y: -0.3311212}
   m_UseDelaunayMesh: 0
+--- !u!114 &5005210956341512186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112998710197078634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d0fcd04773c364a9ce0111f5ab2f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXGroup: {fileID: 2752457768588876088, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
+  MUSGroup: {fileID: -2025694341733272982, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
+  PlayerSFXGroup: {fileID: 2027215125535092849, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}

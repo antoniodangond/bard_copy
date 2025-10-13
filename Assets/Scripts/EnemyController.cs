@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     private float knockBackTime;
     private bool isBeingKnockedBack= false;
     private EnemyAudio enemyAudio;
+    private AudioMixerScript audioMixerScript;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Color defaultSpriteColor;
@@ -43,6 +44,7 @@ public class EnemyController : MonoBehaviour
     void Awake()
     {
         enemyAudio = GetComponent<EnemyAudio>();
+        audioMixerScript = GetComponent<AudioMixerScript>();
         isFacingRight = transform.rotation.eulerAngles.y == 180;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -64,6 +66,7 @@ public class EnemyController : MonoBehaviour
                 else { continue; }
             }
         }
+        HandleAudioMixerGroupRouting();
     }
 
     void Start()
@@ -307,5 +310,13 @@ public class EnemyController : MonoBehaviour
             // Stop moving after knock back or attack
             rb.linearVelocity = Vector2.zero;
         }
+    }
+
+    private void HandleAudioMixerGroupRouting()
+    {
+        audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomHits.audioSource);
+        // apparently i'm using just one audio source for all sounds, even though i'm instantiating 3...
+        // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAggro.audioSource);
+        // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAttacks.audioSource);
     }
 }

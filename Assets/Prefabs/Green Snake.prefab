@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -50506737323785465}
   - component: {fileID: 9074940612009289951}
   - component: {fileID: 6603837403979830540}
+  - component: {fileID: -8533373593626724897}
   m_Layer: 6
   m_Name: Green Snake
   m_TagString: Untagged
@@ -377,3 +378,18 @@ PolygonCollider2D:
       - {x: -0.29999998, y: 0.19999999}
       - {x: -0.07, y: 0.22}
   m_UseDelaunayMesh: 0
+--- !u!114 &-8533373593626724897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904241690297998020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d0fcd04773c364a9ce0111f5ab2f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXGroup: {fileID: 2752457768588876088, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
+  MUSGroup: {fileID: -2025694341733272982, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
+  PlayerSFXGroup: {fileID: 2027215125535092849, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}

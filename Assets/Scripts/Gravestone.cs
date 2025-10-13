@@ -12,10 +12,12 @@ public class Gravestone : MonoBehaviour
     private float originalTransformY;
     private float distanceMoved = 0f;
     private Teleporter teleporter;
+    private AudioMixerScript audioMixerScript;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioMixerScript = GetComponent<AudioMixerScript>();
         originalTransformY = transform.position.y;
         teleporter = TeleporterObj.GetComponent<Teleporter>();
         graveAudio = gameObject.AddComponent<GraveAudio>();
@@ -25,10 +27,11 @@ public class Gravestone : MonoBehaviour
         {
             graveAudio.audioData = audioData;
         }
-    else
-    {
-        Debug.LogError("EnvironmentAudioData is not assigned!");
-    }
+        else
+        {
+            Debug.LogError("EnvironmentAudioData is not assigned!");
+        }
+        audioMixerScript.assignSFXGroup(graveAudio.graveAudioSource);
     }
 
     public void Move()

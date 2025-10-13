@@ -17,6 +17,6 @@ public class EnemyAudioData : ScriptableObject
 
     [Header ("Audio Managers")]
     public RandomAudioManager RandomHits;
-    public RandomAudioManager RandomAggro;
-    public RandomAudioManager RandomAttacks;
+    // public RandomAudioManager RandomAggro;
+    // public RandomAudioManager RandomAttacks;
 }

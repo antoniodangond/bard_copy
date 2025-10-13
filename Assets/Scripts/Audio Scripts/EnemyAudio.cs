@@ -7,10 +7,10 @@ public class EnemyAudio : AudioController
     void Awake() {
         AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
-        AudioData.RandomAggro = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAggro.audioSource = gameObject.AddComponent<AudioSource>();
-        AudioData.RandomAttacks = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAttacks.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomAggro = gameObject.AddComponent<RandomAudioManager>();
+        // AudioData.RandomAggro.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomAttacks = gameObject.AddComponent<RandomAudioManager>();
+        // AudioData.RandomAttacks.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     public void PlayHit()

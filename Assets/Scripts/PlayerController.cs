@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public enum PlayerState {
     Default,
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
     private PlayerMovement playerMovement;
+    private AudioMixerScript audioMixerScript;
     private Vector2 movement;
     private bool isPlayingLyre;
     private bool isAttacking;
@@ -79,11 +81,12 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         isTakingDamage = false;
-        // Debug.Log(isTakingDamage); // For some reason this kept getting set to true at start of game
         playerAnimation = GetComponent<PlayerAnimation>();
         playerAttack = GetComponent<PlayerAttack>();
         playerAudio = GetComponent<PlayerAudio>();
+        audioMixerScript = GetComponent<AudioMixerScript>();
         playerMovement = GetComponent<PlayerMovement>();
+        HandleAudioMixerGroupRouting();
         // Subscribe to custom events
         CustomEvents.OnDialogueEnd.AddListener(OnDialogueEnd);
         CustomEvents.OnAttackFinished.AddListener(OnAttackFinished);
@@ -490,13 +493,28 @@ public class PlayerController : MonoBehaviour
         {
             playerMovement.Dash(movement);
         }
-        else {playerMovement.Move(movement);}
-        
+        else { playerMovement.Move(movement); }
+
         // If colliding with a pushable object while moving in a straight upward direction,
         // attempt to move it
         if (gravestone != null && movement.x == 0 && movement.y == 1)
         {
             gravestone.Move();
         }
+    }
+    
+    private void HandleAudioMixerGroupRouting()
+    {
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteB.Source);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteC.Source);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteD.Source);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteE.Source);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.PlayerSoundsSource);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.RandomHits.audioSource);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.RandomAttackChords.audioSource);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.RandomFootsteps.audioSource);
+
+        audioMixerScript.assignMUSGroup(playerAudio.AudioData.Melody1.Source);
+        audioMixerScript.assignMUSGroup(playerAudio.AudioData.Melody2.Source);
     }
 }
