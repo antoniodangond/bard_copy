@@ -266,7 +266,8 @@ public class PlayerController : MonoBehaviour
         CurrentState = PlayerState.Stunned;
         StartCoroutine(playerAttack.DamageColorChangeRoutine());
         playerAudio.PlayHit();
-        yield return StartCoroutine(playerAttack.AttackCooldown(playerAttack.directionalAttackCoolDownTime));
+        // Defaulting "Attack Type" argument to directional beause it results in a shorter cool down
+        yield return StartCoroutine(playerAttack.AttackCooldown(playerAttack.directionalAttackCoolDownTime, "Directional"));
         CurrentState = PlayerState.Default;
     }
 
@@ -426,7 +427,7 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayAttackChord();
             }
             
-            if (PlayerInputManager.WasAOEAttackPressed && PlayerAttack.CanAttack)
+            if (PlayerInputManager.WasAOEAttackPressed && PlayerAttack.CanAOEAttack)
             {
                 isPlayingLyre = false;
                 isAttacking = false;

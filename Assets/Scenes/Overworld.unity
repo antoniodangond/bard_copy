@@ -14052,7 +14052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: aOEAttackCooldownTime
-      value: 0.3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: directionalAttackCoolDownTime
