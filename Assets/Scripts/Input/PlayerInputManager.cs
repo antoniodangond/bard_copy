@@ -18,6 +18,7 @@ static class Actions
     // Player actions
     public const string Move = "Move";
     public const string Attack = "Attack";
+    public const string AOEAttack = "AOEAttack";
     public const string OpenMenu = "OpenMenu";
     public const string Dialogue = "Dialogue";
     public const string Dash = "Dash";
@@ -46,6 +47,7 @@ public class PlayerInputManager : MonoBehaviour
     // Public properties for reading captured input
     public static Vector2 Movement;
     public static bool WasAttackPressed;
+    public static bool WasAOEAttackPressed;
     public bool MenuOpened { get; private set; }
     public bool MenuClosed { get; private set; }
     public static bool WasToggleInstrumentPressed;
@@ -59,6 +61,7 @@ public class PlayerInputManager : MonoBehaviour
     // Player actions
     private InputAction moveAction;
     private InputAction attackAction;
+    private InputAction AOEattackAction;
     private InputAction OpenMenuAction;
     private InputAction dialogueAction;
     private InputAction dashAction;
@@ -79,6 +82,7 @@ public class PlayerInputManager : MonoBehaviour
         InputActionMap playerActionMap = InputActionAsset.FindActionMap(ActionMaps.Player);
         moveAction = playerActionMap.FindAction(Actions.Move);
         attackAction = playerActionMap.FindAction(Actions.Attack);
+        AOEattackAction = playerActionMap.FindAction(Actions.AOEAttack);
         OpenMenuAction = playerActionMap.FindAction(Actions.OpenMenu);
         dialogueAction = playerActionMap.FindAction(Actions.Dialogue);
         dashAction = playerActionMap.FindAction(Actions.Dash);
@@ -111,6 +115,8 @@ public class PlayerInputManager : MonoBehaviour
         // Enable actions to ensure they can read values
         moveAction.Enable();
         dashAction.Enable();
+        attackAction.Enable();
+        AOEattackAction.Enable();
         OpenMenuAction.Enable();
         toggleInstrumentAction.Enable();
         noteBAction.Enable();
@@ -126,6 +132,8 @@ public class PlayerInputManager : MonoBehaviour
     {
         // Disable actions to prevent unnecessary updates when the gameObject is inactive
         moveAction.Disable();
+        attackAction.Disable();
+        AOEattackAction.Disable();
         OpenMenuAction.Disable();
         toggleInstrumentAction.Disable();
         noteBAction.Disable();
@@ -239,6 +247,7 @@ public class PlayerInputManager : MonoBehaviour
         Movement = moveAction.ReadValue<Vector2>();
         // Debug.Log($"movement speed is {Movement}");
         WasAttackPressed = attackAction.WasPressedThisFrame();
+        WasAOEAttackPressed = AOEattackAction.WasPressedThisFrame();
         MenuOpened = OpenMenuAction.WasPressedThisFrame();
         MenuClosed = CloseMenuAction.WasPressedThisFrame();
         if(MenuOpened || MenuClosed)

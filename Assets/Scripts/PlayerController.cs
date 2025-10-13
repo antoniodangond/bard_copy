@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private bool isPlayingLyre;
     private bool isAttacking;
+    private bool isAOEAttacking;
     public static bool isDashing;
     public static bool canDash;
 
@@ -140,22 +141,24 @@ public class PlayerController : MonoBehaviour
             CurrentState = PlayerState.Instrument;
             isPlayingLyre = true;
             isAttacking = false;
+            isAOEAttacking = false;
             // reset movement when switching to Instrument state
             movement = Vector2.zero;
             // stop walking animation
-            playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
+            playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
         }
         else if (CurrentState == PlayerState.Instrument)
         {
             CurrentState = PlayerState.Default;
             isPlayingLyre = false;
             isAttacking = false;
+            isAOEAttacking = false;
 
             // Clear the note queue when lyre is put away (to prevent accidental triggers)
             lastPlayedNotes = BuildEmptyNotesQueue();
         }
         // Set animation params after determining movement and isPlayingLyre
-        playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
+        playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
     }
 
     private string FindMelodyToPlay(Queue<string> lastPlayedNotes)
@@ -206,8 +209,9 @@ public class PlayerController : MonoBehaviour
                     shouldPlayNormalMelody = !sign.IsPlayingSuccessAudio;
                     isPlayingLyre = false;
                     isAttacking = false;
+                    isAOEAttacking = false;
                     CurrentState = PlayerState.Dialogue;
-                    playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
+                    playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
                     Debug.Log("About to exit");
                     yield break;
                 }
@@ -224,8 +228,9 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(AudioData.MelodyCooldownTime);
         isPlayingLyre = false;
         isAttacking = false;
+        isAOEAttacking = false;
         CurrentState = PlayerState.Default;
-        playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
+        playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
     }
 
     // Debug proximity check
@@ -261,7 +266,7 @@ public class PlayerController : MonoBehaviour
         CurrentState = PlayerState.Stunned;
         StartCoroutine(playerAttack.DamageColorChangeRoutine());
         playerAudio.PlayHit();
-        yield return StartCoroutine(playerAttack.AttackCooldown());
+        yield return StartCoroutine(playerAttack.AttackCooldown(playerAttack.directionalAttackCoolDownTime));
         CurrentState = PlayerState.Default;
     }
 
@@ -284,6 +289,7 @@ public class PlayerController : MonoBehaviour
     {
         isPlayingLyre = false;
         isAttacking = false;
+        isAOEAttacking = false;
     }
 
     private FacingDirection determineFacingDirection(Vector2 movement)
@@ -415,7 +421,17 @@ public class PlayerController : MonoBehaviour
             {
                 isPlayingLyre = false;
                 isAttacking = true;
+                isAOEAttacking = false;
                 playerAttack.Attack();
+                playerAudio.PlayAttackChord();
+            }
+            
+            if (PlayerInputManager.WasAOEAttackPressed && PlayerAttack.CanAttack)
+            {
+                isPlayingLyre = false;
+                isAttacking = false;
+                isAOEAttacking = true;
+                playerAttack.AOEAttack();
                 playerAudio.PlayAttackChord();
             }
 
@@ -424,7 +440,7 @@ public class PlayerController : MonoBehaviour
                 isDashing = true;
             }
 
-            playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking);
+            playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
         }
         else if (CurrentState == PlayerState.Instrument)
         {

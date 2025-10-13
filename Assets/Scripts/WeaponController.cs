@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class WeaponController : MonoBehaviour
 {
     public float AttackRange;
+    public float AOEAttackRange;
     private Vector2 attackRangeV2;
     public LayerMask enemyLayer;
     public PlayerController playerController;
@@ -15,6 +16,7 @@ public class WeaponController : MonoBehaviour
 
     // TODO: make customizable in editor
     private float damage = 1f;
+    private float AOEdamage = 3f;
 
     public void Awake()
     {
@@ -159,28 +161,25 @@ public class WeaponController : MonoBehaviour
         }
         handleAttackParticles();
     }
-    // saving old code for attack as it. This will be the AOE attack that the player will get in the dungeon
-    // will be renamed accordingly
-    // public void Attack()
-    // {
-    //     Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, AttackRange, enemyLayer);
-    //     foreach (Collider2D hitCollider in hitColliders)
-    //     {
-    //         // Ignore enemy trigger colliders, which are just used for agro range
-    //         if (hitCollider.isTrigger)
-    //         {
-    //             continue;
-    //         }
-    //         if (PlayerInputManager.Movement == new Vector2(0, 0))
-    //         {
-    //             attackDirection = PlayerController.getFacingDirectionVector2();
-    //         }
-    //         else { attackDirection = PlayerInputManager.Movement; }
-    //         // Vector2 attackDirection = PlayerController.getFacingDirectionVector2(PlayerController.FacingDirection);
-    //         EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
-    //         enemyController.TakeDamage(damage, playerController, attackDirection);
-    //     }
-    // }
+    public void AOEAttack()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, AOEAttackRange, enemyLayer);
+        foreach (Collider2D hitCollider in hitColliders)
+        {
+            // Ignore enemy trigger colliders, which are just used for agro range
+            if (hitCollider.isTrigger)
+            {
+                continue;
+            }
+            if (PlayerInputManager.Movement == new Vector2(0, 0))
+            {
+                attackDirection = PlayerController.getFacingDirectionVector2();
+            }
+            else { attackDirection = PlayerInputManager.Movement; }
+            EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
+            enemyController.TakeDamage(AOEdamage, playerController, attackDirection);
+        }
+    }
 
     void OnDrawGizmosSelected()
     {

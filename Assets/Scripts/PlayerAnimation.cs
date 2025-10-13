@@ -7,7 +7,7 @@ public class PlayerAnimation : MonoBehaviour
     public Animator animator;
     public PlayerController playerController;
 
-    public void SetAnimationParams(Vector2 movement, bool IsPlayingLyre, bool isAttacking)
+    public void SetAnimationParams(Vector2 movement, bool IsPlayingLyre, bool isAttacking, bool isAOEAttacking)
     {
         // Use movement.sqrMagnitutde as a proxy for "is moving"
         animator.SetFloat(AnimatorParams.Speed, movement.sqrMagnitude);
@@ -18,17 +18,26 @@ public class PlayerAnimation : MonoBehaviour
             // don't play an animation, spawn particles instead
             // animator.SetBool(AnimatorParams.IsPlayingLyre, false);
             animator.SetBool(AnimatorParams.IsAttacking, true);
+            animator.SetBool(AnimatorParams.IsAOEAttacking, false);
 
+        }
+        else if (isAOEAttacking)
+        {
+            animator.SetBool(AnimatorParams.IsPlayingLyre, false);
+            animator.SetBool(AnimatorParams.IsAttacking, false);
+            animator.SetBool(AnimatorParams.IsAOEAttacking, true);
         }
         else if (IsPlayingLyre)
         {
             animator.SetBool(AnimatorParams.IsPlayingLyre, true);
             animator.SetBool(AnimatorParams.IsAttacking, false);
+            animator.SetBool(AnimatorParams.IsAOEAttacking, false);
         }
         else
         {
             animator.SetBool(AnimatorParams.IsPlayingLyre, false);
             animator.SetBool(AnimatorParams.IsAttacking, false);
+            animator.SetBool(AnimatorParams.IsAOEAttacking, false);
         }
         // Only set direction when moving, so that idle animation
         // will play in the last moved direction

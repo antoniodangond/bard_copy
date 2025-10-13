@@ -6,8 +6,9 @@ public class PlayerAttack : MonoBehaviour
 {
     public static bool CanAttack = true;
     public GameObject Weapon;
-    [Range (0f, 1f)]
-    public float attackCoolDownTime;
+    [Range(0f, 1f)]
+    public float directionalAttackCoolDownTime;
+    public float aOEAttackCooldownTime;
 
     private WeaponController weaponController;
     // Access Sprite Renderer, default color and time to have character briefly flash red when damaged
@@ -23,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
         defaultSpriteColor = spriteRenderer.color;
     }
 
-    public IEnumerator AttackCooldown()
+    public IEnumerator AttackCooldown(float attackCoolDownTime)
     {
         CanAttack = false;
         yield return new WaitForSeconds(attackCoolDownTime);
@@ -34,7 +35,13 @@ public class PlayerAttack : MonoBehaviour
     public void Attack()
     {
         weaponController.Attack();
-        StartCoroutine(AttackCooldown());
+        StartCoroutine(AttackCooldown(directionalAttackCoolDownTime));
+    }
+
+    public void AOEAttack()
+    {
+        weaponController.AOEAttack();
+        StartCoroutine(AttackCooldown(aOEAttackCooldownTime));
     }
 
     public IEnumerator DamageColorChangeRoutine()

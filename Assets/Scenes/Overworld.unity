@@ -13939,6 +13939,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 623408357670243729, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: AOEAttackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 623408357670243729, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: attackParticles
       value: 
       objectReference: {fileID: 5974238658672876685, guid: 3bdc102c6032b9b4abfbfab3de15b5ba, type: 3}
@@ -14044,6 +14048,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: attackCoolDownTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: aOEAttackCooldownTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454525523054177503, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: directionalAttackCoolDownTime
       value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
