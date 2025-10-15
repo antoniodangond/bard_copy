@@ -9114,6 +9114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuUI: {fileID: 1456852971}
+  songListText: {fileID: 0}
 --- !u!222 &401456598
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15445,8 +15446,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1548897788}
   - {fileID: 1423853762}
+  - {fileID: 1548897788}
   m_Father: {fileID: 862163914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -15499,10 +15500,10 @@ RectTransform:
   - {fileID: 1253506544}
   m_Father: {fileID: 889805503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 280, y: -40}
-  m_SizeDelta: {x: 160, y: 64}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692060774
 MonoBehaviour:
@@ -20722,7 +20723,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -0.00001812, y: -996}
-  m_SizeDelta: {x: 376, y: 80}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889805504
 MonoBehaviour:
@@ -21347,7 +21348,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: caf9df98fe636d246845895c17bdd327, type: 2}
   followupLines:
   - You feel nymphs blow wind beneath your feet.
-  - Press LSHIFT to Nereid Dash.
+  - Press {DASH_KEY} to Nereid Dash.
   sfx: {fileID: 0}
   flashCount: 3
   flashDuration: 0.24
@@ -32867,7 +32868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1423853762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32898,7 +32899,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423853761}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -32956,14 +32957,14 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &1423853767
 MonoBehaviour:
@@ -43228,10 +43229,10 @@ RectTransform:
   - {fileID: 2130207962}
   m_Father: {fileID: 889805503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96, y: -40}
-  m_SizeDelta: {x: 160, y: 64}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860556697
 MonoBehaviour:
@@ -50132,7 +50133,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: caf9df98fe636d246845895c17bdd327, type: 2}
   followupLines:
   - The nymphs blow wind beneath your feet.
-  - Press LSHIFT to Nereid Step.
+  - Press {DASH_KEY} to Nereid Step.
   sfx: {fileID: 0}
   flashCount: 3
   flashDuration: 0.24

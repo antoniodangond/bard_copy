@@ -56,17 +56,17 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex = 0;
 
         dialogueBox.SetActive(true); // Show the dialogue box
+        var canvasGroup = dialogueBox.GetComponent<CanvasGroup>();
+        if (canvasGroup != null)
+            canvasGroup.alpha = 1f;
         DisplayLine();
     }
 
     public static void StartDialogue(Dialogue dialogue, FacingDirection direction)
     {
         if (Instance == null)
-#if UNITY_2023_1_OR_NEWER
-        Instance = Object.FindFirstObjectByType<DialogueManager>();
-#else
-            Instance = Object.FindObjectOfType<DialogueManager>();
-#endif
+            Instance = Object.FindFirstObjectByType<DialogueManager>();
+
 
         if (Instance == null)
         {
@@ -84,17 +84,43 @@ public class DialogueManager : MonoBehaviour
         Instance.currentLines = dialogue.GetLines(direction);
         Instance.currentLineIndex = 0;
 
+        // Activate the dialogue box and set alpha to 1
+        Instance.dialogueBox.SetActive(true);
+        var canvasGroup = Instance.dialogueBox.GetComponent<CanvasGroup>();
+        if (canvasGroup != null)
+            canvasGroup.alpha = 1f;
+
         CustomEvents.OnDialogueStart?.Invoke(dialogue);
         Instance.DisplayLine();
     }
 
 
 
-    private void DisplayLine()
+    private void DisplayLine() // Displays the current line with typewriter effect
     {
         if (currentLines != null && currentLineIndex < currentLines.Count)
         {
-            StartCoroutine(TypeLine(currentLines[currentLineIndex]));
+            string line = currentLines[currentLineIndex];
+
+            // Check for choice trigger token
+            if (line == "[CHOICE]" && CurrentSpeaker != null && CurrentSpeaker.askYesNoAfterDialogue)
+            {
+                // Show the choice UI instead of displaying a line
+                Debug.Log($"DialogueChoiceUI.Instance: {DialogueChoiceUI.Instance}");
+                Debug.Log($"CurrentSpeaker: {CurrentSpeaker}");
+                Debug.Log($"CurrentSpeaker.askYesNoAfterDialogue: {CurrentSpeaker?.askYesNoAfterDialogue}");
+                Debug.Log($"CurrentSpeaker.choicePrompt: {CurrentSpeaker?.choicePrompt}");
+                DialogueChoiceUI.Instance.Ask(
+                    CurrentSpeaker.choicePrompt,
+                    CurrentSpeaker.OnChoiceAnswered,
+                    0
+                );
+                // Optionally close the dialogue box if you want only the choice visible
+                dialogueBox.SetActive(false);
+                return;
+            }
+            string processedLine = ReplaceControlPlaceholders(line);
+            StartCoroutine(TypeLine(processedLine));
         }
         else
         {
@@ -167,6 +193,17 @@ public class DialogueManager : MonoBehaviour
         // Now it's safe to clear
         CurrentSpeaker = null;
     }
+
+public static string ReplaceControlPlaceholders(string text)
+{
+    // Replace tokens in dialogue text
+    string dashKey = InputDisplayUtil.GetBindingForAction("Player", "Dash");
+    string interactKey = InputDisplayUtil.GetBindingForAction("Player", "Interact"); // if you use it
+
+    return text
+        .Replace("{DASH_KEY}", dashKey)
+        .Replace("{INTERACT_KEY}", interactKey);
+}
 
 
 }

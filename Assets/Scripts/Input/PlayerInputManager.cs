@@ -213,6 +213,7 @@ public class PlayerInputManager : MonoBehaviour
                 // Debug.Log($"Found button: {button.gameObject.name}");
                 button.gameObject.SetActive(true);
             }
+            MenuManager.Instance.UpdatePauseMenuSongs(); // Update songs each time we open the menu
         }
         isPaused = true;
         CustomEvents.OnPause?.Invoke(isPaused);
@@ -250,7 +251,7 @@ public class PlayerInputManager : MonoBehaviour
         WasAOEAttackPressed = AOEattackAction.WasPressedThisFrame();
         MenuOpened = OpenMenuAction.WasPressedThisFrame();
         MenuClosed = CloseMenuAction.WasPressedThisFrame();
-        if(MenuOpened || MenuClosed)
+        if (MenuOpened || MenuClosed)
         {
             HandleMenuOpen();
         }
@@ -258,5 +259,17 @@ public class PlayerInputManager : MonoBehaviour
         HandleNotePress();
         WasDialoguePressed = dialogueAction.WasPressedThisFrame();
     }
+    
+    public static string GetButtonForNote(string note)
+{
+    string controlScheme = UnityEngine.InputSystem.Gamepad.current == null ? "Keyboard" : "Gamepad";
+    int bindingIndex = controlScheme == "Keyboard" ? 0 : 1;
+    var actionMap = Instance.InputActionAsset.FindActionMap("Instrument");
+    var action = actionMap.FindAction(note);
+    if (action != null)
+        return action.GetBindingDisplayString(bindingIndex);
+    else
+        return note;
+}
 }
 

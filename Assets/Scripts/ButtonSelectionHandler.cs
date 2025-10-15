@@ -57,7 +57,7 @@ public class ButtonSelectionHandler :
         if (!audioSource) audioSource = GetComponent<AudioSource>();
         if (!animTarget) animTarget = transform as RectTransform;
 
-        // Prefer the tintImage’s RectTransform if available, else animTarget
+        // Prefer the tintImage'ss RectTransform if available, else animTarget
         if (!tintImage)
         {
             tintImage = animTarget ? animTarget.GetComponent<Image>() : GetComponentInChildren<Image>(true);
@@ -161,7 +161,7 @@ public class ButtonSelectionHandler :
 
                 // Size the frame to the target with padding
                 var target = targetRect ? targetRect : (transform as RectTransform);
-                // We’ll use sizeDelta adjustment since anchors are stretched.
+                // Weï¿½ll use sizeDelta adjustment since anchors are stretched.
                 // Get current target size in parent space:
                 var size = target.rect.size;
                 frameImage.rectTransform.sizeDelta = new Vector2(size.x + framePadding.x * 2f, size.y + framePadding.y * 2f);

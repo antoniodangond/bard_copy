@@ -28,16 +28,6 @@ public class DialogueChoiceUI : MonoBehaviour
     private GameObject lastSelected;  // the last option we told to "select"
     private float nextNavTime;
 
-#if UNITY_EDITOR
-    void OnValidate()
-    {
-        if (!canvasGroup) Debug.LogWarning("[ChoiceUI] CanvasGroup not assigned.", this);
-        if (!bodyText)    Debug.LogWarning("[ChoiceUI] BodyText not assigned.", this);
-        if (!optionYes)   Debug.LogWarning("[ChoiceUI] OptionYes not assigned.", this);
-        if (!optionNo)    Debug.LogWarning("[ChoiceUI] OptionNo not assigned.", this);
-    }
-#endif
-
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }

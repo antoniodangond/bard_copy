@@ -9,6 +9,8 @@ public class MelodyData
     public const int MelodyLength = 5;
     public const string Melody1 = "Melody1";
     public const string Melody2 = "Melody2";
+    public const string Melody3 = "Melody3";
+
     // TODO: make melodies customizable in the editor
     private static string[] melody1Inputs = new string[MelodyLength]{
         NoteC,
@@ -24,7 +26,15 @@ public class MelodyData
         NoteD,
         NoteB,
     };
+
+    private static string[] melody3Inputs = new string[MelodyLength]{
+        NoteB,
+        NoteB,
+        NoteD,
+        NoteC,
+        NoteE,
+    };
     public static Dictionary<string, string[]> MelodyInputs = new Dictionary<string, string[]>(){
-        { Melody1, melody1Inputs }, { Melody2, melody2Inputs }
+        { Melody1, melody1Inputs }, { Melody2, melody2Inputs }, { Melody3, melody3Inputs }
     };
 }
