@@ -55,7 +55,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Load();
+        // Load();
     }
 
     // --- Tablet Collection ---
@@ -63,8 +63,11 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     {
         numTabletsCollected += 1;
         int indexToReplace = Array.IndexOf(collectedTablets, null);
-        if (indexToReplace != -1) { collectedTablets[indexToReplace] = itemPickup; }
-        PlayerUIManager.Instance.UpdateCollectedTabletsUI(numTabletsCollected, collectedTablets);
+        if (indexToReplace != -1)
+        {
+            collectedTablets[indexToReplace] = itemPickup;
+            PlayerUIManager.Instance.UpdateCollectedTabletsUI(numTabletsCollected, collectedTablets);
+        }
         Save();
     }
 

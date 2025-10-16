@@ -141,7 +141,6 @@ public class SignController : MonoBehaviour
         {
             audiosource.volume = soundVolume;  // Uses adjustable volume
             audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
-            Debug.Log($"Playing sound: {audiosource.clip?.name} with volume {soundVolume} after {soundPlayDelay}s");
         }
 
         if (signName != "Log" && signName != "Vines")
@@ -162,7 +161,6 @@ public class SignController : MonoBehaviour
         {
             StartCoroutine(PlaySuccessAnimation(signName));
         }
-        else { Debug.Log("null"); }
     }
 
     private IEnumerator PlaySuccessAnimation(string signName)
@@ -174,7 +172,6 @@ public class SignController : MonoBehaviour
         yield return new WaitForSeconds(stateInfo.length);
 
         // Disable object
-        Debug.Log($"{gameObject.name} has completed its success sequence and will be disabled.");
         // if (signName != "Vines")
         // {
         //     spriteRenderer.enabled = false;
@@ -182,12 +179,10 @@ public class SignController : MonoBehaviour
         foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
         {
             collider.enabled = false;
-            Debug.Log("Collider Disabled");
         }
         foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
         {
             collider.enabled = false;
-            Debug.Log("Collider Disabled");
         }
     }
     private void handleTutorialDialog(string signName)

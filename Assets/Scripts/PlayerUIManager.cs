@@ -170,7 +170,6 @@ public class PlayerUIManager : MonoBehaviour
             {
                 RectTransform rt = tablet.GetComponent<RectTransform>();
                 rt.anchoredPosition = tabletImageLocations[collectedTablets[i]];
-                // tablet.transform.position = ;
                 tablet.gameObject.SetActive(i < numTabletsCollected);
                 currentTabletImages.Add(tablet);
             }
