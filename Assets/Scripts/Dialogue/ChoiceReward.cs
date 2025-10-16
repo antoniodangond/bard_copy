@@ -1,5 +1,7 @@
 // Assets/Scripts/Dialogue/ChoiceReward.cs
 using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,7 +31,7 @@ public class ChoiceReward : MonoBehaviour
     public bool IsAlreadyClaimed() =>
         oneTime && PlayerProgress.Instance.IsRewardClaimed(rewardId);
 
-    public IEnumerator BestowAndExplain()
+    public IEnumerator BestowAndExplain( Dictionary<string, string> playerControls, string currentControlScheme)
     {
         // 1) Do nothing if already claimed
         if (IsAlreadyClaimed())
@@ -56,6 +58,24 @@ public class ChoiceReward : MonoBehaviour
         if (followupLines != null && followupLines.Length > 0)
         {
             var temp = ScriptableObject.CreateInstance<Dialogue>();
+            string newLine;
+            string dashButton = playerControls["dash"];
+            string aOEAttackButton1 = playerControls["aoe_attack_1"];
+            string aOEAttackButton2 = playerControls["aoe_attack_2"];
+            // if (rewardId == "dash") temp.universalLines.Add($"Press {dashControl} to Nereid Step");
+            switch (rewardId)
+            {
+                case "dash":
+                    newLine = $"Press {dashButton} to Nereid Step";
+                    followupLines[1] = newLine;
+                    break;
+                case "aoe_attack":
+                    newLine = currentControlScheme == "Keyboard" ? $"Press {aOEAttackButton1} or {aOEAttackButton2} to AOE ATTACK NAME" : $"Press {aOEAttackButton1} to AOE ATTACK NAME";
+                    followupLines[1] = newLine;
+                    break;
+                default :
+                    break;
+            }
             temp.universalLines.AddRange(followupLines);
             DialogueManager.StartDialogue(temp, PlayerController.FacingDirection);
             // Wait until the follow-up dialogue closes

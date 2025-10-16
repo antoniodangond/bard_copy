@@ -21320,7 +21320,7 @@ MonoBehaviour:
   disableAfterYes: 0
   choiceReward: {fileID: 924841171}
   signName: BeachStatue
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 683017117}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
   soundVolume: 0.8
@@ -50086,6 +50086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7575462524557996728, guid: f402e630232962548b8d57f298ead8b1, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 683017117}
     - target: {fileID: 7575462524557996728, guid: f402e630232962548b8d57f298ead8b1, type: 3}
       propertyPath: choiceReward
       value: 

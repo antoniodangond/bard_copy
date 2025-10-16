@@ -22,10 +22,15 @@ public class SignController : MonoBehaviour
     [Header("Sign Properties")]
     public string signName;
     public PlayerInput playerInput;
+    private string currentControlScheme;
+    private Dictionary<string, string> playerControls = new Dictionary<string, string> { };
     private string attackButton_1;
     private string attackButton_2;
     private string toggleInstrumentButton;
     private string lyreButtons;
+    private string dashButton;
+    private string AOEAttackButton1;
+    private string AOEAttackButton2;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
 
@@ -56,6 +61,19 @@ public class SignController : MonoBehaviour
         {
             teleporterFrom = teleporterFromObj.GetComponent<Teleporter>();
             teleporterTo = teleporterToObj.GetComponent<Teleporter>();
+        }
+        if (playerInput != null)
+        {
+            currentControlScheme = Gamepad.current == null ? "Keyboard" : "Gamepad";
+            dashButton = getCorrectButton("Player", "Dash", currentControlScheme);
+            AOEAttackButton1 = currentControlScheme == "Keyboard" ? playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(0) : playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(2);
+            AOEAttackButton2 = currentControlScheme == "Keyboard" ? playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(1) : null;
+            // These keys should match upgrade reward IDs
+            playerControls["dash"] = dashButton;
+            // not sure how to handle two AOE Attack buttons
+            // ignoring that issue for now lol
+            playerControls["aoe_attack_1"] = AOEAttackButton1;
+            playerControls["aoe_attack_2"] = AOEAttackButton2;
         }
 
     }
@@ -315,7 +333,7 @@ public class SignController : MonoBehaviour
         var hadDash = PlayerController.canDash;
         var hadAOE = PlayerController.AbilityGate.AOEUnlocked;
 
-        yield return StartCoroutine(choiceReward.BestowAndExplain());
+        yield return StartCoroutine(choiceReward.BestowAndExplain(playerControls, currentControlScheme));
 
         foreach (var upg in choiceReward.upgrades)
         {
