@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.Audio;
 [DefaultExecutionOrder(-900)]
 
 public class MenuManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Instance;
     public GameObject MenuUI;
     public GameObject OptionsMenuUI;
+    public AudioMixer audioMixer;
     public ButtonSelectionHandler[] buttons { get; private set; }
     private Dictionary<GameObject, (Vector3 _startPos, Vector3 _startScale)> buttonStates;
     // public bool isPaused {get; private set;}

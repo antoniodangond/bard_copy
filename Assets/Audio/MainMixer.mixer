@@ -34,7 +34,15 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 89511bea9eeb50e4ab34583c58ccb89a
+    name: MUSGroup
+  - guid: 1146f8fcb66299e47a0ba9cbf1fb4c24
+    name: Master
+  - guid: 95612a920bbe9214a97b041676b61c51
+    name: PlayerSFXGroup
+  - guid: 7bbc2be074bd34c4e8bb843fa11a331a
+    name: SFXGroup
   m_AudioMixerGroupViews:
   - guids:
     - a7e294cca535ef24f8aa1991ad5d9393
@@ -93,6 +101,7 @@ AudioMixerSnapshotController:
     7bbc2be074bd34c4e8bb843fa11a331a: 0.00061059464
     95612a920bbe9214a97b041676b61c51: 0
     89511bea9eeb50e4ab34583c58ccb89a: 0
+    1146f8fcb66299e47a0ba9cbf1fb4c24: 0
   m_TransitionOverrides: {}
 --- !u!243 &2027215125535092849
 AudioMixerGroupController:
