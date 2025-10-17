@@ -213,7 +213,7 @@ public class PlayerInputManager : MonoBehaviour
                 // Debug.Log($"Found button: {button.gameObject.name}");
                 button.gameObject.SetActive(true);
             }
-            MenuManager.Instance.UpdatePauseMenuSongs(); // Update songs each time we open the menu
+            // MenuManager.Instance.UpdatePauseMenuSongs(); // Update songs each time we open the menu
         }
         isPaused = true;
         CustomEvents.OnPause?.Invoke(isPaused);
