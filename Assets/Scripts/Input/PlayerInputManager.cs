@@ -207,6 +207,7 @@ public class PlayerInputManager : MonoBehaviour
         if (MenuManager.Instance != null)
         {
             GameObject PauseMenu = MenuManager.Instance.MenuUI;
+            MenuManager.Instance.PlayerUIManager.SetActive(false);
             PauseMenu.SetActive(true);
             foreach (var button in MenuManager.Instance.buttons)
             {
@@ -228,6 +229,7 @@ public class PlayerInputManager : MonoBehaviour
         {
             GameObject PauseMenu = MenuManager.Instance.MenuUI;
             PauseMenu.SetActive(false);
+            MenuManager.Instance.PlayerUIManager.SetActive(true);
         }
         isPaused = false;
         CustomEvents.OnUnPause?.Invoke(isPaused);

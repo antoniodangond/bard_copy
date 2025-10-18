@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     public static MenuManager Instance;
     public GameObject MenuUI;
     public GameObject OptionsMenuUI;
+    public GameObject PlayerUIManager;
     public AudioMixer audioMixer;
     public ButtonSelectionHandler[] buttons { get; private set; }
     private Dictionary<GameObject, (Vector3 _startPos, Vector3 _startScale)> buttonStates;
