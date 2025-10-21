@@ -31,7 +31,7 @@ static class Actions
     // UI actions
     public const string Navigate = "Navigate";
     public const string Submit = "Submit";
-    public const string CloseMenu = "CloseMenu";
+    // public const string CloseMenu = "CloseMenu";
 }
 
 [RequireComponent(typeof(InputActionAsset))]
@@ -49,7 +49,7 @@ public class PlayerInputManager : MonoBehaviour
     public static bool WasAttackPressed;
     public static bool WasAOEAttackPressed;
     public bool MenuOpened { get; private set; }
-    public bool MenuClosed { get; private set; }
+    // public bool MenuClosed { get; private set; }
     public static bool WasToggleInstrumentPressed;
     public static string NotePressed;
     public static bool WasDialoguePressed;
@@ -74,7 +74,7 @@ public class PlayerInputManager : MonoBehaviour
     // UI actions
     private InputAction Navigate;
     private InputAction Submit;
-    private InputAction CloseMenuAction;
+    // private InputAction CloseMenuAction;
 
     void Awake()
     {
@@ -97,7 +97,8 @@ public class PlayerInputManager : MonoBehaviour
         InputActionMap UIActionMap = InputActionAsset.FindActionMap(ActionMaps.UI);
         Navigate = UIActionMap.FindAction(Actions.Navigate);
         Submit = UIActionMap.FindAction(Actions.Submit);
-        CloseMenuAction = UIActionMap.FindAction(Actions.CloseMenu);
+        // CloseMenuAction = UIActionMap.FindAction(Actions.CloseMenu);
+        SwitchToActionMap("Player");
 
     if (Instance == null)
         {
@@ -125,7 +126,7 @@ public class PlayerInputManager : MonoBehaviour
         noteEAction.Enable();
         Navigate.Enable();
         Submit.Enable();
-        CloseMenuAction.Enable();
+        // CloseMenuAction.Enable();
     }
 
     private void OnDisable()
@@ -142,7 +143,7 @@ public class PlayerInputManager : MonoBehaviour
         noteEAction.Disable();
         Navigate.Disable();
         Submit.Disable();
-        CloseMenuAction.Disable();
+        // CloseMenuAction.Disable();
     }
 
     void HandleNotePress()
@@ -252,8 +253,8 @@ public class PlayerInputManager : MonoBehaviour
         WasAttackPressed = attackAction.WasPressedThisFrame();
         WasAOEAttackPressed = AOEattackAction.WasPressedThisFrame();
         MenuOpened = OpenMenuAction.WasPressedThisFrame();
-        MenuClosed = CloseMenuAction.WasPressedThisFrame();
-        if (MenuOpened || MenuClosed)
+        // MenuClosed = CloseMenuAction.WasPressedThisFrame();
+        if (MenuOpened)
         {
             HandleMenuOpen();
         }
