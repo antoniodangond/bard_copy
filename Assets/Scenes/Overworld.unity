@@ -15019,6 +15019,10 @@ PrefabInstance:
       propertyPath: attackParticles
       value: 
       objectReference: {fileID: 5974238658672876685, guid: 3bdc102c6032b9b4abfbfab3de15b5ba, type: 3}
+    - target: {fileID: 623408357670243729, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: AOEAttackParticles
+      value: 
+      objectReference: {fileID: 5974238658672876685, guid: 52b64cdac2ee1064ebb077707e0487fa, type: 3}
     - target: {fileID: 1030398134614253474, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_Name
       value: Player

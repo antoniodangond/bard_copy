@@ -12,7 +12,9 @@ public class WeaponController : MonoBehaviour
     private Vector2 attackDirection;
     Vector3 transformValue;
     [SerializeField] private ParticleSystem attackParticles;
+    [SerializeField] private ParticleSystem AOEAttackParticles;
     private ParticleSystem attackParticlesInstance;
+    private ParticleSystem AOEAttackParticlesInstance;
 
     // TODO: make customizable in editor
     private float damage = 1f;
@@ -179,6 +181,7 @@ public class WeaponController : MonoBehaviour
             EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
             enemyController.TakeDamage(AOEdamage, playerController, attackDirection);
         }
+         AOEAttackParticlesInstance = Instantiate(AOEAttackParticles, transform.position, Quaternion.identity);
     }
 
     void OnDrawGizmosSelected()
