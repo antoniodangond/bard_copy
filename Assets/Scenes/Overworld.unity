@@ -7968,6 +7968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 1
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -16660,6 +16661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 1253506544}
   tintImage: {fileID: 1158309513}
   playSoundOnSelect: 1
@@ -19085,6 +19087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -19499,6 +19502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -27268,6 +27272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -33233,6 +33238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -36387,6 +36393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 1
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -37298,6 +37305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -43114,6 +43122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -47008,6 +47017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 2130207962}
   tintImage: {fileID: 1380757185}
   playSoundOnSelect: 1
@@ -50891,6 +50901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1
@@ -53556,6 +53567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SetSelectedOnAwake: 0
   animTarget: {fileID: 0}
   tintImage: {fileID: 0}
   playSoundOnSelect: 1

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ButtonSelectionHandler :
     MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
+    public bool SetSelectedOnAwake;
     [Header("Targets (recommended)")]
     [Tooltip("Child to animate (move/scale). Use the Visual container under the layout parent.")]
     public RectTransform animTarget;           // e.g., YesVisual / NoVisual
@@ -85,6 +86,17 @@ public class ButtonSelectionHandler :
                 img.color = frameColorDeselected;
                 img.gameObject.SetActive(false);
             }
+        }
+    }
+
+    void OnEnable()
+    {
+        // Ensure no button is selected at awake except the one that's supposed to be
+        SetSelected(false, playSound: false);
+        if (SetSelectedOnAwake)
+        {
+            SetSelected(true, playSound: true);
+            EventSystem.current?.SetSelectedGameObject(gameObject);
         }
     }
 
