@@ -39,6 +39,7 @@ public class PlayerAudio : AudioController
         InitializeSound(AudioData.Melody2);
 
         AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.RandomAttackNotes = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomAttackChords = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
         AudioData.PlayerSoundsSource = gameObject.AddComponent<AudioSource>();
@@ -119,6 +120,14 @@ public class PlayerAudio : AudioController
         }
     }
 
+    public void PlayAttackNote()
+    {
+        if (AudioData.AttackNotes.Length == 0) {
+            Debug.LogError("Player audio 'Attack Chords' length is 0");
+            return;
+        }
+        AudioData.RandomAttackNotes.PlayRandomAudioNoDelayWithFX(AudioData.AttackNotes, 1, 1, true);
+    }
     public void PlayAttackChord()
     {
         if (AudioData.AttackChords.Length == 0) {

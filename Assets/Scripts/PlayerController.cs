@@ -424,7 +424,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 isAOEAttacking = false;
                 playerAttack.Attack();
-                playerAudio.PlayAttackChord();
+                playerAudio.PlayAttackNote();
             }
             
             if (PlayerInputManager.WasAOEAttackPressed && PlayerAttack.CanAOEAttack)
