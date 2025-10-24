@@ -30,6 +30,18 @@ MonoBehaviour:
     DefaultVolume: 0.5
     ShouldLoop: 1
     Source: {fileID: 0}
+  BackgroundMusicForest:
+    Clip: {fileID: 8300000, guid: 1cde9918f9e4ab944940fc16ee7fd729, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+    Source: {fileID: 0}
+  BackgroundMusicBeach:
+    Clip: {fileID: 8300000, guid: 4607614b6f4bab54a94764df25adac7b, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+    Source: {fileID: 0}
   BackgroundMusicInstrumentVolume: 0.5
   BackgroundMusicInstrumentMelodyVolume: 0
   BackgroundMusicPauseVolume: 0.5

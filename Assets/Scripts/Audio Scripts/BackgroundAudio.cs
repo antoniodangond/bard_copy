@@ -20,6 +20,8 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.BackgroundMusic);
         InitializeSound(AudioData.BackgroundMusicUnderworld);
         InitializeSound(AudioData.BackgroundMusicMausoleum);
+        InitializeSound(AudioData.BackgroundMusicForest);
+        InitializeSound(AudioData.BackgroundMusicBeach);
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
@@ -64,6 +66,8 @@ public class BackgroundAudio : AudioController
         // Play alternate bg clips at 0 volume
         AudioData.BackgroundMusicUnderworld.Play(1f, 0f);
         AudioData.BackgroundMusicMausoleum.Play(1f, 0f);
+        AudioData.BackgroundMusicForest.Play(1f, 0f);
+        AudioData.BackgroundMusicBeach.Play(1f, 0f);
     }
     
     public void StartAmbience()
@@ -156,9 +160,18 @@ public class BackgroundAudio : AudioController
             case "Beach":
                 StopRandomFrogs();
                 StopRandomBreaths();
-                newSound = AudioData.BackgroundMusic;
+                newSound = AudioData.BackgroundMusicBeach;
                 newAmbience = AudioData.BeachAmbience;
                 PlayerAudio.instance.currentTerrain = "Sand";
+                PlayRandomLoudBirds();
+                PlayRandomQuietBirds();
+                break;
+            case "Forest":
+                StopRandomFrogs();
+                StopRandomBreaths();
+                newSound = AudioData.BackgroundMusicForest;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Grass";
                 PlayRandomLoudBirds();
                 PlayRandomQuietBirds();
                 break;

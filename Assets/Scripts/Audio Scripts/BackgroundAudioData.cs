@@ -6,6 +6,8 @@ public class BackgroundAudioData : ScriptableObject
     public Sound BackgroundMusic;
     public Sound BackgroundMusicUnderworld;
     public Sound BackgroundMusicMausoleum;
+    public Sound BackgroundMusicForest;
+    public Sound BackgroundMusicBeach;
     // Volume to set background music when player is in "Instrument" state
     [Range (0f, 1f)]
     public float BackgroundMusicInstrumentVolume;

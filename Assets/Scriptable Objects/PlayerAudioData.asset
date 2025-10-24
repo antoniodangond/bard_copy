@@ -104,11 +104,14 @@ MonoBehaviour:
   TimeBeforeMelody: 0.5
   MelodyCooldownTime: 3
   AttackNotes:
-  - {fileID: 8300000, guid: 808a3f06b9fc744b797429cc71abd6f3, type: 3}
-  - {fileID: 8300000, guid: d14355211ffcf4ba4a9fdd7aaa67c624, type: 3}
-  - {fileID: 8300000, guid: e6b8b24048a43284eb39e74b8d22691a, type: 3}
-  - {fileID: 8300000, guid: 009a221bfd623428589c2b2eae236123, type: 3}
-  - {fileID: 8300000, guid: 31edd86e966ca4c8a8bfeaa454adcb29, type: 3}
+  - {fileID: 8300000, guid: da45f276970d98643bb70d923d69b51a, type: 3}
+  - {fileID: 8300000, guid: f25ea3d0276235a4abf0e6940c8a6ac8, type: 3}
+  - {fileID: 8300000, guid: fa32099341e83ca4dbe6ede40c930540, type: 3}
+  - {fileID: 8300000, guid: b6a8a83ff3b469442b89a82d2f15bf6d, type: 3}
+  - {fileID: 8300000, guid: 14909f2b29635934a8342bb940737edb, type: 3}
+  - {fileID: 8300000, guid: fba735ebfec2c8545a1103fd63daa760, type: 3}
+  - {fileID: 8300000, guid: beca6229831e3404db7b5e9a04a461f1, type: 3}
+  - {fileID: 8300000, guid: 73a0f0db5522d2540b1a145510925ec5, type: 3}
   AttackChords:
   - {fileID: 8300000, guid: 1e275852bd27f304aa88913d1aac9958, type: 3}
   - {fileID: 8300000, guid: b039c6177d82a6247bd90e72d07f1da0, type: 3}
