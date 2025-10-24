@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4806498804619767037}
   - component: {fileID: 283100481445955195}
   - component: {fileID: 830770180008751195}
-  - component: {fileID: 3039504290632459600}
   - component: {fileID: -50506737323785465}
   - component: {fileID: 9074940612009289951}
   - component: {fileID: 6603837403979830540}
@@ -180,19 +179,6 @@ MonoBehaviour:
   AttackDurationSeconds: 2
   Health: 5
   damageParticles: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}
---- !u!114 &3039504290632459600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904241690297998020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ab8ffbadec94751943ed6c38937d34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioData: {fileID: 11400000, guid: 5c95bd0333d334d5bb8b4f1aa6960067, type: 2}
 --- !u!95 &-50506737323785465
 Animator:
   serializedVersion: 7

@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour
 
     void Awake()
     {
-        enemyAudio = GetComponent<EnemyAudio>();
+        enemyAudio = FindAnyObjectByType<EnemyAudio>();
         audioMixerScript = GetComponent<AudioMixerScript>();
         isFacingRight = transform.rotation.eulerAngles.y == 180;
         rb = GetComponent<Rigidbody2D>();
@@ -314,7 +314,11 @@ public class EnemyController : MonoBehaviour
 
     private void HandleAudioMixerGroupRouting()
     {
-        audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomHits.audioSource);
+        try
+        {
+            audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomHits.audioSource);
+        }
+        catch { Debug.Log(gameObject.name); }
         // apparently i'm using just one audio source for all sounds, even though i'm instantiating 3...
         // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAggro.audioSource);
         // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAttacks.audioSource);
