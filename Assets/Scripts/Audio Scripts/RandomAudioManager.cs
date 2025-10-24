@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RandomAudioManager : MonoBehaviour
 {
-    public AudioSource audioSource;
+    // public AudioSource audioSource;
     public float minDelay = 3f;
     public float maxDelay = 9f;
     private Coroutine playbackCoroutine;
@@ -14,13 +14,13 @@ public class RandomAudioManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        // audioSource = gameObject.AddComponent<AudioSource>();
     }
-    public void StartRandomAudioWithDelay(AudioClip[] clips)
+    public void StartRandomAudioWithDelay(AudioClip[] clips, AudioSource audioSource)
     {
         if (audioSource != null && clips.Length > 0)
         {
-            playbackCoroutine = StartCoroutine(PlayRandomAudioWithDelay(clips));
+            playbackCoroutine = StartCoroutine(PlayRandomAudioWithDelay(clips, audioSource));
         }
         else
         {
@@ -37,7 +37,7 @@ public class RandomAudioManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayRandomAudioWithDelay(AudioClip[] clips)
+    private IEnumerator PlayRandomAudioWithDelay(AudioClip[] clips, AudioSource audioSource)
     {
         while(true)
         {
@@ -55,7 +55,7 @@ public class RandomAudioManager : MonoBehaviour
         }
     }
 
-    public void PlayRandomAudioNoDelayWithFX(AudioClip[] clips, float minPitch, float maxPitch, bool volMod)
+    public void PlayRandomAudioNoDelayWithFX(AudioClip[] clips, float minPitch, float maxPitch, bool volMod, AudioSource audioSource)
     {
         AudioClip randomClip;
         if (audioSource != null && clips.Length > 0)

@@ -42,10 +42,10 @@ public class GameManager : MonoBehaviour
         audioMixerScript.assignSFXGroup(backgroundAudio.AudioData.UnderworldAmbience.Source);
         audioMixerScript.assignSFXGroup(backgroundAudio.AudioData.BeachAmbience.Source);
         // Still SFX, but now one shots, not using the "Sound" class
-        audioMixerScript.assignSFXGroup(backgroundAudio.AudioData.RandomAmbienceBreaths.audioSource);
-        audioMixerScript.assignSFXGroup(backgroundAudio.AudioData.RandomAmbienceFrogs.audioSource);
-        audioMixerScript.assignSFXGroup(backgroundAudio.AudioData.RandomAmbienceLoudBirds.audioSource);
-        audioMixerScript.assignSFXGroup(backgroundAudio.AudioData.RandomAmbienceQuietBirds.audioSource);
+        audioMixerScript.assignSFXGroup(backgroundAudio.breathsAudioSource);
+        audioMixerScript.assignSFXGroup(backgroundAudio.frogsAudioSource);
+        audioMixerScript.assignSFXGroup(backgroundAudio.loudBirdsAudioSource);
+        audioMixerScript.assignSFXGroup(backgroundAudio.quietBirdsAudioSource);
 
         // Now assign audio sources to music bus
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusic.Source);

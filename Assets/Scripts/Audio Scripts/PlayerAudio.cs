@@ -68,11 +68,11 @@ public class PlayerAudio : AudioController
         // Stone footsteps were too quiet so add a case where there is no voume modulation
         if (currentTerrain == "Stone")
         {
-            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, false);
+            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, false, AudioData.PlayerSoundsSource);
         }
         else
         {
-            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, true);
+            AudioData.RandomFootsteps.PlayRandomAudioNoDelayWithFX(currentClips, 0.8f, 1.15f, true, AudioData.PlayerSoundsSource);
         }
 
     }
@@ -120,31 +120,31 @@ public class PlayerAudio : AudioController
         }
     }
 
-    public void PlayAttackNote()
+    public void PlayAttackNote(AudioSource audioSource)
     {
         if (AudioData.AttackNotes.Length == 0) {
             Debug.LogError("Player audio 'Attack Chords' length is 0");
             return;
         }
-        AudioData.RandomAttackNotes.PlayRandomAudioNoDelayWithFX(AudioData.AttackNotes, 1, 1, true);
+        AudioData.RandomAttackNotes.PlayRandomAudioNoDelayWithFX(AudioData.AttackNotes, 1, 1, true, audioSource);
     }
-    public void PlayAttackChord()
+    public void PlayAttackChord(AudioSource audioSource)
     {
         if (AudioData.AttackChords.Length == 0) {
             Debug.LogError("Player audio 'Attack Chords' length is 0");
             return;
         }
-        AudioData.RandomAttackChords.PlayRandomAudioNoDelayWithFX(AudioData.AttackChords, 1, 1, true);
+        AudioData.RandomAttackChords.PlayRandomAudioNoDelayWithFX(AudioData.AttackChords, 1, 1, true, audioSource);
     }
 
-    public void PlayHit()
+    public void PlayHit(AudioSource audioSource)
     {
         if (AudioData.AttackChords.Length == 0) 
         {
             Debug.LogError("Player audio 'Hits' length is 0");
             return;
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.25f, true);
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.25f, true, audioSource);
     }
     
     public void PlayPlayerSound(string clipname, float vol_mult)

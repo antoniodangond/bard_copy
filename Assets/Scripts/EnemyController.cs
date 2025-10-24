@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
     private float knockBackTime;
     private bool isBeingKnockedBack= false;
     private EnemyAudio enemyAudio;
+    private AudioSource audioSource;
     private AudioMixerScript audioMixerScript;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -45,6 +46,7 @@ public class EnemyController : MonoBehaviour
     {
         enemyAudio = FindAnyObjectByType<EnemyAudio>();
         audioMixerScript = GetComponent<AudioMixerScript>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         isFacingRight = transform.rotation.eulerAngles.y == 180;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -83,7 +85,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator handleDeathRoutine()
     {
-        enemyAudio.PlayHit();
+        enemyAudio.PlayHit(audioSource);
         yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
@@ -131,7 +133,7 @@ public class EnemyController : MonoBehaviour
     {
 
         Health -= damage;
-        enemyAudio.PlayHit();
+        enemyAudio.PlayHit(audioSource);
         SpawnDamageParticles(attackDirection);
         StartCoroutine(EnemyDamageColorChangeRoutine());
 
@@ -210,7 +212,7 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = getDirectionToTarget(targetRigidbody);
         // Rotate transform if necessary
         HandleRotation(direction);
-        enemyAudio.PlayAggro();
+        enemyAudio.PlayAggro(audioSource);
         yield return new WaitForSeconds(AgroTimeBeforeAttack);
 
         // Start attack
@@ -223,7 +225,7 @@ public class EnemyController : MonoBehaviour
         // Rotate transform again if necessary
         HandleRotation(direction);
         animator.SetBool(AnimatorParams.IsMoving, true);
-        enemyAudio.PlayAttack();
+        enemyAudio.PlayAttack(audioSource);
         // After attack duration, begin cooldown
         if (enemyName == "Owl")
         {
@@ -316,7 +318,8 @@ public class EnemyController : MonoBehaviour
     {
         try
         {
-            audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomHits.audioSource);
+            audioMixerScript.assignSFXGroup(audioSource
+            );
         }
         catch { Debug.Log(gameObject.name); }
         // apparently i'm using just one audio source for all sounds, even though i'm instantiating 3...

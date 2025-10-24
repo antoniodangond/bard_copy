@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
     private PlayerAnimation playerAnimation;
     private PlayerAttack playerAttack;
     private PlayerAudio playerAudio;
+    // One audio source for just footsteps, becauase you can theoretically walk and attack at the same tie
+    private AudioSource footstepsAudioSource;
+    // other audiosource for everything else (attacks and damage)
+    private AudioSource combatAudioSource;
     private PlayerMovement playerMovement;
     private AudioMixerScript audioMixerScript;
     private Vector2 movement;
@@ -85,6 +89,8 @@ public class PlayerController : MonoBehaviour
         playerAnimation = GetComponent<PlayerAnimation>();
         playerAttack = GetComponent<PlayerAttack>();
         playerAudio = GetComponent<PlayerAudio>();
+        footstepsAudioSource = gameObject.GetComponent<AudioSource>();
+        combatAudioSource = gameObject.GetComponent<AudioSource>();
         audioMixerScript = GetComponent<AudioMixerScript>();
         playerMovement = GetComponent<PlayerMovement>();
         HandleAudioMixerGroupRouting();
@@ -265,7 +271,7 @@ public class PlayerController : MonoBehaviour
     {
         CurrentState = PlayerState.Stunned;
         StartCoroutine(playerAttack.DamageColorChangeRoutine());
-        playerAudio.PlayHit();
+        playerAudio.PlayHit(combatAudioSource);
         // Defaulting "Attack Type" argument to directional beause it results in a shorter cool down
         yield return StartCoroutine(playerAttack.AttackCooldown(playerAttack.directionalAttackCoolDownTime, "Directional"));
         CurrentState = PlayerState.Default;
@@ -424,7 +430,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = true;
                 isAOEAttacking = false;
                 playerAttack.Attack();
-                playerAudio.PlayAttackNote();
+                playerAudio.PlayAttackNote(combatAudioSource);
             }
             
             if (PlayerInputManager.WasAOEAttackPressed && PlayerAttack.CanAOEAttack)
@@ -433,7 +439,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = false;
                 isAOEAttacking = true;
                 playerAttack.AOEAttack();
-                playerAudio.PlayAttackChord();
+                playerAudio.PlayAttackChord(combatAudioSource);
             }
 
             if (PlayerInputManager.wasDashPressed && canDash)
@@ -527,9 +533,8 @@ public class PlayerController : MonoBehaviour
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteD.Source);
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteE.Source);
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.PlayerSoundsSource);
-        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.RandomHits.audioSource);
-        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.RandomAttackChords.audioSource);
-        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.RandomFootsteps.audioSource);
+        audioMixerScript.assignPlayerSFXGroup(combatAudioSource);
+        audioMixerScript.assignPlayerSFXGroup(footstepsAudioSource);
 
         audioMixerScript.assignMUSGroup(playerAudio.AudioData.Melody1.Source);
         audioMixerScript.assignMUSGroup(playerAudio.AudioData.Melody2.Source);

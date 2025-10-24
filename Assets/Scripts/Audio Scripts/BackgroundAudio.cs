@@ -5,6 +5,10 @@ public class BackgroundAudio : AudioController
 {
     public BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
+    public AudioSource breathsAudioSource;
+    public AudioSource frogsAudioSource;
+    public AudioSource loudBirdsAudioSource;
+    public AudioSource quietBirdsAudioSource;
     public float FadeDuration;
 
     private Sound currentBackgroundMusic;
@@ -19,19 +23,23 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
+        breathsAudioSource = gameObject.GetComponent<AudioSource>();
+        frogsAudioSource = gameObject.GetComponent<AudioSource>();
+        loudBirdsAudioSource = gameObject.GetComponent<AudioSource>();
+        quietBirdsAudioSource = gameObject.GetComponent<AudioSource>();
         if (LowPassFilter == null)
         {
             LowPassFilter = gameObject.AddComponent<AudioLowPassFilter>();
         }
         // Instantiate Random Audio Managers and their audio source
         AudioData.RandomAmbienceBreaths = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAmbienceBreaths.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomAmbienceBreaths.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAmbienceFrogs = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAmbienceFrogs.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomAmbienceFrogs.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAmbienceLoudBirds = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAmbienceLoudBirds.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomAmbienceLoudBirds.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAmbienceQuietBirds = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomAmbienceQuietBirds.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomAmbienceQuietBirds.audioSource = gameObject.AddComponent<AudioSource>();
         
 
 
@@ -74,29 +82,29 @@ public class BackgroundAudio : AudioController
 
     public void PlayRandomBreaths()
     {
-        AudioData.RandomAmbienceBreaths.audioSource.volume = .7f;
-        AudioData.RandomAmbienceBreaths.StartRandomAudioWithDelay(AudioData.AmbienceBreaths);
+        breathsAudioSource.volume = .7f;
+        AudioData.RandomAmbienceBreaths.StartRandomAudioWithDelay(AudioData.AmbienceBreaths, breathsAudioSource);
     }
     public void PlayRandomFrogs()
     {
         AudioData.RandomAmbienceFrogs.minDelay = .4f;
         AudioData.RandomAmbienceFrogs.maxDelay = 5f;
-        AudioData.RandomAmbienceFrogs.audioSource.volume = .2f;
-        AudioData.RandomAmbienceFrogs.StartRandomAudioWithDelay(AudioData.AmbienceFrogs);
+        frogsAudioSource.volume = .2f;
+        AudioData.RandomAmbienceFrogs.StartRandomAudioWithDelay(AudioData.AmbienceFrogs, frogsAudioSource);
     }
     public void PlayRandomLoudBirds()
     {
         AudioData.RandomAmbienceLoudBirds.minDelay = .7f;
         AudioData.RandomAmbienceLoudBirds.maxDelay = 5f;
-        AudioData.RandomAmbienceLoudBirds.audioSource.volume = .3f;
-        AudioData.RandomAmbienceLoudBirds.StartRandomAudioWithDelay(AudioData.AmbienceLoudBirds);
+        loudBirdsAudioSource.volume = .3f;
+        AudioData.RandomAmbienceLoudBirds.StartRandomAudioWithDelay(AudioData.AmbienceLoudBirds, loudBirdsAudioSource);
     }
     public void PlayRandomQuietBirds()
     {
         AudioData.RandomAmbienceQuietBirds.minDelay = .4f;
         AudioData.RandomAmbienceQuietBirds.maxDelay = 4f;
-        AudioData.RandomAmbienceQuietBirds.audioSource.volume = .5f;
-        AudioData.RandomAmbienceQuietBirds.StartRandomAudioWithDelay(AudioData.AmbienceQuietBirds);
+        quietBirdsAudioSource.volume = .5f;
+        AudioData.RandomAmbienceQuietBirds.StartRandomAudioWithDelay(AudioData.AmbienceQuietBirds, quietBirdsAudioSource);
     }
 
     public void StopRandomBreaths()
@@ -206,8 +214,10 @@ public class BackgroundAudio : AudioController
     public override void OnPause(bool isPaused)
     {
         AudioData.BackgroundMusicPauseVolume = 0.1f;
-        AudioData.RandomAmbienceFrogs.audioSource.volume = 0.1f;
-        AudioData.RandomAmbienceBreaths.audioSource.volume = 0.1f;
+        frogsAudioSource.volume = 0.1f;
+        breathsAudioSource.volume = 0.1f;
+        loudBirdsAudioSource.volume = 0.1f;
+        quietBirdsAudioSource.volume = 0.1f;
         LowPassFilter.cutoffFrequency = 500f;
 
     }
@@ -215,8 +225,10 @@ public class BackgroundAudio : AudioController
     // TODO: implement
     public override void OnUnPause(bool isPaused)
     {
-        AudioData.RandomAmbienceFrogs.audioSource.volume = 1f;
-        AudioData.RandomAmbienceBreaths.audioSource.volume = 1f;
+        frogsAudioSource.volume = 1f;
+        breathsAudioSource.volume = 1f;
+        loudBirdsAudioSource.volume = 1f;
+        quietBirdsAudioSource.volume = 1f;
         AudioData.BackgroundMusicPauseVolume = 0.5f;
         LowPassFilter.cutoffFrequency = 20000f;
     }

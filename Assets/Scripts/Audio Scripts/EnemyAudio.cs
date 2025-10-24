@@ -6,37 +6,37 @@ public class EnemyAudio : AudioController
 
     void Awake() {
         AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
         // AudioData.RandomAggro = gameObject.AddComponent<RandomAudioManager>();
         // AudioData.RandomAggro.audioSource = gameObject.AddComponent<AudioSource>();
         // AudioData.RandomAttacks = gameObject.AddComponent<RandomAudioManager>();
         // AudioData.RandomAttacks.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    public void PlayHit()
+    public void PlayHit(AudioSource audioSource)
     {
         if (AudioData.Hits.Length == 0) {
             Debug.LogError("Enemy audio 'hits' length is 0");
             return;
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.15f, true);
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.15f, true, audioSource);
     }
-    public void PlayAttack()
+    public void PlayAttack(AudioSource audioSource)
     {
         if (AudioData.Attacks.Length == 0) {
             Debug.LogError("Enemy audio 'attacks' length is 0");
             return;
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Attacks, 0.8f, 1.15f, true);
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Attacks, 0.8f, 1.15f, true, audioSource);
     }
 
-    public void PlayAggro()
+    public void PlayAggro(AudioSource audioSource)
     {
         if (AudioData.Aggro.Length == 0) {
             Debug.LogError("Enemy audio 'aggro' length is 0");
             return;
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true);
+        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true, audioSource);
     }
 
     // TODO: implement
