@@ -25,23 +25,19 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
-        breathsAudioSource = gameObject.GetComponent<AudioSource>();
-        frogsAudioSource = gameObject.GetComponent<AudioSource>();
-        loudBirdsAudioSource = gameObject.GetComponent<AudioSource>();
-        quietBirdsAudioSource = gameObject.GetComponent<AudioSource>();
+        breathsAudioSource = gameObject.transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
+        frogsAudioSource = gameObject.transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
+        loudBirdsAudioSource = gameObject.transform.GetChild(2).GetChild(2).GetComponent<AudioSource>();
+        quietBirdsAudioSource = gameObject.transform.GetChild(2).GetChild(3).GetComponent<AudioSource>();
         if (LowPassFilter == null)
         {
             LowPassFilter = gameObject.AddComponent<AudioLowPassFilter>();
         }
         // Instantiate Random Audio Managers and their audio source
         AudioData.RandomAmbienceBreaths = gameObject.AddComponent<RandomAudioManager>();
-        // AudioData.RandomAmbienceBreaths.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAmbienceFrogs = gameObject.AddComponent<RandomAudioManager>();
-        // AudioData.RandomAmbienceFrogs.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAmbienceLoudBirds = gameObject.AddComponent<RandomAudioManager>();
-        // AudioData.RandomAmbienceLoudBirds.audioSource = gameObject.AddComponent<AudioSource>();
         AudioData.RandomAmbienceQuietBirds = gameObject.AddComponent<RandomAudioManager>();
-        // AudioData.RandomAmbienceQuietBirds.audioSource = gameObject.AddComponent<AudioSource>();
         
 
 
@@ -93,7 +89,7 @@ public class BackgroundAudio : AudioController
     {
         AudioData.RandomAmbienceFrogs.minDelay = .4f;
         AudioData.RandomAmbienceFrogs.maxDelay = 5f;
-        frogsAudioSource.volume = .2f;
+        frogsAudioSource.volume = .35f;
         AudioData.RandomAmbienceFrogs.StartRandomAudioWithDelay(AudioData.AmbienceFrogs, frogsAudioSource);
     }
     public void PlayRandomLoudBirds()
@@ -155,7 +151,6 @@ public class BackgroundAudio : AudioController
                 newSound = AudioData.BackgroundMusicMausoleum;
                 newAmbience = AudioData.UnderworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
-                
                 break;
             case "Beach":
                 StopRandomFrogs();
@@ -172,8 +167,7 @@ public class BackgroundAudio : AudioController
                 newSound = AudioData.BackgroundMusicForest;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
-                PlayRandomLoudBirds();
-                PlayRandomQuietBirds();
+                PlayRandomBreaths();
                 break;
             default:
                 // Use for Overworld
@@ -212,13 +206,47 @@ public class BackgroundAudio : AudioController
         switch (playerState)
         {
             case PlayerState.Default:
-                AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusic.DefaultVolume);
+                // AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusic.DefaultVolume);
+                currentBackgroundMusic.SetVolume(currentBackgroundMusic.DefaultVolume);
                 break;
             case PlayerState.Instrument:
-                AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                switch (currentBackgroundMusic.Clip.name)
+                {
+                    case "mus_overworldtheme_loop_v2":
+                        AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;
+                    case "mus_underworldtheme_loop_v2":
+                        AudioData.BackgroundMusicUnderworld.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;
+                    case "mus_beach_v1":
+                        AudioData.BackgroundMusicBeach.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;
+                    case "mus_forest_v1":
+                        AudioData.BackgroundMusicForest.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;
+                    default:
+                        break;
+                }
+                // currentBackgroundMusic.SetVolume(currentBackgroundMusic)
                 break;
             case PlayerState.InstrumentMelody:
-                AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                switch (currentBackgroundMusic.Clip.name)
+                {
+                    case "mus_overworldtheme_loop_v2":
+                        AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;
+                    case "mus_underworldtheme_loop_v2":
+                        AudioData.BackgroundMusicUnderworld.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;
+                    case "mus_beach_v1":
+                        AudioData.BackgroundMusicBeach.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;
+                    case "mus_forest_v1":
+                        AudioData.BackgroundMusicForest.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;
+                    default:
+                        break;
+                }
                 break;
         }
     }

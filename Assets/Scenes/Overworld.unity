@@ -34999,11 +34999,6 @@ MonoBehaviour:
   SFXGroup: {fileID: 2752457768588876088, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
   MUSGroup: {fileID: -2025694341733272982, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
   PlayerSFXGroup: {fileID: 2027215125535092849, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
---- !u!4 &1101522028 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6701495709088617615, guid: 73ab02661305740d68bd7d1afbb5dcb5, type: 3}
-  m_PrefabInstance: {fileID: 5587153365255585848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1101522029
 AudioSource:
   m_ObjectHideFlags: 0
@@ -37345,51 +37340,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1530922684326905548, guid: cc0b8e8f1f1223448867d1d91bc245ad, type: 3}
   m_PrefabInstance: {fileID: 1748498834}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1179800633
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1179800634}
-  - component: {fileID: 1179800635}
-  m_Layer: 0
-  m_Name: EnemyAudio
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1179800634
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179800633}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1101522028}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1179800635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1179800633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83ab8ffbadec94751943ed6c38937d34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioData: {fileID: 11400000, guid: 5c95bd0333d334d5bb8b4f1aa6960067, type: 2}
 --- !u!1001 &1183572545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71259,9 +71209,6 @@ PrefabInstance:
     - {fileID: 5444747309418772401, guid: 73ab02661305740d68bd7d1afbb5dcb5, type: 3}
     - {fileID: 2043588610032560600, guid: 73ab02661305740d68bd7d1afbb5dcb5, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6701495709088617615, guid: 73ab02661305740d68bd7d1afbb5dcb5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1179800634}
     - targetCorrespondingSourceObject: {fileID: 5590088928403748147, guid: 73ab02661305740d68bd7d1afbb5dcb5, type: 3}
       insertIndex: 0
       addedObject: {fileID: 22590121}
