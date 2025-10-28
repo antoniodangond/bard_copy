@@ -51,5 +51,7 @@ public class GameManager : MonoBehaviour
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusic.Source);
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicUnderworld.Source);
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicMausoleum.Source);
+        audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicForest.Source);
+        audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicBeach.Source);
     }
 }

@@ -62912,6 +62912,7 @@ GameObject:
   - component: {fileID: 1793817110}
   - component: {fileID: 1793817112}
   - component: {fileID: 1793817111}
+  - component: {fileID: 1793817113}
   m_Layer: 0
   m_Name: HealthBarBackground
   m_TagString: Untagged
@@ -62976,6 +62977,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793817109}
   m_CullTransparentMesh: 1
+--- !u!122 &1793817113
+Halo:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793817109}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4286611584
+  m_Size: 5
 --- !u!4 &1794243208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}

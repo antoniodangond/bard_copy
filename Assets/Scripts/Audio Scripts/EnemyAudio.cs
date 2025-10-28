@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyAudio : AudioController
@@ -32,11 +33,22 @@ public class EnemyAudio : AudioController
 
     public void PlayAggro(AudioSource audioSource)
     {
-        if (AudioData.Aggro.Length == 0) {
+        if (AudioData.Aggro.Length == 0)
+        {
             Debug.LogError("Enemy audio 'aggro' length is 0");
             return;
         }
         AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true, audioSource);
+    }
+    
+    public void PlayIdleSounds(String EnemyName, AudioSource audioSource)
+    {
+        if (AudioData.OwlIdle.Length == 0)
+        {
+            Debug.LogError("Enemy Owl 'idle' length is 0");
+            return;
+        }
+        AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle, 0.8f, 1.15f, true, audioSource);
     }
 
     // TODO: implement

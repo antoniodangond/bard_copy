@@ -67,6 +67,8 @@ public class EnemyController : MonoBehaviour
                 }
                 else { continue; }
             }
+
+            IdleSounds(enemyName);
         }
         HandleAudioMixerGroupRouting();
     }
@@ -325,5 +327,20 @@ public class EnemyController : MonoBehaviour
         // apparently i'm using just one audio source for all sounds, even though i'm instantiating 3...
         // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAggro.audioSource);
         // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAttacks.audioSource);
+    }
+
+    private IEnumerator IdleSounds (String EnemyName)
+    {
+        Debug.Log("Coroutine Running");
+        System.Random rnd = new System.Random();
+        if (EnemyName == "Owl")
+        {
+            while (!gameObject.IsDestroyed())
+            {
+                enemyAudio.PlayIdleSounds("Owl", audioSource);
+                int secondsToWait = rnd.Next(2, 6);
+                yield return new WaitForSeconds(secondsToWait);
+            }
+        }
     }
 }
