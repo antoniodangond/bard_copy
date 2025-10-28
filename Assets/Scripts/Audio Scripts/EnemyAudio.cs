@@ -7,6 +7,7 @@ public class EnemyAudio : AudioController
 
     void Awake() {
         AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
+        AudioData.OwlRandomIdle = gameObject.AddComponent<RandomAudioManager>();
         // AudioData.RandomHits.audioSource = gameObject.AddComponent<AudioSource>();
         // AudioData.RandomAggro = gameObject.AddComponent<RandomAudioManager>();
         // AudioData.RandomAggro.audioSource = gameObject.AddComponent<AudioSource>();
@@ -43,12 +44,12 @@ public class EnemyAudio : AudioController
     
     public void PlayIdleSounds(String EnemyName, AudioSource audioSource)
     {
-        if (AudioData.OwlIdle.Length == 0)
+        if (EnemyName == "Owl" && AudioData.OwlIdle.Length == 0)
         {
             Debug.LogError("Enemy Owl 'idle' length is 0");
             return;
         }
-        AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle, 0.8f, 1.15f, true, audioSource);
+        AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle, 0.8f, 1.2f, false, audioSource);
     }
 
     // TODO: implement

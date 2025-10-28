@@ -68,7 +68,7 @@ public class EnemyController : MonoBehaviour
                 else { continue; }
             }
 
-            IdleSounds(enemyName);
+            StartCoroutine(IdleSounds(enemyName, audioSource));
         }
         HandleAudioMixerGroupRouting();
     }
@@ -329,16 +329,15 @@ public class EnemyController : MonoBehaviour
         // audioMixerScript.assignSFXGroup(enemyAudio.AudioData.RandomAttacks.audioSource);
     }
 
-    private IEnumerator IdleSounds (String EnemyName)
+    private IEnumerator IdleSounds (String EnemyName, AudioSource audioSource)
     {
-        Debug.Log("Coroutine Running");
         System.Random rnd = new System.Random();
         if (EnemyName == "Owl")
         {
             while (!gameObject.IsDestroyed())
             {
-                enemyAudio.PlayIdleSounds("Owl", audioSource);
-                int secondsToWait = rnd.Next(2, 6);
+                enemyAudio.PlayIdleSounds(EnemyName, audioSource);
+                float secondsToWait = rnd.Next(3, 7) + audioSource.clip.length;
                 yield return new WaitForSeconds(secondsToWait);
             }
         }
