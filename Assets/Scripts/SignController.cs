@@ -140,6 +140,7 @@ public class SignController : MonoBehaviour
             case MelodyData.Melody2:
                 if (signName == "Captain") { HandleSuccessFeedback(signName); }
                 if (signName == "Vines") { HandleSuccessFeedback(signName); }
+                if (signName == "Ice") { HandleSuccessFeedback(signName); }
                 break;
 
             case MelodyData.Melody3:
@@ -161,7 +162,7 @@ public class SignController : MonoBehaviour
             audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
         }
 
-        if (signName != "Log" && signName != "Vines")
+        if (signName != "Log" && signName != "Vines" && signName != "Ice")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;
