@@ -140,7 +140,7 @@ public class ButtonSelectionHandler :
         rt.pivot = new Vector2(0.5f, 0.5f);
         rt.anchoredPosition = Vector2.zero;
         rt.sizeDelta = Vector2.zero;
-        rt.localScale = Vector3.one;
+        rt.localScale = new Vector3(0.5f, 0.77f, 0.75f);
     }
 
     public void SetSelected(bool selected, bool playSound = false)

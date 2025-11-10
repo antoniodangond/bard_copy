@@ -23878,12 +23878,12 @@ MonoBehaviour:
   useSpriteSwap: 0
   selectedSprite: {fileID: 0}
   restoreOriginalSpriteOnDeselect: 1
-  useFrame: 0
+  useFrame: 1
   frameImage: {fileID: 0}
-  framePrefab: {fileID: 0}
+  framePrefab: {fileID: 9115508856160642281, guid: 6d6e5bcc6c0c3f64285240047a90d1ba, type: 3}
   framePadding: {x: 6, y: 6}
   frameAbove: 1
-  frameIsSliced: 1
+  frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
   allowBump: 0
@@ -38669,7 +38669,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: -90}
+  m_AnchoredPosition: {x: -21, y: -135}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125990601
@@ -38777,12 +38777,12 @@ MonoBehaviour:
   useSpriteSwap: 0
   selectedSprite: {fileID: 0}
   restoreOriginalSpriteOnDeselect: 1
-  useFrame: 0
+  useFrame: 1
   frameImage: {fileID: 0}
-  framePrefab: {fileID: 0}
+  framePrefab: {fileID: 9115508856160642281, guid: 6d6e5bcc6c0c3f64285240047a90d1ba, type: 3}
   framePadding: {x: 6, y: 6}
   frameAbove: 1
-  frameIsSliced: 1
+  frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
   allowBump: 1
@@ -50902,12 +50902,12 @@ MonoBehaviour:
   useSpriteSwap: 0
   selectedSprite: {fileID: 0}
   restoreOriginalSpriteOnDeselect: 1
-  useFrame: 0
+  useFrame: 1
   frameImage: {fileID: 0}
-  framePrefab: {fileID: 0}
+  framePrefab: {fileID: 9115508856160642281, guid: 6d6e5bcc6c0c3f64285240047a90d1ba, type: 3}
   framePadding: {x: 6, y: 6}
   frameAbove: 1
-  frameIsSliced: 1
+  frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
   allowBump: 1
@@ -51753,7 +51753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91194963, g: 0.90334624, b: 0.90334624, a: 0.08627451}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -65747,7 +65747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23dc895f071634dbf42b67126fa771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetSelectedOnAwake: 0
+  SetSelectedOnAwake: 1
   animTarget: {fileID: 2130207962}
   tintImage: {fileID: 1380757185}
   playSoundOnSelect: 1
@@ -65758,12 +65758,12 @@ MonoBehaviour:
   useSpriteSwap: 0
   selectedSprite: {fileID: 0}
   restoreOriginalSpriteOnDeselect: 1
-  useFrame: 0
+  useFrame: 1
   frameImage: {fileID: 0}
-  framePrefab: {fileID: 0}
+  framePrefab: {fileID: 9115508856160642281, guid: 6d6e5bcc6c0c3f64285240047a90d1ba, type: 3}
   framePadding: {x: 6, y: 6}
   frameAbove: 1
-  frameIsSliced: 1
+  frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
   allowBump: 0
@@ -70500,7 +70500,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21, y: 30}
+  m_AnchoredPosition: {x: -21, y: 7}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &2001143355
@@ -70623,12 +70623,12 @@ MonoBehaviour:
   useSpriteSwap: 0
   selectedSprite: {fileID: 0}
   restoreOriginalSpriteOnDeselect: 1
-  useFrame: 0
+  useFrame: 1
   frameImage: {fileID: 0}
-  framePrefab: {fileID: 0}
+  framePrefab: {fileID: 9115508856160642281, guid: 6d6e5bcc6c0c3f64285240047a90d1ba, type: 3}
   framePadding: {x: 6, y: 6}
   frameAbove: 1
-  frameIsSliced: 1
+  frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
   allowBump: 1
