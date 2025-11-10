@@ -44,8 +44,13 @@ public class SignController : MonoBehaviour
     [Header("GameObjects to Effect")]
     [SerializeField] public GameObject teleporterFromObj;
     [SerializeField] public GameObject teleporterToObj;
+    [SerializeField] public GameObject hatchToOpenObj;
+    [SerializeField] public Sprite openHatch;
+    
     private Teleporter teleporterFrom;
     private Teleporter teleporterTo;
+    private SpriteRenderer hatchToOpen;
+    [Header("Sign Renderer")]
     public SpriteRenderer spriteRenderer;
 
     // Property to get correct dialogue
@@ -61,6 +66,7 @@ public class SignController : MonoBehaviour
         {
             teleporterFrom = teleporterFromObj.GetComponent<Teleporter>();
             teleporterTo = teleporterToObj.GetComponent<Teleporter>();
+            hatchToOpen = hatchToOpenObj.GetComponent<SpriteRenderer>();
         }
         if (playerInput != null)
         {
@@ -173,6 +179,8 @@ public class SignController : MonoBehaviour
         {
             teleporterFrom.Activate();
             teleporterTo.Activate();
+            hatchToOpenObj.transform.position += new Vector3 (0,2f);
+            hatchToOpen.sprite = openHatch;
         }
 
         // STEP 2: Play success animation
