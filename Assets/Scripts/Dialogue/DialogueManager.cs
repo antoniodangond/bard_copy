@@ -135,13 +135,18 @@ public class DialogueManager : MonoBehaviour
         if (isTyping) yield break;
 
         isTyping = true;
-        dialogueText.text = ""; // Clear the text box
+        dialogueText.text = line; // Set the full line at once
 
-        foreach (char letter in line.ToCharArray())
-        {
-            dialogueText.text += letter;
-            yield return new WaitForSeconds(letterSpeed); // Wait before displaying the next letter
-        }
+        // Wait for the letterSpeed interval before starting the typing effect
+        yield return new WaitForSeconds(letterSpeed);
+
+        // dialogueText.text = ""; // Clear the text box
+
+        // foreach (char letter in line.ToCharArray())
+        // {
+        //     dialogueText.text += letter;
+        //     yield return new WaitForSeconds(letterSpeed); // Wait before displaying the next letter
+        // }
 
         isTyping = false;
     }
