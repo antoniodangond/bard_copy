@@ -393,13 +393,20 @@ public class SignController : MonoBehaviour
                 return "<sprite name=\"Playstation_Square\">";
             case "R1":
                 return "<sprite name=\"Playstation_R1\">";
+            case "A":
+                return "<sprite name=\"XBox_A\">";
+            case "B":
+                return "<sprite name=\"XBox_B\">";
+            case "X":
+                return "<sprite name=\"XBox_X\">";
+            case "Y":
+                return "<sprite name=\"XBox_Y\">";
+            case "RB":
+                return "<sprite name=\"XBox_RB\">";
             // case "Square":
-            //     return "<sprite name=\"Playstation_Square\">";
+            //     return "<sprite name="Playstation_Square">";
             default:
                 return "";
         }
-
     }
-
-
 }
