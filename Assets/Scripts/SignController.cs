@@ -237,8 +237,8 @@ public class SignController : MonoBehaviour
             }
             else
             {
-                attackButton_1 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2);
-                toggleInstrumentButton = getCorrectButton("Instrument", "ToggleInstrument", "Gamepad");
+                attackButton_1 = MapGamepadIcons(playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2));
+                toggleInstrumentButton = MapGamepadIcons(getCorrectButton("Instrument", "ToggleInstrument", "Gamepad"));
                 setLyreButtons(true, lyreNotes);
 
                 defaultDialogue.upLines.Add($"[Press {attackButton_1} to ATTACK]");
@@ -289,12 +289,12 @@ public class SignController : MonoBehaviour
             {
                 if (i == 0)
                 {
-                    lyreButtons = getCorrectButton("Instrument", notes[i], "Gamepad");
+                    lyreButtons = MapGamepadIcons(getCorrectButton("Instrument", notes[i], "Gamepad"));
 
                 }
                 else
                 {
-                    lyreButtons = lyreButtons + ", " + getCorrectButton("Instrument", notes[i], "Gamepad");
+                    lyreButtons = lyreButtons + ", " + MapGamepadIcons(getCorrectButton("Instrument", notes[i], "Gamepad"));
                 }
             }
         }
@@ -376,6 +376,29 @@ public class SignController : MonoBehaviour
 
         DialogueManager.SetCurrentSpeaker(this);
         DialogueManager.StartDialogue(CurrentDialogue, direction);
+    }
+
+    // I know that this should live somewhere else, but we're so close to shipping I'm just doing it here
+    private string MapGamepadIcons(string bindingDisplayString)
+    {
+        switch (bindingDisplayString)
+        {
+            case "Cross":
+                return "<sprite name=\"Playstation_Cross\">";
+            case "Circle":
+                return "<sprite name=\"Playstation_Circle\">";
+            case "Triangle":
+                return "<sprite name=\"Playstation_Triangle\">";
+            case "Square":
+                return "<sprite name=\"Playstation_Square\">";
+            case "R1":
+                return "<sprite name=\"Playstation_R1\">";
+            // case "Square":
+            //     return "<sprite name=\"Playstation_Square\">";
+            default:
+                return "";
+        }
+
     }
 
 

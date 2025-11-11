@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: 58d9957e7bb1d3743af84e4e793885e5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7433426626337683222
+    second: Playstation_XBox_Gamepad_Icons_0
+  - first:
+      213: 1408271518481391923
+    second: Playstation_XBox_Gamepad_Icons_1
+  - first:
+      213: 6045999275519913529
+    second: Playstation_XBox_Gamepad_Icons_2
+  - first:
+      213: 6201537675619709725
+    second: Playstation_XBox_Gamepad_Icons_3
+  - first:
+      213: 8345132520210460662
+    second: Playstation_XBox_Gamepad_Icons_4
+  - first:
+      213: -2306070121203788180
+    second: Playstation_XBox_Gamepad_Icons_5
+  - first:
+      213: 6734709053865439555
+    second: Playstation_XBox_Gamepad_Icons_6
+  - first:
+      213: -1725531026289365838
+    second: Playstation_XBox_Gamepad_Icons_7
+  - first:
+      213: -4252120620249015521
+    second: Playstation_XBox_Gamepad_Icons_8
+  - first:
+      213: -1091423917085360565
+    second: Playstation_XBox_Gamepad_Icons_9
+  - first:
+      213: -8833884774220465064
+    second: Playstation_XBox_Gamepad_Icons_10
+  - first:
+      213: 6882383206464769028
+    second: Playstation_XBox_Gamepad_Icons_11
+  - first:
+      213: -1017733095706658991
+    second: Playstation_XBox_Gamepad_Icons_12
+  - first:
+      213: 7708544640072251647
+    second: Playstation_XBox_Gamepad_Icons_13
+  - first:
+      213: -4321205047141982131
+    second: Playstation_XBox_Gamepad_Icons_14
+  - first:
+      213: 2538643269843169688
+    second: Playstation_XBox_Gamepad_Icons_15
+  - first:
+      213: -271771841890069784
+    second: Playstation_XBox_Gamepad_Icons_16
+  - first:
+      213: 8613965940702698611
+    second: Playstation_XBox_Gamepad_Icons_17
+  - first:
+      213: -27520487122774085
+    second: Playstation_XBox_Gamepad_Icons_18
+  - first:
+      213: 712133164653300416
+    second: Playstation_XBox_Gamepad_Icons_19
+  - first:
+      213: 3450037473232989626
+    second: Playstation_XBox_Gamepad_Icons_20
+  - first:
+      213: 4574155375948877167
+    second: Playstation_XBox_Gamepad_Icons_21
+  - first:
+      213: -6963864040503714894
+    second: Playstation_XBox_Gamepad_Icons_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 617b9c6f126d82760800000000000000
+      internalID: 7433426626337683222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 500
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33122661c7f2b8310800000000000000
+      internalID: 1408271518481391923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 500
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e22a9de44b7e350800000000000000
+      internalID: 6045999275519913529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13b388a8a9401650800000000000000
+      internalID: 6201537675619709725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 400
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ff64be00dddfc370800000000000000
+      internalID: 8345132520210460662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 400
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c66918e51713fffd0800000000000000
+      internalID: -2306070121203788180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 300
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 341b145d33e767d50800000000000000
+      internalID: 6734709053865439555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 300
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bc6b118caead08e0800000000000000
+      internalID: -1725531026289365838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 300
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b91f713de6df4c0800000000000000
+      internalID: -4252120620249015521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4ef2c2eabb7ad0f0800000000000000
+      internalID: -1091423917085360565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_10
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 200
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85c7bdd0a9cb76580800000000000000
+      internalID: -8833884774220465064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 200
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40c4275df03238f50800000000000000
+      internalID: 6882383206464769028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 100
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 157fe32442940e1f0800000000000000
+      internalID: -1017733095706658991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 100
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff87fbe22804afa60800000000000000
+      internalID: 7708544640072251647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_14
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 100
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d402a7387eef704c0800000000000000
+      internalID: -4321205047141982131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89130768a921b3320800000000000000
+      internalID: 2538643269843169688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_16
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e2503023f87a3cf0800000000000000
+      internalID: -271771841890069784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playstation_XBox_Gamepad_Icons_17
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37cd5e26264fa8770800000000000000
+      internalID: 8613965940702698611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2285f7d91adca6a48b78efc4cbc915c9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Playstation_XBox_Gamepad_Icons_0: 7433426626337683222
+      Playstation_XBox_Gamepad_Icons_1: 1408271518481391923
+      Playstation_XBox_Gamepad_Icons_10: -8833884774220465064
+      Playstation_XBox_Gamepad_Icons_11: 6882383206464769028
+      Playstation_XBox_Gamepad_Icons_12: -1017733095706658991
+      Playstation_XBox_Gamepad_Icons_13: 7708544640072251647
+      Playstation_XBox_Gamepad_Icons_14: -4321205047141982131
+      Playstation_XBox_Gamepad_Icons_15: 2538643269843169688
+      Playstation_XBox_Gamepad_Icons_16: -271771841890069784
+      Playstation_XBox_Gamepad_Icons_17: 8613965940702698611
+      Playstation_XBox_Gamepad_Icons_2: 6045999275519913529
+      Playstation_XBox_Gamepad_Icons_3: 6201537675619709725
+      Playstation_XBox_Gamepad_Icons_4: 8345132520210460662
+      Playstation_XBox_Gamepad_Icons_5: -2306070121203788180
+      Playstation_XBox_Gamepad_Icons_6: 6734709053865439555
+      Playstation_XBox_Gamepad_Icons_7: -1725531026289365838
+      Playstation_XBox_Gamepad_Icons_8: -4252120620249015521
+      Playstation_XBox_Gamepad_Icons_9: -1091423917085360565
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

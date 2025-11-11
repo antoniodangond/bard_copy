@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PopUpController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PopUpController : MonoBehaviour
     public PlayerInput playerInput;
     private string keyboardDialogueButton;
     private string gamepadDialogueButton;
+    private GamepadIconMapper mapper = new GamepadIconMapper();
 
     void Start()
     {
@@ -17,7 +19,7 @@ public class PopUpController : MonoBehaviour
         gamepadDialogueButton = playerInput.actions.FindActionMap("Player").FindAction("Dialogue").GetBindingDisplayString(1);
         if (Gamepad.current != null)
         {
-            startingText = $"Press {gamepadDialogueButton} on gamepad to interact";
+            startingText = $"Press {mapper.MapGamepadIcons(gamepadDialogueButton)} on gamepad to interact";
         }
         else
         {
@@ -27,7 +29,7 @@ public class PopUpController : MonoBehaviour
         DialogueManager.StartDialogue(defaultDialogue, FacingDirection.Up);
         defaultDialogue.universalLines.Clear();
     }
-
+    
     void Update()
     {
         if (PlayerInputManager.WasDialoguePressed)
