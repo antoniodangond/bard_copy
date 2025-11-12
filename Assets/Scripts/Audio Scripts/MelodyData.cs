@@ -13,6 +13,7 @@ public class MelodyData
 
     // TODO: make melodies customizable in the editor
     private static string[] melody1Inputs = new string[MelodyLength]{
+        //ON KEYBOARD: AWASD
         NoteC,
         NoteB,
         NoteC,
@@ -20,6 +21,7 @@ public class MelodyData
         NoteE,
     };
     private static string[] melody2Inputs = new string[MelodyLength]{
+        //ON KEYBOARD: ADASW
         NoteC,
         NoteE,
         NoteC,
@@ -28,6 +30,7 @@ public class MelodyData
     };
 
     private static string[] melody3Inputs = new string[MelodyLength]{
+        //ON KEYBOARD: WWSAD
         NoteB,
         NoteB,
         NoteD,
