@@ -26,5 +26,6 @@ public class BackButton : MonoBehaviour
     {
         MenuManager.Instance.MenuUI.SetActive(true);
         MenuManager.Instance.OptionsMenuUI.SetActive(false);
+        MenuManager.Instance.ControlsMenuUI.SetActive(false);
     }
 }
