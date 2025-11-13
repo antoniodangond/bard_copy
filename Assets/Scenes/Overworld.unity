@@ -14043,6 +14043,10 @@ PrefabInstance:
       value: CrowSuccessObject
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: signName
+      value: Crow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 6f5592dd0194d134b974e64d4ef7c123, type: 2}
@@ -14053,6 +14057,10 @@ PrefabInstance:
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: HasDialogueOnMelody
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: IsPlayingSuccessAudio
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5928255056853060441, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}

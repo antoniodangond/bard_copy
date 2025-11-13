@@ -146,6 +146,7 @@ public class SignController : MonoBehaviour
             case MelodyData.Melody2:
                 if (signName == "Captain") { HandleSuccessFeedback(signName); }
                 if (signName == "Vines") { HandleSuccessFeedback(signName); }
+                if (signName == "Crow") { HandleSuccessFeedback(signName); }
                 if (signName == "Mountaineer") { HandleSuccessFeedback(signName); } //temp, move to mel3
                 if (signName == "Ice") { HandleSuccessFeedback(signName); }//temp, move to mel3
                 break;
