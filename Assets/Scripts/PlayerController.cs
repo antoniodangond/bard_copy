@@ -218,11 +218,12 @@ public class PlayerController : MonoBehaviour
                     isAOEAttacking = false;
                     CurrentState = PlayerState.Dialogue;
                     playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
-                    // commented this out because when a sign controller is marked as "Has Dialogue on Melody"
+                    // commented this out oringially because when a sign controller is marked as "Has Dialogue on Melody"
                     // but doesn't have a name, the player gets stuck in Dialogue state because of the "yield break"
                     // statement below. this way Player state gets set back to default no matter what
+                    // BUT that breaks the normal working dialogue for some reason, so adding it back in
                     // Debug.Log("About to exit");
-                    // yield break;
+                    yield break;
                 }
 
             }
