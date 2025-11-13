@@ -33,6 +33,8 @@ public class PlayerUIManager : MonoBehaviour
     private ImagePool fullHearts;
     public GameObject fullHeartObj; // Assign in inspector
     private Transform fullHeartStartLocation;
+    public ParticleSystem AOEAttackUIParticles;
+    public ParticleSystem.EmissionModule em;
     private int maxHearts = 5;
     private List<Image> currentHearts = new List<Image>();
     // private ImagePool emptyHearts;
@@ -79,6 +81,7 @@ public class PlayerUIManager : MonoBehaviour
 
         InitializeUI();
         UpdateTabletDrawLocations();
+        em = AOEAttackUIParticles.emission;
     }
 
     private void InitializeUI()

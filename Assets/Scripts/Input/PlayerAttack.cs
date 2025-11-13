@@ -25,6 +25,23 @@ public class PlayerAttack : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSpriteColor = spriteRenderer.color;
         animator = GetComponent<Animator>();
+        if (PlayerUIManager.Instance.AOEAttackUIParticles == null)
+        {
+            Debug.LogError("AOEAttackUIParticles is not assigned!");
+        }
+    }
+
+    void Update()
+    {
+        if (CanAOEAttack && PlayerUIManager.Instance.em.enabled == false) 
+        {
+            PlayerUIManager.Instance.em.enabled = true;
+            PlayerUIManager.Instance.AOEAttackUIParticles.Play();
+        }
+        else if (PlayerUIManager.Instance.AOEAttackUIParticles.isPlaying && !CanAOEAttack)
+        { 
+            PlayerUIManager.Instance.em.enabled = false;
+        }
     }
 
     public IEnumerator AttackCooldown(float attackCoolDownTime, string attackType)
@@ -41,6 +58,7 @@ public class PlayerAttack : MonoBehaviour
             // manually shortenting this float value because the animation length was looking weird
             float animationLength = animator.GetCurrentAnimatorStateInfo(0).length - 0.35f;
             CanAOEAttack = false;
+            // PlayerUIManager.Instance.;
             // For AOE attack, which has a longer cooldown, we need to invoke on attack finished when the animation is done, because
             // the attack is done long before the cooldown is finished, and it looks bad to have the player frozen in the last frame of the
             // animation for 3 seconds
