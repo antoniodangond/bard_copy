@@ -121,23 +121,44 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private TMP_Text songListText;
 
-    public void UpdatePauseMenuSongs() // Call this method when the pause menu is opened
+    [SerializeField] private TMPro.TMP_Text tabletsCountText;
+
+    // Call this when opening the pause menu (right after UpdatePauseMenuSongs)
+    public void UpdateTabletsCountUI()
     {
-        var discoveredSongs = PlayerProgress.Instance.GetSavedSongs(); // returns HashSet<string>
-        songListText.text = "";
+        if (tabletsCountText == null) return;
 
-        foreach (var songId in discoveredSongs)
+        int count = PlayerProgress.Instance != null ? PlayerProgress.Instance.GetNumTabletsCollected() : 0;
+        // If you track a max, adjust here; hardcoded 5 based on your SaveData
+        tabletsCountText.text = $"Tablets: {count}/5";
+    }
+
+    [Header("Song Icon Panels")]
+    [SerializeField] private SongIconsPanel[] songPanels;
+
+    public void UpdatePauseMenuSongs()
+    {
+        if (PlayerProgress.Instance == null)
         {
-            if (MelodyData.MelodyInputs.TryGetValue(songId, out var notes))
-            {
-                string songName = GetSongDisplayName(songId); // e.g., "SONG OF DECAY"
-                string buttonString = GetButtonStringForNotes(notes); // e.g., "A, B, X, Y, A"
-                songListText.text += $"{songName}\n{buttonString}\n\n";
-            }
+            Debug.LogWarning("[MenuManager] PlayerProgress.Instance is null. Skipping song icon update.");
+            return;
+        }
+
+        if (songPanels == null || songPanels.Length == 0)
+        {
+            Debug.LogWarning("[MenuManager] No songPanels assigned on MenuManager.");
+            return;
+        }
+
+        foreach (var panel in songPanels)
+        {
+            if (panel != null)
+                panel.Refresh();
         }
     }
+
+
 
     // Helper to convert note array to button string
     string GetButtonStringForNotes(string[] notes)

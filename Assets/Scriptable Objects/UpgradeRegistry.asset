@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8615d3c70f1660f45a01c768c00f077d, type: 3}
-  m_Name: DashUpgrade
+  m_Script: {fileID: 11500000, guid: ccf6856a4fac8a44eb917f1c5e56818d, type: 3}
+  m_Name: UpgradeRegistry
   m_EditorClassIdentifier: 
-  id: dash
-  displayName: Nereid Step
-  icon: {fileID: -7848039375673857549, guid: c1ad1aba21d2b0847870546bc10f8b83, type: 3}
+  upgrades:
+  - {fileID: 11400000, guid: caf9df98fe636d246845895c17bdd327, type: 2}
+  - {fileID: 11400000, guid: 54386c572b45fdc428538ada7c079552, type: 2}

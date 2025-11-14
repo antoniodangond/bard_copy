@@ -4,6 +4,9 @@ using UnityEditor;
 // using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
 
 static class ActionMaps
 {
@@ -54,6 +57,8 @@ public class PlayerInputManager : MonoBehaviour
     public static string NotePressed;
     public static bool WasDialoguePressed;
     public static bool wasDashPressed;
+    private bool IsPlayerMapActive =>
+        currentActionMap != null && currentActionMap.name == ActionMaps.Player;
 
     // Input Action Map
     private InputActionMap currentActionMap;
@@ -75,6 +80,9 @@ public class PlayerInputManager : MonoBehaviour
     private InputAction Navigate;
     private InputAction Submit;
     // private InputAction CloseMenuAction;
+    [SerializeField] private Button firstPauseButton; // drag your Resume button here
+    
+
 
     void Awake()
     {
@@ -113,37 +121,12 @@ public class PlayerInputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        // Enable actions to ensure they can read values
-        moveAction.Enable();
-        dashAction.Enable();
-        attackAction.Enable();
-        AOEattackAction.Enable();
-        OpenMenuAction.Enable();
-        toggleInstrumentAction.Enable();
-        noteBAction.Enable();
-        noteCAction.Enable();
-        noteDAction.Enable();
-        noteEAction.Enable();
-        Navigate.Enable();
-        Submit.Enable();
-        // CloseMenuAction.Enable();
+        
     }
 
     private void OnDisable()
     {
-        // Disable actions to prevent unnecessary updates when the gameObject is inactive
-        moveAction.Disable();
-        attackAction.Disable();
-        AOEattackAction.Disable();
-        OpenMenuAction.Disable();
-        toggleInstrumentAction.Disable();
-        noteBAction.Disable();
-        noteCAction.Disable();
-        noteDAction.Disable();
-        noteEAction.Disable();
-        Navigate.Disable();
-        Submit.Disable();
-        // CloseMenuAction.Disable();
+        
     }
 
     void HandleNotePress()
@@ -212,16 +195,21 @@ public class PlayerInputManager : MonoBehaviour
             PauseMenu.SetActive(true);
             foreach (var button in MenuManager.Instance.buttons)
             {
-                // Debug.Log($"Found button: {button.gameObject.name}");
+                Debug.Log($"Found button: {button.gameObject.name}");
                 button.gameObject.SetActive(true);
             }
-            // MenuManager.Instance.UpdatePauseMenuSongs(); // Update songs each time we open the menu
+        MenuManager.Instance.UpdatePauseMenuSongs(); // Update songs each time we open the menu
+        MenuManager.Instance.UpdateTabletsCountUI(); // Update tablet count each time we open the menu
+
         }
         isPaused = true;
         CustomEvents.OnPause?.Invoke(isPaused);
         Time.timeScale = 0f;
         SwitchToActionMap("UI");
+        if (EventSystem.current && firstPauseButton)
+        EventSystem.current.SetSelectedGameObject(firstPauseButton.gameObject);
         // OpenMainMenu();
+
     }
 
     public void Unpause()
@@ -236,32 +224,43 @@ public class PlayerInputManager : MonoBehaviour
         CustomEvents.OnUnPause?.Invoke(isPaused);
         Time.timeScale = 1f;
         SwitchToActionMap("Player");
+        if (EventSystem.current)
+            EventSystem.current.SetSelectedGameObject(null);
         // Debug.Log(MenuManager.Instance);
         // CloseAllMenus();
     }
 
     void Update()
-    {
-        // Move action composite mode should be set to "digital" to prevent diagonal
-        // movement magnitude from being less than 1
+{
+    // Pause toggle
+    MenuOpened = OpenMenuAction.WasPressedThisFrame();
+    if (MenuOpened) HandleMenuOpen();
 
-        // Remove sprint action and try to refactor as a dash with cooldown
-        wasDashPressed = dashAction.WasPressedThisFrame();
-        // Movement = moveAction.ReadValue<Vector2>() * (isSprinting ? 1.5f : 1.0f);
-        Movement = moveAction.ReadValue<Vector2>();
-        // Debug.Log($"movement speed is {Movement}");
-        WasAttackPressed = attackAction.WasPressedThisFrame();
-        WasAOEAttackPressed = AOEattackAction.WasPressedThisFrame();
-        MenuOpened = OpenMenuAction.WasPressedThisFrame();
-        // MenuClosed = CloseMenuAction.WasPressedThisFrame();
-        if (MenuOpened)
-        {
-            HandleMenuOpen();
-        }
+    if (IsPlayerMapActive && !isPaused)
+    {
+        wasDashPressed          = dashAction.WasPressedThisFrame();
+        Movement                = moveAction.ReadValue<Vector2>();
+        WasAttackPressed        = attackAction.WasPressedThisFrame();
+        WasAOEAttackPressed     = AOEattackAction.WasPressedThisFrame();
         WasToggleInstrumentPressed = toggleInstrumentAction.WasPressedThisFrame();
         HandleNotePress();
-        WasDialoguePressed = dialogueAction.WasPressedThisFrame();
+        WasDialoguePressed      = dialogueAction.WasPressedThisFrame();
     }
+    else
+    {
+        // hard zero gameplay inputs when not in Player map
+        wasDashPressed = false;
+        Movement = Vector2.zero;
+        WasAttackPressed = false;
+        WasAOEAttackPressed = false;
+        WasToggleInstrumentPressed = false;
+        NotePressed = null;
+        WasDialoguePressed = false;
+    }
+}
+
+
+
     
     public static string GetButtonForNote(string note)
 {

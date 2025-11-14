@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public static bool canDash;
 
     [SerializeField] private UpgradeSO dashUpgrade;
+    [SerializeField] private UpgradeSO aoeUpgrade;
 
     public static class AbilityGate // Might move canDash in here... This is where we will store ability unlocks
     {
@@ -107,9 +108,13 @@ public class PlayerController : MonoBehaviour
         AbilityGate.AOEUnlocked = false;
 
         // Re-apply gates from progress (if any)
-        if (PlayerProgress.Instance != null && dashUpgrade != null)
+        if (PlayerProgress.Instance != null)
         {
-            canDash = PlayerProgress.Instance.HasUpgrade(dashUpgrade);
+            if (dashUpgrade != null)
+                canDash = PlayerProgress.Instance.HasUpgrade(dashUpgrade);
+
+            if (aoeUpgrade != null)
+                AbilityGate.AOEUnlocked = PlayerProgress.Instance.HasUpgrade(aoeUpgrade); // <- add this
         }
 
         // Optional: quick debug
@@ -138,6 +143,14 @@ public class PlayerController : MonoBehaviour
             null,
             null,
         });
+    }
+
+    public void SetDashEnabled(bool enabled) {
+    canDash = enabled;
+    if (!enabled) isDashing = false; // safety, in case dash was mid-run
+    }
+    public void SetAoeEnabled(bool enabled) {
+    AbilityGate.AOEUnlocked = enabled;
     }
 
     private void ToggleInstrument()
@@ -437,7 +450,7 @@ public class PlayerController : MonoBehaviour
                 playerAudio.PlayAttackNote(combatAudioSource);
             }
             
-            if (PlayerInputManager.WasAOEAttackPressed && PlayerAttack.CanAOEAttack)
+            if (PlayerInputManager.WasAOEAttackPressed && AbilityGate.AOEUnlocked && PlayerAttack.CanAOEAttack)
             {
                 isPlayingLyre = false;
                 isAttacking = false;
@@ -445,6 +458,7 @@ public class PlayerController : MonoBehaviour
                 playerAttack.AOEAttack();
                 playerAudio.PlayAttackChord(combatAudioSource);
             }
+
 
             if (PlayerInputManager.wasDashPressed && canDash)
             {
@@ -514,6 +528,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PlayerInputManager.isPaused) return;
         // Move player rigidbody during FixedUpdate so that movement
         // is independent of framerate
         if (isDashing)

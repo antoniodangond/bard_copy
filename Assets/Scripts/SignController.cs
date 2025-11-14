@@ -8,6 +8,9 @@ using UnityEngine.Timeline;
 
 public class SignController : MonoBehaviour
 {
+    [SerializeField] private UniqueId uniqueId; // For save system
+
+
     [Header("Dialogue Settings")]
     [SerializeField] private Dialogue defaultDialogue;
     [SerializeField] private Dialogue updatedDialogue;
@@ -60,6 +63,8 @@ public class SignController : MonoBehaviour
     
     public void Awake()
     {
+        if (uniqueId == null)
+            uniqueId = GetComponent<UniqueId>(); // For save system
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         handleTutorialDialog(signName);
         if (signName == "Captain")
@@ -80,6 +85,7 @@ public class SignController : MonoBehaviour
             // ignoring that issue for now lol
             playerControls["aoe_attack_1"] = AOEAttackButton1;
             playerControls["aoe_attack_2"] = AOEAttackButton2;
+            ApplySavedStateFromProgress();
         }
 
     }
@@ -170,6 +176,20 @@ public class SignController : MonoBehaviour
             audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
         }
 
+        // Mark world state in PlayerProgress, using UniqueId as key
+        if (PlayerProgress.Instance != null && uniqueId != null)
+        {
+        // “Pure” obstacles we want gone forever
+        if (signName == "Log" || signName == "Vines" || signName == "Ice")
+        {
+            PlayerProgress.Instance.MarkObstacleRemoved(uniqueId.Id);
+        }
+        else
+        {
+            // NPCs whose dialog/state should advance
+            PlayerProgress.Instance.SetNPCStatus(uniqueId.Id, "MelodySolved");
+        }
+        }
         if (signName != "Log" && signName != "Vines" && signName != "Ice")
         {
             HasDialogueOnMelody = true;
@@ -214,6 +234,64 @@ public class SignController : MonoBehaviour
             collider.enabled = false;
         }
     }
+
+    private void ApplySavedStateFromProgress()
+    {
+        if (PlayerProgress.Instance == null || uniqueId == null)
+            return;
+
+        // 1) Obstacles that should be gone forever
+        if (PlayerProgress.Instance.IsObstacleRemoved(uniqueId.Id))
+        {
+            // This obstacle was already solved/removed in a prior session
+            // Match what PlaySuccessAnimation does at the end:
+            foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
+                collider.enabled = false;
+            foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
+                collider.enabled = false;
+
+            // For pure obstacles like log/vines/ice you can also hide sprite:
+            if (signName == "Log" || signName == "Vines" || signName == "Ice")
+            {
+                if (spriteRenderer != null)
+                    spriteRenderer.enabled = false;
+            }
+
+            // If you want them completely gone:
+            // gameObject.SetActive(false);
+            return;
+        }
+
+        // 2) NPCs / interactive signs with advanced dialogue or world effects
+        string npcStatus = PlayerProgress.Instance.GetNPCStatus(uniqueId.Id);
+        if (string.IsNullOrEmpty(npcStatus))
+            return;
+
+        if (npcStatus == "MelodySolved")
+        {
+            // Match the “post-melody” state:
+            isDialogueUpdated = true;
+            HasDialogueOnMelody = true;
+
+            if (signName == "Captain")
+            {
+                if (teleporterFrom != null) teleporterFrom.Activate();
+                if (teleporterTo != null) teleporterTo.Activate();
+                if (hatchToOpenObj != null)
+                    hatchToOpenObj.transform.position += new Vector3(0, 2f);
+                if (hatchToOpen != null)
+                    hatchToOpen.sprite = openHatch;
+            }
+
+            // Also disable colliders if that’s what the success animation does
+            foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
+                collider.enabled = false;
+            foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
+                collider.enabled = false;
+        }
+    }
+
+
     private void handleTutorialDialog(string signName)
     {
         if (signName == "E_Grave")

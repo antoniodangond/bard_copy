@@ -82,6 +82,25 @@ public class PlayerUIManager : MonoBehaviour
         InitializeUI();
         UpdateTabletDrawLocations();
         em = AOEAttackUIParticles.emission;
+            // After UI is ready, sync from save if available
+        if (PlayerProgress.Instance != null)
+        {
+            var (count, tablets) = PlayerProgress.Instance.GetTabletSummary();
+            UpdateCollectedTabletsUI(count, tablets);
+            PlayerProgress.Instance.OnLoaded += HandleProgressLoaded;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerProgress.Instance != null)
+            PlayerProgress.Instance.OnLoaded -= HandleProgressLoaded;
+    }
+
+private void HandleProgressLoaded()
+    {
+        var (count, tablets) = PlayerProgress.Instance.GetTabletSummary();
+        UpdateCollectedTabletsUI(count, tablets);
     }
 
     private void InitializeUI()

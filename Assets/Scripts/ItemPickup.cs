@@ -2,25 +2,79 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class ItemPickup : MonoBehaviour
 {
+    [Header("Pickup Settings")]
     public LayerMask playerLayer;
-    public string itemName;
-    private BoxCollider2D boxCollider2D;
+    [SerializeField] private bool hideOnPickup = true;
+
+    [Header("Refs")]
+    [SerializeField] private UniqueId uid;
+
+    private Collider2D triggerCol;
     private bool collected;
-    void Awake()
+
+    void Reset()
     {
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        collected = false;
+        triggerCol = GetComponent<Collider2D>();
+        if (triggerCol) triggerCol.isTrigger = true;
+        uid = GetComponent<UniqueId>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void Awake()
     {
-        if (collected == false && Utils.HasTargetLayer(playerLayer, collision.gameObject))
+        triggerCol = GetComponent<Collider2D>();
+        if (triggerCol) triggerCol.isTrigger = true;
+        if (!uid) uid = GetComponent<UniqueId>();
+
+        collected = false;
+
+        if (PlayerProgress.Instance != null)
+            PlayerProgress.Instance.OnLoaded += ApplyLoadedState;
+    }
+
+    void OnDestroy()
+    {
+        if (PlayerProgress.Instance != null)
+            PlayerProgress.Instance.OnLoaded -= ApplyLoadedState;
+    }
+
+    void Start()
+    {
+        ApplyLoadedState();
+    }
+
+    private void ApplyLoadedState()
+    {
+        if (PlayerProgress.Instance == null || uid == null) return;
+
+        if (PlayerProgress.Instance.HasCollected(uid.Id))
         {
             collected = true;
-            PlayerProgress.Instance.CollectTablet(itemName);
-            Destroy(gameObject);
+            if (hideOnPickup) gameObject.SetActive(false);
+            else if (triggerCol) triggerCol.enabled = false;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (collected) return;
+        if (!Utils.HasTargetLayer(playerLayer, other.gameObject)) return;
+        if (PlayerProgress.Instance == null) return;
+
+        // Persist this pickup
+        if (uid != null)
+            PlayerProgress.Instance.MarkCollected(uid.Id);
+
+        collected = true;
+
+        // Visual/interaction change
+        if (hideOnPickup) gameObject.SetActive(false);
+        else if (triggerCol) triggerCol.enabled = false;
+
+        // Optional: play SFX/VFX/UI toast here
+        // AudioManager.Play("Pickup");
+        // Vfx.Spawn("Sparkle", transform.position);
     }
 }

@@ -53,6 +53,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     private HashSet<string> claimedRewards = new HashSet<string>();
     private string[] collectedTablets = new string[5] { null, null, null, null, null };
     private int numTabletsCollected;
+    public int GetNumTabletsCollected() => numTabletsCollected;
 
     private Vector3 playerPosition;
     private int playerHealth;
@@ -61,6 +62,11 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     private HashSet<string> removedObstacles = new HashSet<string>();
     private Dictionary<string, string> npcStatuses = new Dictionary<string, string>();
     private HashSet<string> savedSongs = new HashSet<string>();
+
+    public bool HasSaveFile() => System.IO.File.Exists(GetSavePath());
+    public void SaveNow() => Save();          // simple public wrapper
+    public string GetSavedSceneName() => CurrentScene; // already tracked
+
 
     // --- Meta/state tracking ---
     public string CurrentScene { get; private set; }
@@ -77,14 +83,17 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
 
         _sessionStartEpochSecs = (DateTime.UtcNow - DateTime.UnixEpoch).TotalSeconds;
 
-        // Optionally auto-load here (if you don't use a separate SaveManager):
+        // Load from disk (this sets CurrentScene from save, if any)
         Load();
         RaiseLoaded();
 
-        // Keep CurrentScene updated
-        CurrentScene = SceneManager.GetActiveScene().name;
-        SceneManager.sceneLoaded += (_, __) => { CurrentScene = SceneManager.GetActiveScene().name; };
+        // OPTIONAL: if there was no saved scene, fall back to current
+        if (string.IsNullOrEmpty(CurrentScene))
+        {
+            CurrentScene = SceneManager.GetActiveScene().name;
+        }
     }
+
 
     #region Tablet Collection
 
@@ -95,12 +104,18 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         if (indexToReplace != -1)
         {
             collectedTablets[indexToReplace] = itemPickup;
-            // Safeguard if UI manager not present yet
+
             if (PlayerUIManager.Instance != null)
                 PlayerUIManager.Instance.UpdateCollectedTabletsUI(numTabletsCollected, collectedTablets);
+
+            // NEW: also update pause menu tablet text
+            if (MenuManager.Instance != null)
+                MenuManager.Instance.UpdateTabletsCountUI();
         }
+
         Save();
     }
+
 
     #endregion
 
