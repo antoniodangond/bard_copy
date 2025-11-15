@@ -204,7 +204,7 @@ public class DialogueManager : MonoBehaviour
         // Replace tokens in dialogue text
         string dashKey = InputDisplayUtil.GetBindingForAction("Player", "Dash");
         string interactKey = InputDisplayUtil.GetBindingForAction("Player", "Interact"); // if you use it
-        string openMenuKey  = InputDisplayUtil.GetBindingForAction("Player", "Dash");
+        string openMenuKey  = InputDisplayUtil.GetBindingForAction("Player", "OpenMenu");
 
         return text
             .Replace("{DASH_KEY}", dashKey)
