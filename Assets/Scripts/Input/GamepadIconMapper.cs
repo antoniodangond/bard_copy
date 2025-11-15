@@ -16,6 +16,8 @@ public class GamepadIconMapper
                 return "<sprite name=\"Playstation_Square\">";
             case "R1":
                 return "<sprite name=\"Playstation_R1\">";
+            case "Options":
+                return "<sprite name=\"Playstation_Options\">";
             case "A":
                 return "<sprite name=\"XBox_A\">";
             case "B":
@@ -26,8 +28,8 @@ public class GamepadIconMapper
                 return "<sprite name=\"XBox_Y\">";
             case "RB":
                 return "<sprite name=\"XBox_RB\">";
-            // case "Square":
-            //     return "<sprite name="Playstation_Square">";
+            case "Menu":
+                return "<sprite name=\"XBox_Menu\">";
             default:
                 return "";
         }
