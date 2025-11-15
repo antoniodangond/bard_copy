@@ -177,13 +177,33 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     #region Songs
 
     public bool HasSong(string songId) => savedSongs.Contains(songId);
+
     public void AddSong(string songId)
     {
         if (savedSongs.Add(songId)) Save();
     }
+
+    /// <summary>
+    /// Adds a song if not already known. 
+    /// Returns true if song was newly added (first time learned).
+    /// </summary>
+    public bool AddSongIfNew(string songId)
+    {
+        if (string.IsNullOrEmpty(songId)) return false;
+
+        if (savedSongs.Add(songId))
+        {
+            Save();
+            return true;
+        }
+
+        return false;
+    }
+
     public IEnumerable<string> GetSavedSongs() => savedSongs;
 
     #endregion
+
 
     #region Player State
 

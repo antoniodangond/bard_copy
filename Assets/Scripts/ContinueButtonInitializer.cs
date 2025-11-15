@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ContinueButtonInitializer : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] private UnityEngine.UI.Button continueButton;
+
     void Start()
     {
-        
-    }
+        if (continueButton == null) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        bool hasSave =
+            PlayerProgress.Instance != null &&
+            PlayerProgress.Instance.HasSaveFile();
+
+        continueButton.interactable = hasSave;
     }
 }

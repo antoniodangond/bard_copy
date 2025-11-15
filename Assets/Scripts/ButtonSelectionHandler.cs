@@ -37,6 +37,10 @@ public class ButtonSelectionHandler :
     public Vector2 framePadding = new Vector2(6, 6);
     [Tooltip("Render frame above the button visuals (true) or below (false).")]
     public bool frameAbove = true;
+    [Tooltip("Vertical offset for frame (positive moves it up).")]
+    public float frameOffsetY = 0f;
+    [Tooltip("Top/Bottom padding override. If zero, uses framePadding.y.")]
+    public float frameBottomPaddingAdjustment = 0f;
     [Tooltip("Set Image.type = Sliced on the frame if using a 9-sliced sprite.")]
     public bool frameIsSliced = true;
     public Color frameColorSelected = Color.white;
@@ -140,7 +144,8 @@ public class ButtonSelectionHandler :
         rt.pivot = new Vector2(0.5f, 0.5f);
         rt.anchoredPosition = Vector2.zero;
         rt.sizeDelta = Vector2.zero;
-        rt.localScale = new Vector3(0.5f, 0.77f, 0.75f);
+        rt.localScale = Vector3.one;
+
     }
 
     public void SetSelected(bool selected, bool playSound = false)
@@ -171,13 +176,17 @@ public class ButtonSelectionHandler :
                 frameImage.gameObject.SetActive(true);
                 frameImage.color = frameColorSelected;
 
-                // Size the frame to the target with padding
-                var target = targetRect ? targetRect : (transform as RectTransform);
-                // We�ll use sizeDelta adjustment since anchors are stretched.
-                // Get current target size in parent space:
-                var size = target.rect.size;
-                frameImage.rectTransform.sizeDelta = new Vector2(size.x + framePadding.x * 2f, size.y + framePadding.y * 2f);
-                frameImage.rectTransform.anchoredPosition = Vector2.zero; // centered over target
+                var rt = frameImage.rectTransform;
+
+                // Because anchors are 0..1, the base frame size is already the
+                // parent's size. sizeDelta just adds pixel padding.
+                rt.sizeDelta = new Vector2(
+                    framePadding.x * 2f,  // left + right
+                    framePadding.y * 2f   // top + bottom
+                );
+
+                // Center horizontally; allow a manual nudge vertically.
+                rt.anchoredPosition = new Vector2(0f, frameOffsetY);
             }
             else
             {
@@ -185,6 +194,7 @@ public class ButtonSelectionHandler :
                 frameImage.gameObject.SetActive(false);
             }
         }
+
 
         // SOUND
         if (playSound && selected && audioSource != null && playSoundOnSelect)

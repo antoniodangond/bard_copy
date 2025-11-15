@@ -16,8 +16,33 @@ public class SongIconsPanel : MonoBehaviour
 
     [SerializeField] private List<Entry> entries = new();
 
-    void OnEnable() => Refresh();
-    void Start()    => Refresh();
+    void OnEnable()
+    {
+        var pp = PlayerProgress.Instance;
+        if (pp != null)
+        {
+            pp.OnLoaded += OnProgressChanged;
+            pp.OnSaved  += OnProgressChanged;
+        }
+        Refresh();
+    }
+
+    void OnDisable()
+    {
+        var pp = PlayerProgress.Instance;
+        if (pp != null)
+        {
+            pp.OnLoaded -= OnProgressChanged;
+            pp.OnSaved  -= OnProgressChanged;
+        }
+    }
+
+    void Start() => Refresh();
+
+    private void OnProgressChanged()
+    {
+        Refresh();
+    }
 
     public void Refresh()
     {

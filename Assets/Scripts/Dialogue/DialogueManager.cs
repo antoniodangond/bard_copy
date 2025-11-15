@@ -199,16 +199,18 @@ public class DialogueManager : MonoBehaviour
         CurrentSpeaker = null;
     }
 
-public static string ReplaceControlPlaceholders(string text)
-{
-    // Replace tokens in dialogue text
-    string dashKey = InputDisplayUtil.GetBindingForAction("Player", "Dash");
-    string interactKey = InputDisplayUtil.GetBindingForAction("Player", "Interact"); // if you use it
+    public static string ReplaceControlPlaceholders(string text)
+    {
+        // Replace tokens in dialogue text
+        string dashKey = InputDisplayUtil.GetBindingForAction("Player", "Dash");
+        string interactKey = InputDisplayUtil.GetBindingForAction("Player", "Interact"); // if you use it
+        string openMenuKey  = InputDisplayUtil.GetBindingForAction("Player", "Dash");
 
-    return text
-        .Replace("{DASH_KEY}", dashKey)
-        .Replace("{INTERACT_KEY}", interactKey);
-}
+        return text
+            .Replace("{DASH_KEY}", dashKey)
+            .Replace("{INTERACT_KEY}", interactKey)
+            .Replace("{OPEN_MENU_KEY}", openMenuKey);
+    }
 
 
 }

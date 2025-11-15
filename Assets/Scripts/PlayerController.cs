@@ -68,6 +68,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UpgradeSO dashUpgrade;
     [SerializeField] private UpgradeSO aoeUpgrade;
 
+    [SerializeField] private Dialogue melody1LearnedDialogue;
+    [SerializeField] private Dialogue melody2LearnedDialogue;
+    [SerializeField] private Dialogue melody3LearnedDialogue;
+
+    private Dialogue GetSongLearnedDialogue(string melodyId)
+    {
+        switch (melodyId)
+        {
+            case MelodyData.Melody1: return melody1LearnedDialogue;
+            case MelodyData.Melody2: return melody2LearnedDialogue;
+            case MelodyData.Melody3: return melody3LearnedDialogue;
+            default: return null;
+        }
+    }
+
+
+
     public static class AbilityGate // Might move canDash in here... This is where we will store ability unlocks
     {
         public static bool AOEUnlocked;
@@ -78,8 +95,8 @@ public class PlayerController : MonoBehaviour
     private Gravestone gravestone;
     [HideInInspector]
     public bool isTakingDamage;
-    private string[] Melodies = new string[2]{
-        MelodyData.Melody1, MelodyData.Melody2
+    private string[] Melodies = new string[3]{
+        MelodyData.Melody1, MelodyData.Melody2, MelodyData.Melody3
     };
     // Track the notes played while in Instrument mode
     private Queue<string> lastPlayedNotes;
@@ -249,11 +266,38 @@ public class PlayerController : MonoBehaviour
 
         // After starting the melody audio, wait before giving control back to the player
         yield return new WaitForSeconds(AudioData.MelodyCooldownTime);
+
+        // Automatically end lyre state
         isPlayingLyre = false;
         isAttacking = false;
         isAOEAttacking = false;
         CurrentState = PlayerState.Default;
         playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
+
+        // Mark song as learned and show "Song Learned" dialogue if it's the first time
+        bool isFirstTime = false;
+        if (PlayerProgress.Instance != null)
+        {
+            isFirstTime = PlayerProgress.Instance.AddSongIfNew(melody);
+        }
+
+        if (isFirstTime)
+        {
+            // NOTE: SongIconsPanel will auto-refresh via OnSaved
+            // NOTE: This code won’t run in the HasDialogueOnMelody path that yield breaks out of the coroutine early. 
+            // In those special cases, you probably already have custom sign-based dialogue and can optionally incorporate the “You learned X” line into those sign dialogues themselves. 
+            // But for any general puzzle or free play context, this handles everything.
+            Dialogue learnedDialogue = GetSongLearnedDialogue(melody);
+            if (learnedDialogue != null)
+            {
+                // Enter dialogue state and show the line
+                PlayerController.CurrentState = PlayerState.Dialogue;
+                DialogueManager.StartDialogue(learnedDialogue, PlayerController.FacingDirection);
+                // PlayerController.OnDialogueEnd will return us to Default
+            }
+        }
+
+        
     }
 
     // Debug proximity check

@@ -1,16 +1,23 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EnsurePlayerInputActive : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
+        var pi = GetComponent<PlayerInput>();
+        if (pi != null)
+        {
+            pi.enabled = true;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            // Replace "Player" with your gameplay action map name if different
+            if (pi.currentActionMap == null || pi.currentActionMap.name != "Player")
+            {
+                pi.SwitchCurrentActionMap("Player");
+            }
+        }
+
+        // Safety: make sure time is running on scene load
+        Time.timeScale = 1f;
     }
 }
