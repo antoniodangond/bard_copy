@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     [Range(0f, 1f)]
     public float directionalAttackCoolDownTime;
     public float aOEAttackCooldownTime;
+    private bool aOEIsCharged;
 
     private WeaponController weaponController;
     private Animator animator;
@@ -29,19 +30,23 @@ public class PlayerAttack : MonoBehaviour
         {
             Debug.LogError("AOEAttackUIParticles is not assigned!");
         }
+        aOEIsCharged = false;
     }
 
     void Update()
     {
         if (CanAOEAttack && PlayerUIManager.Instance.em.enabled == false) 
         {
-            PlayerUIManager.Instance.em.enabled = true;
-            PlayerUIManager.Instance.AOEAttackUIParticles.Play();
+            if (!aOEIsCharged)
+            {
+                PlayerUIManager.Instance.em.enabled = true;
+                PlayerUIManager.Instance.AOEAttackUIParticles.Play();
+                aOEIsCharged = true;
+            }
+            else {PlayerUIManager.Instance.em.enabled = false;}
         }
         else if (PlayerUIManager.Instance.AOEAttackUIParticles.isPlaying && !CanAOEAttack)
-        { 
-            PlayerUIManager.Instance.em.enabled = false;
-        }
+        { PlayerUIManager.Instance.em.enabled = false;}
     }
 
     public IEnumerator AttackCooldown(float attackCoolDownTime, string attackType)

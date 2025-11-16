@@ -232,15 +232,16 @@ public class PlayerController : MonoBehaviour
         float interactionRadius = 5.0f; // Adjust this as needed
         Collider2D[] nearbyObjects = Physics2D.OverlapCircleAll(transform.position, interactionRadius);
         bool shouldPlayNormalMelody = true;
+        bool shouldEnterDialogue;
         foreach (Collider2D obj in nearbyObjects)
         {
             SignController sign = obj.GetComponent<SignController>();
             if (sign != null)
             {
                 Debug.Log("Playing melody for sign");
-                sign.OnSongPlayed(melody);
+                shouldEnterDialogue = sign.OnSongPlayed(melody);
                 // Trigger the sign's response to the song
-                if (sign.HasDialogueOnMelody)
+                if (sign.HasDialogueOnMelody && shouldEnterDialogue)
                 {
                     shouldPlayNormalMelody = !sign.IsPlayingSuccessAudio;
                     isPlayingLyre = false;

@@ -139,30 +139,37 @@ public class SignController : MonoBehaviour
 
 
     // Method called when a song is played nearby
-    public void OnSongPlayed(string melody)
+    public bool OnSongPlayed(string melody)
     {
-        if (isDialogueUpdated) return; // Prevent multiple activations
+        if (isDialogueUpdated) return false; // Prevent multiple activations
 
         switch (melody)
         {
             case MelodyData.Melody1:
-                if (signName == "Log") { HandleSuccessFeedback(signName); }
-                if (signName == "Ghostboy") { HandleSuccessFeedback(signName); }
-                break;
+                if (signName == "Log" || signName == "Ghostboy") 
+                { 
+                    HandleSuccessFeedback(signName); 
+                    return true;
+                }
+                return false;
 
             case MelodyData.Melody2:
-                if (signName == "Captain") { HandleSuccessFeedback(signName); }
-                if (signName == "Vines") { HandleSuccessFeedback(signName); }
-                if (signName == "Crow") { HandleSuccessFeedback(signName); }
-                if (signName == "Mountaineer") { HandleSuccessFeedback(signName); } //temp, move to mel3
-                if (signName == "Ice") { HandleSuccessFeedback(signName); }//temp, move to mel3
-                break;
+                if (signName == "Captain" || signName == "Vines" || signName == "Crow" || signName == "Mountaineer" || signName == "Ice") 
+                    { 
+                        HandleSuccessFeedback(signName); 
+                        return true;
+                    }
+                return false;
 
             case MelodyData.Melody3:
-                if (signName == "Mountaineer") { HandleSuccessFeedback(signName); }
-                if (signName == "Ice") { HandleSuccessFeedback(signName); }
-                break;
+                if (signName == "Mountaineer" || signName == "Ice") 
+                { 
+                    HandleSuccessFeedback(signName); 
+                    return true;
+                }
+                return false;
         }
+        return false;
     }
 
     private void HandleSuccessFeedback(string signName)
