@@ -16,6 +16,8 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     // Access Sprite Renderer, default color and time to have character briefly flash red when damaged
     private SpriteRenderer spriteRenderer;
+     public ParticleSystem AOEAttackUIParticles;
+    public ParticleSystem AOEAttackUIParticlesInstance;
     private Color defaultSpriteColor;
     [Range(0f, 1f)]
     public float colorChangeDuration;
@@ -26,27 +28,19 @@ public class PlayerAttack : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSpriteColor = spriteRenderer.color;
         animator = GetComponent<Animator>();
-        if (PlayerUIManager.Instance.AOEAttackUIParticles == null)
-        {
-            Debug.LogError("AOEAttackUIParticles is not assigned!");
-        }
+        if (AOEAttackUIParticles == null) { Debug.LogError("AOEAttackUIParticles is not assigned!"); }
         aOEIsCharged = false;
     }
 
     void Update()
     {
-        if (CanAOEAttack && PlayerUIManager.Instance.em.enabled == false) 
+        if (CanAOEAttack && !aOEIsCharged) 
         {
-            if (!aOEIsCharged)
-            {
-                PlayerUIManager.Instance.em.enabled = true;
-                PlayerUIManager.Instance.AOEAttackUIParticles.Play();
-                aOEIsCharged = true;
-            }
-            else {PlayerUIManager.Instance.em.enabled = false;}
+           AOEAttackUIParticlesInstance = Instantiate(AOEAttackUIParticles, transform.position, Quaternion.identity);
+            // PlayerUIManager.Instance.em.enabled = true;
+            // PlayerUIManager.Instance.AOEAttackUIParticles.Play();
+            aOEIsCharged = true;
         }
-        else if (PlayerUIManager.Instance.AOEAttackUIParticles.isPlaying && !CanAOEAttack)
-        { PlayerUIManager.Instance.em.enabled = false;}
     }
 
     public IEnumerator AttackCooldown(float attackCoolDownTime, string attackType)
@@ -63,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
             // manually shortenting this float value because the animation length was looking weird
             float animationLength = animator.GetCurrentAnimatorStateInfo(0).length - 0.35f;
             CanAOEAttack = false;
+            aOEIsCharged = false;
             // PlayerUIManager.Instance.;
             // For AOE attack, which has a longer cooldown, we need to invoke on attack finished when the animation is done, because
             // the attack is done long before the cooldown is finished, and it looks bad to have the player frozen in the last frame of the

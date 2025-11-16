@@ -239,6 +239,9 @@ public class PlayerController : MonoBehaviour
             if (sign != null)
             {
                 Debug.Log("Playing melody for sign");
+                // notes here in case there is another bug in the future!
+                // we create this variabe so that the player never enters a dialogue state unless the correct
+                // melody is played for the correct sign controller
                 shouldEnterDialogue = sign.OnSongPlayed(melody);
                 // Trigger the sign's response to the song
                 if (sign.HasDialogueOnMelody && shouldEnterDialogue)
