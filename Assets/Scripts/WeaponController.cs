@@ -181,8 +181,7 @@ public class WeaponController : MonoBehaviour
             EnemyController enemyController = hitCollider.GetComponent<EnemyController>();
             enemyController.TakeDamage(AOEdamage, playerController, attackDirection);
         }
-        Debug.Log("AOE Attack!");
-         AOEAttackParticlesInstance = Instantiate(AOEAttackParticles, transform.position, Quaternion.identity);
+        AOEAttackParticlesInstance = Instantiate(AOEAttackParticles, transform.position, Quaternion.identity);
     }
 
     void OnDrawGizmosSelected()

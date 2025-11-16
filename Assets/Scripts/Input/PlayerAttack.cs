@@ -36,10 +36,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if (CanAOEAttack && !aOEIsCharged) 
         {
-           AOEAttackUIParticlesInstance = Instantiate(AOEAttackUIParticles, transform.position, Quaternion.identity);
+           
             // PlayerUIManager.Instance.em.enabled = true;
             // PlayerUIManager.Instance.AOEAttackUIParticles.Play();
             aOEIsCharged = true;
+            Destroy(AOEAttackUIParticlesInstance);
         }
     }
 
@@ -63,6 +64,8 @@ public class PlayerAttack : MonoBehaviour
             // the attack is done long before the cooldown is finished, and it looks bad to have the player frozen in the last frame of the
             // animation for 3 seconds
             StartCoroutine(animationTransitionroutine(animationLength));
+            AOEAttackUIParticlesInstance = Instantiate(AOEAttackUIParticles, gameObject.transform.position + new Vector3(0, 2), Quaternion.identity);
+            AOEAttackUIParticlesInstance.Play();
             yield return new WaitForSeconds(attackCoolDownTime);
             CanAOEAttack = true;
         }
@@ -84,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
     {
         weaponController.AOEAttack();
         StartCoroutine(AttackCooldown(aOEAttackCooldownTime, "AOE"));
+        
     }
 
     public IEnumerator DamageColorChangeRoutine()
