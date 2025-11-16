@@ -37,14 +37,14 @@ MonoBehaviour:
     ShouldLoop: 1
     Source: {fileID: 0}
   BackgroundMusicBeach:
-    Clip: {fileID: 8300000, guid: 4607614b6f4bab54a94764df25adac7b, type: 3}
+    Clip: {fileID: 8300000, guid: 9cb136284c98b1b4b95b82116f9497cf, type: 3}
     DefaultPitch: 1
     DefaultVolume: 0.65
     ShouldLoop: 1
     Source: {fileID: 0}
   BackgroundMusicInstrumentVolume: 0.5
   BackgroundMusicInstrumentMelodyVolume: 0
-  BackgroundMusicPauseVolume: 0.1
+  BackgroundMusicPauseVolume: 0.5
   OverworldAmbience:
     Clip: {fileID: 8300000, guid: 1c502dbc3decc482d88d00f2e766902f, type: 3}
     DefaultPitch: 1
