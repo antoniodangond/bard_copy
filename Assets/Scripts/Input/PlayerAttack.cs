@@ -16,8 +16,8 @@ public class PlayerAttack : MonoBehaviour
     private Animator animator;
     // Access Sprite Renderer, default color and time to have character briefly flash red when damaged
     private SpriteRenderer spriteRenderer;
-     public ParticleSystem AOEAttackUIParticles;
-    public ParticleSystem AOEAttackUIParticlesInstance;
+    [SerializeField] private ParticleSystem AOEAttackUIParticles;
+    private ParticleSystem AOEAttackUIParticlesInstance;
     private Color defaultSpriteColor;
     [Range(0f, 1f)]
     public float colorChangeDuration;
