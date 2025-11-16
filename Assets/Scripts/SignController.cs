@@ -27,6 +27,7 @@ public class SignController : MonoBehaviour
     public PlayerInput playerInput;
     private string currentControlScheme;
     private Dictionary<string, string> playerControls = new Dictionary<string, string> { };
+    private ControlsMapper mapper = new ControlsMapper();
     private string attackButton_1;
     private string attackButton_2;
     private string toggleInstrumentButton;
@@ -66,19 +67,12 @@ public class SignController : MonoBehaviour
         if (uniqueId == null)
             uniqueId = GetComponent<UniqueId>(); // For save system
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        handleTutorialDialog(signName);
-        if (signName == "Captain")
-        {
-            teleporterFrom = teleporterFromObj.GetComponent<Teleporter>();
-            teleporterTo = teleporterToObj.GetComponent<Teleporter>();
-            hatchToOpen = hatchToOpenObj.GetComponent<SpriteRenderer>();
-        }
         if (playerInput != null)
         {
             currentControlScheme = Gamepad.current == null ? "Keyboard" : "Gamepad";
-            dashButton = getCorrectButton("Player", "Dash", currentControlScheme);
-            AOEAttackButton1 = currentControlScheme == "Keyboard" ? playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(0) : playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(2);
-            AOEAttackButton2 = currentControlScheme == "Keyboard" ? playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(1) : null;
+            dashButton = mapper.getCorrectButton("Player", "Dash", currentControlScheme, false, playerInput);
+            AOEAttackButton1 = currentControlScheme == "Keyboard" ? mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput).Split(",")[0] : mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput);
+            AOEAttackButton2 = currentControlScheme == "Keyboard" ? mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput).Split(",")[1] : mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput);
             // These keys should match upgrade reward IDs
             playerControls["dash"] = dashButton;
             // not sure how to handle two AOE Attack buttons
@@ -86,6 +80,13 @@ public class SignController : MonoBehaviour
             playerControls["aoe_attack_1"] = AOEAttackButton1;
             playerControls["aoe_attack_2"] = AOEAttackButton2;
             ApplySavedStateFromProgress();
+        }
+        handleTutorialDialog(signName);
+        if (signName == "Captain")
+        {
+            teleporterFrom = teleporterFromObj.GetComponent<Teleporter>();
+            teleporterTo = teleporterToObj.GetComponent<Teleporter>();
+            hatchToOpen = hatchToOpenObj.GetComponent<SpriteRenderer>();
         }
 
     }
@@ -307,19 +308,19 @@ public class SignController : MonoBehaviour
             defaultDialogue.upLines.Add("Use your LYRE to quell lost souls.");
             if (Gamepad.current == null)
             {
-                attackButton_1 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(0);
-                attackButton_2 = playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(1);
-                toggleInstrumentButton = getCorrectButton("Instrument", "ToggleInstrument", "Keyboard");
-                setLyreButtons(false, lyreNotes);
+                attackButton_1 = mapper.getCorrectButton("Player", "Attack", currentControlScheme, true, playerInput).Split(",")[0];
+                attackButton_2 = mapper.getCorrectButton("Player", "Attack", currentControlScheme, true, playerInput).Split(",")[1];
+                toggleInstrumentButton = mapper.getCorrectButton("Instrument", "ToggleInstrument", currentControlScheme, false, playerInput);
+                lyreButtons = mapper.setLyreButtons(false, lyreNotes, playerInput);
 
                 defaultDialogue.upLines.Add($"[Press {attackButton_1} or {attackButton_2} to ATTACK]");
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
             }
             else
             {
-                attackButton_1 = MapGamepadIcons(playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2));
-                toggleInstrumentButton = MapGamepadIcons(getCorrectButton("Instrument", "ToggleInstrument", "Gamepad"));
-                setLyreButtons(true, lyreNotes);
+                attackButton_1 = mapper.getCorrectButton("Player", "Attack", currentControlScheme, true, playerInput);
+                toggleInstrumentButton = mapper.getCorrectButton("Instrument", "ToggleInstrument", currentControlScheme,false, playerInput);
+                lyreButtons = mapper.setLyreButtons(true, lyreNotes, playerInput);
 
                 defaultDialogue.upLines.Add($"[Press {attackButton_1} to ATTACK]");
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
@@ -334,11 +335,11 @@ public class SignController : MonoBehaviour
             string[] songOfDecay = new string[] { "NoteC", "NoteB", "NoteC", "NoteD", "NoteE"};
             if (Gamepad.current == null)
             {
-                setLyreButtons(false, songOfDecay);
+                lyreButtons = mapper.setLyreButtons(false, songOfDecay, playerInput);
             }
             else
             {
-                setLyreButtons(true, songOfDecay);
+                lyreButtons = mapper.setLyreButtons(true, songOfDecay, playerInput);
             }
             defaultDialogue.universalLines.Add("SONG OF DECAY");
             defaultDialogue.universalLines.Add(lyreButtons);
@@ -348,49 +349,6 @@ public class SignController : MonoBehaviour
                 Debug.Log($"Discovered Song of Decay with buttons: {lyreButtons}");
         }
         else { return; }
-    }
-
-    private void setLyreButtons(bool gamepadActive, string[] notes)
-    {
-        for (int i = 0; i < notes.Length; i++)
-        {
-            if (!gamepadActive)
-            {
-                if (i == 0)
-                {
-                    lyreButtons = getCorrectButton("Instrument", notes[i], "Keyboard");
-                }
-                else
-                {
-                    lyreButtons = lyreButtons + ", " + getCorrectButton("Instrument", notes[i], "Keyboard");
-                }
-            }
-            else
-            {
-                if (i == 0)
-                {
-                    lyreButtons = MapGamepadIcons(getCorrectButton("Instrument", notes[i], "Gamepad"));
-
-                }
-                else
-                {
-                    lyreButtons = lyreButtons + ", " + MapGamepadIcons(getCorrectButton("Instrument", notes[i], "Gamepad"));
-                }
-            }
-        }
-    }
-
-    // Doesn't work for attack action 
-    public string getCorrectButton(string actionMap, string action, string controlScheme)
-    {
-        if (controlScheme == "Keyboard")
-        {
-            return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(0);
-        }
-        else
-        {
-            return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(1);
-        }
     }
 
     // These are used by DialogueManager when it encounters a [CHOICE] line

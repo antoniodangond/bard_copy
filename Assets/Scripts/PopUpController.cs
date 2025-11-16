@@ -11,7 +11,7 @@ public class PopUpController : MonoBehaviour
     public PlayerInput playerInput;
     private string keyboardDialogueButton;
     private string gamepadDialogueButton;
-    private GamepadIconMapper mapper = new GamepadIconMapper();
+    private ControlsMapper mapper = new ControlsMapper();
 
     void Start()
     {
