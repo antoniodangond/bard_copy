@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fb636a0aea1764a40aa4e4b112382cb9
+guid: 486edcb1f11784653827757e316896b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7183247320207457430
-    second: World_ConceptArt_20241126_0
+      213: -9026003706808312286
+    second: Main-Menu-BG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: World_ConceptArt_20241126_0
+      name: Main-Menu-BG_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3840
-        height: 2160
+        width: 2668
+        height: 1501
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69cfdb6116500b360800000000000000
-      internalID: 7183247320207457430
+      spriteID: 22ed45253713db280800000000000000
+      internalID: -9026003706808312286
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      World_ConceptArt_20241126_0: 7183247320207457430
+      Main-Menu-BG_0: -9026003706808312286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
