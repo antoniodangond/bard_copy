@@ -10,14 +10,12 @@ public class PlayerAttack : MonoBehaviour
     [Range(0f, 1f)]
     public float directionalAttackCoolDownTime;
     public float aOEAttackCooldownTime;
-    private bool aOEIsCharged;
-
     private WeaponController weaponController;
     private Animator animator;
     // Access Sprite Renderer, default color and time to have character briefly flash red when damaged
     private SpriteRenderer spriteRenderer;
     [SerializeField] private ParticleSystem AOEAttackUIParticles;
-    private ParticleSystem AOEAttackUIParticlesInstance;
+    private ParticleSystem.EmissionModule AOEAttackUIEM;
     private Color defaultSpriteColor;
     [Range(0f, 1f)]
     public float colorChangeDuration;
@@ -29,19 +27,8 @@ public class PlayerAttack : MonoBehaviour
         defaultSpriteColor = spriteRenderer.color;
         animator = GetComponent<Animator>();
         if (AOEAttackUIParticles == null) { Debug.LogError("AOEAttackUIParticles is not assigned!"); }
-        aOEIsCharged = false;
-    }
-
-    void Update()
-    {
-        if (CanAOEAttack && !aOEIsCharged) 
-        {
-           
-            // PlayerUIManager.Instance.em.enabled = true;
-            // PlayerUIManager.Instance.AOEAttackUIParticles.Play();
-            aOEIsCharged = true;
-            Destroy(AOEAttackUIParticlesInstance);
-        }
+        AOEAttackUIEM = AOEAttackUIParticles.emission;
+        AOEAttackUIEM.enabled = false;
     }
 
     public IEnumerator AttackCooldown(float attackCoolDownTime, string attackType)
@@ -57,16 +44,15 @@ public class PlayerAttack : MonoBehaviour
         {
             // manually shortenting this float value because the animation length was looking weird
             float animationLength = animator.GetCurrentAnimatorStateInfo(0).length - 0.35f;
+            AOEAttackUIEM.enabled = true;
             CanAOEAttack = false;
-            aOEIsCharged = false;
             // PlayerUIManager.Instance.;
             // For AOE attack, which has a longer cooldown, we need to invoke on attack finished when the animation is done, because
             // the attack is done long before the cooldown is finished, and it looks bad to have the player frozen in the last frame of the
             // animation for 3 seconds
             StartCoroutine(animationTransitionroutine(animationLength));
-            AOEAttackUIParticlesInstance = Instantiate(AOEAttackUIParticles, gameObject.transform.position + new Vector3(0, 2), Quaternion.identity);
-            AOEAttackUIParticlesInstance.Play();
             yield return new WaitForSeconds(attackCoolDownTime);
+            AOEAttackUIEM.enabled = false;
             CanAOEAttack = true;
         }
     }
