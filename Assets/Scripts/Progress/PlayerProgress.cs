@@ -150,14 +150,23 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     public bool IsObstacleRemoved(string obstacleId) => removedObstacles.Contains(obstacleId);
     public void MarkObstacleRemoved(string obstacleId)
     {
-        if (removedObstacles.Add(obstacleId)) Save();
-    }
+        if (removedObstacles.Add(obstacleId))
+        {
+            Debug.Log($"[PlayerProgress] MarkObstacleRemoved {obstacleId}");
+            Save();
+        }
+}
 
     // Generic collectibles (non-tablets or for presence checks)
     public bool HasCollected(string collectibleId) => collectedCollectables.Contains(collectibleId);
     public void MarkCollected(string collectibleId)
     {
-        if (collectedCollectables.Add(collectibleId)) Save();
+        if (collectedCollectables.Add(collectibleId))
+        {
+            Debug.Log($"[PlayerProgress] MarkCollected {collectibleId}");
+            Save();
+        }
+        
     }
 
     // NPC Status
@@ -169,6 +178,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     public void SetNPCStatus(string npcId, string status)
     {
         npcStatuses[npcId] = status;
+        Debug.Log($"[PlayerProgress] SetNPCStatus {npcId} = {status}");
         Save();
     }
 
@@ -328,6 +338,14 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
 
         return JsonUtility.ToJson(data);
     }
+
+    public void ReloadFromDisk()
+    {
+        Load();
+        RaiseLoaded();
+        Debug.Log("[PlayerProgress] ReloadFromDisk complete. Scene=" + CurrentScene);
+    }
+
 
     public void ApplyToWorld()
     {

@@ -5,15 +5,24 @@ public class ContinueGame : MonoBehaviour
 {
     public void Continue()
     {
-        // Must exist or there is nothing to continue
-        if (PlayerProgress.Instance == null || !PlayerProgress.Instance.HasSaveFile())
+        if (PlayerProgress.Instance == null)
+        {
+            Debug.LogError("[Continue] PlayerProgress.Instance is null.");
+            return;
+        }
+
+        if (!PlayerProgress.Instance.HasSaveFile())
         {
             Debug.LogWarning("[Continue] No save file found. Continue disabled.");
             return;
         }
 
-        // Ensure the save is loaded (your PlayerProgress already loads on Awake)
+        // Force a fresh load from disk and notify listeners
+        PlayerProgress.Instance.ReloadFromDisk();
+
         string sceneToLoad = PlayerProgress.Instance.GetSavedSceneName();
+
+        Debug.Log($"[Continue] GetSavedSceneName() returned '{sceneToLoad}'");
 
         if (string.IsNullOrEmpty(sceneToLoad))
         {
@@ -21,8 +30,9 @@ public class ContinueGame : MonoBehaviour
             return;
         }
 
+        // Make sure this scene name is exactly the one in Build Settings
         Debug.Log($"[Continue] Loading saved scene '{sceneToLoad}'...");
-        Time.timeScale = 1f; // ensure game unpaused
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneToLoad);
     }
 }

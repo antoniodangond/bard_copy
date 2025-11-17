@@ -62,34 +62,70 @@ public class SignController : MonoBehaviour
 
     private bool waitingForChoice = false; // Track if waiting for choice
     
+    private void OnEnable()
+    {
+        Debug.Log($"[SignController:{name}] OnEnable");
+        if (PlayerProgress.Instance != null)
+        {
+            PlayerProgress.Instance.OnLoaded += ApplySavedStateFromProgress;
+        }
+    }
+
+private void OnDisable()
+    {
+        Debug.Log($"[SignController:{name}] OnDisable");
+        if (PlayerProgress.Instance != null)
+        {
+            PlayerProgress.Instance.OnLoaded -= ApplySavedStateFromProgress;
+        }
+    }
+
+// This handles the case where PlayerProgress has already loaded
+// by the time this SignController appears in the scene.
+private void Start()
+{
+    Debug.Log($"[SignController:{name}] Start → calling ApplySavedStateFromProgress");
+    ApplySavedStateFromProgress();
+}
+
     public void Awake()
     {
         if (uniqueId == null)
-            uniqueId = GetComponent<UniqueId>(); // For save system
+            uniqueId = GetComponent<UniqueId>();
+
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        // Input mapping (only if available)
         if (playerInput != null)
         {
             currentControlScheme = Gamepad.current == null ? "Keyboard" : "Gamepad";
+
             dashButton = mapper.getCorrectButton("Player", "Dash", currentControlScheme, false, playerInput);
-            AOEAttackButton1 = currentControlScheme == "Keyboard" ? mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput).Split(",")[0] : mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput);
-            AOEAttackButton2 = currentControlScheme == "Keyboard" ? mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput).Split(",")[1] : mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput);
-            // These keys should match upgrade reward IDs
+            AOEAttackButton1 = currentControlScheme == "Keyboard"
+                ? mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput).Split(",")[0]
+                : mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput);
+            AOEAttackButton2 = currentControlScheme == "Keyboard"
+                ? mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput).Split(",")[1]
+                : mapper.getCorrectButton("Player", "AOEAttack", currentControlScheme, true, playerInput);
+
             playerControls["dash"] = dashButton;
-            // not sure how to handle two AOE Attack buttons
-            // ignoring that issue for now lol
             playerControls["aoe_attack_1"] = AOEAttackButton1;
             playerControls["aoe_attack_2"] = AOEAttackButton2;
-            ApplySavedStateFromProgress();
-        }
-        handleTutorialDialog(signName);
-        if (signName == "Captain")
-        {
-            teleporterFrom = teleporterFromObj.GetComponent<Teleporter>();
-            teleporterTo = teleporterToObj.GetComponent<Teleporter>();
-            hatchToOpen = hatchToOpenObj.GetComponent<SpriteRenderer>();
         }
 
+        if (signName == "Captain")
+        {
+            teleporterFrom = teleporterFromObj != null ? teleporterFromObj.GetComponent<Teleporter>() : null;
+            teleporterTo   = teleporterToObj   != null ? teleporterToObj.GetComponent<Teleporter>() : null;
+            hatchToOpen    = hatchToOpenObj    != null ? hatchToOpenObj.GetComponent<SpriteRenderer>() : null;
+        }
+
+        // Do NOT call ApplySavedStateFromProgress() here anymore.
+        // We'll let OnLoaded + Start handle that, so order is safe.
+
+        handleTutorialDialog(signName);
     }
+
 
     public void Interact()
     {
@@ -138,39 +174,49 @@ public class SignController : MonoBehaviour
     }
 
 
-    // Method called when a song is played nearby
-    public bool OnSongPlayed(string melody)
+// Method called when a song is played nearby
+public bool OnSongPlayed(string melody)
+{
+    Debug.Log($"[SignController:{name}] OnSongPlayed melody={melody}, signName='{signName}'");
+    // Already solved / updated? Then do nothing and don't start dialogue.
+    if (isDialogueUpdated) return false;
+
+    bool triggered = false;
+
+    switch (melody)
     {
-        if (isDialogueUpdated) return false; // Prevent multiple activations
+        case MelodyData.Melody1:
+            if (signName == "Log" || signName == "Ghostboy")
+            {
+                HandleSuccessFeedback(signName);
+                triggered = true;
+            }
+            break;
 
-        switch (melody)
-        {
-            case MelodyData.Melody1:
-                if (signName == "Log" || signName == "Ghostboy") 
-                { 
-                    HandleSuccessFeedback(signName); 
-                    return true;
-                }
-                return false;
+        case MelodyData.Melody2:
+            if (signName == "Captain" ||
+                signName == "Vines" ||
+                signName == "Crow" ||
+                signName == "Mountaineer" ||
+                signName == "Ice")
+            {
+                HandleSuccessFeedback(signName);
+                triggered = true;
+            }
+            break;
 
-            case MelodyData.Melody2:
-                if (signName == "Captain" || signName == "Vines" || signName == "Crow" || signName == "Mountaineer" || signName == "Ice") 
-                    { 
-                        HandleSuccessFeedback(signName); 
-                        return true;
-                    }
-                return false;
-
-            case MelodyData.Melody3:
-                if (signName == "Mountaineer" || signName == "Ice") 
-                { 
-                    HandleSuccessFeedback(signName); 
-                    return true;
-                }
-                return false;
-        }
-        return false;
+        case MelodyData.Melody3:
+            if (signName == "Mountaineer" || signName == "Ice")
+            {
+                HandleSuccessFeedback(signName);
+                triggered = true;
+            }
+            break;
     }
+
+    return triggered;
+}
+
 
     private void HandleSuccessFeedback(string signName)
     {
@@ -190,11 +236,13 @@ public class SignController : MonoBehaviour
         // “Pure” obstacles we want gone forever
         if (signName == "Log" || signName == "Vines" || signName == "Ice")
         {
+            Debug.Log($"[SignController:{name}] MarkObstacleRemoved for UniqueId={uniqueId.Id}");
             PlayerProgress.Instance.MarkObstacleRemoved(uniqueId.Id);
         }
         else
         {
             // NPCs whose dialog/state should advance
+            Debug.Log($"[SignController:{name}] SetNPCStatus MelodySolved for UniqueId={uniqueId.Id}");
             PlayerProgress.Instance.SetNPCStatus(uniqueId.Id, "MelodySolved");
         }
         }
@@ -247,6 +295,8 @@ public class SignController : MonoBehaviour
     {
         if (PlayerProgress.Instance == null || uniqueId == null)
             return;
+
+        Debug.Log($"[SignController] ApplySavedStateFromProgress for {signName} ({uniqueId?.Id}) obstacleRemoved={PlayerProgress.Instance?.IsObstacleRemoved(uniqueId.Id)} npcStatus={PlayerProgress.Instance?.GetNPCStatus(uniqueId.Id)}");
 
         // 1) Obstacles that should be gone forever
         if (PlayerProgress.Instance.IsObstacleRemoved(uniqueId.Id))

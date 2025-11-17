@@ -288,7 +288,7 @@ public class PlayerController : MonoBehaviour
         if (isFirstTime)
         {
             // NOTE: SongIconsPanel will auto-refresh via OnSaved
-            // NOTE: This code won’t run in the HasDialogueOnMelody path that yield breaks out of the coroutine early. 
+            // NOTE: This code won't run in the HasDialogueOnMelody path that yield breaks out of the coroutine early. 
             // In those special cases, you probably already have custom sign-based dialogue and can optionally incorporate the “You learned X” line into those sign dialogues themselves. 
             // But for any general puzzle or free play context, this handles everything.
             Dialogue learnedDialogue = GetSongLearnedDialogue(melody);

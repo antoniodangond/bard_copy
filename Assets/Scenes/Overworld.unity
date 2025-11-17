@@ -18292,6 +18292,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4247724241852702643, guid: 6cecaccdb688048bca273aceaca8ef5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 460227913}
+    - targetCorrespondingSourceObject: {fileID: 4247724241852702643, guid: 6cecaccdb688048bca273aceaca8ef5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 460227920}
   m_SourcePrefab: {fileID: 100100000, guid: 6cecaccdb688048bca273aceaca8ef5d, type: 3}
 --- !u!1 &460227912 stripped
 GameObject:
@@ -18353,6 +18356,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &460227920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460227912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: vines_1
 --- !u!1001 &461010840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25073,6 +25089,7 @@ GameObject:
   - component: {fileID: 651082942}
   - component: {fileID: 651082944}
   - component: {fileID: 651082943}
+  - component: {fileID: 651082945}
   m_Layer: 0
   m_Name: Hatch_0
   m_TagString: Untagged
@@ -25197,6 +25214,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &651082945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651082941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: hatch_0
 --- !u!1001 &652464807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35378,7 +35408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: Statue_Beach
+  id: statue_dash
 --- !u!1 &926508395
 GameObject:
   m_ObjectHideFlags: 0
@@ -48120,6 +48150,7 @@ GameObject:
   - component: {fileID: 1301343549}
   - component: {fileID: 1301343548}
   - component: {fileID: 1301343547}
+  - component: {fileID: 1301343552}
   m_Layer: 8
   m_Name: Statue_AOE
   m_TagString: Untagged
@@ -48305,6 +48336,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301343552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301343546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: statue_aoe
 --- !u!1001 &1301486708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49720,6 +49764,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2818073117831930621, guid: e7fe9a838174cd4438c3b254ca31f072, type: 3}
   m_PrefabInstance: {fileID: 1969524515}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326729340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326729318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: log_1
 --- !u!1001 &1329012681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53132,6 +53189,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1402424826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402424808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: log_0
 --- !u!1001 &1404886018
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55800,6 +55870,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1447954888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447954868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: vines_0
 --- !u!1001 &1451542308
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70071,6 +70154,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2559010597718983097, guid: 8a14ab36d5ce99e48b8f62773c82ec24, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1402424819}
+    - targetCorrespondingSourceObject: {fileID: 2559010597718983097, guid: 8a14ab36d5ce99e48b8f62773c82ec24, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1402424826}
   m_SourcePrefab: {fileID: 100100000, guid: 8a14ab36d5ce99e48b8f62773c82ec24, type: 3}
 --- !u!1 &1830787876
 GameObject:
@@ -75602,6 +75688,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6420647472842913641, guid: e7fe9a838174cd4438c3b254ca31f072, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1326729327}
+    - targetCorrespondingSourceObject: {fileID: 6420647472842913641, guid: e7fe9a838174cd4438c3b254ca31f072, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326729340}
   m_SourcePrefab: {fileID: 100100000, guid: e7fe9a838174cd4438c3b254ca31f072, type: 3}
 --- !u!1001 &1972142108
 PrefabInstance:
@@ -82761,6 +82850,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4247724241852702643, guid: 6cecaccdb688048bca273aceaca8ef5d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1447954881}
+    - targetCorrespondingSourceObject: {fileID: 4247724241852702643, guid: 6cecaccdb688048bca273aceaca8ef5d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1447954888}
   m_SourcePrefab: {fileID: 100100000, guid: 6cecaccdb688048bca273aceaca8ef5d, type: 3}
 --- !u!1001 &4049497070672456760
 PrefabInstance:
@@ -83194,6 +83286,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6417202098949774724, guid: 92f0892a9c1a9854b99346302fb73fee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8138374110573258505}
+    - targetCorrespondingSourceObject: {fileID: 6417202098949774724, guid: 92f0892a9c1a9854b99346302fb73fee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8138374110573258511}
   m_SourcePrefab: {fileID: 100100000, guid: 92f0892a9c1a9854b99346302fb73fee, type: 3}
 --- !u!1 &8138374110573258498 stripped
 GameObject:
@@ -83277,6 +83372,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8138374110573258511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8138374110573258498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: glacier_0
 --- !u!1001 &8262176620146634342
 PrefabInstance:
   m_ObjectHideFlags: 0
