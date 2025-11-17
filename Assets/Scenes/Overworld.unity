@@ -11851,7 +11851,7 @@ GameObject:
   - component: {fileID: 299482918}
   - component: {fileID: 299482917}
   m_Layer: 5
-  m_Name: RowNotes2
+  m_Name: Melody2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72438,14 +72438,40 @@ MonoBehaviour:
     image: {fileID: 1587376283}
     locked: {fileID: -4934133288957140438, guid: ccf72b14d57704d48adbba06df12ae9e, type: 3}
     learned: {fileID: -719564352313678895, guid: 394022af211ec44ad8547f535cd25a5c, type: 3}
+    noteActions:
+    - NoteC
+    - NoteB
+    - NoteC
+    - NoteD
+    - NoteE
+    noteLabels:
+    - {fileID: 720098353}
+    - {fileID: 931423129}
+    - {fileID: 46300836}
+    - {fileID: 356595309}
+    - {fileID: 1831734173}
   - songId: Melody2
     image: {fileID: 299482917}
     locked: {fileID: -4934133288957140438, guid: ccf72b14d57704d48adbba06df12ae9e, type: 3}
     learned: {fileID: -7075403620013980635, guid: 1b927a5e484eb4a3e8a2c660e43400c5, type: 3}
+    noteActions:
+    - NoteC
+    - NoteE
+    - NoteC
+    - NoteD
+    - NoteB
+    noteLabels:
+    - {fileID: 975545921}
+    - {fileID: 497858420}
+    - {fileID: 297456132}
+    - {fileID: 1471736267}
+    - {fileID: 1741167814}
   - songId: Melody3
     image: {fileID: 2053320754}
     locked: {fileID: -4934133288957140438, guid: ccf72b14d57704d48adbba06df12ae9e, type: 3}
     learned: {fileID: 4939312248572301689, guid: 01a6b6b1d93ce4c57b41824f8ce951a9, type: 3}
+    noteActions: []
+    noteLabels: []
 --- !u!114 &1880898938
 MonoBehaviour:
   m_ObjectHideFlags: 0

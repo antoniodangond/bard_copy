@@ -400,10 +400,6 @@ public bool OnSongPlayed(string melody)
             }
             defaultDialogue.universalLines.Add("SONG OF DECAY");
             defaultDialogue.universalLines.Add(lyreButtons);
-            if (PlayerProgress.Instance != null)
-                PlayerProgress.Instance.AddSong("Melody1");
-            else
-                Debug.Log($"Discovered Song of Decay with buttons: {lyreButtons}");
         }
         else { return; }
     }
@@ -435,9 +431,25 @@ public bool OnSongPlayed(string melody)
         if (choiceReward == null) yield break;
 
         var hadDash = PlayerController.canDash;
-        var hadAOE = PlayerController.AbilityGate.AOEUnlocked;
+        var hadAOE  = PlayerController.AbilityGate.AOEUnlocked;
 
-        yield return StartCoroutine(choiceReward.BestowAndExplain(playerControls, currentControlScheme));
+        // Build up-to-date control text
+        var controlsDict = new Dictionary<string, string>();
+        var (dashPrimary, _) = InputDisplayUtil.GetActionDisplay("Player", "Dash", false, playerInput: playerInput) 
+            is string dash ? (dash, "") : ("?", "");
+
+        controlsDict["dash"] = dashPrimary;
+
+        var (aoe1, aoe2) = InputDisplayUtil.GetAOEButtons(playerInput);
+        if (!string.IsNullOrEmpty(aoe1))
+            controlsDict["aoe_attack_1"] = aoe1;
+        if (!string.IsNullOrEmpty(aoe2))
+            controlsDict["aoe_attack_2"] = aoe2;
+
+        string scheme = InputDisplayUtil.IsGamepad(playerInput) ? "Gamepad" : "Keyboard";
+
+        // This shows the statue's explanation, with correct keys/icons
+        yield return StartCoroutine(choiceReward.BestowAndExplain(controlsDict, scheme));
 
         foreach (var upg in choiceReward.upgrades)
         {
@@ -445,16 +457,10 @@ public bool OnSongPlayed(string melody)
             PlayerProgress.Instance?.Unlock(upg);
 
             if (upg.id == "dash") PlayerController.canDash = true;
-            if (upg.id == "aoe") PlayerController.AbilityGate.AOEUnlocked = true;
-        }
-
-        if (choiceReward.IsAlreadyClaimed())
-        {
-            // Optionally update dialogue or disable further choices
-            // isDialogueUpdated = true;
-            // askYesNoAfterDialogue = false;
+            if (upg.id == "aoe")  PlayerController.AbilityGate.AOEUnlocked = true;
         }
     }
+
 
 
     public void BeginDialogue(FacingDirection direction)
