@@ -24,6 +24,8 @@ public class SignController : MonoBehaviour
 
     [Header("Sign Properties")]
     public string signName;
+    public Sprite initialSprite; // use this to reset sprites as needed for new games (when save states are involved)
+    public Sprite updatedSprite; // use this to save states of obstacles for loaded game states
     public PlayerInput playerInput;
     private string currentControlScheme;
     private Dictionary<string, string> playerControls = new Dictionary<string, string> { };
@@ -312,7 +314,14 @@ public bool OnSongPlayed(string melody)
             if (signName == "Log" || signName == "Vines" || signName == "Ice")
             {
                 if (spriteRenderer != null)
-                    spriteRenderer.enabled = false;
+                    if (signName == "Vines")
+                    {
+                        // replace sprites with original sprites rather than disable
+                        SpriteRenderer attachedSR = GetComponent<SpriteRenderer>();
+                        attachedSR.sprite = updatedSprite;
+                        Debug.Log(updatedSprite.name);
+                    } 
+                    else { spriteRenderer.enabled = false; }
             }
 
             // If you want them completely gone:

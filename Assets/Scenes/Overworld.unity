@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 6948339}
   - component: {fileID: 6948338}
   - component: {fileID: 6948337}
+  - component: {fileID: 6948340}
   m_Layer: 9
   m_Name: Cerberus Stone Empty
   m_TagString: Untagged
@@ -572,6 +573,18 @@ Transform:
   - {fileID: 2074670508}
   m_Father: {fileID: 1738731316}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6948340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8ec70fa7993b840ab87ac7495f590d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7793013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -1036,6 +1049,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet5
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: MiddleHead
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.8
@@ -1079,6 +1096,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1185,6 +1210,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet3
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: Torso
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -74.36
@@ -1228,6 +1257,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4790,13 +4827,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3de30a3caf04249069cf0c5d87f9a16d, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.73
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6225,13 +6278,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ec4fbdcd64f474afba5354bd9345a412, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.91
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.55
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11639,6 +11708,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet5
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: RightArm
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -56.85
@@ -11682,6 +11755,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.41
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18342,13 +18423,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 593e70fc161c94dac90165b27c2d903b, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.64
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.55
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27528,6 +27629,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet5
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: RightHead
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.4
@@ -27571,6 +27676,10 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.81
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29933,6 +30042,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet4
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: LeftArm
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -55.87
@@ -29976,6 +30089,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35344,6 +35465,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet5
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: LeftHead
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -99.7
@@ -35387,6 +35512,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36963,13 +37096,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 3.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fc2c53a97a48441b834dcf797707597, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.626
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.967
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37412,6 +37565,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet2
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: LeftLeg
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 37.67
@@ -37455,6 +37612,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37679,13 +37844,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4de1bb12346114057ae34512eea46a79, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.065
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38855,13 +39036,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a719d5cd1ecf746d7b2a544aff56991b, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.95
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52918,13 +53119,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 4.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d57279b6b516340e88effc85068fd5ea, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.945335
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3598385
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -78258,6 +78475,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Tablet5
       objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: RightLeg
+      objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
       value: -93.56
@@ -78301,6 +78522,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -80751,13 +80980,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 07b37544d42de4b3eab099bec5f9ab8a, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.945335
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.3598385
+      value: -3.3
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83697,13 +83942,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6948339}
     m_Modifications:
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.x
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Size.y
+      value: 3.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6c1b073a41515456485f2e59fe7a293b, type: 3}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 235634039671194450, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -83833,6 +84098,10 @@ PrefabInstance:
       value: Tablet1
       objectReference: {fileID: 0}
     - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: pieceName
+      value: Tail
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: playerLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
@@ -83879,6 +84148,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.63
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

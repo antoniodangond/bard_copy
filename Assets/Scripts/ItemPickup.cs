@@ -11,6 +11,7 @@ public class ItemPickup : MonoBehaviour
 
     [Header("Refs")]
     [SerializeField] private UniqueId uid;
+    [SerializeField] public String pieceName;
 
     private Collider2D triggerCol;
     private bool collected;
@@ -66,6 +67,8 @@ public class ItemPickup : MonoBehaviour
         // Persist this pickup
         if (uid != null)
             PlayerProgress.Instance.MarkCollected(uid.Id);
+            
+        CerberusStatue.Instance.ActivateStatuePiece(pieceName);
 
         collected = true;
 

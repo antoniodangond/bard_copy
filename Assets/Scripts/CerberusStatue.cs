@@ -7,31 +7,32 @@ public class CerberusStatue : MonoBehaviour
 {
     public static CerberusStatue Instance; // Make singleton because we are shipping soon!!
 
-    private SpriteRenderer leftHead;
-    private SpriteRenderer leftArm;
-    private SpriteRenderer leftLeg;
-    private SpriteRenderer middleHead;
-    private SpriteRenderer torso;
-    private SpriteRenderer rightHead;
-    private SpriteRenderer rightArm;
-    private SpriteRenderer rightLeg;
-    private SpriteRenderer tail;
-    private SpriteRenderer sr;
-    private SpriteRenderer[] statuePieces = new SpriteRenderer[] { };
-    // private string[] statuePieceNames = new string[] { };
-    private Dictionary<string, SpriteRenderer> statuePiecesDict = new Dictionary<string, SpriteRenderer> { };
+    // private GameObject leftHead;
+    // private GameObject leftArm;
+    // private GameObject leftLeg;
+    // private GameObject middleHead;
+    // private GameObject torso;
+    // private GameObject rightHead;
+    // private GameObject rightArm;
+    // private GameObject rightLeg;
+    // private GameObject tail;
+    // private GameObject[] statuePieces = new GameObject[] { };
+    private Dictionary<string, GameObject> statuePiecesDict = new Dictionary<string, GameObject> { };
     private int foundPieces;
     void Awake()
     {
+        if (Instance == null) { Instance = this; }
+        else { Destroy(gameObject); }
         
         foundPieces = 0;
-        statuePieces = GetComponentsInChildren<SpriteRenderer>();
-        // statuePieceNames = 
-        foreach (SpriteRenderer piece in statuePieces)
+        // statuePieces = GetComponentsInChildren<GameObject>();
+        foreach (Transform pieceTransform in gameObject.transform)
         {
-            piece.enabled = false;
+            GameObject piece = pieceTransform.gameObject;
+            piece.SetActive(false);
+            // piece.SetActive(false);
             statuePiecesDict[piece.name] = piece;
-            Debug.Log(piece.name);
+            // Debug.Log(piece.name);
         }
     }
 
@@ -40,7 +41,7 @@ public class CerberusStatue : MonoBehaviour
         foundPieces++;
 
         if (foundPieces == 9) { CompleteStatue(); }
-        else { statuePiecesDict[statuePieceName].enabled = true; }
+        else { statuePiecesDict[statuePieceName].SetActive(true); }
         
         return;
     }
@@ -48,7 +49,7 @@ public class CerberusStatue : MonoBehaviour
     private void CompleteStatue()
     {
         // destroy the "piece" sprites or game objects
-        foreach (SpriteRenderer piece in statuePieces)
+        foreach (GameObject piece in statuePiecesDict.Values)
         {
             Destroy(piece);
         }
