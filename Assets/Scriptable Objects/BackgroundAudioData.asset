@@ -42,6 +42,12 @@ MonoBehaviour:
     DefaultVolume: 0.65
     ShouldLoop: 1
     Source: {fileID: 0}
+  BackgroundMusicMountain:
+    Clip: {fileID: 8300000, guid: 21f961d0f9a9bed4f8c87318b94b79ed, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.5
+    ShouldLoop: 1
+    Source: {fileID: 0}
   BackgroundMusicInstrumentVolume: 0.5
   BackgroundMusicInstrumentMelodyVolume: 0
   BackgroundMusicPauseVolume: 0.5

@@ -101,6 +101,12 @@ MonoBehaviour:
     DefaultVolume: 1
     ShouldLoop: 0
     Source: {fileID: 0}
+  Melody3:
+    Clip: {fileID: 8300000, guid: 13717d6f008429a439204587125bd9b7, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 0
+    Source: {fileID: 0}
   TimeBeforeMelody: 0.5
   MelodyCooldownTime: 3
   AttackNotes:

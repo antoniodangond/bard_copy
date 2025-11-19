@@ -37,6 +37,7 @@ public class PlayerAudio : AudioController
         InitializeSound(AudioData.NoteE);
         InitializeSound(AudioData.Melody1);
         InitializeSound(AudioData.Melody2);
+        InitializeSound(AudioData.Melody3);
 
         AudioData.RandomFootsteps = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomAttackNotes = gameObject.AddComponent<RandomAudioManager>();
@@ -114,6 +115,9 @@ public class PlayerAudio : AudioController
                 break;
             case MelodyData.Melody2:
                 AudioData.Melody2.Play();
+                break;
+            case MelodyData.Melody3:
+                AudioData.Melody3.Play();
                 break;
             default:
                 break;

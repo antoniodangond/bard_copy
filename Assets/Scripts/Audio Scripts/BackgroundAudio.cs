@@ -21,6 +21,7 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.BackgroundMusicUnderworld);
         InitializeSound(AudioData.BackgroundMusicMausoleum);
         InitializeSound(AudioData.BackgroundMusicForest);
+        InitializeSound(AudioData.BackgroundMusicMountain);
         InitializeSound(AudioData.BackgroundMusicBeach);
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
@@ -64,6 +65,7 @@ public class BackgroundAudio : AudioController
         AudioData.BackgroundMusicMausoleum.Play(1f, 0f);
         AudioData.BackgroundMusicForest.Play(1f, 0f);
         AudioData.BackgroundMusicBeach.Play(1f, 0f);
+        AudioData.BackgroundMusicMountain.Play(1f, 0f);
     }
     
     public void StartAmbience()
@@ -169,6 +171,14 @@ public class BackgroundAudio : AudioController
                 PlayerAudio.instance.currentTerrain = "Grass";
                 PlayRandomBreaths();
                 break;
+            case "Mountain":
+                StopRandomFrogs();
+                StopRandomBreaths();
+                newSound = AudioData.BackgroundMusicMountain;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Grass";
+                PlayRandomBreaths();
+                break;
             default:
                 // Use for Overworld
                 StopRandomBreaths();
@@ -224,6 +234,9 @@ public class BackgroundAudio : AudioController
                     case "mus_forest_v1":
                         AudioData.BackgroundMusicForest.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
                         break;
+                    case "mus_mountain_v1":
+                        AudioData.BackgroundMusicMountain.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;
                     default:
                         break;
                 }
@@ -243,6 +256,9 @@ public class BackgroundAudio : AudioController
                         break;
                     case "mus_forest_v1":
                         AudioData.BackgroundMusicForest.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;
+                    case "mus_mountain_v1":
+                        AudioData.BackgroundMusicMountain.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         break;
                     default:
                         break;

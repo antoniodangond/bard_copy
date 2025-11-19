@@ -32,9 +32,9 @@ public class MelodyData
     private static string[] melody3Inputs = new string[MelodyLength]{
         //ON KEYBOARD: WWSAD
         NoteB,
-        NoteB,
+        NoteE,
+        NoteE,
         NoteD,
-        NoteC,
         NoteE,
     };
     public static Dictionary<string, string[]> MelodyInputs = new Dictionary<string, string[]>(){
