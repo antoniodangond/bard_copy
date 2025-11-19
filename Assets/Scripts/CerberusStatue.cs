@@ -6,33 +6,24 @@ using UnityEngine;
 public class CerberusStatue : MonoBehaviour
 {
     public static CerberusStatue Instance; // Make singleton because we are shipping soon!!
-
-    // private GameObject leftHead;
-    // private GameObject leftArm;
-    // private GameObject leftLeg;
-    // private GameObject middleHead;
-    // private GameObject torso;
-    // private GameObject rightHead;
-    // private GameObject rightArm;
-    // private GameObject rightLeg;
-    // private GameObject tail;
-    // private GameObject[] statuePieces = new GameObject[] { };
+    public Sprite completedStatue;
+    private SpriteRenderer spriteRenderer;
     private Dictionary<string, GameObject> statuePiecesDict = new Dictionary<string, GameObject> { };
     private int foundPieces;
     void Awake()
     {
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
-        
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         foundPieces = 0;
-        // statuePieces = GetComponentsInChildren<GameObject>();
+
         foreach (Transform pieceTransform in gameObject.transform)
         {
             GameObject piece = pieceTransform.gameObject;
             piece.SetActive(false);
-            // piece.SetActive(false);
             statuePiecesDict[piece.name] = piece;
-            // Debug.Log(piece.name);
         }
     }
 
@@ -54,6 +45,7 @@ public class CerberusStatue : MonoBehaviour
             Destroy(piece);
         }
         // replace the main sprite with the completed statue sprite
+        spriteRenderer.sprite = completedStatue;
         // optional: add a particle effect
     }
 

@@ -585,6 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e8ec70fa7993b840ab87ac7495f590d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completedStatue: {fileID: 21300000, guid: 8326cd59590e94d9f844331c95621865, type: 3}
 --- !u!4 &7793013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -25917,6 +25918,8 @@ MonoBehaviour:
   disableAfterYes: 0
   choiceReward: {fileID: 0}
   signName: 
+  initialSprite: {fileID: 0}
+  updatedSprite: {fileID: 0}
   playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
@@ -35837,6 +35840,8 @@ MonoBehaviour:
   disableAfterYes: 0
   choiceReward: {fileID: 924841171}
   signName: BeachStatue
+  initialSprite: {fileID: 0}
+  updatedSprite: {fileID: 0}
   playerInput: {fileID: 683017117}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
@@ -49211,6 +49216,8 @@ MonoBehaviour:
   disableAfterYes: 0
   choiceReward: {fileID: 1301343547}
   signName: BeachStatue
+  initialSprite: {fileID: 0}
+  updatedSprite: {fileID: 0}
   playerInput: {fileID: 683017117}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
@@ -81498,6 +81505,8 @@ MonoBehaviour:
   disableAfterYes: 0
   choiceReward: {fileID: 0}
   signName: 
+  initialSprite: {fileID: 0}
+  updatedSprite: {fileID: 0}
   playerInput: {fileID: 0}
   HasDialogueOnMelody: 0
   IsPlayingSuccessAudio: 0
