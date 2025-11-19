@@ -316,10 +316,10 @@ public bool OnSongPlayed(string melody)
                 if (spriteRenderer != null)
                     if (signName == "Vines")
                     {
+                        Destroy(gameObject.GetComponent<Animator>());
                         // replace sprites with original sprites rather than disable
                         SpriteRenderer attachedSR = GetComponent<SpriteRenderer>();
                         attachedSR.sprite = updatedSprite;
-                        Debug.Log(updatedSprite.name);
                     } 
                     else { spriteRenderer.enabled = false; }
             }
