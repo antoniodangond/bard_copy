@@ -52,6 +52,8 @@ public class SignController : MonoBehaviour
     [SerializeField] public GameObject teleporterToObj;
     [SerializeField] public GameObject hatchToOpenObj;
     [SerializeField] public Sprite openHatch;
+    public GameObject statuePieceToGive;
+    public float statuePieceFadeInTime;
     
     private Teleporter teleporterFrom;
     private Teleporter teleporterTo;
@@ -96,6 +98,7 @@ private void Start()
             uniqueId = GetComponent<UniqueId>();
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (statuePieceToGive) { statuePieceToGive.SetActive(false); }
 
         // Input mapping (only if available)
         if (playerInput != null)
@@ -260,6 +263,8 @@ public bool OnSongPlayed(string melody)
             hatchToOpenObj.transform.position += new Vector3 (0,2f);
             hatchToOpen.sprite = openHatch;
         }
+
+        if (statuePieceToGive) {FadeInStatuePiece();}
 
         // STEP 2: Play success animation
         if (successAnimator != null)
@@ -511,10 +516,38 @@ public bool OnSongPlayed(string melody)
                 return "<sprite name=\"XBox_Y\">";
             case "RB":
                 return "<sprite name=\"XBox_RB\">";
-            // case "Square":
-            //     return "<sprite name="Playstation_Square">";
             default:
                 return "";
+        }
+    }
+
+    private void FadeInStatuePiece()
+    {
+        // get ref to sprite renderer
+        SpriteRenderer statuePieceSpriteRenderer = statuePieceToGive.GetComponent<SpriteRenderer>();
+        // get transparent and opaque alpha colors to use in fade in coroutine
+        Color transparent = statuePieceSpriteRenderer.color;
+        transparent.a = 0;
+        Color opaque = statuePieceSpriteRenderer.color;
+        opaque.a = 1;
+        // set alpha of sprite renderer to transparent and then activate it, so it starts invisible
+        statuePieceToGive.GetComponent<SpriteRenderer>().color = transparent;
+        statuePieceToGive.SetActive(true);
+        // fade in the sprite
+        StartCoroutine(StatuePieceFadeInRoutine(statuePieceSpriteRenderer, statuePieceFadeInTime, transparent, opaque));
+    }
+
+    private IEnumerator StatuePieceFadeInRoutine(SpriteRenderer sr,float fadeInTime, Color transparent, Color opaque)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeInTime)
+        {
+            float t = elapsedTime/fadeInTime;
+
+            sr.color = Color.Lerp(transparent, opaque, t);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
     }
 }

@@ -251,7 +251,7 @@ public class BackgroundAudio : AudioController
                     case "mus_underworldtheme_loop_v2":
                         AudioData.BackgroundMusicUnderworld.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         break;
-                    case "mus_beach_v1":
+                    case "mus_beach_v2":
                         AudioData.BackgroundMusicBeach.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         break;
                     case "mus_forest_v1":

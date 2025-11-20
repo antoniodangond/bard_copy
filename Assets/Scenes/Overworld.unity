@@ -635,6 +635,8 @@ MonoBehaviour:
   teleporterToObj: {fileID: 0}
   hatchToOpenObj: {fileID: 0}
   openHatch: {fileID: 0}
+  statuePieceToGive: {fileID: 0}
+  statuePieceFadeInTime: 0
   spriteRenderer: {fileID: 0}
 --- !u!4 &7793013 stripped
 Transform:
@@ -1267,11 +1269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.36
+      value: -70.63
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -79.6
+      value: -80.48
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2969,9 +2971,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4a3029da38caf73408400e30f3fb85c6, type: 2}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: statuePieceToGive
+      value: 
+      objectReference: {fileID: 1207802995}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: teleporterFromObj
       value: 
       objectReference: {fileID: 275839343}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: statuePieceFadeInTime
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8980723282171336176, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
       value: 2.208828
@@ -11475,12 +11485,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b47441cf2af44664d9abb57c21e1116d, type: 2}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: statuePieceToGive
+      value: 
+      objectReference: {fileID: 1431299539}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: HasDialogueOnMelody
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: askYesNoAfterDialogue
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: statuePieceFadeInTime
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: audioSources.Array.size
@@ -25981,6 +25999,8 @@ MonoBehaviour:
   teleporterToObj: {fileID: 0}
   hatchToOpenObj: {fileID: 0}
   openHatch: {fileID: 0}
+  statuePieceToGive: {fileID: 0}
+  statuePieceFadeInTime: 0
   spriteRenderer: {fileID: 0}
 --- !u!114 &662586178
 MonoBehaviour:
@@ -35903,6 +35923,8 @@ MonoBehaviour:
   teleporterToObj: {fileID: 0}
   hatchToOpenObj: {fileID: 0}
   openHatch: {fileID: 0}
+  statuePieceToGive: {fileID: 0}
+  statuePieceFadeInTime: 0
   spriteRenderer: {fileID: 0}
 --- !u!114 &924841171
 MonoBehaviour:
@@ -39655,6 +39677,14 @@ PrefabInstance:
       propertyPath: updatedDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 88596675bd5015d46b98cfe47751e39d, type: 2}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: statuePieceToGive
+      value: 
+      objectReference: {fileID: 1397894883}
+    - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+      propertyPath: statuePieceFadeInTime
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8980723282171336176, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_Size.x
       value: 3.138575
@@ -46165,6 +46195,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
   m_PrefabInstance: {fileID: 1207352423}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1207802995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+  m_PrefabInstance: {fileID: 972319996}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1208613235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3594859159269561785, guid: 859c234214669476186e24188d770445, type: 3}
@@ -49279,6 +49314,8 @@ MonoBehaviour:
   teleporterToObj: {fileID: 0}
   hatchToOpenObj: {fileID: 0}
   openHatch: {fileID: 0}
+  statuePieceToGive: {fileID: 0}
+  statuePieceFadeInTime: 0
   spriteRenderer: {fileID: 0}
 --- !u!61 &1301343549
 BoxCollider2D:
@@ -54244,6 +54281,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
   m_PrefabInstance: {fileID: 1395122533}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1397894883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+  m_PrefabInstance: {fileID: 2892770941158295782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1400929649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -56349,6 +56391,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
+--- !u!1 &1431299539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+  m_PrefabInstance: {fileID: 22524772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1437425133
 GameObject:
   m_ObjectHideFlags: 0
@@ -81568,6 +81615,8 @@ MonoBehaviour:
   teleporterToObj: {fileID: 0}
   hatchToOpenObj: {fileID: 0}
   openHatch: {fileID: 0}
+  statuePieceToGive: {fileID: 0}
+  statuePieceFadeInTime: 0
   spriteRenderer: {fileID: 0}
 --- !u!1001 &2081065499
 PrefabInstance:
@@ -84166,11 +84215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.77
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -127.68
+      value: -128.83
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.z
