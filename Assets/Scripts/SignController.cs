@@ -198,9 +198,7 @@ public bool OnSongPlayed(string melody)
         case MelodyData.Melody2:
             if (signName == "Captain" ||
                 signName == "Vines" ||
-                signName == "Crow" ||
-                signName == "Mountaineer" ||
-                signName == "Ice")
+                signName == "Crow")
             {
                 HandleSuccessFeedback(signName);
                 triggered = true;

@@ -19,6 +19,8 @@ public class ControlsMapper
                 return "<sprite name=\"Playstation_R1\">";
             case "Options":
                 return "<sprite name=\"Playstation_Options\">";
+            case "Start":
+                return "<sprite name=\"Playstation_Options\">";
             case "A":
                 return "<sprite name=\"XBox_A\">";
             case "B":
@@ -32,7 +34,7 @@ public class ControlsMapper
             case "Menu":
                 return "<sprite name=\"XBox_Menu\">";
             default:
-                return "";
+                return bindingDisplayString;
         }
     }
 

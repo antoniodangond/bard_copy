@@ -441,6 +441,8 @@ GameObject:
   - component: {fileID: 6948338}
   - component: {fileID: 6948337}
   - component: {fileID: 6948340}
+  - component: {fileID: 6948342}
+  - component: {fileID: 6948341}
   m_Layer: 9
   m_Name: Cerberus Stone Empty
   m_TagString: Untagged
@@ -586,6 +588,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completedStatue: {fileID: 21300000, guid: 8326cd59590e94d9f844331c95621865, type: 3}
+--- !u!114 &6948341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Cerberus
+--- !u!114 &6948342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6948336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae7d14c3af14d441bdebd2e58796727, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: {fileID: 6948341}
+  defaultDialogue: {fileID: 0}
+  updatedDialogue: {fileID: 0}
+  isDialogueUpdated: 0
+  askYesNoAfterDialogue: 0
+  choicePrompt: 
+  disableAfterYes: 0
+  choiceReward: {fileID: 0}
+  signName: 
+  initialSprite: {fileID: 0}
+  updatedSprite: {fileID: 0}
+  playerInput: {fileID: 0}
+  HasDialogueOnMelody: 0
+  IsPlayingSuccessAudio: 0
+  soundVolume: 0.8
+  soundPlayDelay: 0.15
+  audioSources: []
+  successAnimator: {fileID: 0}
+  teleporterFromObj: {fileID: 0}
+  teleporterToObj: {fileID: 0}
+  hatchToOpenObj: {fileID: 0}
+  openHatch: {fileID: 0}
+  spriteRenderer: {fileID: 0}
 --- !u!4 &7793013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
@@ -1981,7 +2031,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: c3b3f6866d4e9ae40a8f3bea3f1d718d, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -14393,7 +14443,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: c3b3f6866d4e9ae40a8f3bea3f1d718d, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -27413,7 +27463,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: c3b3f6866d4e9ae40a8f3bea3f1d718d, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -36210,7 +36260,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 6875d9c36b3392a4681d6cd1e5373bbf, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -71434,7 +71484,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: c3b3f6866d4e9ae40a8f3bea3f1d718d, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

@@ -287,19 +287,29 @@ public class PlayerController : MonoBehaviour
 
         if (isFirstTime)
         {
-            // NOTE: SongIconsPanel will auto-refresh via OnSaved
-            // NOTE: This code won't run in the HasDialogueOnMelody path that yield breaks out of the coroutine early. 
-            // In those special cases, you probably already have custom sign-based dialogue and can optionally incorporate the “You learned X” line into those sign dialogues themselves. 
-            // But for any general puzzle or free play context, this handles everything.
             Dialogue learnedDialogue = GetSongLearnedDialogue(melody);
             if (learnedDialogue != null)
             {
-                // Enter dialogue state and show the line
+                // 1) Get the correct binding string for your menu action
+                //    (replace "UI" and "OpenMenu" with your actual action map/action names)
+                string openMenuKey = InputDisplayUtil.GetOpenMenuBinding();
+                // 2) Replace the placeholder in the dialogue text
+                //    Adjust this to match your Dialogue data layout (universalLines / upLines, etc.)
+                if (learnedDialogue.universalLines != null)
+                {
+                    for (int i = 0; i < learnedDialogue.universalLines.Count; i++)
+                    {
+                        learnedDialogue.universalLines[i] =
+                            learnedDialogue.universalLines[i].Replace("{OPEN_MENU_KEY}", openMenuKey);
+                    }
+                }
+
+                // 3) Show the dialogue as usual
                 PlayerController.CurrentState = PlayerState.Dialogue;
                 DialogueManager.StartDialogue(learnedDialogue, PlayerController.FacingDirection);
-                // PlayerController.OnDialogueEnd will return us to Default
             }
         }
+
 
         
     }

@@ -22,8 +22,11 @@ public static class InputDisplayUtil
 
     private static string GetSchemeString(PlayerInput playerInput = null)
     {
-        return IsGamepad(playerInput) ? "Gamepad" : "Keyboard";
+        // Same philosophy as your SignController / GetLyreButtons:
+        // if any gamepad is connected, show gamepad icons.
+        return Gamepad.current != null ? "Gamepad" : "Keyboard";
     }
+
 
     /// <summary>
     /// Uses ControlsMapper.getCorrectButton with the current scheme.
@@ -98,7 +101,9 @@ public static class InputDisplayUtil
         playerInput = GetPlayerInput(playerInput);
         if (playerInput == null) return "?";
 
-        bool gamepadActive = IsGamepad(playerInput);
+        // Match the logic we already use in SignController.handleTutorialDialog
+        bool gamepadActive = Gamepad.current != null;
+
         return mapper.setLyreButtons(gamepadActive, notes, playerInput);
     }
 
@@ -148,4 +153,69 @@ public static class InputDisplayUtil
         // For UI / other maps, fall back to raw binding + icon mapping
         return GetUIBindingWithIcons(actionMap, action, playerInput);
     }
+
+    public static string GetOpenMenuBinding(PlayerInput playerInput = null)
+    {
+        playerInput = GetPlayerInput(playerInput);
+        if (playerInput == null)
+        {
+            Debug.LogWarning("[InputDisplayUtil] GetOpenMenuBinding: no PlayerInput found.");
+            return "?";
+        }
+
+        var map = playerInput.actions.FindActionMap("Player");
+        if (map == null)
+        {
+            Debug.LogWarning("[InputDisplayUtil] GetOpenMenuBinding: action map 'Player' not found.");
+            return "?";
+        }
+
+        var act = map.FindAction("OpenMenu");
+        if (act == null)
+        {
+            Debug.LogWarning("[InputDisplayUtil] GetOpenMenuBinding: action 'OpenMenu' not found in 'Player' map.");
+            return "?";
+        }
+
+        bool gamepadActive = Gamepad.current != null;
+        int bindingIndex = -1;
+
+        if (gamepadActive)
+        {
+            // look for Gamepad group
+            for (int i = 0; i < act.bindings.Count; i++)
+            {
+                var groups = act.bindings[i].groups;
+                if (!string.IsNullOrEmpty(groups) && groups.Contains("Gamepad"))
+                {
+                    bindingIndex = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            // look for keyboard group
+            for (int i = 0; i < act.bindings.Count; i++)
+            {
+                var groups = act.bindings[i].groups;
+                if (!string.IsNullOrEmpty(groups) &&
+                    (groups.Contains("Keyboard&Mouse") || groups.Contains("Keyboard")))
+                {
+                    bindingIndex = i;
+                    break;
+                }
+            }
+        }
+
+        if (bindingIndex < 0)
+            bindingIndex = 0;
+
+        string raw = act.GetBindingDisplayString(bindingIndex);
+        Debug.Log($"[InputDisplayUtil] GetOpenMenuBinding gamepadActive={gamepadActive} index={bindingIndex} raw='{raw}'");
+
+        return gamepadActive ? mapper.MapGamepadIcons(raw) : raw;
+    }
+
+
 }

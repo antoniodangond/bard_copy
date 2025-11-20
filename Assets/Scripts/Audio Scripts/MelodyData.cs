@@ -30,7 +30,7 @@ public class MelodyData
     };
 
     private static string[] melody3Inputs = new string[MelodyLength]{
-        //ON KEYBOARD: WWSAD
+        //ON KEYBOARD: WDDSD
         NoteB,
         NoteE,
         NoteE,
