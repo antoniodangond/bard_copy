@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 
 public enum PlayerState {
     Default,
@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     public static FacingDirection FacingDirection = FacingDirection.Down;
     // Set in editor
     public PlayerAudioData AudioData;
+    public PlayerInput PlayerInput;
     public LayerMask DialogueLayer;
     public LayerMask PushableLayer;
 
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private AudioSource combatAudioSource;
     private PlayerMovement playerMovement;
     private AudioMixerScript audioMixerScript;
+    private ControlsMapper controlsMapper = new ControlsMapper();
     private Vector2 movement;
     private bool isPlayingLyre;
     private bool isAttacking;
@@ -292,13 +294,35 @@ public class PlayerController : MonoBehaviour
             {
                 // 1) Get the correct binding string for your menu action
                 //    (replace "UI" and "OpenMenu" with your actual action map/action names)
-                string openMenuKey = InputDisplayUtil.GetOpenMenuBinding();
+                string openMenuKey;
+                if (Gamepad.current == null) { openMenuKey = InputDisplayUtil.GetOpenMenuBinding(); }
+                else { openMenuKey = controlsMapper.getCorrectButton("Player", "OpenMenu", "Gamepad", false, PlayerInput); }
+                string dialogueLine;
+                switch (melody)
+                {
+                    case "Melody1":
+                         dialogueLine = "You learned the SONG OF DECAY! Press {OPEN_MENU_KEY} to view song notes.";
+                        break;
+                    case "Melody2":
+                         dialogueLine = "You learned the SONG OF GROWTH! Press {OPEN_MENU_KEY} to view song notes.";
+                        break;
+                    case "Melody3":
+                         dialogueLine = "You learned the SONG OF WARMTH! Press {OPEN_MENU_KEY} to view song notes.";
+                        break;
+                    default:
+                        dialogueLine = "";
+                        break;
+                } 
+                // string openMenuKey = InputDisplayUtil.GetOpenMenuBinding();
                 // 2) Replace the placeholder in the dialogue text
                 //    Adjust this to match your Dialogue data layout (universalLines / upLines, etc.)
                 if (learnedDialogue.universalLines != null)
                 {
                     for (int i = 0; i < learnedDialogue.universalLines.Count; i++)
                     {
+                        // clear lines because these will update depending on what controller (or keyboard) is connected
+                        if (i == 0) { learnedDialogue.universalLines[i] = dialogueLine; }
+
                         learnedDialogue.universalLines[i] =
                             learnedDialogue.universalLines[i].Replace("{OPEN_MENU_KEY}", openMenuKey);
                     }

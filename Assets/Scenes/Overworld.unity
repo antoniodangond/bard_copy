@@ -24266,6 +24266,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 54386c572b45fdc428538ada7c079552, type: 2}
     - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
+      propertyPath: PlayerInput
+      value: 
+      objectReference: {fileID: 683017117}
+    - target: {fileID: 5957394632817136815, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: dashUpgrade
       value: 
       objectReference: {fileID: 11400000, guid: caf9df98fe636d246845895c17bdd327, type: 2}

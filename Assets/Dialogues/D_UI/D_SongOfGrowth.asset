@@ -17,5 +17,4 @@ MonoBehaviour:
   leftLines: []
   rightLines: []
   universalLines:
-  - You learned the SONG OF GROWTH! Press <sprite name="Playstation_Options"> to
-    view song notes.
+  - You learned the SONG OF GROWTH! Press {OPEN_MENU_KEY} to view song notes.
