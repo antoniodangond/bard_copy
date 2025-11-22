@@ -131,25 +131,60 @@ public class DialogueManager : MonoBehaviour
 
     private System.Collections.IEnumerator TypeLine(string line)
     {
-        //If already typing, don't start a new coroutine.
         if (isTyping) yield break;
-
         isTyping = true;
-        dialogueText.text = line; // Set the full line at once
 
-        // Wait for the letterSpeed interval before starting the typing effect
-        yield return new WaitForSeconds(letterSpeed);
+        dialogueText.text = ""; // clear before typing
 
-        // dialogueText.text = ""; // Clear the text box
+        // Split line into tokens (chars + full rich-text tags)
+        var tokens = TokenizeRichText(line);
 
-        // foreach (char letter in line.ToCharArray())
-        // {
-        //     dialogueText.text += letter;
-        //     yield return new WaitForSeconds(letterSpeed); // Wait before displaying the next letter
-        // }
+        foreach (var token in tokens)
+        {
+            dialogueText.text += token;
+            yield return new WaitForSeconds(letterSpeed);
+        }
 
         isTyping = false;
     }
+
+    /// <summary>
+    /// Splits a string into tokens where TMP rich-text tags
+    /// (e.g. <sprite name="Playstation_Options">, <b>, </b>)
+    /// are treated as single units.
+    /// </summary>
+    private static List<string> TokenizeRichText(string line)
+    {
+        var tokens = new List<string>();
+        int i = 0;
+
+        while (i < line.Length)
+        {
+            if (line[i] == '<') // Check to see if there is tag
+            {
+                int close = line.IndexOf('>', i);
+                if (close == -1)
+                {
+                    // No closing '>' = treat rest as plain text
+                    tokens.Add(line.Substring(i));
+                    break;
+                }
+
+                // If there is a tag, add entire tag as a single token
+                tokens.Add(line.Substring(i, close - i + 1));
+                i = close + 1;
+            }
+            else
+            {
+                // Normal character
+                tokens.Add(line[i].ToString());
+                i++;
+            }
+        }
+
+        return tokens;
+    }
+
 
     public static void AdvanceCurrentDialogue()
     {
