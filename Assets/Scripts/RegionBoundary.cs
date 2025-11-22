@@ -5,13 +5,14 @@ public class RegionBoundary : MonoBehaviour
     // private BoxCollider2D boxCollider;
     public LayerMask playerLayer;
     public string region;
-    public GameObject BackgroundAudioObj;
+    // public GameObject BackgroundAudioObj;
 
     private BackgroundAudio backgroundAudio;
 
     void Awake()
     {
-        backgroundAudio = BackgroundAudioObj.GetComponent<BackgroundAudio>();
+        // backgroundAudio = BackgroundAudioObj.GetComponent<BackgroundAudio>();
+        backgroundAudio = GameManager.Instance.backgroundAudio;
     }
 
     // Update is called once per frame

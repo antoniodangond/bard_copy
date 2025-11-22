@@ -3,13 +3,29 @@ using UnityEngine;
 [RequireComponent(typeof(BackgroundAudio))]
 public class GameManager : MonoBehaviour
 {
-    private BackgroundAudio backgroundAudio;
+    public static GameManager Instance; // Make it a singleton
+
+    public BackgroundAudio backgroundAudio;
     private AudioMixerScript audioMixerScript;
 
     void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        DontDestroyOnLoad(gameObject); // this manager should persist between scenes
+
+
         audioMixerScript = GetComponent<AudioMixerScript>();
+        
         backgroundAudio = GetComponent<BackgroundAudio>();
+        DontDestroyOnLoad(backgroundAudio); // all music and ambience is controlled by this, it should peresist between scenes
+        
         HandleAudioMixerGroupRouting();
 
         // Subscribe to custom event

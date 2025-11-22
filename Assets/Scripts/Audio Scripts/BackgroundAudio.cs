@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BackgroundAudio : AudioController
 {
+
+    public static BackgroundAudio Instance; // make it a singleton? to avoid this error i keep getting
     public BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
     public AudioSource breathsAudioSource;
@@ -16,6 +18,16 @@ public class BackgroundAudio : AudioController
 
     void Awake()
     {
+
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        
+        Debug.Log("awake on background audio called");
         // Instantiate audio sources
         InitializeSound(AudioData.BackgroundMusic);
         InitializeSound(AudioData.BackgroundMusicUnderworld);
@@ -41,8 +53,7 @@ public class BackgroundAudio : AudioController
         AudioData.RandomAmbienceQuietBirds = gameObject.AddComponent<RandomAudioManager>();
         
 
-
-        // }
+        currentBackgroundMusic = AudioData.BackgroundMusic;
 
         // Subscribe to custom event
         CustomEvents.OnPlayerStateChange.AddListener(OnPlayerStateChange);
