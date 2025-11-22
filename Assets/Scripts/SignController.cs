@@ -407,12 +407,12 @@ public bool OnSongPlayed(string melody)
             if (signName == "SongGrowth")
             {
                 songTitle = "SONG OF GROWTH";
-                melodyKey = MelodyData.Melody1;
+                melodyKey = MelodyData.Melody2;
             }
             else if (signName == "SongDecay")
             {
                 songTitle = "SONG OF DECAY";
-                melodyKey = MelodyData.Melody2;
+                melodyKey = MelodyData.Melody1;
             }
             else // "SongWarmth" = mountaintop statue that grants Melody3
             {
