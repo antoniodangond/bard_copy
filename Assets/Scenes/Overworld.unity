@@ -19292,7 +19292,7 @@ Transform:
   m_GameObject: {fileID: 471366968}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: -34.6, y: -20.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21054,7 +21054,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: -34.6, y: -20.1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22403,7 +22403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: signName
-      value: SongDecay
+      value: SongWarmth
       objectReference: {fileID: 0}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: playerInput
@@ -22412,7 +22412,7 @@ PrefabInstance:
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: defaultDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 835a7f6c862401847a778634f1959bc0, type: 2}
+      objectReference: {fileID: 11400000, guid: 72181366819562a4983dc9c03ea400b1, type: 2}
     - target: {fileID: 8980723282171336176, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.y
       value: 0
@@ -24310,11 +24310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -34.6
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -22.1
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -73825,8 +73825,18 @@ MonoBehaviour:
     image: {fileID: 2053320754}
     locked: {fileID: -4934133288957140438, guid: ccf72b14d57704d48adbba06df12ae9e, type: 3}
     learned: {fileID: 4939312248572301689, guid: 01a6b6b1d93ce4c57b41824f8ce951a9, type: 3}
-    noteActions: []
-    noteLabels: []
+    noteActions:
+    - NoteB
+    - NoteE
+    - NoteE
+    - NoteD
+    - NoteE
+    noteLabels:
+    - {fileID: 321568203}
+    - {fileID: 1187955167}
+    - {fileID: 1000193680}
+    - {fileID: 659600877}
+    - {fileID: 488183066}
 --- !u!114 &1880898938
 MonoBehaviour:
   m_ObjectHideFlags: 0

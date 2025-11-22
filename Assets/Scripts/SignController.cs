@@ -395,25 +395,46 @@ public bool OnSongPlayed(string melody)
                 defaultDialogue.upLines.Add($"[Press {toggleInstrumentButton} to enter PLAY mode. Use {lyreButtons} to play NOTES]");
             }
         }
-        else if (signName == "SongDecay")
+        else if (signName == "SongGrowth" || signName == "SongDecay" || signName == "SongWarmth")
         {
             // clear lines because these will update depending on what controller (or keyboard) is connected
             defaultDialogue.universalLines.Clear();
 
-            // initialize variable for song
-            string[] songOfDecay = new string[] { "NoteC", "NoteB", "NoteC", "NoteD", "NoteE"};
-            if (Gamepad.current == null)
+            string songTitle;
+            string melodyKey;
+
+            // Decide melody based on signName
+            if (signName == "SongGrowth")
             {
-                lyreButtons = mapper.setLyreButtons(false, songOfDecay, playerInput);
+                songTitle = "SONG OF GROWTH";
+                melodyKey = MelodyData.Melody1;
             }
-            else
+            else if (signName == "SongDecay")
             {
-                lyreButtons = mapper.setLyreButtons(true, songOfDecay, playerInput);
+                songTitle = "SONG OF DECAY";
+                melodyKey = MelodyData.Melody2;
             }
-            defaultDialogue.universalLines.Add("SONG OF DECAY");
+            else // "SongWarmth" = mountaintop statue that grants Melody3
+            {
+                songTitle = "SONG OF WARMTH";
+                melodyKey = MelodyData.Melody3;
+            }
+
+            // Look up the correct note sequence from MelodyData
+            string[] notes = MelodyData.MelodyInputs[melodyKey];
+
+            // Use ControlsMapper to convert notes -> button icons / letters
+            bool gamepadActive = Gamepad.current != null;
+            lyreButtons = mapper.setLyreButtons(gamepadActive, notes, playerInput);
+
+            // Fill in the dialogue lines
+            defaultDialogue.universalLines.Add(songTitle);
             defaultDialogue.universalLines.Add(lyreButtons);
         }
-        else { return; }
+        else
+        {
+            return;
+        }
     }
 
     // These are used by DialogueManager when it encounters a [CHOICE] line
