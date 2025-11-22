@@ -18,7 +18,7 @@ public class Teleporter : MonoBehaviour
 
     void Awake()
     {
-        destinationTeleporter = DestinationTeleporter.GetComponent<Teleporter>();
+        if (DestinationTeleporter) {destinationTeleporter = DestinationTeleporter.GetComponent<Teleporter>();}
         isActive = ShouldStartActive;
     }
 
@@ -48,8 +48,11 @@ public class Teleporter : MonoBehaviour
     // TeleportPlayer sets the player's position to the DestinationTeleporter's LandingPoint position
     private void TeleportPlayer(GameObject player)
     {
-        Debug.Log("Teleporting player from current position " + player.transform.position + " to landing point position " + destinationTeleporter.LandingPoint.transform.position);
-        player.transform.position = destinationTeleporter.LandingPoint.transform.position;
+        if (destinationTeleporter)
+        {
+            Debug.Log("Teleporting player from current position " + player.transform.position + " to landing point position " + destinationTeleporter.LandingPoint.transform.position);
+            player.transform.position = destinationTeleporter.LandingPoint.transform.position;
+        }
     }
 
     public void Activate()
