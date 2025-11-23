@@ -4,9 +4,9 @@ using UnityEngine;
 public class BackgroundAudio : AudioController
 {
 
-    public static BackgroundAudio Instance; // make it a singleton? to avoid this error i keep getting
     public BackgroundAudioData AudioData;
     public AudioLowPassFilter LowPassFilter;
+    // Assign in inspector
     public AudioSource breathsAudioSource;
     public AudioSource frogsAudioSource;
     public AudioSource loudBirdsAudioSource;
@@ -19,14 +19,6 @@ public class BackgroundAudio : AudioController
     void Awake()
     {
 
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        
         Debug.Log("awake on background audio called");
         // Instantiate audio sources
         InitializeSound(AudioData.BackgroundMusic);
@@ -38,10 +30,11 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
-        breathsAudioSource = gameObject.transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
-        frogsAudioSource = gameObject.transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
-        loudBirdsAudioSource = gameObject.transform.GetChild(2).GetChild(2).GetComponent<AudioSource>();
-        quietBirdsAudioSource = gameObject.transform.GetChild(2).GetChild(3).GetComponent<AudioSource>();
+        // Old approach, may have been getting unloaded at initialization in the build
+        // breathsAudioSource = gameObject.transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
+        // frogsAudioSource = gameObject.transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
+        // loudBirdsAudioSource = gameObject.transform.GetChild(2).GetChild(2).GetComponent<AudioSource>();
+        // quietBirdsAudioSource = gameObject.transform.GetChild(2).GetChild(3).GetComponent<AudioSource>();
         if (LowPassFilter == null)
         {
             LowPassFilter = gameObject.AddComponent<AudioLowPassFilter>();

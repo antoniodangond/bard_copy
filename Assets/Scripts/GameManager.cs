@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null)
+        if (Instance != null && Instance != this) 
         {
             Destroy(gameObject);
             return;
@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
         audioMixerScript = GetComponent<AudioMixerScript>();
         
         backgroundAudio = GetComponent<BackgroundAudio>();
-        DontDestroyOnLoad(backgroundAudio); // all music and ambience is controlled by this, it should peresist between scenes
         
         HandleAudioMixerGroupRouting();
 

@@ -68,7 +68,7 @@ public class SignController : MonoBehaviour
     
     private void OnEnable()
     {
-        Debug.Log($"[SignController:{name}] OnEnable");
+        // Debug.Log($"[SignController:{name}] OnEnable");
         if (PlayerProgress.Instance != null)
         {
             PlayerProgress.Instance.OnLoaded += ApplySavedStateFromProgress;
@@ -77,7 +77,7 @@ public class SignController : MonoBehaviour
 
 private void OnDisable()
     {
-        Debug.Log($"[SignController:{name}] OnDisable");
+        // Debug.Log($"[SignController:{name}] OnDisable");
         if (PlayerProgress.Instance != null)
         {
             PlayerProgress.Instance.OnLoaded -= ApplySavedStateFromProgress;
@@ -88,7 +88,7 @@ private void OnDisable()
 // by the time this SignController appears in the scene.
 private void Start()
 {
-    Debug.Log($"[SignController:{name}] Start → calling ApplySavedStateFromProgress");
+    // Debug.Log($"[SignController:{name}] Start → calling ApplySavedStateFromProgress");
     ApplySavedStateFromProgress();
 }
 
