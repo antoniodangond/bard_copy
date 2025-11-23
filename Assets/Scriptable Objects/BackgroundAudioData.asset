@@ -48,6 +48,12 @@ MonoBehaviour:
     DefaultVolume: 0.5
     ShouldLoop: 1
     Source: {fileID: 0}
+  BackgroundMusicDungeonA:
+    Clip: {fileID: 8300000, guid: 97640ef052a803049932e409d90dd3e0, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 0.75
+    ShouldLoop: 1
+    Source: {fileID: 0}
   BackgroundMusicInstrumentVolume: 0.5
   BackgroundMusicInstrumentMelodyVolume: 0
   BackgroundMusicPauseVolume: 0.5
