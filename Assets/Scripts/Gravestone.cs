@@ -21,16 +21,8 @@ public class Gravestone : MonoBehaviour
         originalTransformY = transform.position.y;
         teleporter = TeleporterObj.GetComponent<Teleporter>();
         graveAudio = gameObject.AddComponent<GraveAudio>();
-        graveAudio.audioData = new EnvironmentAudioData();
+        graveAudio.audioData = audioData;
         graveAudio.graveAudioSource = gameObject.AddComponent<AudioSource>();
-        if (audioData != null)
-        {
-            graveAudio.audioData = audioData;
-        }
-        else
-        {
-            Debug.LogError("EnvironmentAudioData is not assigned!");
-        }
         audioMixerScript.assignSFXGroup(graveAudio.graveAudioSource);
     }
 
