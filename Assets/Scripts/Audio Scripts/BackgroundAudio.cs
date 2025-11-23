@@ -27,6 +27,8 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.BackgroundMusicForest);
         InitializeSound(AudioData.BackgroundMusicMountain);
         InitializeSound(AudioData.BackgroundMusicDungeonA);
+        InitializeSound(AudioData.BackgroundMusicDungeonB);
+        InitializeSound(AudioData.BackgroundMusicDungeonC);
         InitializeSound(AudioData.BackgroundMusicBeach);
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
@@ -72,6 +74,9 @@ public class BackgroundAudio : AudioController
         AudioData.BackgroundMusicBeach.Play(1f, 0f);
         AudioData.BackgroundMusicMountain.Play(1f, 0f);
         AudioData.BackgroundMusicDungeonA.Play(1f, 0f);
+        AudioData.BackgroundMusicDungeonB.Play(1f, 0f);
+        AudioData.BackgroundMusicDungeonC.Play(1f, 0f);
+
     }
     
     public void StartAmbience()
@@ -193,6 +198,22 @@ public class BackgroundAudio : AudioController
                 PlayerAudio.instance.currentTerrain = "Stone";
                 PlayRandomBreaths();
                 break;
+            case "DungeonB":
+                StopRandomFrogs();
+                StopRandomBreaths();
+                newSound = AudioData.BackgroundMusicDungeonA;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Stone";
+                PlayRandomBreaths();
+                break;
+            case "DungeonC":
+                StopRandomFrogs();
+                StopRandomBreaths();
+                newSound = AudioData.BackgroundMusicDungeonA;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Stone";
+                PlayRandomBreaths();
+                break;
             default:
                 // Use for Overworld
                 StopRandomBreaths();
@@ -253,6 +274,8 @@ public class BackgroundAudio : AudioController
                         break;
                     case "mus_dungeon_v1":
                         AudioData.BackgroundMusicDungeonA.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        AudioData.BackgroundMusicDungeonB.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        AudioData.BackgroundMusicDungeonC.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
                         break;
                     default:
                         break;
@@ -279,6 +302,9 @@ public class BackgroundAudio : AudioController
                         break;
                     case "mus_dungeon_v1":
                         AudioData.BackgroundMusicDungeonA.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        AudioData.BackgroundMusicDungeonB.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        AudioData.BackgroundMusicDungeonC.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+
                         break;
                     default:
                         break;
