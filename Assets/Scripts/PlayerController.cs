@@ -253,6 +253,9 @@ public class PlayerController : MonoBehaviour
                     isAttacking = false;
                     isAOEAttacking = false;
                     CurrentState = PlayerState.Dialogue;
+                    // reset movement when entering dialogue
+                    movement = Vector2.zero;
+                    // stop walking animation
                     playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
                     // commented this out oringially because when a sign controller is marked as "Has Dialogue on Melody"
                     // but doesn't have a name, the player gets stuck in Dialogue state because of the "yield break"
@@ -510,6 +513,11 @@ public class PlayerController : MonoBehaviour
                 if (dialogue != null && sign != null)
                 {
                     CurrentState = PlayerState.Dialogue;
+                    // reset movement when switching to Dialogue state
+                    movement = Vector2.zero;
+                    Debug.Log("Movement is " + movement);
+                    // stop walking animation
+                    playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
 
                     FacingDirection approachedFrom = sign.GetApproachDirection(transform);
                     sign.BeginDialogue(approachedFrom);
@@ -568,6 +576,11 @@ public class PlayerController : MonoBehaviour
         {
             if (PlayerInputManager.WasDialoguePressed)
             {
+                // reset movement when switching to Dialogue state
+                movement = Vector2.zero;
+                Debug.Log("Movement is " + movement);
+                // stop walking animation
+                playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
                 DialogueManager.AdvanceCurrentDialogue();
             }
         }
