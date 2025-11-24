@@ -294,6 +294,7 @@ public bool OnSongPlayed(string melody)
         {
             collider.enabled = false;
         }
+        if (signName == "Ice") { Destroy(gameObject); }
     }
 
     private void ApplySavedStateFromProgress()
