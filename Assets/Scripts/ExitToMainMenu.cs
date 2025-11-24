@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class ExitToMainMenu : MonoBehaviour
@@ -14,8 +15,8 @@ public class ExitToMainMenu : MonoBehaviour
             PlayerProgress.Instance.SaveNow();
         }
 
-        // 2. Reset timescale (Pause menu leaves it at 0)
-        Time.timeScale = 1f;
+        // 2. Unpause game so that when returning we are no longer in a pause state
+        PlayerInputManager.Instance.isPaused = false;
 
         // 3. Load the main menu scene
         SceneManager.LoadScene(mainMenuSceneName);

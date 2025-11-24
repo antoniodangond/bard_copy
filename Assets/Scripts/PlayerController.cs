@@ -497,7 +497,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (PlayerInputManager.isPaused)
+        if (PlayerInputManager.Instance.isPaused)
             return;
 
         if (PlayerInputManager.WasToggleInstrumentPressed)
@@ -624,7 +624,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (PlayerInputManager.isPaused) return;
+        if (PlayerInputManager.Instance.isPaused) return;
         // Move player rigidbody during FixedUpdate so that movement
         // is independent of framerate
         if (isDashing)

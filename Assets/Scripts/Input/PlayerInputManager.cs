@@ -45,7 +45,8 @@ public class PlayerInputManager : MonoBehaviour
     // make it a singleton to access easier
     public static PlayerInputManager Instance {get; private set; }
     // Giving up and adding pause functionality here
-    public static bool isPaused {get; private set;}
+    // public static bool isPaused {get; private set;}
+    public bool isPaused;
     // Assigned in editor
     public InputActionAsset InputActionAsset;
 
