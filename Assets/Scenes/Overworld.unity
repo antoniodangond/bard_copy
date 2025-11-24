@@ -13628,7 +13628,7 @@ PrefabInstance:
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: statuePieceToGive
       value: 
-      objectReference: {fileID: 1431299539}
+      objectReference: {fileID: 1614436846}
     - target: {fileID: 8469450189710251890, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
       propertyPath: HasDialogueOnMelody
       value: 1
@@ -13965,6 +13965,14 @@ PrefabInstance:
     - target: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_Name
       value: Tablet6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_Size.y
+      value: 2.7225628
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.3612814
       objectReference: {fileID: 0}
     - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -66813,11 +66821,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00a4fbb80e34a5f46904fde20117260a, type: 3}
---- !u!1 &1431299539 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
-  m_PrefabInstance: {fileID: 22524772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1437425133
 GameObject:
   m_ObjectHideFlags: 0
@@ -75156,6 +75159,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
   m_PrefabInstance: {fileID: 101017387}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614436846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5590482293706922634, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+  m_PrefabInstance: {fileID: 294716686}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1614571596 stripped
 Transform:
