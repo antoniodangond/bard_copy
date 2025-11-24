@@ -263,7 +263,10 @@ public class BackgroundAudio : AudioController
                     case "mus_underworldtheme_loop_v2":
                         AudioData.BackgroundMusicUnderworld.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
                         break;
-                    case "mus_beach_v1":
+                    case "mus_mausoleum_v2":
+                        AudioData.BackgroundMusicMausoleum.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;
+                    case "mus_beach_v2":
                         AudioData.BackgroundMusicBeach.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
                         break;
                     case "mus_forest_v1":
@@ -287,6 +290,9 @@ public class BackgroundAudio : AudioController
                 {
                     case "mus_overworldtheme_loop_v2":
                         AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;
+                    case "mus_mausoleum_v2":
+                        AudioData.BackgroundMusicMausoleum.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         break;
                     case "mus_underworldtheme_loop_v2":
                         AudioData.BackgroundMusicUnderworld.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
