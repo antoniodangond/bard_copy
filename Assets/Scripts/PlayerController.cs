@@ -521,6 +521,7 @@ public class PlayerController : MonoBehaviour
 
                     FacingDirection approachedFrom = sign.GetApproachDirection(transform);
                     sign.BeginDialogue(approachedFrom);
+                    return;
 
                 }
             }
