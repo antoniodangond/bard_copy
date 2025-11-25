@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BackgroundAudio : AudioController
 {
@@ -11,6 +13,8 @@ public class BackgroundAudio : AudioController
     public AudioSource frogsAudioSource;
     public AudioSource loudBirdsAudioSource;
     public AudioSource quietBirdsAudioSource;
+    public AudioSource statuePiecePickupStingSource;
+    private AudioClip statuePiecePickupSting;
     public float FadeDuration;
 
     private Sound currentBackgroundMusic;
@@ -19,8 +23,7 @@ public class BackgroundAudio : AudioController
     void Awake()
     {
 
-        Debug.Log("awake on background audio called");
-        // Instantiate audio sources
+        // Instantiate audio sources and clips
         InitializeSound(AudioData.BackgroundMusic);
         InitializeSound(AudioData.BackgroundMusicUnderworld);
         InitializeSound(AudioData.BackgroundMusicMausoleum);
@@ -33,6 +36,7 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
+        statuePiecePickupSting = statuePiecePickupStingSource.clip;
         // Old approach, may have been getting unloaded at initialization in the build
         // breathsAudioSource = gameObject.transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
         // frogsAudioSource = gameObject.transform.GetChild(2).GetChild(1).GetComponent<AudioSource>();
@@ -310,7 +314,6 @@ public class BackgroundAudio : AudioController
                         AudioData.BackgroundMusicDungeonA.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         AudioData.BackgroundMusicDungeonB.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         AudioData.BackgroundMusicDungeonC.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
-
                         break;
                     default:
                         break;
@@ -340,5 +343,32 @@ public class BackgroundAudio : AudioController
         quietBirdsAudioSource.volume = 1f;
         AudioData.BackgroundMusicPauseVolume = 0.5f;
         LowPassFilter.cutoffFrequency = 20000f;
+    }
+
+    public void PlayStatuePiecePickupSting()
+    {
+        StartCoroutine(StatuePickupRoutine(1f));
+    }
+
+    private IEnumerator StatuePickupRoutine(float fadeInTime)
+    {
+        // Set current bg music to 0 so we can hear sting
+        currentBackgroundMusic.Source.volume = 0;
+        // play sting and wait for it to be almost finished before fading in music again
+        statuePiecePickupStingSource.PlayOneShot(statuePiecePickupSting);
+        yield return new WaitForSeconds(statuePiecePickupSting.length - 1f);
+
+        // fadeInTime in background music again
+        float targetVolume = 0.65f;
+        for (float elapsedTime = 0f; elapsedTime < fadeInTime; elapsedTime += Time.deltaTime)
+        {
+            float t = elapsedTime/fadeInTime;
+
+            currentBackgroundMusic.Source.volume = Mathf.Lerp(0f, targetVolume, t);
+
+            yield return null;
+        }
+        // currentBackgroundMusic.SetVolume(currentBackgroundMusic.DefaultVolume);
+        
     }
 }
