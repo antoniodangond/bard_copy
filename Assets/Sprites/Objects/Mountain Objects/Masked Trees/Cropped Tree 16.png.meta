@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: f5cb2557db51c40f3b100edc968ba7da
+guid: 54de08d2a7ccd4cb9b3b739b58822efe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4563470621253823196
-    second: Cropped Tree 14_0
+      213: -1887046818733713484
+    second: Cropped Tree 16_0
   - first:
-      213: -1934821899776353200
-    second: Cropped Tree 14_1
-  - first:
-      213: 5808407567282439385
-    second: Cropped Tree 14_2
-  - first:
-      213: -3236663716086625595
-    second: Cropped Tree 14_3
-  - first:
-      213: -239207410305633942
-    second: Cropped Tree 14_4
+      213: 8941526388176948107
+    second: Cropped Tree 16_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,8 +52,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.46817988, y: 0.03393864}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -112,111 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cropped Tree 14_0
+      name: Cropped Tree 16_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 40
-        width: 541
-        height: 1340
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cdae3ca0a54b45f30800000000000000
-      internalID: 4563470621253823196
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cropped Tree 14_1
-      rect:
-        serializedVersion: 2
-        x: 415
-        y: 75
-        width: 167
-        height: 63
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 05c1f28bbb12625e0800000000000000
-      internalID: -1934821899776353200
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cropped Tree 14_2
-      rect:
-        serializedVersion: 2
-        x: 529
-        y: 84
-        width: 71
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9d48f8e78eb9b9050800000000000000
-      internalID: 5808407567282439385
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cropped Tree 14_3
-      rect:
-        serializedVersion: 2
-        x: 298
-        y: 16
-        width: 12
-        height: 27
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5cac241bf7f0513d0800000000000000
-      internalID: -3236663716086625595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cropped Tree 14_4
-      rect:
-        serializedVersion: 2
-        x: 301
         y: 0
-        width: 9
-        height: 17
+        width: 210
+        height: 170
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a617711b02a2eacf0800000000000000
-      internalID: -239207410305633942
+      spriteID: 4b798d69aecdfc5e0800000000000000
+      internalID: -1887046818733713484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cropped Tree 16_1
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 114
+        width: 352
+        height: 883
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8b811530eea61c70800000000000000
+      internalID: 8941526388176948107
       vertices: []
       indices: 
       edges: []
@@ -226,7 +151,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -235,11 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cropped Tree 14_0: 4563470621253823196
-      Cropped Tree 14_1: -1934821899776353200
-      Cropped Tree 14_2: 5808407567282439385
-      Cropped Tree 14_3: -3236663716086625595
-      Cropped Tree 14_4: -239207410305633942
+      Cropped Tree 16_0: -1887046818733713484
+      Cropped Tree 16_1: 8941526388176948107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
