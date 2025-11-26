@@ -10,6 +10,9 @@ public class Teleporter : MonoBehaviour
     public GameObject LandingPoint;
     public LayerMask PlayerLayer;
     public bool ShouldStartActive = true;
+    [Header("GameObjects to Affect")]
+    public GameObject objectToDeactivate;
+    public GameObject objectToActivate;
     [HideInInspector]
     public Teleporter destinationTeleporter;
     public bool hasBeenEntered = false;
@@ -31,6 +34,7 @@ public class Teleporter : MonoBehaviour
             if (isActive)
             {
                 hasBeenEntered = true;
+                HandleGameObjectsToAffect();
                 TeleportPlayer(other.gameObject);
             }
             else
@@ -62,5 +66,12 @@ public class Teleporter : MonoBehaviour
         {
             TeleportPlayer(player);
         }
+    }
+
+    private void HandleGameObjectsToAffect()
+    {
+        if (objectToDeactivate) {objectToDeactivate.SetActive(false);}
+        if (objectToActivate) {objectToActivate.SetActive(true);}
+        return;
     }
 }
