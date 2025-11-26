@@ -515,7 +515,6 @@ public class PlayerController : MonoBehaviour
                     CurrentState = PlayerState.Dialogue;
                     // reset movement when switching to Dialogue state
                     movement = Vector2.zero;
-                    Debug.Log("Movement is " + movement);
                     // stop walking animation
                     playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
 
@@ -579,7 +578,6 @@ public class PlayerController : MonoBehaviour
             {
                 // reset movement when switching to Dialogue state
                 movement = Vector2.zero;
-                Debug.Log("Movement is " + movement);
                 // stop walking animation
                 playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);
                 DialogueManager.AdvanceCurrentDialogue();

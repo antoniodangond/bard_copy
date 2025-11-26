@@ -511,6 +511,7 @@ public bool OnSongPlayed(string melody)
 
         DialogueManager.SetCurrentSpeaker(this);
         DialogueManager.StartDialogue(CurrentDialogue, direction);
+        if (signName == "Charon") {HandleSuccessFeedback(signName);}
     }
 
     // I know that this should live somewhere else, but we're so close to shipping I'm just doing it here
