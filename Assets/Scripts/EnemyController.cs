@@ -321,8 +321,8 @@ public class EnemyController : MonoBehaviour
     {
         try
         {
-            audioMixerScript.assignSFXGroup(audioSource
-            );
+            audioMixerScript.assignSFXGroup(audioSource);
+            if (audioSource3D) { audioMixerScript.assignSFXGroup(audioSource3D); }
         }
         catch { Debug.Log(gameObject.name); }
         // apparently i'm using just one audio source for all sounds, even though i'm instantiating 3...
