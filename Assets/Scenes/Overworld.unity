@@ -45707,7 +45707,8 @@ Transform:
   m_LocalPosition: {x: 47.4, y: 80.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1869375819842451291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &924841170
@@ -45766,7 +45767,8 @@ MonoBehaviour:
   followupLines:
   - You feel nymphs blow wind beneath your feet.
   - Press {DASH_KEY} to Nereid Dash.
-  sfx: {fileID: 0}
+  sfx: {fileID: 8300000, guid: 235b884661dd64fecb4985a4a7abcadf, type: 3}
+  audioSource: {fileID: 1869375819842451290}
   flashCount: 3
   flashDuration: 0.24
   flashOverlay: {fileID: 161175475}
@@ -62775,7 +62777,8 @@ MonoBehaviour:
   followupLines:
   - The vibrations of the ancestors hum through your bones.
   - Press {AOEAttack} to unleash a powerful chord in all directions.
-  sfx: {fileID: 0}
+  sfx: {fileID: 8300000, guid: 235b884661dd64fecb4985a4a7abcadf, type: 3}
+  audioSource: {fileID: 1395424951}
   flashCount: 3
   flashDuration: 0.24
   flashOverlay: {fileID: 161175475}
@@ -62935,7 +62938,8 @@ Transform:
   m_LocalPosition: {x: -13.86, y: 87.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1395424952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1301343552
@@ -66479,6 +66483,7 @@ MonoBehaviour:
   followupLines:
   - Power surges through you.
   sfx: {fileID: 0}
+  audioSource: {fileID: 0}
   flashCount: 4
   flashDuration: 0.12
   flashOverlay: {fileID: 161175475}
@@ -68375,6 +68380,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4599908749039350432, guid: 9eebe71b786cc4bdcb7407d00d774a86, type: 3}
   m_PrefabInstance: {fileID: 1395122533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1395424950
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1301343551}
+    m_Modifications:
+    - target: {fileID: 1986419468358708784, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_Name
+      value: audioSource2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+--- !u!82 &1395424951 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8170741706182897464, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+  m_PrefabInstance: {fileID: 1395424950}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1395424952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+  m_PrefabInstance: {fileID: 1395424950}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397745337
 GameObject:
@@ -104193,6 +104265,7 @@ MonoBehaviour:
   - The nymphs blow wind beneath your feet.
   - Press {DASH_KEY} to Nereid Step.
   sfx: {fileID: 0}
+  audioSource: {fileID: 0}
   flashCount: 3
   flashDuration: 0.24
   flashOverlay: {fileID: 161175475}
@@ -104892,6 +104965,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6666363287037868827, guid: a5b4445a92dc5274c8e4e228297345d1, type: 3}
   m_PrefabInstance: {fileID: 1109702795786928871}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1869375819842451289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 924841169}
+    m_Modifications:
+    - target: {fileID: 1986419468358708784, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_Name
+      value: audioSource2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+--- !u!82 &1869375819842451290 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8170741706182897464, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+  m_PrefabInstance: {fileID: 1869375819842451289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1869375819842451291 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8199273140888033573, guid: b90bc095c710d10479afb38802f9835b, type: 3}
+  m_PrefabInstance: {fileID: 1869375819842451289}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2638348843984160951
 PrefabInstance:

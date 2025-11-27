@@ -20,6 +20,7 @@ public class ChoiceReward : MonoBehaviour
 
     [Header("FX")]
     public AudioClip sfx;
+    public AudioSource audioSource;
     public int flashCount = 2;
     public float flashDuration = 0.12f;
     public CanvasGroup flashOverlay; // full-screen Image + CanvasGroup (alpha 0)
@@ -44,7 +45,8 @@ public class ChoiceReward : MonoBehaviour
         PlayerController.CurrentState = PlayerState.Dialogue;
 
         // 3) Simple flash + sfx
-        if (sfx) AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position, 0.9f);
+        // if (sfx) AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position, 1.3f);
+        if (sfx) audioSource.PlayOneShot(sfx);
         if (flashOverlay) yield return StartCoroutine(DoFlashes(flashOverlay, flashCount, flashDuration));
 
         // 4) Unlock upgrades
