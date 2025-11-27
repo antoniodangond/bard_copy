@@ -16,31 +16,75 @@ public class EnemyAudio : AudioController
         // AudioData.RandomAttacks.audioSource = gameObject.AddComponent<AudioSource>();
     }
 
-    public void PlayHit(AudioSource audioSource)
+    public void PlayHit(AudioSource audioSource, string name)
     {
-        if (AudioData.Hits.Length == 0) {
-            Debug.LogError("Enemy audio 'hits' length is 0");
-            return;
+        switch (name)
+        {
+            case "Snake":
+                if (AudioData.Hits.Length == 0) {
+                    Debug.LogError("Enemy audio 'hits' length is 0");
+                    return;
+                }
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.15f, true, audioSource);
+                break;
+            case "Owl":
+                if (AudioData.OwlHits.Length == 0) {
+                    Debug.LogError("Enemy audio 'hits' length is 0");
+                    return;
+                }
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlHits, 0.8f, 1.15f, true, audioSource);
+                break;
+            default:
+                return;
+            
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.15f, true, audioSource);
     }
-    public void PlayAttack(AudioSource audioSource)
+    public void PlayAttack(AudioSource audioSource, string name)
     {
-        if (AudioData.Attacks.Length == 0) {
-            Debug.LogError("Enemy audio 'attacks' length is 0");
-            return;
+        switch (name)
+        {
+            case "Snake":
+                if (AudioData.Attacks.Length == 0) {
+                    Debug.LogError("Enemy audio 'attacks' length is 0");
+                    return;
+                }
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Attacks, 0.8f, 1.15f, true, audioSource);
+                break;
+            case "Owl":
+                if (AudioData.OwlAttacks.Length == 0) {
+                    Debug.LogError("Enemy audio 'owl attacks' length is 0");
+                    return;
+                }
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlAttacks, 0.8f, 1.15f, true, audioSource);
+                break;
+            default:
+                break;
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Attacks, 0.8f, 1.15f, true, audioSource);
     }
 
-    public void PlayAggro(AudioSource audioSource)
+    public void PlayAggro(AudioSource audioSource, string name)
     {
-        if (AudioData.Aggro.Length == 0)
+        switch (name)
         {
-            Debug.LogError("Enemy audio 'aggro' length is 0");
-            return;
+            case "Snake":
+                if (AudioData.Aggro.Length == 0)
+                {
+                    Debug.LogError("Enemy audio 'aggro' length is 0");
+                    return;
+                }
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true, audioSource);
+                break;
+            case "Owl":
+                if (AudioData.OwlAggro.Length == 0)
+                {
+                    Debug.LogError("Enemy audio 'owl aggro' length is 0");
+                    return;
+                }
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlAggro, 0.8f, 1.15f, true, audioSource);
+                break;
+            default:
+                return;
         }
-        AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true, audioSource);
     }
     
     public void PlayIdleSounds(String EnemyName, AudioSource audioSource)

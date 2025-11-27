@@ -35,7 +35,8 @@ public class EnemyController : MonoBehaviour
     private float knockBackTime;
     private bool isBeingKnockedBack= false;
     private EnemyAudio enemyAudio;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
+    public AudioSource audioSource3D;
     private AudioMixerScript audioMixerScript;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -87,8 +88,8 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator handleDeathRoutine()
     {
-        enemyAudio.PlayHit(audioSource);
-        yield return new WaitForSeconds(1);
+        enemyAudio.PlayHit(audioSource, enemyName);
+        yield return new WaitForSeconds(audioSource.clip.length);
         Destroy(gameObject);
     }
 
@@ -135,7 +136,7 @@ public class EnemyController : MonoBehaviour
     {
 
         Health -= damage;
-        enemyAudio.PlayHit(audioSource);
+        enemyAudio.PlayHit(audioSource, enemyName);
         SpawnDamageParticles(attackDirection);
         StartCoroutine(EnemyDamageColorChangeRoutine());
 
@@ -214,7 +215,7 @@ public class EnemyController : MonoBehaviour
         Vector2 direction = getDirectionToTarget(targetRigidbody);
         // Rotate transform if necessary
         HandleRotation(direction);
-        enemyAudio.PlayAggro(audioSource);
+        enemyAudio.PlayAggro(audioSource, enemyName);
         yield return new WaitForSeconds(AgroTimeBeforeAttack);
 
         // Start attack
@@ -227,7 +228,7 @@ public class EnemyController : MonoBehaviour
         // Rotate transform again if necessary
         HandleRotation(direction);
         animator.SetBool(AnimatorParams.IsMoving, true);
-        enemyAudio.PlayAttack(audioSource);
+        enemyAudio.PlayAttack(audioSource, enemyName);
         // After attack duration, begin cooldown
         if (enemyName == "Owl")
         {
@@ -339,7 +340,7 @@ public class EnemyController : MonoBehaviour
                 float secondsToWait;
                 secondsToWait = rnd.Next(0,10);
                 yield return new WaitForSeconds(secondsToWait);
-                enemyAudio.PlayIdleSounds(EnemyName, audioSource);
+                enemyAudio.PlayIdleSounds(EnemyName, audioSource3D);
                 secondsToWait = rnd.Next(3, 7) + audioSource.clip.length;
                 yield return new WaitForSeconds(secondsToWait);
             }

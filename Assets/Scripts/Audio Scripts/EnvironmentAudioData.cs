@@ -6,6 +6,8 @@ public class EnvironmentAudioData : ScriptableObject
      [Header("Grave")]
     public AudioClip[] gravePushes;
 
-    [Header("Log")]
+    [Header("Objects Affected by Songs")]
     public AudioClip[] LogDisintegrate;
+    public AudioClip[] VinesGrow;
+    public AudioClip[] IceMelt;
 }

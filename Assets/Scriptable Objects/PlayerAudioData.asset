@@ -63,6 +63,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c997509d6096c4a44871fc32a431c669, type: 3}
   - {fileID: 8300000, guid: 386733aeafc454ba48cccf6db3f29290, type: 3}
   - {fileID: 8300000, guid: 3340fcb5d6c764f3aba9f708fc627b28, type: 3}
+  SnowFootsteps:
+  - {fileID: 8300000, guid: a3ae8d9d7e9b646e880bb71e0e218570, type: 3}
+  - {fileID: 8300000, guid: a0bc24dead5684ee89b0faff5472b921, type: 3}
+  - {fileID: 8300000, guid: 7352da444789e48afb4a98c68ab6b375, type: 3}
+  - {fileID: 8300000, guid: d7bba19cb971645b8ae4e252ef3d4180, type: 3}
+  - {fileID: 8300000, guid: 124b4f6f4a71446a086d673b74949a1d, type: 3}
+  - {fileID: 8300000, guid: 99da464a18bc349f39ac7870e8405431, type: 3}
+  - {fileID: 8300000, guid: 660543ff415184cd5bde8a753eae21f7, type: 3}
   MaxFootstepPitchVariation: 0.1
   MaxFootstepVolumeVariation: 0.1
   NoteB:
@@ -135,8 +143,8 @@ MonoBehaviour:
   PlayerSounds:
   - {fileID: 8300000, guid: 7ad7b4fccee7f446bb189dde905bb714, type: 3}
   PlayerDashSounds:
-  - {fileID: 8300000, guid: 6d78ca5c5655c43b994278cff543eb7b, type: 3}
-  - {fileID: 8300000, guid: a120d1741521942ea927ade65278ab61, type: 3}
+  - {fileID: 8300000, guid: 62834c144cfba4379aa6907454bbe36c, type: 3}
+  - {fileID: 8300000, guid: 5bed53bad8715470face13fed96d78db, type: 3}
   PlayerDeathSounds:
   - {fileID: 8300000, guid: 7ad7b4fccee7f446bb189dde905bb714, type: 3}
   RandomFootsteps: {fileID: 0}
