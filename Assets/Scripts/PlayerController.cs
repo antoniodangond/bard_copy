@@ -382,7 +382,7 @@ public class PlayerController : MonoBehaviour
     private void HandleDeath()
     {
         CurrentState = PlayerState.Dead;
-        playerAudio.PlayPlayerSound("PlayerDeath", 0.75f);
+        playerAudio.PlayPlayerDeath();
         if (LastCheckpoint != null)
         {
             // Teleport player to last teleporter touched

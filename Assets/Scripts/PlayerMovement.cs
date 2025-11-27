@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector2 dashDirection = movement;
             spawndashParticles_1(dashDirection * -1);
+            PlayerAudio.instance.PlayPlayerDash();
             StartCoroutine(DashRoutine(dashDirection));
             StartCoroutine(DashCooldownRoutine());
             PlayerController.isDashing = false;
@@ -86,8 +87,6 @@ public class PlayerMovement : MonoBehaviour
             //     // rb.linearVelocity = new Vector2(0, 0).normalized;
             //     break;
             // }
-            // Particle system looks cooler than trail renderer, so disabling for now
-            // trailRenderer.emitting = true;
             _elapsedTime += Time.fixedDeltaTime;
             Vector2 Force = movement.normalized * moveSpeed * dashAmount;
             rb.linearVelocity = Force;

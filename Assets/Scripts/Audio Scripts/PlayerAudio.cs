@@ -1,6 +1,7 @@
-using Unity.VisualScripting;
+using System;
+using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [System.Serializable]
 public class NamedAudioClip
@@ -15,6 +16,9 @@ public class PlayerAudio : AudioController
     public PlayerAudioData AudioData;
     public static PlayerAudio instance;
     public string currentTerrain;
+    public AudioSource playerSoundsAudioSource;
+    public AudioSource playerDashAudioSource;
+    private RandomAudioManager randomAudio;
 
     void Awake() {
         if (instance == null)
@@ -43,7 +47,9 @@ public class PlayerAudio : AudioController
         AudioData.RandomAttackNotes = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomAttackChords = gameObject.AddComponent<RandomAudioManager>();
         AudioData.RandomHits = gameObject.AddComponent<RandomAudioManager>();
-        AudioData.PlayerSoundsSource = gameObject.AddComponent<AudioSource>();
+        // AudioData.PlayerSoundsSource = gameObject.AddComponent<AudioSource>();
+        AudioData.PlayerSoundsSource = playerSoundsAudioSource;
+        randomAudio = gameObject.AddComponent<RandomAudioManager>();
     }
 
     public void PlayFootstep()
@@ -151,24 +157,14 @@ public class PlayerAudio : AudioController
         AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.25f, true, audioSource);
     }
     
-    public void PlayPlayerSound(string clipname, float vol_mult)
+    public void PlayPlayerDeath()
     {
-        if (AudioData.PlayerSounds.Length == 0) 
-        {
-            Debug.LogError("Player audio 'Player Sounds' length is 0");
-            return;
-        }
-        foreach (var sound in playerSoundLibrary)
-        {
-            if (sound.name == clipname)
-            {
-                AudioData.PlayerSoundsSource.PlayOneShot(sound.clip, vol_mult);
-            }
-            else
-            {
-                Debug.LogError($"sound {clipname} not found!");
-            }
-        }
+        randomAudio.PlayRandomAudioNoDelayWithFX(AudioData.PlayerDeathSounds, 3f, 3f, false, playerSoundsAudioSource);
+    }
+
+    public void PlayPlayerDash()
+    {
+        randomAudio.PlayRandomAudioNoDelayWithFX(AudioData.PlayerDashSounds, 0.8f, 1.2f, true, playerDashAudioSource);
     }
 
     // TODO: implement
