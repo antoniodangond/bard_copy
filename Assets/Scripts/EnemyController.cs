@@ -336,8 +336,11 @@ public class EnemyController : MonoBehaviour
         {
             while (!gameObject.IsDestroyed())
             {
+                float secondsToWait;
+                secondsToWait = rnd.Next(0,10);
+                yield return new WaitForSeconds(secondsToWait);
                 enemyAudio.PlayIdleSounds(EnemyName, audioSource);
-                float secondsToWait = rnd.Next(3, 7) + audioSource.clip.length;
+                secondsToWait = rnd.Next(3, 7) + audioSource.clip.length;
                 yield return new WaitForSeconds(secondsToWait);
             }
         }

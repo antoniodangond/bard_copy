@@ -19,7 +19,8 @@ public class EnemyAudioData : ScriptableObject
     public AudioClip[] OwlAttacks;
 
     [Header("Idle")]
-    public AudioClip[] OwlIdle;
+    public AudioClip[] OwlIdle_1;
+    public AudioClip[] OwlIdle_2;
 
     [Header ("Audio Managers")]
     public RandomAudioManager RandomHits;

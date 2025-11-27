@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAudio : AudioController
@@ -44,12 +45,21 @@ public class EnemyAudio : AudioController
     
     public void PlayIdleSounds(String EnemyName, AudioSource audioSource)
     {
-        if (EnemyName == "Owl" && AudioData.OwlIdle.Length == 0)
+        if (EnemyName == "Owl" && AudioData.OwlIdle_1.Length == 0)
         {
             Debug.LogError("Enemy Owl 'idle' length is 0");
             return;
         }
-        AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle, 0.8f, 1.2f, false, audioSource);
+        StartCoroutine(PlayOwlIdleSoundsRoutine(audioSource));
+    }
+
+    private IEnumerator PlayOwlIdleSoundsRoutine(AudioSource audioSource)
+    {
+        AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle_1, 1f, 1.1f, false, audioSource);
+        yield return new WaitForSeconds(AudioData.OwlIdle_1[0].length + 0.5f);
+        AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle_2, 1f, 1.2f, false, audioSource);
+        yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 1.2f));
+        
     }
 
     // TODO: implement

@@ -24,10 +24,14 @@ MonoBehaviour:
   Attacks:
   - {fileID: 8300000, guid: c068c87267d7c44e698af3061498a716, type: 3}
   OwlAttacks: []
-  OwlIdle:
+  OwlIdle_1:
   - {fileID: 8300000, guid: 88ed4d465008f4e508f25fd590ada46e, type: 3}
   - {fileID: 8300000, guid: 07c1a3f71cf5d4a52801d5f785bf0690, type: 3}
   - {fileID: 8300000, guid: 2eeed9bdd66b3411286931eabd454553, type: 3}
   - {fileID: 8300000, guid: 6ad516996d542433aab1c2021be3621c, type: 3}
+  OwlIdle_2:
+  - {fileID: 8300000, guid: 3c97234943329473e856ba9beec2d12c, type: 3}
+  - {fileID: 8300000, guid: 4ffcb8187cc164fff8cf8d5450765b3c, type: 3}
+  - {fileID: 8300000, guid: bb68531c8306c435bbd535e2443bad73, type: 3}
   RandomHits: {fileID: 0}
   OwlRandomIdle: {fileID: 0}
