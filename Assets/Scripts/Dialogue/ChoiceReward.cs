@@ -1,4 +1,4 @@
-// Assets/Scripts/Dialogue/ChoiceReward.cs
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -26,65 +26,112 @@ public class ChoiceReward : MonoBehaviour
     public CanvasGroup flashOverlay; // full-screen Image + CanvasGroup (alpha 0)
 
     [Header("Events (optional)")]
-    public UnityEvent onGranted;        // hook VFX/SFX/animators
-    public UnityEvent onAlreadyClaimed; // feedback if revisited
+    public UnityEvent onGranted;
+    public UnityEvent onAlreadyClaimed;
 
-    public bool IsAlreadyClaimed() =>
-        oneTime && PlayerProgress.Instance.IsRewardClaimed(rewardId);
-
-    public IEnumerator BestowAndExplain( Dictionary<string, string> playerControls, string currentControlScheme)
+    public bool IsAlreadyClaimed()
     {
-        // 1) Do nothing if already claimed
+        if (!oneTime) return false;
+        if (PlayerProgress.Instance == null) return false;
+        return PlayerProgress.Instance.IsRewardClaimed(rewardId);
+    }
+
+    public IEnumerator BestowAndExplain(Dictionary<string, string> playerControls, string currentControlScheme)
+    {
+        // 1) Already claimed?
         if (IsAlreadyClaimed())
         {
             onAlreadyClaimed?.Invoke();
             yield break;
         }
 
-        // 2) Lock player in Dialogue state (already true if we came from choice UI, but ensure)
+        // 2) Lock player in dialogue state
         PlayerController.CurrentState = PlayerState.Dialogue;
 
-        // 3) Simple flash + sfx
-        // if (sfx) AudioSource.PlayClipAtPoint(sfx, Camera.main.transform.position, 1.3f);
-        if (sfx) audioSource.PlayOneShot(sfx);
-        if (flashOverlay) yield return StartCoroutine(DoFlashes(flashOverlay, flashCount, flashDuration));
+        // 3) FX: sound + flashes
+        if (sfx != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(sfx);
+        }
 
-        // 4) Unlock upgrades
-        foreach (var u in upgrades) PlayerProgress.Instance.Unlock(u);
+        if (flashOverlay != null)
+        {
+            yield return StartCoroutine(DoFlashes(flashOverlay, flashCount, flashDuration));
+        }
+
+        // 4) Unlock upgrades in PlayerProgress
+        if (PlayerProgress.Instance != null && upgrades != null)
+        {
+            foreach (var u in upgrades)
+            {
+                if (u == null) continue;
+                PlayerProgress.Instance.Unlock(u);
+            }
+        }
+
         onGranted?.Invoke();
 
         // 5) Mark as claimed
-        if (oneTime) PlayerProgress.Instance.MarkRewardClaimed(rewardId);
-
-        // 6) Show follow-up lines via a temporary Dialogue asset
-        if (followupLines != null && followupLines.Length > 0)
+        if (oneTime && PlayerProgress.Instance != null)
         {
-            var temp = ScriptableObject.CreateInstance<Dialogue>();
-            string newLine;
-            string dashButton = playerControls["dash"];
-            string aOEAttackButton1 = playerControls["aoe_attack_1"];
-            string aOEAttackButton2 = playerControls["aoe_attack_2"];
-            // if (rewardId == "dash") temp.universalLines.Add($"Press {dashControl} to Nereid Step");
-            switch (rewardId)
-            {
-                case "dash":
-                    newLine = $"Press {dashButton} to Nereid Step";
-                    followupLines[1] = newLine;
-                    break;
-                case "aoe_attack":
-                    newLine = currentControlScheme == "Keyboard" ? $"Press {aOEAttackButton1} or {aOEAttackButton2} to AOE ATTACK NAME" : $"Press {aOEAttackButton1} to AOE ATTACK NAME";
-                    followupLines[1] = newLine;
-                    break;
-                default :
-                    break;
-            }
-            temp.universalLines.AddRange(followupLines);
-            DialogueManager.StartDialogue(temp, PlayerController.FacingDirection);
-            // Wait until the follow-up dialogue closes
-            while (DialogueManager.IsOpen) yield return null;
+            PlayerProgress.Instance.MarkRewardClaimed(rewardId);
         }
 
-        // 7) Release control back to the player (DialogueManager does this on close, but ensure)
+        // 6) Follow-up dialogue, including dynamic button text
+        if (followupLines != null && followupLines.Length > 0)
+        {
+            // Safely pull out the buttons (with fallbacks)
+            playerControls.TryGetValue("dash", out var dashButton);
+            playerControls.TryGetValue("aoe_attack_1", out var aoe1);
+            playerControls.TryGetValue("aoe_attack_2", out var aoe2);
+
+            // Make a copy so we don't mutate the original asset
+            var lines = (string[])followupLines.Clone();
+
+            // Choose what to inject based on rewardId
+            if (rewardId == "dash")
+            {
+                string line = !string.IsNullOrEmpty(dashButton)
+                    ? $"Press {dashButton} to Nereid Step"
+                    : "You feel lighter on your feet.";
+
+                // Prefer index 1 if it exists, otherwise clobber index 0
+                int targetIndex = (lines.Length > 1) ? 1 : 0;
+                lines[targetIndex] = line;
+            }
+            else if (rewardId == "aoe" || rewardId == "aoe_attack")
+            {
+                string line;
+
+                if (currentControlScheme == "Keyboard")
+                {
+                    // Keyboard: show both keys if you have them
+                    if (!string.IsNullOrEmpty(aoe1) && !string.IsNullOrEmpty(aoe2))
+                        line = $"Press {aoe1} or {aoe2} to unleash your AOE ATTACK.";
+                    else
+                        line = $"Press {aoe1} to unleash a dissonant chord in all directions.";
+                }
+                else
+                {
+                    // Gamepad: aoe1 should already be a sprite-tagged icon string
+                    line = !string.IsNullOrEmpty(aoe1)
+                        ? $"Press {aoe1} to unleash a dissonant chord in all directions."
+                        : "You feel a new power stirring within you.";
+                }
+
+                int targetIndex = (lines.Length > 1) ? 1 : 0;
+                lines[targetIndex] = line;
+            }
+
+            var temp = ScriptableObject.CreateInstance<Dialogue>();
+            temp.universalLines.AddRange(lines);
+
+            DialogueManager.StartDialogue(temp, PlayerController.FacingDirection);
+            while (DialogueManager.IsOpen)
+                yield return null;
+        }
+
+        // 7) Ensure control returns to player (DialogueManager also does this on close)
         PlayerController.CurrentState = PlayerState.Default;
     }
 
@@ -92,7 +139,6 @@ public class ChoiceReward : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            // fade up
             for (float t = 0; t < dur; t += Time.unscaledDeltaTime)
             {
                 cg.alpha = Mathf.Lerp(0f, 1f, t / dur);
@@ -100,7 +146,6 @@ public class ChoiceReward : MonoBehaviour
             }
             cg.alpha = 1f;
 
-            // fade down
             for (float t = 0; t < dur; t += Time.unscaledDeltaTime)
             {
                 cg.alpha = Mathf.Lerp(1f, 0f, t / dur);

@@ -341,7 +341,7 @@ public class EnemyController : MonoBehaviour
                 secondsToWait = rnd.Next(0,10);
                 yield return new WaitForSeconds(secondsToWait);
                 enemyAudio.PlayIdleSounds(EnemyName, audioSource3D);
-                secondsToWait = rnd.Next(3, 7) + audioSource.clip.length;
+                secondsToWait = rnd.Next(3, 7) + audioSource3D.clip.length;
                 yield return new WaitForSeconds(secondsToWait);
             }
         }

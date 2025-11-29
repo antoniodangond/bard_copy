@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         // Initialize lastPlayedNotes to a queue of null values
         lastPlayedNotes = BuildEmptyNotesQueue();
 
-        // --- Hard reset statics so domain-reload quirks can�t leak previous values ---
+        // --- Hard reset statics so domain-reload quirks can't leak previous values ---
         canDash = false;
         AbilityGate.AOEUnlocked = false;
 

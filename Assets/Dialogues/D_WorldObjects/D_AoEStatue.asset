@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
-  m_Name: D_Statue
+  m_Name: D_AoEStatue
   m_EditorClassIdentifier: 
   upLines: []
   downLines: []
   leftLines: []
   rightLines: []
   universalLines:
-  - "\u201CStep swiftly; the world parts for those who do not wait.\u201D"
-  - "The statue\u2019s outstretched hand glimmers faintly. A faint hum vibrates in
-    your chest."
+  - '"Loose the chord; let the air itself remember your song."'
+  - The statue shimmers with a pale gold light. You feel a hum deep in your chest.
   - '[CHOICE]'
