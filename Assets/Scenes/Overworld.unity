@@ -1227,6 +1227,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.35
       objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_MiddleHead
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1687,6 +1691,10 @@ PrefabInstance:
     - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_Torso
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14647,6 +14655,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3.41
       objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_RightArm
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24222,7 +24234,7 @@ Transform:
   m_GameObject: {fileID: 471366968}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 36.5, y: 40.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26612,7 +26624,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 36.5, y: 40.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31539,11 +31551,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 36.5
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 38.5
       objectReference: {fileID: 0}
     - target: {fileID: 5553036053896267798, guid: e3c3a71caf7954eacb125989ba6b3a1d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36447,6 +36459,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3.81
       objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_RightHead
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -39457,6 +39473,10 @@ PrefabInstance:
     - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_LeftArm
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -45798,6 +45818,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 3.16
       objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_LeftHead
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -48635,6 +48659,10 @@ PrefabInstance:
     - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_LeftLeg
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -99519,6 +99547,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.63
       objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_RightLeg
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -106631,6 +106663,10 @@ PrefabInstance:
     - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: id
+      value: Statue_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
