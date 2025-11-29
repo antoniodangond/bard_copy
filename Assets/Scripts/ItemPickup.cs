@@ -25,6 +25,8 @@ public class ItemPickup : MonoBehaviour
 
     void Awake()
     {
+        if (uid == null)
+            uid = GetComponent<UniqueId>();
         triggerCol = GetComponent<Collider2D>();
         if (triggerCol) triggerCol.isTrigger = true;
         if (!uid) uid = GetComponent<UniqueId>();
