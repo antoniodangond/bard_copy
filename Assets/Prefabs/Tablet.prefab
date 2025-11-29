@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 865073003988866832}
   - component: {fileID: 6406908071645235814}
   - component: {fileID: 2351527935209028833}
+  - component: {fileID: 6511462108698302344}
   m_Layer: 0
   m_Name: Tablet
   m_TagString: Untagged
@@ -150,4 +151,19 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  itemName: Tablet
+  hideOnPickup: 1
+  uid: {fileID: 0}
+  pieceName: 
+--- !u!114 &6511462108698302344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5590482293706922634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510f2fd619094c14fa55028fa27f2eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
