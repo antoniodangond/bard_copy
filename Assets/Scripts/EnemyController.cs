@@ -48,7 +48,9 @@ public class EnemyController : MonoBehaviour
         enemyAudio = FindAnyObjectByType<EnemyAudio>();
         audioMixerScript = GetComponent<AudioMixerScript>();
         audioSource = gameObject.GetComponent<AudioSource>();
-        isFacingRight = transform.rotation.eulerAngles.y == 180;
+        if (enemyName == "Phantom") {isFacingRight = transform.rotation.eulerAngles.y == -180;}
+        else {isFacingRight = transform.rotation.eulerAngles.y == 180;}
+        // isFacingRight = transform.rotation.eulerAngles.y == 180;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultSpriteColor = spriteRenderer.color;
