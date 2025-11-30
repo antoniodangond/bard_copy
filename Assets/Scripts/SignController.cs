@@ -229,8 +229,11 @@ public bool OnSongPlayed(string melody)
         // Play all available sounds using inspector-defined volume & delay
         foreach (var audiosource in audioSources)
         {
-            audiosource.volume = soundVolume;  // Uses adjustable volume
-            audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
+            if (signName != "Charon")
+            {
+                audiosource.volume = soundVolume;  // Uses adjustable volume
+                audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
+            }
         }
 
         // Mark world state in PlayerProgress, using UniqueId as key
