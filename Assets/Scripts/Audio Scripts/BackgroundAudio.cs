@@ -33,9 +33,11 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.BackgroundMusicDungeonB);
         InitializeSound(AudioData.BackgroundMusicDungeonC);
         InitializeSound(AudioData.BackgroundMusicBeach);
+        InitializeSound(AudioData.BackgroundMusicMainMenu);
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
+        
         statuePiecePickupSting = statuePiecePickupStingSource.clip;
         // Old approach, may have been getting unloaded at initialization in the build
         // breathsAudioSource = gameObject.transform.GetChild(2).GetChild(0).GetComponent<AudioSource>();
@@ -53,7 +55,7 @@ public class BackgroundAudio : AudioController
         AudioData.RandomAmbienceQuietBirds = gameObject.AddComponent<RandomAudioManager>();
         
 
-        currentBackgroundMusic = AudioData.BackgroundMusic;
+        // currentBackgroundMusic = AudioData.BackgroundMusicMainMenu;
 
         // Subscribe to custom event
         CustomEvents.OnPlayerStateChange.AddListener(OnPlayerStateChange);
@@ -69,10 +71,11 @@ public class BackgroundAudio : AudioController
 
     public void StartBackgroundMusic()
     {
-        currentBackgroundMusic = AudioData.BackgroundMusic;
-        AudioData.BackgroundMusic.Play();
+        currentBackgroundMusic = AudioData.BackgroundMusicMainMenu;
+        AudioData.BackgroundMusicMainMenu.Play();
         // Play alternate bg clips at 0 volume
         AudioData.BackgroundMusicUnderworld.Play(1f, 0f);
+        AudioData.BackgroundMusic.Play(1f, 0f);
         AudioData.BackgroundMusicMausoleum.Play(1f, 0f);
         AudioData.BackgroundMusicForest.Play(1f, 0f);
         AudioData.BackgroundMusicBeach.Play(1f, 0f);
@@ -80,7 +83,6 @@ public class BackgroundAudio : AudioController
         AudioData.BackgroundMusicDungeonA.Play(1f, 0f);
         AudioData.BackgroundMusicDungeonB.Play(1f, 0f);
         AudioData.BackgroundMusicDungeonC.Play(1f, 0f);
-
     }
     
     public void StartAmbience()
@@ -159,6 +161,16 @@ public class BackgroundAudio : AudioController
                 newAmbience = AudioData.UnderworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
                 PlayRandomBreaths();
+                break;
+            case "MainMenu":
+                StopRandomBreaths();
+                StopRandomLoudBirds();
+                StopRandomQuietBirds();
+                newSound = AudioData.BackgroundMusicMainMenu;
+                newAmbience = AudioData.OverworldAmbience;
+                PlayerAudio.instance.currentTerrain = "Grass";
+                PlayRandomBreaths();
+                PlayRandomFrogs();
                 break;
             case "Mausoleum":
                 StopRandomFrogs();
@@ -264,6 +276,9 @@ public class BackgroundAudio : AudioController
                     case "mus_overworldtheme_loop_v2":
                         AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
                         break;
+                    case "mus_mainmenu_v1":
+                        AudioData.BackgroundMusicMainMenu.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
+                        break;    
                     case "mus_underworldtheme_loop_v2":
                         AudioData.BackgroundMusicUnderworld.SetVolume(AudioData.BackgroundMusicInstrumentVolume);
                         break;
@@ -295,6 +310,9 @@ public class BackgroundAudio : AudioController
                     case "mus_overworldtheme_loop_v2":
                         AudioData.BackgroundMusic.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         break;
+                    case "mus_mainmenu_v1":
+                        AudioData.BackgroundMusicMainMenu.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
+                        break;    
                     case "mus_mausoleum_v2":
                         AudioData.BackgroundMusicMausoleum.SetVolume(AudioData.BackgroundMusicInstrumentMelodyVolume);
                         break;
