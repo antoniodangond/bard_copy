@@ -89,7 +89,8 @@ public class EnemyController : MonoBehaviour
     private IEnumerator handleDeathRoutine()
     {
         enemyAudio.PlayHit(audioSource, enemyName);
-        yield return new WaitForSeconds(audioSource.clip.length);
+        // yield return new WaitForSeconds(audioSource.clip.length);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
     }
 
