@@ -29,6 +29,10 @@ PrefabInstance:
       value: Phantom
       objectReference: {fileID: 0}
     - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 9061715247013927833}
+    - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
       propertyPath: damageParticles
       value: 
       objectReference: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}
@@ -3606,3 +3610,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &9061715247013927833 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1353410141634937257, guid: 859c234214669476186e24188d770445, type: 3}
+  m_PrefabInstance: {fileID: 8001182794171439664}
+  m_PrefabAsset: {fileID: 0}
