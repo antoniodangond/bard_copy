@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float dashCooldownTime = 1f;
     public float dashTime = 0.25f;
     private float dashAmount = 15f;
-    // private TrailRenderer trailRenderer;
     [SerializeField] private ParticleSystem dashParticles_1;
     [SerializeField] private ParticleSystem dashParticles_2;
     private ParticleSystem dashParticles_1_Instance;
@@ -22,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        // trailRenderer = gameObject.GetComponent<TrailRenderer>();
     }
 
     private void RotateTransform(bool shouldFaceRight)

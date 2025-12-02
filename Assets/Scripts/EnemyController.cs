@@ -255,10 +255,11 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator AttackCooldown()
     {
+        float retreatLength = AttackDurationSeconds / 4;
         // Exit early if enemy has died
         if (currentState == EnemyState.Dead) { yield break; }
-        targetDirection = targetDirection * new Vector2(-1,-1);
-        yield return new WaitForSeconds(AttackDurationSeconds);
+        StartCoroutine(Retreat(retreatLength));
+        yield return new WaitForSeconds(retreatLength);
         // Debug.Log("Enemy cooldown");
         currentState = EnemyState.AttackCooldown;
         // Reset target direction
@@ -276,6 +277,14 @@ public class EnemyController : MonoBehaviour
             target = hitPlayers[0].gameObject;
             StartCoroutine(StartAttack(target));
         }
+    }
+
+    private IEnumerator Retreat(float retreatLength)
+    {
+        if (currentState == EnemyState.Dead) { yield break; }
+        // rb.linearVelocity = rb.linearVelocity * 1.5f;
+        targetDirection = targetDirection * new Vector2(-1,-1);
+        yield return new WaitForSeconds(retreatLength);
     }
 
     // TODO: consolidate with PlayerController function
@@ -305,7 +314,6 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Debug.Log($"Is being knocked back is {isBeingKnockedBack}");
         // Move only if attacking
         if (currentState == EnemyState.Attacking && !isBeingKnockedBack)
         {
