@@ -27,6 +27,11 @@ public class CerberusStatue : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        ApplySavedStateFromProgress();
+    }
+
     public void ActivateStatuePiece(string statuePieceName)
     {
         foundPieces++;
@@ -49,4 +54,17 @@ public class CerberusStatue : MonoBehaviour
         // optional: add a particle effect
     }
 
+    private void ApplySavedStateFromProgress()
+    {
+        if (PlayerProgress.Instance == null)
+            return;
+
+        foreach (KeyValuePair<string, GameObject> statuePiece in statuePiecesDict)
+        {
+            if (PlayerProgress.Instance.HasCollected(statuePiece.Key)) 
+            {
+                statuePiece.Value.SetActive(true);
+            }
+        }
+    }
 }

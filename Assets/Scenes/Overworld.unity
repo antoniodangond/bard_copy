@@ -55587,7 +55587,7 @@ MonoBehaviour:
   frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
-  allowBump: 1
+  allowBump: 0
 --- !u!82 &1125990606
 AudioSource:
   m_ObjectHideFlags: 0
@@ -71803,7 +71803,7 @@ MonoBehaviour:
   frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
-  allowBump: 1
+  allowBump: 0
 --- !u!114 &1437425139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79338,7 +79338,7 @@ MonoBehaviour:
   frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
-  allowBump: 1
+  allowBump: 0
 --- !u!114 &1599168818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88878,7 +88878,7 @@ MonoBehaviour:
   frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
-  allowBump: 1
+  allowBump: 0
 --- !u!114 &1806381435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97659,7 +97659,7 @@ MonoBehaviour:
   frameIsSliced: 0
   frameColorSelected: {r: 1, g: 1, b: 1, a: 1}
   frameColorDeselected: {r: 1, g: 1, b: 1, a: 0}
-  allowBump: 1
+  allowBump: 0
 --- !u!114 &2001143358
 MonoBehaviour:
   m_ObjectHideFlags: 0
