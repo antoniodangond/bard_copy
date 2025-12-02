@@ -1686,6 +1686,14 @@ PrefabInstance:
       value: Tablet3
       objectReference: {fileID: 0}
     - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_Size.y
+      value: 2.6189537
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.30947685
+      objectReference: {fileID: 0}
+    - target: {fileID: 6406908071645235814, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.61
       objectReference: {fileID: 0}
