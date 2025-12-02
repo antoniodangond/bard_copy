@@ -257,6 +257,8 @@ public class EnemyController : MonoBehaviour
     {
         // Exit early if enemy has died
         if (currentState == EnemyState.Dead) { yield break; }
+        targetDirection = targetDirection * new Vector2(-1,-1);
+        yield return new WaitForSeconds(AttackDurationSeconds);
         // Debug.Log("Enemy cooldown");
         currentState = EnemyState.AttackCooldown;
         // Reset target direction
