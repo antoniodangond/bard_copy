@@ -282,7 +282,7 @@ public class EnemyController : MonoBehaviour
     private IEnumerator Retreat(float retreatLength)
     {
         if (currentState == EnemyState.Dead) { yield break; }
-        // rb.linearVelocity = rb.linearVelocity * 1.5f;
+        rb.linearVelocity = rb.linearVelocity * 2.5f;
         targetDirection = targetDirection * new Vector2(-1,-1);
         yield return new WaitForSeconds(retreatLength);
     }

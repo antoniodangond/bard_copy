@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BackgroundAudio))]
@@ -7,6 +8,10 @@ public class GameManager : MonoBehaviour
 
     public BackgroundAudio backgroundAudio;
     private AudioMixerScript audioMixerScript;
+    public int numQuestNPCs = 3;
+    private string[] questNPCs = new string[3];
+    [HideInInspector] public int NPCQuestsSolved;
+    private bool allQuestsSolved;
 
     void Awake()
     {
@@ -29,6 +34,37 @@ public class GameManager : MonoBehaviour
 
         // Subscribe to custom event
         CustomEvents.OnCombatEncounterCleared.AddListener(OnCombatEncounterCleared);
+
+        InitializeQuestNPCsList();
+        NPCQuestsSolved = 0;
+        allQuestsSolved = false;
+    }
+
+    void Start() {
+        // Start background music
+        backgroundAudio.StartBackgroundMusic();
+        backgroundAudio.StartAmbience();
+        if (PlayerProgress.Instance != null)
+        {
+            ApplySavedStateFromProgress();
+        }
+        // backgroundAudio.PlayRandomBreaths();
+        // backgroundAudio.PlayRandomFrogs();
+    }
+
+    void Update()
+    {
+        if (allQuestsSolved == false && NPCQuestsSolved == 3)
+        {
+            allQuestsSolved = true;
+        }       
+    }
+
+    private void InitializeQuestNPCsList()
+    {
+        questNPCs[0] = "NPC_Ghostboy"; 
+        questNPCs[1] = "NPC_Captain";
+        questNPCs[2] = "NPC_Mountaineer";
     }
 
     void OnDestroy()
@@ -37,13 +73,6 @@ public class GameManager : MonoBehaviour
         CustomEvents.OnCombatEncounterCleared.RemoveListener(OnCombatEncounterCleared);
     }
 
-    void Start() {
-        // Start background music
-        backgroundAudio.StartBackgroundMusic();
-        backgroundAudio.StartAmbience();
-        // backgroundAudio.PlayRandomBreaths();
-        // backgroundAudio.PlayRandomFrogs();
-    }
 
     void OnCombatEncounterCleared(GameObject combatEncounter)
     {
@@ -73,5 +102,15 @@ public class GameManager : MonoBehaviour
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicDungeonB.Source);
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicDungeonC.Source);
         audioMixerScript.assignMUSGroup(backgroundAudio.AudioData.BackgroundMusicMainMenu.Source);
+    }
+
+    private void ApplySavedStateFromProgress()
+    {
+        foreach (string name in questNPCs)
+        {
+            if (PlayerProgress.Instance.GetNPCStatus(name) == "MelodySolved") NPCQuestsSolved += 1;
+        }
+
+        if (NPCQuestsSolved == 3) allQuestsSolved = true;
     }
 }

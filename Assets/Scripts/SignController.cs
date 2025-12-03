@@ -250,6 +250,7 @@ public bool OnSongPlayed(string melody)
             // NPCs whose dialog/state should advance
             Debug.Log($"[SignController:{name}] SetNPCStatus MelodySolved for UniqueId={uniqueId.Id}");
             PlayerProgress.Instance.SetNPCStatus(uniqueId.Id, "MelodySolved");
+            if (signName != "Charon") GameManager.Instance.NPCQuestsSolved += 1;
         }
         }
         if (signName != "Log" && signName != "Vines" && signName != "Ice")
@@ -344,8 +345,10 @@ public bool OnSongPlayed(string melody)
         if (npcStatus == "MelodySolved")
         {
             // Match the “post-melody” state:
-            isDialogueUpdated = true;
-            HasDialogueOnMelody = true;
+            // isDialogueUpdated = true;
+            // HasDialogueOnMelody = true;
+            // Destroy(GetComponent<Animator>());
+            // spriteRenderer.enabled = false;
 
             if (signName == "Captain")
             {
@@ -358,10 +361,12 @@ public bool OnSongPlayed(string melody)
             }
 
             // Also disable colliders if that’s what the success animation does
-            foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
-                collider.enabled = false;
-            foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
-                collider.enabled = false;
+            // foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
+            //     collider.enabled = false;
+            // foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
+            //     collider.enabled = false;
+            
+            Destroy(gameObject);
         }
     }
 
