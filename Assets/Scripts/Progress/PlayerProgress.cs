@@ -240,7 +240,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     internal void Save()
     {
         // If a SaveManager exists, let it schedule/flush; else write immediately.
-        var saveManager = FindObjectOfType<MonoBehaviour>() as object; // dummy to avoid hard dependency
+        var saveManager = FindFirstObjectByType<MonoBehaviour>() as object; // dummy to avoid hard dependency
         var json = BuildJson();
 
         try
