@@ -65,6 +65,7 @@ public class SignController : MonoBehaviour
     public Dialogue CurrentDialogue => isDialogueUpdated ? updatedDialogue : defaultDialogue;
 
     private bool waitingForChoice = false; // Track if waiting for choice
+    private EurydiceGrave eurydiceGrave;
     
     private void OnEnable()
     {
@@ -90,6 +91,7 @@ private void Start()
 {
     // Debug.Log($"[SignController:{name}] Start → calling ApplySavedStateFromProgress");
     ApplySavedStateFromProgress();
+    if (signName == "E_Grave") { eurydiceGrave = gameObject.GetComponent<EurydiceGrave>();}
 }
 
     public void Awake()
@@ -182,6 +184,11 @@ private void Start()
 // Method called when a song is played nearby
 public bool OnSongPlayed(string melody)
 {
+    if (signName == "E_Grave" && eurydiceGrave) 
+    {
+        eurydiceGrave.OnSongPlayed(melody);
+        return true;
+    }
     Debug.Log($"[SignController:{name}] OnSongPlayed melody={melody}, signName='{signName}'");
     // Already solved / updated? Then do nothing and don't start dialogue.
     if (isDialogueUpdated) return false;
