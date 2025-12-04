@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,6 +21,7 @@ public class EurydiceGrave : MonoBehaviour
     [SerializeField] private ParticleSystem glowingParticles;
     private int songsPlayed;
     private BoxCollider2D boxCollider;
+    private List<string> Melodies = new List<string>{"Melody1", "Melody2", "Melody3"};
 
     void Awake()
     {
@@ -28,25 +31,35 @@ public class EurydiceGrave : MonoBehaviour
 
     public void OnSongPlayed(string melody)
     {
-        switch (melody)
+        switch (Melodies.Contains<string>(melody))
         {
-            case MelodyData.Melody1:
+            case true:
                 songsPlayed += 1;
                 HandleGameCompleteProgression(songsPlayed);
+                Melodies.Remove(melody);
                 break;
-
-            case MelodyData.Melody2:
-                songsPlayed += 1;
-                HandleGameCompleteProgression(songsPlayed);
-                break;
-
-            case MelodyData.Melody3:
-                songsPlayed += 1;
-                HandleGameCompleteProgression(songsPlayed);
-                break;
-            default:
+            case false:
                 break;
         }
+        // Old approach; save in case i break it
+        // switch (melody)
+        // {
+        //     case MelodyData.Melody1:
+        //         songsPlayed += 1;
+        //         HandleGameCompleteProgression(songsPlayed);
+        //         break;
+
+        //     case MelodyData.Melody2:
+        //         songsPlayed += 1;
+        //         HandleGameCompleteProgression(songsPlayed);
+        //         break;
+
+        //     case MelodyData.Melody3:
+        //         songsPlayed += 1;
+        //         HandleGameCompleteProgression(songsPlayed);
+        //         break;
+        //     default:
+        //         break;
     }
 
     private void HandleGameCompleteProgression(int songsPlayed)
@@ -101,7 +114,7 @@ public class EurydiceGrave : MonoBehaviour
 
         StartCoroutine(MoveGrave(0.8f, fadeInTime));
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
 
         StartCoroutine(FadeOutSprite(spriteRenderer, fadeInTime));
         
