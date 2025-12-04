@@ -50,6 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundAudio: {fileID: 0}
+  numQuestNPCs: 3
+  NPCQuestsSolved: 0
+  numOfTablets: 9
 --- !u!114 &1175583510679496794
 MonoBehaviour:
   m_ObjectHideFlags: 0

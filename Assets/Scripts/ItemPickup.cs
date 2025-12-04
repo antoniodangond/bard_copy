@@ -57,6 +57,7 @@ public class ItemPickup : MonoBehaviour
             collected = true;
             if (hideOnPickup) gameObject.SetActive(false);
             else if (triggerCol) triggerCol.enabled = false;
+            GameManager.Instance.collectedStatuePieces += 1;
         }
     }
 
@@ -72,6 +73,7 @@ public class ItemPickup : MonoBehaviour
             
         CerberusStatue.Instance.ActivateStatuePiece(pieceName);
         GameManager.Instance.backgroundAudio.PlayStatuePiecePickupSting();
+        GameManager.Instance.collectedStatuePieces += 1;
 
         collected = true;
 

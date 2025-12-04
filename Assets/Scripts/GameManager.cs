@@ -8,10 +8,14 @@ public class GameManager : MonoBehaviour
 
     public BackgroundAudio backgroundAudio;
     private AudioMixerScript audioMixerScript;
-    public int numQuestNPCs = 3;
-    private string[] questNPCs = new string[3];
+    [SerializeField] private int numQuestNPCs = 3;
+    private string[] questNPCs = new string[] { "NPC_Ghostboy", "NPC_Captain", "NPC_Mountaineer"};
     [HideInInspector] public int NPCQuestsSolved;
     private bool allQuestsSolved;
+    private int numOfStatuePieces;
+    private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
+    [HideInInspector] public int collectedStatuePieces;
+    private bool allStatuePiecesCollected;
 
     void Awake()
     {
@@ -35,9 +39,10 @@ public class GameManager : MonoBehaviour
         // Subscribe to custom event
         CustomEvents.OnCombatEncounterCleared.AddListener(OnCombatEncounterCleared);
 
-        InitializeQuestNPCsList();
         NPCQuestsSolved = 0;
         allQuestsSolved = false;
+        collectedStatuePieces = 0;
+        allStatuePiecesCollected = false;
     }
 
     void Start() {
@@ -47,6 +52,7 @@ public class GameManager : MonoBehaviour
         if (PlayerProgress.Instance != null)
         {
             ApplySavedStateFromProgress();
+            Debug.Log(collectedStatuePieces + " pieces collected");
         }
         // backgroundAudio.PlayRandomBreaths();
         // backgroundAudio.PlayRandomFrogs();
@@ -54,17 +60,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (allQuestsSolved == false && NPCQuestsSolved == 3)
-        {
+        if (allQuestsSolved == false && NPCQuestsSolved == numQuestNPCs)
             allQuestsSolved = true;
-        }       
-    }
 
-    private void InitializeQuestNPCsList()
-    {
-        questNPCs[0] = "NPC_Ghostboy"; 
-        questNPCs[1] = "NPC_Captain";
-        questNPCs[2] = "NPC_Mountaineer";
+        if (allStatuePiecesCollected == false && collectedStatuePieces == numOfStatuePieces)
+        {
+            allStatuePiecesCollected = true;
+            Debug.Log("all statue pieces collected");
+        }
     }
 
     void OnDestroy()
@@ -107,10 +110,15 @@ public class GameManager : MonoBehaviour
     private void ApplySavedStateFromProgress()
     {
         foreach (string name in questNPCs)
-        {
             if (PlayerProgress.Instance.GetNPCStatus(name) == "MelodySolved") NPCQuestsSolved += 1;
+
+        if (NPCQuestsSolved == numQuestNPCs) allQuestsSolved = true;
+
+        for (int i = 0; i < numOfStatuePieces; i++)
+        {
+            if (PlayerProgress.Instance.HasCollected(statuePieces[i])) collectedStatuePieces += 1;
         }
 
-        if (NPCQuestsSolved == 3) allQuestsSolved = true;
+        if (collectedStatuePieces == numOfStatuePieces) allStatuePiecesCollected = true;
     }
 }

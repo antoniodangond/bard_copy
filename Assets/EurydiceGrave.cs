@@ -8,6 +8,7 @@ public class EurydiceGrave : MonoBehaviour
 {
     [Header("Settings")]
     public float fadeInTime;
+    [SerializeField] private LayerMask playerLayer;
     [Header("Grave Pieces")] 
     [SerializeField] private GameObject pieceOne;
     [SerializeField] private GameObject pieceTwo;
@@ -17,8 +18,11 @@ public class EurydiceGrave : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [Header("Gateway")]
     [SerializeField] private GameObject underworldGateway;
+    [SerializeField] private GameObject endGameTransporter;
     [Header("Effects")]
     [SerializeField] private ParticleSystem glowingParticles;
+    [Header("Other GameObjects")]
+    [SerializeField] private GameObject endGameTrigger;
     private int songsPlayed;
     private BoxCollider2D boxCollider;
     private List<string> Melodies = new List<string>{"Melody1", "Melody2", "Melody3"};
@@ -199,5 +203,13 @@ public class EurydiceGrave : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
     }
 }

@@ -72,6 +72,7 @@ public class CerberusStatue : MonoBehaviour
             if (PlayerProgress.Instance.HasCollected(statuePiece.Key))
             {
                 statuePiece.Value.SetActive(true);
+                GameManager.Instance.collectedStatuePieces += 1;
             }
         }
     }
