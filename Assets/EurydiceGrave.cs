@@ -75,6 +75,8 @@ public class EurydiceGrave : MonoBehaviour
 
         spriteRenderer.sprite = completedGrave;
 
+        DestroyGravePieces();
+
         yield return new WaitForSeconds(0.5f);
 
         StartCoroutine(OpenDoorway());
@@ -82,6 +84,13 @@ public class EurydiceGrave : MonoBehaviour
         yield return new WaitForSeconds(fadeInTime);
 
         Destroy(boxCollider);
+    }
+
+    private void DestroyGravePieces()
+    {
+        Destroy(pieceOne);
+        Destroy(pieceTwo);
+        Destroy(pieceThree);
     }
     
     private IEnumerator OpenDoorway()
