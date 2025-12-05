@@ -173,6 +173,7 @@ public class MainMenu : MonoBehaviour
         if (PlayerProgress.Instance != null)
         {
             PlayerProgress.Instance.ClearAll();
+            GameManager.Instance.ResetGameProgress();
         }
 
         // 3. Load fresh overworld scene
@@ -185,6 +186,7 @@ public class MainMenu : MonoBehaviour
     {
         // optional: HideNewGameWarning(); scene is changing anyway
         PlayerProgress.Instance?.ClearAll();
+        GameManager.Instance.ResetGameProgress();
         SceneManager.LoadScene(newGameSceneName);
     }
 
