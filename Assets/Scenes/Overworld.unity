@@ -27630,7 +27630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: pieceName
-      value: GravePiece1
+      value: GravePiece
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27682,7 +27682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: id
-      value: RightHead
+      value: GravePiece1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -60533,7 +60533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: pieceName
-      value: GravePiece3
+      value: GravePiece
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60585,7 +60585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: id
-      value: RightHead
+      value: GravePiece3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -65840,7 +65840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2351527935209028833, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: pieceName
-      value: GravePiece2
+      value: GravePiece
       objectReference: {fileID: 0}
     - target: {fileID: 5105312096214745416, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -65892,7 +65892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6511462108698302344, guid: 022d047eb3fad094abdb583bc6d502ef, type: 3}
       propertyPath: id
-      value: RightHead
+      value: GravePiece2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
