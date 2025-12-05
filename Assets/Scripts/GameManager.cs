@@ -120,10 +120,11 @@ public class GameManager : MonoBehaviour
         Debug.Log(NPCQuestsSolved + " Quests Solved");
         if (NPCQuestsSolved == numQuestNPCs) allQuestsSolved = true;
 
-        for (int i = 0; i < numOfStatuePieces; i++)
-        {
-            if (PlayerProgress.Instance.HasCollected(statuePieces[i])) collectedStatuePieces += 1;
-        }
+        // for (int i = 0; i < numOfStatuePieces; i++)
+        // {
+        //     if (PlayerProgress.Instance.HasCollected(statuePieces[i])) collectedStatuePieces += 1;
+        // }
+        collectedStatuePieces = PlayerProgress.Instance.GetNumCollectedCollectibles();
 
         if (collectedStatuePieces == numOfStatuePieces) allStatuePiecesCollected = true;
     }

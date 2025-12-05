@@ -122,17 +122,17 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    [SerializeField] private TMPro.TMP_Text tabletsCountText;
+    // [SerializeField] private TMPro.TMP_Text tabletsCountText;
 
-    // Call this when opening the pause menu (right after UpdatePauseMenuSongs)
-    public void UpdateTabletsCountUI()
-    {
-        if (tabletsCountText == null) return;
+    // // Call this when opening the pause menu (right after UpdatePauseMenuSongs)
+    // public void UpdateTabletsCountUI()
+    // {
+    //     if (tabletsCountText == null) return;
 
-        int count = PlayerProgress.Instance != null ? PlayerProgress.Instance.GetNumTabletsCollected() : 0;
-        // If you track a max, adjust here; hardcoded 5 based on your SaveData
-        tabletsCountText.text = $"Tablets: {count}/5";
-    }
+    //     int count = PlayerProgress.Instance != null ? PlayerProgress.Instance.GetNumTabletsCollected() : 0;
+    //     // If you track a max, adjust here; hardcoded 5 based on your SaveData
+    //     tabletsCountText.text = $"Tablets: {count}/5";
+    // }
 
     [Header("Song Icon Panels")]
     [SerializeField] private SongIconsPanel[] songPanels;

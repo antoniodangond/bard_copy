@@ -95,8 +95,8 @@ public class MainMenu : MonoBehaviour
             bool hasAnyProgress =
                 (data.upgrades?.Count ?? 0) > 0 ||
                 (data.savedSongs?.Count ?? 0) > 0 ||
-                (data.defeatedEnemies?.Count ?? 0) > 0 ||
-                data.numTabletsCollected > 0;
+                (data.defeatedEnemies?.Count ?? 0) > 0; //||
+                // data.numTabletsCollected > 0;
 
             return hasScene || hasAnyProgress;
         }

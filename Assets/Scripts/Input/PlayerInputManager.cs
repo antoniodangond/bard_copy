@@ -202,7 +202,7 @@ public class PlayerInputManager : MonoBehaviour
                 button.gameObject.SetActive(true);
             }
         MenuManager.Instance.UpdatePauseMenuSongs(); // Update songs each time we open the menu
-        MenuManager.Instance.UpdateTabletsCountUI(); // Update tablet count each time we open the menu
+        // MenuManager.Instance.UpdateTabletsCountUI(); // Update tablet count each time we open the menu
 
         }
         isPaused = true;

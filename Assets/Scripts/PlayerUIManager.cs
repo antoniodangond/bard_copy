@@ -80,8 +80,8 @@ public class PlayerUIManager : MonoBehaviour
             // After UI is ready, sync from save if available
         if (PlayerProgress.Instance != null)
         {
-            var (count, tablets) = PlayerProgress.Instance.GetTabletSummary();
-            UpdateCollectedTabletsUI(count, tablets);
+            // var (count, tablets) = PlayerProgress.Instance.GetTabletSummary();
+            // UpdateCollectedTabletsUI(count, tablets);
             PlayerProgress.Instance.OnLoaded += HandleProgressLoaded;
         }
     }
@@ -94,8 +94,8 @@ public class PlayerUIManager : MonoBehaviour
 
 private void HandleProgressLoaded()
     {
-        var (count, tablets) = PlayerProgress.Instance.GetTabletSummary();
-        UpdateCollectedTabletsUI(count, tablets);
+        // var (count, tablets) = PlayerProgress.Instance.GetTabletSummary();
+        // UpdateCollectedTabletsUI(count, tablets);
     }
 
     private void InitializeUI()
