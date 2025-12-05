@@ -75,6 +75,7 @@ public class ItemPickup : MonoBehaviour
                 
             CerberusStatue.Instance.ActivateStatuePiece(pieceName);
             GameManager.Instance.backgroundAudio.PlayStatuePiecePickupSting();
+            GameManager.Instance.collectedStatuePieces += 1;
         }
 
         collected = true;
