@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int numOfStatuePieces;
     private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
     [HideInInspector] public int collectedStatuePieces;
-    private bool allStatuePiecesCollected;
+    [HideInInspector] public bool allStatuePiecesCollected;
 
     void Awake()
     {
