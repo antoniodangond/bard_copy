@@ -18,8 +18,8 @@ public class SaveData // Data structure for saving/loading player progress
     // --- Progress payload ---
     public List<string> upgrades = new List<string>();
     public List<string> claimedRewards = new List<string>();
-    public string[] collectedTablets = new string[5] { null, null, null, null, null };
-    public int numTabletsCollected;
+    // public string[] collectedTablets = new string[5] { null, null, null, null, null };
+    // public int numTabletsCollected;
 
     public float[] playerPosition = new float[3]; // x, y, z
     public int playerHealth;
@@ -51,9 +51,9 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     // --- Core progress sets/state ---
     private HashSet<string> upgrades = new HashSet<string>();
     private HashSet<string> claimedRewards = new HashSet<string>();
-    private string[] collectedTablets = new string[5] { null, null, null, null, null };
-    private int numTabletsCollected;
-    public int GetNumTabletsCollected() => numTabletsCollected;
+    // private string[] collectedTablets = new string[5] { null, null, null, null, null };
+    // private int numTabletsCollected;
+    // public int GetNumTabletsCollected() => numTabletsCollected;
 
     private Vector3 playerPosition;
     private int playerHealth;
@@ -95,29 +95,29 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     }
 
 
-    #region Tablet Collection
+    // #region Tablet Collection
 
-    public void CollectTablet(string itemPickup)
-    {
-        numTabletsCollected += 1;
-        int indexToReplace = Array.IndexOf(collectedTablets, null);
-        if (indexToReplace != -1)
-        {
-            collectedTablets[indexToReplace] = itemPickup;
+    // public void CollectTablet(string itemPickup)
+    // {
+    //     numTabletsCollected += 1;
+    //     int indexToReplace = Array.IndexOf(collectedTablets, null);
+    //     if (indexToReplace != -1)
+    //     {
+    //         collectedTablets[indexToReplace] = itemPickup;
 
-            if (PlayerUIManager.Instance != null)
-                PlayerUIManager.Instance.UpdateCollectedTabletsUI(numTabletsCollected, collectedTablets);
+    //         if (PlayerUIManager.Instance != null)
+    //             PlayerUIManager.Instance.UpdateCollectedTabletsUI(numTabletsCollected, collectedTablets);
 
-            // NEW: also update pause menu tablet text
-            if (MenuManager.Instance != null)
-                MenuManager.Instance.UpdateTabletsCountUI();
-        }
+    //         // NEW: also update pause menu tablet text
+    //         if (MenuManager.Instance != null)
+    //             // MenuManager.Instance.UpdateTabletsCountUI();
+    //     }
 
-        Save();
-    }
+    //     Save();
+    // }
 
 
-    #endregion
+    // #endregion
 
     #region Upgrades / Rewards
 
@@ -271,7 +271,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         if (!File.Exists(path))
         {
             // Initialize defaults
-            numTabletsCollected = 0;
+            // numTabletsCollected = 0;
             playerPosition = Vector3.zero;
             playerHealth = 0;
             return;
@@ -287,8 +287,8 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         // Payload
         upgrades = new HashSet<string>(data.upgrades ?? new List<string>());
         claimedRewards = new HashSet<string>(data.claimedRewards ?? new List<string>());
-        collectedTablets = data.collectedTablets ?? new string[5] { null, null, null, null, null };
-        numTabletsCollected = data.numTabletsCollected;
+        // collectedTablets = data.collectedTablets ?? new string[5] { null, null, null, null, null };
+        // numTabletsCollected = data.numTabletsCollected;
 
         if (data.playerPosition != null && data.playerPosition.Length == 3)
             playerPosition = new Vector3(data.playerPosition[0], data.playerPosition[1], data.playerPosition[2]);
@@ -320,8 +320,8 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         // Payload
         data.upgrades = new List<string>(upgrades);
         data.claimedRewards = new List<string>(claimedRewards);
-        data.collectedTablets = collectedTablets;
-        data.numTabletsCollected = numTabletsCollected;
+        // data.collectedTablets = collectedTablets;
+        // data.numTabletsCollected = numTabletsCollected;
 
         data.playerPosition = new float[] { playerPosition.x, playerPosition.y, playerPosition.z };
         data.playerHealth = playerHealth;
@@ -363,8 +363,8 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     {
         upgrades.Clear();
         claimedRewards.Clear();
-        collectedTablets = new string[5] { null, null, null, null, null };
-        numTabletsCollected = 0;
+        // collectedTablets = new string[5] { null, null, null, null, null };
+        // numTabletsCollected = 0;
         playerPosition = Vector3.zero;
         playerHealth = 0;
         collectedCollectables.Clear();
@@ -387,10 +387,11 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     #region UI-friendly getters
 
     public IReadOnlyCollection<string> GetUpgrades() => upgrades;
-    public (int count, string[] tablets) GetTabletSummary() => (numTabletsCollected, collectedTablets);
+    // public (int count, string[] tablets) GetTabletSummary() => (numTabletsCollected, collectedTablets);
     public IReadOnlyCollection<string> GetDefeatedEnemies() => defeatedEnemies;
     public IReadOnlyCollection<string> GetCollectibles() => collectedCollectables;
     public IReadOnlyDictionary<string, string> GetNpcStatuses() => npcStatuses;
+    public int GetNumCollectedCollectibles() => collectedCollectables.Count;
 
     #endregion
 

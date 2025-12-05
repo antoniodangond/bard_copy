@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -57,7 +58,6 @@ public class ItemPickup : MonoBehaviour
             collected = true;
             if (hideOnPickup) gameObject.SetActive(false);
             else if (triggerCol) triggerCol.enabled = false;
-            GameManager.Instance.collectedStatuePieces += 1;
         }
     }
 
@@ -67,13 +67,15 @@ public class ItemPickup : MonoBehaviour
         if (!Utils.HasTargetLayer(playerLayer, other.gameObject)) return;
         if (PlayerProgress.Instance == null) return;
 
-        // Persist this pickup
-        if (uid != null)
-            PlayerProgress.Instance.MarkCollected(uid.Id);
-            
-        CerberusStatue.Instance.ActivateStatuePiece(pieceName);
-        GameManager.Instance.backgroundAudio.PlayStatuePiecePickupSting();
-        GameManager.Instance.collectedStatuePieces += 1;
+        if (pieceName != "GravePiece")
+        {
+            // Persist this pickup
+            if (uid != null)
+                PlayerProgress.Instance.MarkCollected(uid.Id);
+                
+            CerberusStatue.Instance.ActivateStatuePiece(pieceName);
+            GameManager.Instance.backgroundAudio.PlayStatuePiecePickupSting();
+        }
 
         collected = true;
 

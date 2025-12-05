@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int numOfStatuePieces;
     private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
     [HideInInspector] public int collectedStatuePieces;
-    private bool allStatuePiecesCollected;
+    [HideInInspector] public bool allStatuePiecesCollected;
 
     void Awake()
     {
@@ -39,10 +39,7 @@ public class GameManager : MonoBehaviour
         // Subscribe to custom event
         CustomEvents.OnCombatEncounterCleared.AddListener(OnCombatEncounterCleared);
 
-        NPCQuestsSolved = 0;
-        allQuestsSolved = false;
-        collectedStatuePieces = 0;
-        allStatuePiecesCollected = false;
+        ResetGameProgress();
     }
 
     void Start() {
@@ -68,6 +65,14 @@ public class GameManager : MonoBehaviour
             allStatuePiecesCollected = true;
             Debug.Log("all statue pieces collected");
         }
+    }
+
+    public void ResetGameProgress()
+    {
+        NPCQuestsSolved = 0;
+        allQuestsSolved = false;
+        collectedStatuePieces = 0;
+        allStatuePiecesCollected = false;
     }
 
     void OnDestroy()
@@ -112,12 +117,14 @@ public class GameManager : MonoBehaviour
         foreach (string name in questNPCs)
             if (PlayerProgress.Instance.GetNPCStatus(name) == "MelodySolved") NPCQuestsSolved += 1;
 
+        Debug.Log(NPCQuestsSolved + " Quests Solved");
         if (NPCQuestsSolved == numQuestNPCs) allQuestsSolved = true;
 
-        for (int i = 0; i < numOfStatuePieces; i++)
-        {
-            if (PlayerProgress.Instance.HasCollected(statuePieces[i])) collectedStatuePieces += 1;
-        }
+        // for (int i = 0; i < numOfStatuePieces; i++)
+        // {
+        //     if (PlayerProgress.Instance.HasCollected(statuePieces[i])) collectedStatuePieces += 1;
+        // }
+        collectedStatuePieces = PlayerProgress.Instance.GetNumCollectedCollectibles();
 
         if (collectedStatuePieces == numOfStatuePieces) allStatuePiecesCollected = true;
     }

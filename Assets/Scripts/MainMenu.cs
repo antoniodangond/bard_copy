@@ -95,8 +95,8 @@ public class MainMenu : MonoBehaviour
             bool hasAnyProgress =
                 (data.upgrades?.Count ?? 0) > 0 ||
                 (data.savedSongs?.Count ?? 0) > 0 ||
-                (data.defeatedEnemies?.Count ?? 0) > 0 ||
-                data.numTabletsCollected > 0;
+                (data.defeatedEnemies?.Count ?? 0) > 0; //||
+                // data.numTabletsCollected > 0;
 
             return hasScene || hasAnyProgress;
         }
@@ -173,6 +173,7 @@ public class MainMenu : MonoBehaviour
         if (PlayerProgress.Instance != null)
         {
             PlayerProgress.Instance.ClearAll();
+            GameManager.Instance.ResetGameProgress();
         }
 
         // 3. Load fresh overworld scene
@@ -185,6 +186,7 @@ public class MainMenu : MonoBehaviour
     {
         // optional: HideNewGameWarning(); scene is changing anyway
         PlayerProgress.Instance?.ClearAll();
+        GameManager.Instance.ResetGameProgress();
         SceneManager.LoadScene(newGameSceneName);
     }
 

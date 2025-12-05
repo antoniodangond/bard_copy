@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EurydiceGrave : MonoBehaviour
 {
@@ -118,9 +119,11 @@ public class EurydiceGrave : MonoBehaviour
 
         StartCoroutine(MoveGrave(0.8f, fadeInTime));
 
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.8f);
 
         StartCoroutine(FadeOutSprite(spriteRenderer, fadeInTime));
+
+        endGameTransporter.SetActive(true);
         
     }
 
@@ -207,6 +210,18 @@ public class EurydiceGrave : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (Utils.HasTargetLayer(playerLayer, other.gameObject))
+        {
+            // Debug.Log("Player entered " + gameObject.name);
+            if (GameManager.Instance.allStatuePiecesCollected)
+            {
+                SceneManager.LoadSceneAsync("Good End");
+            }
+            else
+            {
+                SceneManager.LoadSceneAsync("Bad End");
+            }
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
