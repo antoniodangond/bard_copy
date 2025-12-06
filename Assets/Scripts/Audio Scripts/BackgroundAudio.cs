@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Video;
 
 public class BackgroundAudio : AudioController
 {
@@ -144,6 +145,16 @@ public class BackgroundAudio : AudioController
         AudioData.RandomAmbienceQuietBirds.StopRandomAudio();
     }
 
+    public void StopAllAmbienceOneShots()
+    {
+        StopRandomBreaths();
+        StopRandomFrogs();
+        StopRandomLoudBirds();
+        StopRandomQuietBirds();
+
+
+    }
+
     public IEnumerator ChangeBackgroundMusic(string region)
     {
         // Fade out the current background music
@@ -153,19 +164,14 @@ public class BackgroundAudio : AudioController
         switch(region)
         {
             case "Underworld":
-                StopRandomBreaths();
-                StopRandomFrogs();
-                StopRandomLoudBirds();
-                StopRandomQuietBirds();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicUnderworld;
                 newAmbience = AudioData.UnderworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
                 PlayRandomBreaths();
                 break;
             case "MainMenu":
-                StopRandomBreaths();
-                StopRandomLoudBirds();
-                StopRandomQuietBirds();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicMainMenu;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
@@ -173,17 +179,13 @@ public class BackgroundAudio : AudioController
                 PlayRandomFrogs();
                 break;
             case "Mausoleum":
-                StopRandomFrogs();
-                StopRandomBreaths();
-                StopRandomLoudBirds();
-                StopRandomQuietBirds();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicMausoleum;
                 newAmbience = AudioData.UnderworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
                 break;
             case "Beach":
-                StopRandomFrogs();
-                StopRandomBreaths();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicBeach;
                 newAmbience = AudioData.BeachAmbience;
                 PlayerAudio.instance.currentTerrain = "Sand";
@@ -191,40 +193,35 @@ public class BackgroundAudio : AudioController
                 PlayRandomQuietBirds();
                 break;
             case "Forest":
-                StopRandomFrogs();
-                StopRandomBreaths();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicForest;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
                 PlayRandomBreaths();
                 break;
             case "Mountain":
-                StopRandomFrogs();
-                StopRandomBreaths();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicMountain;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
                 PlayRandomBreaths();
                 break;
             case "DungeonA":
-                StopRandomFrogs();
-                StopRandomBreaths();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicDungeonA;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
                 PlayRandomBreaths();
                 break;
             case "DungeonB":
-                StopRandomFrogs();
-                StopRandomBreaths();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicDungeonA;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
                 PlayRandomBreaths();
                 break;
             case "DungeonC":
-                StopRandomFrogs();
-                StopRandomBreaths();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicDungeonA;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
@@ -232,9 +229,7 @@ public class BackgroundAudio : AudioController
                 break;
             default:
                 // Use for Overworld
-                StopRandomBreaths();
-                StopRandomLoudBirds();
-                StopRandomQuietBirds();
+                StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusic;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
