@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public enum DialogueChoice { Yes = 0, No = 1 }
 
@@ -13,12 +14,18 @@ public class DialogueChoiceUI : MonoBehaviour
     [Header("Wiring")]
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private TextMeshProUGUI bodyText;
-    [SerializeField] private RectTransform optionYes;
-    [SerializeField] private RectTransform optionNo;
+    [SerializeField] private RectTransform optionYes;   // assign: OptionYes
+    [SerializeField] private RectTransform optionNo;    // assign: OptionNo
+    [SerializeField] private Button yesButton;
+    [SerializeField] private Button noButton;
 
     [Header("Timings")]
     [SerializeField] private float fadeTime = 0.08f;
     [SerializeField] private float navRepeatDelay = 0.15f; // optional anti-spam for arrows/WASD
+
+    [Header("Debug")]
+    [SerializeField] private bool debugLog = false;
+
 
     private RectTransform[] options;
     private int index;
@@ -37,43 +44,80 @@ public class DialogueChoiceUI : MonoBehaviour
 
         // start hidden
         gameObject.SetActive(false);
-        if (canvasGroup) canvasGroup.alpha = 0f;
+        if (canvasGroup)
+        {
+            canvasGroup.alpha = 0f;
+            canvasGroup.interactable = true;
+            canvasGroup.blocksRaycasts = false; // we'll enable on open
+        }
+
+        // Explicitly wire the known buttons
+        if (yesButton != null)
+        {
+            yesButton.onClick.RemoveListener(CloseYes);
+            yesButton.onClick.AddListener(CloseYes);
+            Debug.Log("[ChoiceUI] Wired yesButton.onClick → CloseYes");
+        }
+        else
+        {
+            Debug.LogError("[ChoiceUI] yesButton is NOT assigned in the inspector.", this);
+        }
+
+        if (noButton != null)
+        {
+            noButton.onClick.RemoveListener(CloseNo);
+            noButton.onClick.AddListener(CloseNo);
+            Debug.Log("[ChoiceUI] Wired noButton.onClick → CloseNo");
+        }
+        else
+        {
+            Debug.LogError("[ChoiceUI] noButton is NOT assigned in the inspector.", this);
+        }
     }
 
-    void Update()
+
+void Update()
+{
+    if (!isOpen) return;
+
+    // --- Navigation (arrows / WASD) ---
+    if (Time.unscaledTime >= nextNavTime)
     {
-        if (!isOpen) return;
+        bool moved = false;
 
-        // --- Navigation (arrows / WASD) ---
-        if (Time.unscaledTime >= nextNavTime)
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) ||
+            Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
-            bool moved = false;
-
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) ||
-                Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-            {
-                SetIndex(Mathf.Min(index + 1, options.Length - 1));
-                moved = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) ||
-                     Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-            {
-                SetIndex(Mathf.Max(index - 1, 0));
-                moved = true;
-            }
-
-            if (moved) nextNavTime = Time.unscaledTime + navRepeatDelay;
+            SetIndex(Mathf.Min(index + 1, options.Length - 1));
+            moved = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) ||
+                 Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+        {
+            SetIndex(Mathf.Max(index - 1, 0));
+            moved = true;
         }
 
-        // --- Confirm: ONLY your Interact button ---
-        if (PlayerInputManager.WasDialoguePressed)
-        {
-            Close((DialogueChoice)index);
-            return;
-        }
-
-        // No back/cancel key: to say "No", navigate to No and press Interact.
+        if (moved) nextNavTime = Time.unscaledTime + navRepeatDelay;
     }
+
+    // Confirm via Dialogue (Z / Enter / LMB / etc.)
+    if (PlayerInputManager.WasDialoguePressed)
+    {
+        // Before we close, align index with the currently selected UI object
+        SyncIndexWithCurrentSelection();
+
+        if (debugLog)
+        {
+            var sel = EventSystem.current ? EventSystem.current.currentSelectedGameObject : null;
+            Debug.Log($"[ChoiceUI] Confirm via Dialogue. index={index} selected={sel?.name}");
+        }
+
+        Close((DialogueChoice)index);
+        return;
+    }
+}
+
 
     public void Ask(string prompt, Action<DialogueChoice> onComplete, int defaultIndex = 0)
     {
@@ -105,7 +149,6 @@ public class DialogueChoiceUI : MonoBehaviour
                 MenuManager.Instance.RegisterAnimTarget(noHandler.animTarget.gameObject);
         }
 
-
         // Apply initial selection (drives ButtonSelectionHandler just like pause menu)
         SetIndex(index);
 
@@ -122,10 +165,12 @@ public class DialogueChoiceUI : MonoBehaviour
         return ok;
     }
 
-    private void SetIndex(int newIdx)
+    public void SetIndex(int newIdx)
     {
         if (newIdx == index && lastSelected != null) return;
-
+        if (debugLog)
+            Debug.Log($"[ChoiceUI] SetIndex from {index} to {newIdx}");
+            
         // Deselect previous
         if (lastSelected != null)
         {
@@ -139,13 +184,47 @@ public class DialogueChoiceUI : MonoBehaviour
         lastSelected = options[index].gameObject;
         var cur = lastSelected.GetComponent<ButtonSelectionHandler>();
         cur?.SetSelected(true, playSound: true);
+
+        // Make sure UI/Submit (Enter) acts on the correct object (later we can
+        // point this at the actual Button if you want Enter to trigger click).
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(lastSelected);
+        }
     }
+
+    // These help mouse work better for selecting dialogue choice options.
+    public void HoverYes() => SetIndex(0);
+    public void HoverNo()  => SetIndex(1);
+
+    private void SyncIndexWithCurrentSelection()
+    {
+        if (EventSystem.current == null) return;
+
+        var sel = EventSystem.current.currentSelectedGameObject;
+        if (sel == null) return;
+
+        // Is the selected object OptionYes or a child of it?
+        if (sel == optionYes.gameObject || sel.transform.IsChildOf(optionYes))
+        {
+            if (debugLog) Debug.Log($"[ChoiceUI] SyncIndex -> YES (0) from selected={sel.name}");
+            index = 0;
+        }
+        // Is the selected object OptionNo or a child of it?
+        else if (sel == optionNo.gameObject || sel.transform.IsChildOf(optionNo))
+        {
+            if (debugLog) Debug.Log($"[ChoiceUI] SyncIndex -> NO (1) from selected={sel.name}");
+            index = 1;
+        }
+        else if (debugLog)
+        {
+            Debug.Log($"[ChoiceUI] SyncIndex: selected={sel.name} not under OptionYes/OptionNo, keeping index={index}");
+        }
+    }
+
 
     private IEnumerator OpenRoutine()
     {
-        // Let DialogueBox disable + layout settle for one frame
-        yield return null;
-
         // Freeze the player and pause the world while the choice is open
         PlayerController.CurrentState = PlayerState.Dialogue;
         Time.timeScale = 0f;
@@ -153,20 +232,45 @@ public class DialogueChoiceUI : MonoBehaviour
         if (canvasGroup)
         {
             canvasGroup.blocksRaycasts = true;
-            for (float t = 0f; t < fadeTime; t += Time.unscaledDeltaTime)
+
+            if (fadeTime <= 0.001f)
             {
-                canvasGroup.alpha = Mathf.Lerp(0f, 1f, t / fadeTime);
-                yield return null;
+                canvasGroup.alpha = 1f;
             }
-            canvasGroup.alpha = 1f;
+            else
+            {
+                for (float t = 0f; t < fadeTime; t += Time.unscaledDeltaTime)
+                {
+                    canvasGroup.alpha = Mathf.Lerp(0f, 1f, t / fadeTime);
+                    yield return null;
+                }
+                canvasGroup.alpha = 1f;
+            }
         }
 
         isOpen = true;
     }
 
+    // Called by buttons and by Dialogue input
+    public void CloseYes()
+    {
+        Debug.Log("[ChoiceUI] CloseYes clicked");
+        Close(DialogueChoice.Yes);
+    }
+
+    public void CloseNo()
+    {
+        Debug.Log("[ChoiceUI] CloseNo clicked");
+        Close(DialogueChoice.No);
+    }
+
     private void Close(DialogueChoice choice)
     {
-        if (!isOpen) return;
+        if (!isOpen)
+        {
+            Debug.LogWarning($"[ChoiceUI] Close called while isOpen == false. Proceeding anyway. choice={choice}");
+        }
+
         isOpen = false;
         StartCoroutine(CloseRoutine(choice));
     }

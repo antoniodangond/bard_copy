@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upLines: []
   downLines:
-  - This is the back of the grave. Nothing to read here.
+  - How did you get back here?
   leftLines: []
   rightLines: []
   universalLines:
-  - The name has worn away.
+  - Here lies Philemon, blacksmith and cobbler.

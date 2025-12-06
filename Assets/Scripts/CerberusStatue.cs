@@ -8,11 +8,13 @@ public class CerberusStatue : MonoBehaviour
 {
     public static CerberusStatue Instance; // Make singleton because we are shipping soon!!
     public Sprite completedStatue;
+    public Dialogue StatueHints;
     public float fadeOutTime;
     private SpriteRenderer spriteRenderer;
     private Color opaqueStatue;
     private Color transparentStatue;
     private Dictionary<string, GameObject> statuePiecesDict = new Dictionary<string, GameObject> { };
+    public Dictionary<string, string> statuePieceHintsDict = new Dictionary<string, string> { };
     private int foundPieces;
     void Awake()
     {
@@ -33,6 +35,8 @@ public class CerberusStatue : MonoBehaviour
             piece.SetActive(false);
             statuePiecesDict[piece.name] = piece;
         }
+
+        InitializeHintDictionary();
     }
 
     void Start()
@@ -43,6 +47,10 @@ public class CerberusStatue : MonoBehaviour
     public void ActivateStatuePiece(string statuePieceName)
     {
         foundPieces++;
+
+        // Once we've found a specific piece, update the list of pieces in the hint list
+        statuePieceHintsDict.Remove(statuePieceName);
+        Debug.Log("Deactivating " + statuePieceName);
 
         if (foundPieces == 9) { CompleteQuest(); }
         else { statuePiecesDict[statuePieceName].SetActive(true); }
@@ -71,7 +79,8 @@ public class CerberusStatue : MonoBehaviour
         {
             if (PlayerProgress.Instance.HasCollected(statuePiece.Key))
             {
-                statuePiece.Value.SetActive(true);
+                // statuePiece.Value.SetActive(true);
+                ActivateStatuePiece(statuePiece.Key);
             }
         }
     }
@@ -94,6 +103,17 @@ public class CerberusStatue : MonoBehaviour
             spriteRenderer.color = Color.Lerp(opaqueStatue, transparentStatue, t);
             elapsedTime += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private void InitializeHintDictionary()
+    {
+        List <string> hintKeys = StatueHints.rightLines;
+        List <string> hintValues = StatueHints.leftLines;
+
+        for (int i = 0; i < hintKeys.Count; i++)
+        {
+            statuePieceHintsDict[hintKeys[i]] = hintValues[i];
         }
     }
 }

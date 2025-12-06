@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: D_Grave_4
   m_EditorClassIdentifier: 
   upLines: []
-  downLines: []
+  downLines:
+  - 'A note is scrawled into the back of the grave:'
+  - '"Never mind, I found them."'
   leftLines: []
   rightLines: []
   universalLines:

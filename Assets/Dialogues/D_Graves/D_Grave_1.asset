@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upLines: []
   downLines:
-  - This is the back of the grave. You can't read anything.
+  - There are a bunch of Zs carved in a row.
+  - What could they mean?
   leftLines: []
   rightLines: []
   universalLines:

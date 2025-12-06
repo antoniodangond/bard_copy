@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
   m_Name: D_PushableGrave
   m_EditorClassIdentifier: 
-  upLines:
-  - Here lies Philemon, blacksmith and cobbler.
-  - '"What seems steadfast may yet be guided by gentle hands".'
+  upLines: []
   downLines:
-  - How did you get back here?
-  leftLines:
-  - You can't seem to read anything as this is the side of a grave.
-  rightLines:
-  - You can't seem to read anything as this is the side of a grave.
-  universalLines: []
+  - Whatever you do, DO NOT PUSH this grave northward.
+  leftLines: []
+  rightLines: []
+  universalLines:
+  - Just a normal, regular grave. Nothing to see here.

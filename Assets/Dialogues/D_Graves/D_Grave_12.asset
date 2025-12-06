@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: D_Grave_12
   m_EditorClassIdentifier: 
   upLines: []
-  downLines: []
+  downLines:
+  - Burdened with too much love to give.
   leftLines: []
   rightLines: []
   universalLines:
-  - Philomelos, eater of figs. May his orchard never empty.
+  - Orestes. Devoted and faithful husband.

@@ -23,6 +23,7 @@ static class Actions
     public const string Attack = "Attack";
     public const string AOEAttack = "AOEAttack";
     public const string OpenMenu = "OpenMenu";
+    public const string Interact = "Interact"; 
     public const string Dialogue = "Dialogue";
     public const string Dash = "Dash";
     // Instrument actions
@@ -31,12 +32,11 @@ static class Actions
     public const string NoteC = "NoteC";
     public const string NoteD = "NoteD";
     public const string NoteE = "NoteE";
-    // Are we missing a note here??? ^
 
     // UI actions
     public const string Navigate = "Navigate";
     public const string Submit = "Submit";
-    // public const string CloseMenu = "CloseMenu";
+    public const string CloseMenu = "CloseMenu";
 }
 
 [RequireComponent(typeof(InputActionAsset))]
@@ -60,6 +60,7 @@ public class PlayerInputManager : MonoBehaviour
     public static string NotePressed;
     public static bool WasDialoguePressed;
     public static bool wasDashPressed;
+    public static bool WasInteractPressed;
     private bool IsPlayerMapActive =>
         currentActionMap != null && currentActionMap.name == ActionMaps.Player;
 
@@ -72,6 +73,7 @@ public class PlayerInputManager : MonoBehaviour
     private InputAction AOEattackAction;
     private InputAction OpenMenuAction;
     private InputAction dialogueAction;
+    private InputAction interactAction;
     private InputAction dashAction;
     // Instrument actions
     private InputAction toggleInstrumentAction;
@@ -82,10 +84,9 @@ public class PlayerInputManager : MonoBehaviour
     // UI actions
     private InputAction Navigate;
     private InputAction Submit;
-    // private InputAction CloseMenuAction;
+    private InputAction CloseMenuAction;
     [SerializeField] private Button firstPauseButton; // drag your Resume button here
     
-
 
     void Awake()
     {
@@ -96,6 +97,7 @@ public class PlayerInputManager : MonoBehaviour
         AOEattackAction = playerActionMap.FindAction(Actions.AOEAttack);
         OpenMenuAction = playerActionMap.FindAction(Actions.OpenMenu);
         dialogueAction = playerActionMap.FindAction(Actions.Dialogue);
+        interactAction = playerActionMap.FindAction(Actions.Interact);
         dashAction = playerActionMap.FindAction(Actions.Dash);
         // Instrument actions
         InputActionMap instrumentActionMap = InputActionAsset.FindActionMap(ActionMaps.Instrument);
@@ -108,7 +110,7 @@ public class PlayerInputManager : MonoBehaviour
         InputActionMap UIActionMap = InputActionAsset.FindActionMap(ActionMaps.UI);
         Navigate = UIActionMap.FindAction(Actions.Navigate);
         Submit = UIActionMap.FindAction(Actions.Submit);
-        // CloseMenuAction = UIActionMap.FindAction(Actions.CloseMenu);
+        CloseMenuAction = UIActionMap.FindAction(Actions.CloseMenu);
         SwitchToActionMap("Player");
 
     if (Instance == null)
@@ -236,8 +238,20 @@ public class PlayerInputManager : MonoBehaviour
     void Update()
 {
     // Pause toggle
-    MenuOpened = OpenMenuAction.WasPressedThisFrame();
-    if (MenuOpened) HandleMenuOpen();
+    if (!isPaused)
+    {
+        // Player map active = watch OpenMenuAction
+        MenuOpened = OpenMenuAction.WasPressedThisFrame();
+        if (MenuOpened) HandleMenuOpen();
+    }
+    else
+    {
+        // UI map active = watch CloseMenuAction
+        if (CloseMenuAction != null && CloseMenuAction.WasPressedThisFrame())
+        {
+            HandleMenuOpen(); // will call Unpause()
+        }
+    }
 
     if (IsPlayerMapActive && !isPaused)
     {
@@ -248,6 +262,7 @@ public class PlayerInputManager : MonoBehaviour
         WasToggleInstrumentPressed = toggleInstrumentAction.WasPressedThisFrame();
         HandleNotePress();
         WasDialoguePressed      = dialogueAction.WasPressedThisFrame();
+        WasInteractPressed      = interactAction.WasPressedThisFrame();
     }
     else
     {

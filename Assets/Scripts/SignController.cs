@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ public class SignController : MonoBehaviour
     private string AOEAttackButton2;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
+    private List<string> statueHintList = new List<string>(9);
+    private int currentHintIndex;
 
     [Header("Audio Settings")]
     [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
@@ -50,14 +53,14 @@ public class SignController : MonoBehaviour
     [Header("GameObjects to Effect")]
     [SerializeField] public GameObject teleporterFromObj;
     [SerializeField] public GameObject teleporterToObj;
-    [SerializeField] public GameObject hatchToOpenObj;
-    [SerializeField] public Sprite openHatch;
+    [SerializeField] public GameObject ClosedHatch;
+    [SerializeField] public GameObject OpenedHatch;
     public GameObject statuePieceToGive;
     public float statuePieceFadeInTime;
     
     private Teleporter teleporterFrom;
     private Teleporter teleporterTo;
-    private SpriteRenderer hatchToOpen;
+    // private SpriteRenderer hatchToOpen;
     [Header("Sign Renderer")]
     public SpriteRenderer spriteRenderer;
 
@@ -124,13 +127,15 @@ private void Start()
         {
             teleporterFrom = teleporterFromObj != null ? teleporterFromObj.GetComponent<Teleporter>() : null;
             teleporterTo   = teleporterToObj   != null ? teleporterToObj.GetComponent<Teleporter>() : null;
-            hatchToOpen    = hatchToOpenObj    != null ? hatchToOpenObj.GetComponent<SpriteRenderer>() : null;
+            // hatchToOpen    = OpenedHatch    != null ? hatchToOpenObj.GetComponent<SpriteRenderer>() : null;
         }
 
         // Do NOT call ApplySavedStateFromProgress() here anymore.
         // We'll let OnLoaded + Start handle that, so order is safe.
 
         handleTutorialDialog(signName);
+        currentHintIndex = 0;
+        InitializeHintDialogue(signName);
     }
 
 
@@ -181,52 +186,62 @@ private void Start()
     }
 
 
-// Method called when a song is played nearby
-public bool OnSongPlayed(string melody)
-{
-    if (signName == "E_Grave" && eurydiceGrave && GameManager.Instance.NPCQuestsSolved == 3) 
+    // Method called when a song is played nearby
+    public bool OnSongPlayed(string melody)
     {
-        eurydiceGrave.OnSongPlayed(melody);
-        return true;
+        if (signName == "E_Grave" && eurydiceGrave && GameManager.Instance.NPCQuestsSolved == 3) 
+        {
+            eurydiceGrave.OnSongPlayed(melody);
+            return true;
+        }
+        Debug.Log($"[SignController:{name}] OnSongPlayed melody={melody}, signName='{signName}'");
+        // Already solved / updated? Then do nothing and don't start dialogue.
+        if (isDialogueUpdated) return false;
+
+        bool triggered = false;
+
+        switch (melody)
+        {
+            case MelodyData.Melody1:
+                if (signName == "Log" || signName == "Ghostboy")
+                {
+                    HandleSuccessFeedback(signName);
+                    triggered = true;
+                }
+                break;
+
+            case MelodyData.Melody2:
+                if (signName == "Captain" ||
+                    signName == "Vines" ||
+                    signName == "Crow")
+                {
+                    HandleSuccessFeedback(signName);
+                    triggered = true;
+                }
+                break;
+
+            case MelodyData.Melody3:
+                if (signName == "Mountaineer" || signName == "Ice")
+                {
+                    HandleSuccessFeedback(signName);
+                    triggered = true;
+                }
+                break;
+        }
+
+        return triggered;
     }
-    Debug.Log($"[SignController:{name}] OnSongPlayed melody={melody}, signName='{signName}'");
-    // Already solved / updated? Then do nothing and don't start dialogue.
-    if (isDialogueUpdated) return false;
 
-    bool triggered = false;
-
-    switch (melody)
+    public void MarkDialogueUpdated()
     {
-        case MelodyData.Melody1:
-            if (signName == "Log" || signName == "Ghostboy")
-            {
-                HandleSuccessFeedback(signName);
-                triggered = true;
-            }
-            break;
+        isDialogueUpdated = true;
 
-        case MelodyData.Melody2:
-            if (signName == "Captain" ||
-                signName == "Vines" ||
-                signName == "Crow")
-            {
-                HandleSuccessFeedback(signName);
-                triggered = true;
-            }
-            break;
-
-        case MelodyData.Melody3:
-            if (signName == "Mountaineer" || signName == "Ice")
-            {
-                HandleSuccessFeedback(signName);
-                triggered = true;
-            }
-            break;
+        // Optional: change sprite when upgraded. Maybe use this for Cerberus Statue?
+        if (updatedSprite != null && spriteRenderer != null)
+        {
+            spriteRenderer.sprite = updatedSprite;
+        }
     }
-
-    return triggered;
-}
-
 
     private void HandleSuccessFeedback(string signName)
     {
@@ -271,8 +286,8 @@ public bool OnSongPlayed(string melody)
         {
             teleporterFrom.Activate();
             teleporterTo.Activate();
-            hatchToOpenObj.transform.position += new Vector3 (0,2f);
-            hatchToOpen.sprite = openHatch;
+            ClosedHatch.SetActive(false);
+            OpenedHatch.SetActive(true);
         }
 
         if (statuePieceToGive) {FadeInStatuePiece();}
@@ -313,7 +328,13 @@ public bool OnSongPlayed(string melody)
         if (PlayerProgress.Instance == null || uniqueId == null)
             return;
 
-        Debug.Log($"[SignController] ApplySavedStateFromProgress for {signName} ({uniqueId?.Id}) obstacleRemoved={PlayerProgress.Instance?.IsObstacleRemoved(uniqueId.Id)} npcStatus={PlayerProgress.Instance?.GetNPCStatus(uniqueId.Id)}");
+        if (choiceReward != null && PlayerProgress.Instance.IsRewardClaimed(choiceReward.rewardId))
+            {
+                MarkDialogueUpdated();
+            }
+
+
+        // Debug.Log($"[SignController] ApplySavedStateFromProgress for {signName} ({uniqueId?.Id}) obstacleRemoved={PlayerProgress.Instance?.IsObstacleRemoved(uniqueId.Id)} npcStatus={PlayerProgress.Instance?.GetNPCStatus(uniqueId.Id)}");
 
         // 1) Obstacles that should be gone forever
         if (PlayerProgress.Instance.IsObstacleRemoved(uniqueId.Id))
@@ -361,10 +382,10 @@ public bool OnSongPlayed(string melody)
             {
                 if (teleporterFrom != null) teleporterFrom.Activate();
                 if (teleporterTo != null) teleporterTo.Activate();
-                if (hatchToOpenObj != null)
-                    hatchToOpenObj.transform.position += new Vector3(0, 2f);
-                if (hatchToOpen != null)
-                    hatchToOpen.sprite = openHatch;
+                if (ClosedHatch != null)
+                    ClosedHatch.SetActive(false);
+                if (OpenedHatch != null)
+                    OpenedHatch.SetActive(true);
             }
 
             // Also disable colliders if that’s what the success animation does
@@ -374,6 +395,13 @@ public bool OnSongPlayed(string melody)
             //     collider.enabled = false;
             
             Destroy(gameObject);
+        }
+
+        // 3) For Hint System
+        if (signName == "HintSystem")
+        {
+            InitializeHintDialogue(signName);
+            UpdateHintDialogue();
         }
     }
 
@@ -508,6 +536,7 @@ public bool OnSongPlayed(string melody)
             if (upg.id == "dash") PlayerController.canDash = true;
             if (upg.id == "aoe")  PlayerController.AbilityGate.AOEUnlocked = true;
         }
+        MarkDialogueUpdated();
     }
 
 
@@ -524,6 +553,7 @@ public bool OnSongPlayed(string melody)
                   $"hasReward={choiceReward != null} claimed={(choiceReward != null && choiceReward.IsAlreadyClaimed())} " +
                   $"waiting={waitingForChoice}");
 
+        if (signName == "HintSystem") {UpdateHintDialogue();}
         DialogueManager.SetCurrentSpeaker(this);
         DialogueManager.StartDialogue(CurrentDialogue, direction);
         if (signName == "Charon") {HandleSuccessFeedback(signName);}
@@ -586,6 +616,53 @@ public bool OnSongPlayed(string melody)
             sr.color = Color.Lerp(transparent, opaque, t);
             elapsedTime += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private void InitializeHintDialogue(string signName)
+    {
+        if (signName == null || signName != "HintSystem") {return;}
+
+        if (defaultDialogue.universalLines.Count > 0) {defaultDialogue.universalLines.Clear();}
+
+        for (int i = 0; i < defaultDialogue.leftLines.Count; i++)
+        {
+            statueHintList.Add(defaultDialogue.leftLines[i]);
+        }
+
+    }
+
+    private void UpdateHintDialogue()
+    {
+
+        defaultDialogue.universalLines.Clear();
+        // Loop through each statue piece in the list of contained in statueHintList
+        for (int i = 0; i < statueHintList.Count; i++) 
+        {
+            // If that piece isn't in the corresponding list maintained by the cerberus statue, it has been found!
+            // We should remove it from the list
+            if (!CerberusStatue.Instance.statuePieceHintsDict.Values.Contains<string>(statueHintList[i]))
+            {
+                Debug.Log(name);
+                statueHintList.Remove(statueHintList[i]);
+            }
+        }
+
+        // (Hopefully) update currentHitIndex to account for size changes to the list
+        currentHintIndex = GetCorrectHintIndex(currentHintIndex);
+        defaultDialogue.universalLines.Add(statueHintList[currentHintIndex]);
+
+    }
+
+    private int GetCorrectHintIndex(int index)
+    {
+        if (index >= statueHintList.Count - 1)
+        {
+            return 0;
+        }
+        else
+        {
+            return index + 1;
         }
     }
 }

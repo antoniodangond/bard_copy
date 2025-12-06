@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf4386dcce014d6dbd46de6a1547f93, type: 3}
+  m_Name: D_HintSystem
+  m_EditorClassIdentifier: 
+  upLines: []
+  downLines: []
+  leftLines:
+  - Tail - Ghost Boy (Could be hidden in animal pen)
+  - Left Leg - The Captain (Could be hidden behind winged statue)
+  - The Right Leg lies in a clearing, hidden deep in the silent forest.
+  - A greedy bird guards the Left Arm in a desert graveyard.
+  - Right Arm - The Mountaineer (Could be hidden in ruins near Argus statue (new))
+  - The Torso is encased in a block of ice, high upon the tallest peak.
+  - The Left Head hides in the northern forest, in a cave obscured by trees.
+  - The Middle Head rests in the snake-infested dungeon, behind a wall of ice.
+  - Where ocean waves meet the land, travel south to find the Right Head.
+  rightLines:
+  - Tail
+  - LeftLeg
+  - RightLeg
+  - LeftArm
+  - RightArm
+  - Torso
+  - LeftHead
+  - MiddleHead
+  - RightHead
+  universalLines:
+  - Tail - Ghost Boy (Could be hidden in animal pen)
+  - Left Leg - The Captain (Could be hidden behind winged statue)
+  - The Right Leg lies in a clearing, hidden deep in the silent forest.
+  - A greedy bird guards the Left Arm in a desert graveyard.
+  - Right Arm - The Mountaineer (Could be hidden in ruins near Argus statue (new))
+  - The Torso is encased in a block of ice, high upon the tallest peak.
+  - The Left Head hides in the northern forest, in a cave obscured by trees.
+  - The Middle Head rests in the snake-infested dungeon, behind a wall of ice.
+  - Where ocean waves meet the land, travel south to find the Right Head.
