@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: D_Grave_14
   m_EditorClassIdentifier: 
   upLines: []
-  downLines: []
+  downLines:
+  - If you're reading this, it's never too late.
   leftLines: []
   rightLines: []
   universalLines:
-  - Sostratos - always late, even to his own funeral.
+  - Sostratos, always late, even to his own funeral.

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: D_Grave_16
   m_EditorClassIdentifier: 
   upLines: []
-  downLines: []
+  downLines:
+  - At last, he rests forever.
   leftLines: []
   rightLines: []
   universalLines:
-  - Ariston, famed for naps in the sun. At last, he rests forever.
+  - Ariston, famed for naps in the sun.

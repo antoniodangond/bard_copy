@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: D_Grave_18
   m_EditorClassIdentifier: 
   upLines: []
-  downLines: []
+  downLines:
+  - Home is where the hearth is.
   leftLines: []
   rightLines: []
   universalLines:
-  - The mason carved my epitaph too soon. I had three more good years!
+  - Hestia, wife and mother, adored by all.

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: D_Grave_11
   m_EditorClassIdentifier: 
   upLines: []
-  downLines: []
+  downLines:
+  - He loved me more.
   leftLines: []
   rightLines: []
   universalLines:
-  - A nameless grave. You feel eyes upon you.
+  - Heliodora. Beloved wife.

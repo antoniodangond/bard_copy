@@ -16,4 +16,5 @@ MonoBehaviour:
   downLines: []
   leftLines: []
   rightLines: []
-  universalLines: []
+  universalLines:
+  - A tree stump.
