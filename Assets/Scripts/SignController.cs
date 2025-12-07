@@ -604,7 +604,6 @@ public bool OnSongPlayed(string melody)
         for (int i = 0; i < defaultDialogue.leftLines.Count; i++)
         {
             statueHintArray[i] = defaultDialogue.leftLines[i];
-            Debug.Log(statueHintArray[i]);
         }
 
     }
@@ -621,6 +620,5 @@ public bool OnSongPlayed(string melody)
         {
             currentHintIndex += 1;
         }
-        Debug.Log(statueHintArray[currentHintIndex]);
     }
 }
