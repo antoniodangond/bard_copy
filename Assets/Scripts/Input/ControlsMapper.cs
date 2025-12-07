@@ -50,10 +50,20 @@ public class ControlsMapper
                     {
                         // since there are 2 mappings for attacks, we concatenate them and handle the split elsewhere
                         // (because this function returns a single string)
-                        return 
-                            playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(0) 
-                            + "," 
-                            + playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(1);
+                        if (action == "AOEAttack")
+                        {
+                            return 
+                                playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(0) 
+                                + "," 
+                                + playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(1);
+                        }
+                        else
+                        {
+                            return 
+                                playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(0) 
+                                + "," 
+                                + playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(1);
+                        }
                     }
                 case "Instrument":
                     return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(0);
@@ -67,7 +77,12 @@ public class ControlsMapper
             {
                 case "Player":
                     if (isAttackAction == false) {return MapGamepadIcons(playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(1));}
-                    else {return MapGamepadIcons(playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2));}
+                    else 
+                    {
+                        if (action == "AOEAttack") {return MapGamepadIcons(playerInput.actions.FindActionMap("Player").FindAction("AOEAttack").GetBindingDisplayString(2));}
+                        else {return MapGamepadIcons(playerInput.actions.FindActionMap("Player").FindAction("Attack").GetBindingDisplayString(2));}
+                    }
+
                 case "Instrument":
                     return playerInput.actions.FindActionMap(actionMap).FindAction(action).GetBindingDisplayString(1);
                 default:
