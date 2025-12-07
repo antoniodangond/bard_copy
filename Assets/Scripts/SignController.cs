@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ public class SignController : MonoBehaviour
     private string AOEAttackButton2;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
+    private string[] statueHintArray = new string[9];
+    private int currentHintIndex;
 
     [Header("Audio Settings")]
     [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
@@ -131,6 +134,8 @@ private void Start()
         // We'll let OnLoaded + Start handle that, so order is safe.
 
         handleTutorialDialog(signName);
+        currentHintIndex = 0;
+        InitializeHintDialogue(signName);
     }
 
 
@@ -524,6 +529,7 @@ public bool OnSongPlayed(string melody)
                   $"hasReward={choiceReward != null} claimed={(choiceReward != null && choiceReward.IsAlreadyClaimed())} " +
                   $"waiting={waitingForChoice}");
 
+        UpdateHintDialogue();
         DialogueManager.SetCurrentSpeaker(this);
         DialogueManager.StartDialogue(CurrentDialogue, direction);
         if (signName == "Charon") {HandleSuccessFeedback(signName);}
@@ -587,5 +593,34 @@ public bool OnSongPlayed(string melody)
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void InitializeHintDialogue(string signName)
+    {
+        if (signName == null || signName != "HintSystem") {return;}
+
+        if (defaultDialogue.universalLines.Count > 0) {defaultDialogue.universalLines.Clear();}
+
+        for (int i = 0; i < defaultDialogue.leftLines.Count; i++)
+        {
+            statueHintArray[i] = defaultDialogue.leftLines[i];
+            Debug.Log(statueHintArray[i]);
+        }
+
+    }
+
+    private void UpdateHintDialogue()
+    {
+        defaultDialogue.universalLines.Clear();
+        defaultDialogue.universalLines.Add(statueHintArray[currentHintIndex]);
+        if (currentHintIndex == statueHintArray.Length - 1)
+        {
+            currentHintIndex = 0;
+        }
+        else
+        {
+            currentHintIndex += 1;
+        }
+        Debug.Log(statueHintArray[currentHintIndex]);
     }
 }

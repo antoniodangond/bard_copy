@@ -8,11 +8,13 @@ public class CerberusStatue : MonoBehaviour
 {
     public static CerberusStatue Instance; // Make singleton because we are shipping soon!!
     public Sprite completedStatue;
+    public Dialogue StatueHints;
     public float fadeOutTime;
     private SpriteRenderer spriteRenderer;
     private Color opaqueStatue;
     private Color transparentStatue;
     private Dictionary<string, GameObject> statuePiecesDict = new Dictionary<string, GameObject> { };
+    public Dictionary<string, string> statuePieceHintsDict = new Dictionary<string, string> { };
     private int foundPieces;
     void Awake()
     {
@@ -33,6 +35,8 @@ public class CerberusStatue : MonoBehaviour
             piece.SetActive(false);
             statuePiecesDict[piece.name] = piece;
         }
+
+        InitializeHintDictionary();
     }
 
     void Start()
@@ -94,6 +98,17 @@ public class CerberusStatue : MonoBehaviour
             spriteRenderer.color = Color.Lerp(opaqueStatue, transparentStatue, t);
             elapsedTime += Time.deltaTime;
             yield return null;
+        }
+    }
+
+    private void InitializeHintDictionary()
+    {
+        List <string> hintKeys = StatueHints.rightLines;
+        List <string> hintValues = StatueHints.leftLines;
+
+        for (int i = 0; i < hintKeys.Count; i++)
+        {
+            statuePieceHintsDict[hintKeys[i]] = hintValues[i];
         }
     }
 }
