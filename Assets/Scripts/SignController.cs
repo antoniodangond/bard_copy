@@ -40,7 +40,7 @@ public class SignController : MonoBehaviour
     private string AOEAttackButton2;
     public bool HasDialogueOnMelody = false;
     public bool IsPlayingSuccessAudio = false;
-    private string[] statueHintArray = new string[9];
+    private List<string> statueHintList = new List<string>(9);
     private int currentHintIndex;
 
     [Header("Audio Settings")]
@@ -318,7 +318,7 @@ public bool OnSongPlayed(string melody)
         if (PlayerProgress.Instance == null || uniqueId == null)
             return;
 
-        Debug.Log($"[SignController] ApplySavedStateFromProgress for {signName} ({uniqueId?.Id}) obstacleRemoved={PlayerProgress.Instance?.IsObstacleRemoved(uniqueId.Id)} npcStatus={PlayerProgress.Instance?.GetNPCStatus(uniqueId.Id)}");
+        // Debug.Log($"[SignController] ApplySavedStateFromProgress for {signName} ({uniqueId?.Id}) obstacleRemoved={PlayerProgress.Instance?.IsObstacleRemoved(uniqueId.Id)} npcStatus={PlayerProgress.Instance?.GetNPCStatus(uniqueId.Id)}");
 
         // 1) Obstacles that should be gone forever
         if (PlayerProgress.Instance.IsObstacleRemoved(uniqueId.Id))
@@ -529,7 +529,7 @@ public bool OnSongPlayed(string melody)
                   $"hasReward={choiceReward != null} claimed={(choiceReward != null && choiceReward.IsAlreadyClaimed())} " +
                   $"waiting={waitingForChoice}");
 
-        UpdateHintDialogue();
+        if (signName == "HintSystem") {UpdateHintDialogue();}
         DialogueManager.SetCurrentSpeaker(this);
         DialogueManager.StartDialogue(CurrentDialogue, direction);
         if (signName == "Charon") {HandleSuccessFeedback(signName);}
@@ -603,22 +603,42 @@ public bool OnSongPlayed(string melody)
 
         for (int i = 0; i < defaultDialogue.leftLines.Count; i++)
         {
-            statueHintArray[i] = defaultDialogue.leftLines[i];
+            statueHintList.Add(defaultDialogue.leftLines[i]);
         }
 
     }
 
     private void UpdateHintDialogue()
     {
+
         defaultDialogue.universalLines.Clear();
-        defaultDialogue.universalLines.Add(statueHintArray[currentHintIndex]);
-        if (currentHintIndex == statueHintArray.Length - 1)
+        // Loop through each statue piece in the list of contained in statueHintList
+        for (int i = 0; i < statueHintList.Count; i++) 
         {
-            currentHintIndex = 0;
+            // If that piece isn't in the corresponding list maintained by the cerberus statue, it has been found!
+            // We should remove it from the list
+            if (!CerberusStatue.Instance.statuePieceHintsDict.Values.Contains<string>(statueHintList[i]))
+            {
+                Debug.Log(name);
+                statueHintList.Remove(statueHintList[i]);
+            }
+        }
+
+        // (Hopefully) update currentHitIndex to account for size changes to the list
+        currentHintIndex = GetCorrectHintIndex(currentHintIndex);
+        defaultDialogue.universalLines.Add(statueHintList[currentHintIndex]);
+
+    }
+
+    private int GetCorrectHintIndex(int index)
+    {
+        if (index >= statueHintList.Count - 1)
+        {
+            return 0;
         }
         else
         {
-            currentHintIndex += 1;
+            return index + 1;
         }
     }
 }

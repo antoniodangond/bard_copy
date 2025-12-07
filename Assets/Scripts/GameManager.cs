@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private string[] questNPCs = new string[] { "NPC_Ghostboy", "NPC_Captain", "NPC_Mountaineer"};
     [HideInInspector] public int NPCQuestsSolved;
     private bool allQuestsSolved;
-    private int numOfStatuePieces;
+    private int numOfStatuePieces = 9;
     private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
     [HideInInspector] public int collectedStatuePieces;
     [HideInInspector] public bool allStatuePiecesCollected;

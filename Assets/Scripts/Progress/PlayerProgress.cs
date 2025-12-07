@@ -372,6 +372,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         removedObstacles.Clear();
         npcStatuses.Clear();
         savedSongs.Clear();
+        GameManager.Instance.collectedStatuePieces = 0;
         DeleteSave();
         Debug.Log("[Progress] Cleared all progress.");
         RaiseLoaded();
