@@ -186,52 +186,62 @@ private void Start()
     }
 
 
-// Method called when a song is played nearby
-public bool OnSongPlayed(string melody)
-{
-    if (signName == "E_Grave" && eurydiceGrave && GameManager.Instance.NPCQuestsSolved == 3) 
+    // Method called when a song is played nearby
+    public bool OnSongPlayed(string melody)
     {
-        eurydiceGrave.OnSongPlayed(melody);
-        return true;
+        if (signName == "E_Grave" && eurydiceGrave && GameManager.Instance.NPCQuestsSolved == 3) 
+        {
+            eurydiceGrave.OnSongPlayed(melody);
+            return true;
+        }
+        Debug.Log($"[SignController:{name}] OnSongPlayed melody={melody}, signName='{signName}'");
+        // Already solved / updated? Then do nothing and don't start dialogue.
+        if (isDialogueUpdated) return false;
+
+        bool triggered = false;
+
+        switch (melody)
+        {
+            case MelodyData.Melody1:
+                if (signName == "Log" || signName == "Ghostboy")
+                {
+                    HandleSuccessFeedback(signName);
+                    triggered = true;
+                }
+                break;
+
+            case MelodyData.Melody2:
+                if (signName == "Captain" ||
+                    signName == "Vines" ||
+                    signName == "Crow")
+                {
+                    HandleSuccessFeedback(signName);
+                    triggered = true;
+                }
+                break;
+
+            case MelodyData.Melody3:
+                if (signName == "Mountaineer" || signName == "Ice")
+                {
+                    HandleSuccessFeedback(signName);
+                    triggered = true;
+                }
+                break;
+        }
+
+        return triggered;
     }
-    Debug.Log($"[SignController:{name}] OnSongPlayed melody={melody}, signName='{signName}'");
-    // Already solved / updated? Then do nothing and don't start dialogue.
-    if (isDialogueUpdated) return false;
 
-    bool triggered = false;
-
-    switch (melody)
+    public void MarkDialogueUpdated()
     {
-        case MelodyData.Melody1:
-            if (signName == "Log" || signName == "Ghostboy")
-            {
-                HandleSuccessFeedback(signName);
-                triggered = true;
-            }
-            break;
+        isDialogueUpdated = true;
 
-        case MelodyData.Melody2:
-            if (signName == "Captain" ||
-                signName == "Vines" ||
-                signName == "Crow")
-            {
-                HandleSuccessFeedback(signName);
-                triggered = true;
-            }
-            break;
-
-        case MelodyData.Melody3:
-            if (signName == "Mountaineer" || signName == "Ice")
-            {
-                HandleSuccessFeedback(signName);
-                triggered = true;
-            }
-            break;
+        // Optional: change sprite when upgraded. Maybe use this for Cerberus Statue?
+        if (updatedSprite != null && spriteRenderer != null)
+        {
+            spriteRenderer.sprite = updatedSprite;
+        }
     }
-
-    return triggered;
-}
-
 
     private void HandleSuccessFeedback(string signName)
     {
@@ -317,6 +327,12 @@ public bool OnSongPlayed(string melody)
     {
         if (PlayerProgress.Instance == null || uniqueId == null)
             return;
+
+        if (choiceReward != null && PlayerProgress.Instance.IsRewardClaimed(choiceReward.rewardId))
+            {
+                MarkDialogueUpdated();
+            }
+
 
         // Debug.Log($"[SignController] ApplySavedStateFromProgress for {signName} ({uniqueId?.Id}) obstacleRemoved={PlayerProgress.Instance?.IsObstacleRemoved(uniqueId.Id)} npcStatus={PlayerProgress.Instance?.GetNPCStatus(uniqueId.Id)}");
 
@@ -513,6 +529,7 @@ public bool OnSongPlayed(string melody)
             if (upg.id == "dash") PlayerController.canDash = true;
             if (upg.id == "aoe")  PlayerController.AbilityGate.AOEUnlocked = true;
         }
+        MarkDialogueUpdated();
     }
 
 
