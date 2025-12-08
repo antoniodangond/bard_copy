@@ -507,7 +507,7 @@ public class PlayerController : MonoBehaviour
 
         if (CurrentState == PlayerState.Default)
         {
-            if (PlayerInputManager.WasDialoguePressed)
+            if (PlayerInputManager.WasInteractPressed)
             {
                 var (dialogue, sign) = checkForDialogueCollision();
                 if (dialogue != null && sign != null)

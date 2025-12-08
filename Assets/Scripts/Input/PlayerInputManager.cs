@@ -23,6 +23,7 @@ static class Actions
     public const string Attack = "Attack";
     public const string AOEAttack = "AOEAttack";
     public const string OpenMenu = "OpenMenu";
+    public const string Interact = "Interact"; 
     public const string Dialogue = "Dialogue";
     public const string Dash = "Dash";
     // Instrument actions
@@ -31,7 +32,6 @@ static class Actions
     public const string NoteC = "NoteC";
     public const string NoteD = "NoteD";
     public const string NoteE = "NoteE";
-    // Are we missing a note here??? ^
 
     // UI actions
     public const string Navigate = "Navigate";
@@ -60,6 +60,7 @@ public class PlayerInputManager : MonoBehaviour
     public static string NotePressed;
     public static bool WasDialoguePressed;
     public static bool wasDashPressed;
+    public static bool WasInteractPressed;
     private bool IsPlayerMapActive =>
         currentActionMap != null && currentActionMap.name == ActionMaps.Player;
 
@@ -72,6 +73,7 @@ public class PlayerInputManager : MonoBehaviour
     private InputAction AOEattackAction;
     private InputAction OpenMenuAction;
     private InputAction dialogueAction;
+    private InputAction interactAction;
     private InputAction dashAction;
     // Instrument actions
     private InputAction toggleInstrumentAction;
@@ -95,6 +97,7 @@ public class PlayerInputManager : MonoBehaviour
         AOEattackAction = playerActionMap.FindAction(Actions.AOEAttack);
         OpenMenuAction = playerActionMap.FindAction(Actions.OpenMenu);
         dialogueAction = playerActionMap.FindAction(Actions.Dialogue);
+        interactAction = playerActionMap.FindAction(Actions.Interact);
         dashAction = playerActionMap.FindAction(Actions.Dash);
         // Instrument actions
         InputActionMap instrumentActionMap = InputActionAsset.FindActionMap(ActionMaps.Instrument);
@@ -259,6 +262,7 @@ public class PlayerInputManager : MonoBehaviour
         WasToggleInstrumentPressed = toggleInstrumentAction.WasPressedThisFrame();
         HandleNotePress();
         WasDialoguePressed      = dialogueAction.WasPressedThisFrame();
+        WasInteractPressed      = interactAction.WasPressedThisFrame();
     }
     else
     {
