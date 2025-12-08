@@ -143,8 +143,8 @@ public class DialogueChoiceUI : MonoBehaviour
 
     private IEnumerator OpenRoutine()
     {
-        // Let DialogueBox disable + layout settle for one frame
-        yield return null;
+        // No need to wait a frame now that we're on the same canvas
+        // and not disabling the dialogue box.
 
         // Freeze the player and pause the world while the choice is open
         PlayerController.CurrentState = PlayerState.Dialogue;
@@ -153,16 +153,27 @@ public class DialogueChoiceUI : MonoBehaviour
         if (canvasGroup)
         {
             canvasGroup.blocksRaycasts = true;
-            for (float t = 0f; t < fadeTime; t += Time.unscaledDeltaTime)
+
+            if (fadeTime <= 0.001f)
             {
-                canvasGroup.alpha = Mathf.Lerp(0f, 1f, t / fadeTime);
-                yield return null;
+                // Instant show
+                canvasGroup.alpha = 1f;
             }
-            canvasGroup.alpha = 1f;
+            else
+            {
+                // Optional very quick fade if you like the look
+                for (float t = 0f; t < fadeTime; t += Time.unscaledDeltaTime)
+                {
+                    canvasGroup.alpha = Mathf.Lerp(0f, 1f, t / fadeTime);
+                    yield return null;
+                }
+                canvasGroup.alpha = 1f;
+            }
         }
 
         isOpen = true;
     }
+
 
     private void Close(DialogueChoice choice)
     {

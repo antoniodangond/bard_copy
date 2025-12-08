@@ -116,7 +116,8 @@ public class DialogueManager : MonoBehaviour
                     0
                 );
                 // Optionally close the dialogue box if you want only the choice visible
-                dialogueBox.SetActive(false);
+                // dialogueBox.SetActive(false);
+                dialogueText.text = string.Empty;
                 return;
             }
             string processedLine = ReplaceControlPlaceholders(line);
