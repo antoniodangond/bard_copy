@@ -36,7 +36,7 @@ static class Actions
     // UI actions
     public const string Navigate = "Navigate";
     public const string Submit = "Submit";
-    // public const string CloseMenu = "CloseMenu";
+    public const string CloseMenu = "CloseMenu";
 }
 
 [RequireComponent(typeof(InputActionAsset))]
@@ -82,10 +82,9 @@ public class PlayerInputManager : MonoBehaviour
     // UI actions
     private InputAction Navigate;
     private InputAction Submit;
-    // private InputAction CloseMenuAction;
+    private InputAction CloseMenuAction;
     [SerializeField] private Button firstPauseButton; // drag your Resume button here
     
-
 
     void Awake()
     {
@@ -108,7 +107,7 @@ public class PlayerInputManager : MonoBehaviour
         InputActionMap UIActionMap = InputActionAsset.FindActionMap(ActionMaps.UI);
         Navigate = UIActionMap.FindAction(Actions.Navigate);
         Submit = UIActionMap.FindAction(Actions.Submit);
-        // CloseMenuAction = UIActionMap.FindAction(Actions.CloseMenu);
+        CloseMenuAction = UIActionMap.FindAction(Actions.CloseMenu);
         SwitchToActionMap("Player");
 
     if (Instance == null)
@@ -236,8 +235,20 @@ public class PlayerInputManager : MonoBehaviour
     void Update()
 {
     // Pause toggle
-    MenuOpened = OpenMenuAction.WasPressedThisFrame();
-    if (MenuOpened) HandleMenuOpen();
+    if (!isPaused)
+    {
+        // Player map active = watch OpenMenuAction
+        MenuOpened = OpenMenuAction.WasPressedThisFrame();
+        if (MenuOpened) HandleMenuOpen();
+    }
+    else
+    {
+        // UI map active = watch CloseMenuAction
+        if (CloseMenuAction != null && CloseMenuAction.WasPressedThisFrame())
+        {
+            HandleMenuOpen(); // will call Unpause()
+        }
+    }
 
     if (IsPlayerMapActive && !isPaused)
     {
