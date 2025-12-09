@@ -237,25 +237,28 @@ public class BackgroundAudio : AudioController
                 PlayRandomFrogs();
                 break;
         }
-        // Fade in the new background music clip
-        if (newSound != currentBackgroundMusic && newSound != null)
-        {
-            // Debug.Log("playing new clip: " + newSound.Clip);
-            // Debug.Log("playing new clip: " + newAmbience.Clip);
-            yield return StartCoroutine(AudioFader.FadeOutCoroutine(currentBackgroundMusic.Source, FadeDuration));
-            yield return StartCoroutine(AudioFader.FadeOutCoroutine(currentAmbience.Source, FadeDuration));
-            currentBackgroundMusic = newSound;
-            currentAmbience = newAmbience;
-            yield return StartCoroutine(AudioFader.FadeInCoroutine(newSound.Source, FadeDuration, newSound.DefaultVolume));
-            yield return StartCoroutine(AudioFader.FadeInCoroutine(newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));
+
+            // Only crossfade if the new track is different
+            if (newSound != currentBackgroundMusic && newSound != null)
+            {
+                // Start crossfade for background music and ambience simultaneously
+                StartCoroutine(AudioFader.CrossfadeCoroutine(currentBackgroundMusic.Source, newSound.Source, FadeDuration, newSound.DefaultVolume));
+                StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));
+
+                // Update references
+                currentBackgroundMusic = newSound;
+                currentAmbience = newAmbience;
+            }
+            else if (newAmbience != currentAmbience && currentAmbience != null)
+            {
+                // Only crossfade ambience if it changed
+                StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));
+                currentAmbience = newAmbience;
+            }
+
+            yield return null; // Keep the coroutine structure
         }
-        else if (newAmbience != currentAmbience && currentAmbience != null)
-        {
-            yield return StartCoroutine(AudioFader.FadeOutCoroutine(currentAmbience.Source, FadeDuration));
-            currentAmbience = newAmbience;
-            yield return StartCoroutine(AudioFader.FadeInCoroutine(newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));   
-        }
-    }
+    
 
     public void OnPlayerStateChange(PlayerState playerState)
     {

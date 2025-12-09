@@ -52,7 +52,8 @@ MonoBehaviour:
   backgroundAudio: {fileID: 0}
   numQuestNPCs: 3
   NPCQuestsSolved: 0
-  numOfTablets: 9
+  collectedStatuePieces: 0
+  allStatuePiecesCollected: 0
 --- !u!114 &1175583510679496794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ MonoBehaviour:
   loudBirdsAudioSource: {fileID: 5207917185575829571}
   quietBirdsAudioSource: {fileID: 2046532448163417574}
   statuePiecePickupStingSource: {fileID: 4511011080916874034}
-  FadeDuration: 0.5
+  FadeDuration: 2
 --- !u!114 &3818202030386125784
 MonoBehaviour:
   m_ObjectHideFlags: 0

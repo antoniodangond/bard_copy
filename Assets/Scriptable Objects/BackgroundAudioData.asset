@@ -15,7 +15,7 @@ MonoBehaviour:
   BackgroundMusic:
     Clip: {fileID: 8300000, guid: d673ea7e1c0b61d4184638c208951e91, type: 3}
     DefaultPitch: 1
-    DefaultVolume: 0.65
+    DefaultVolume: 1
     ShouldLoop: 1
     Source: {fileID: 0}
   BackgroundMusicUnderworld:
@@ -69,7 +69,7 @@ MonoBehaviour:
   BackgroundMusicMainMenu:
     Clip: {fileID: 8300000, guid: 95d64e936b16e954d8e2ed7985cf493e, type: 3}
     DefaultPitch: 1
-    DefaultVolume: 1
+    DefaultVolume: 0
     ShouldLoop: 1
     Source: {fileID: 0}
   BackgroundMusicInstrumentVolume: 0.5
