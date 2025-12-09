@@ -53,14 +53,14 @@ public class SignController : MonoBehaviour
     [Header("GameObjects to Effect")]
     [SerializeField] public GameObject teleporterFromObj;
     [SerializeField] public GameObject teleporterToObj;
-    [SerializeField] public GameObject hatchToOpenObj;
-    [SerializeField] public Sprite openHatch;
+    [SerializeField] public GameObject ClosedHatch;
+    [SerializeField] public GameObject OpenedHatch;
     public GameObject statuePieceToGive;
     public float statuePieceFadeInTime;
     
     private Teleporter teleporterFrom;
     private Teleporter teleporterTo;
-    private SpriteRenderer hatchToOpen;
+    // private SpriteRenderer hatchToOpen;
     [Header("Sign Renderer")]
     public SpriteRenderer spriteRenderer;
 
@@ -127,7 +127,7 @@ private void Start()
         {
             teleporterFrom = teleporterFromObj != null ? teleporterFromObj.GetComponent<Teleporter>() : null;
             teleporterTo   = teleporterToObj   != null ? teleporterToObj.GetComponent<Teleporter>() : null;
-            hatchToOpen    = hatchToOpenObj    != null ? hatchToOpenObj.GetComponent<SpriteRenderer>() : null;
+            // hatchToOpen    = OpenedHatch    != null ? hatchToOpenObj.GetComponent<SpriteRenderer>() : null;
         }
 
         // Do NOT call ApplySavedStateFromProgress() here anymore.
@@ -286,8 +286,8 @@ private void Start()
         {
             teleporterFrom.Activate();
             teleporterTo.Activate();
-            hatchToOpenObj.transform.position += new Vector3 (0,2f);
-            hatchToOpen.sprite = openHatch;
+            ClosedHatch.SetActive(false);
+            OpenedHatch.SetActive(true);
         }
 
         if (statuePieceToGive) {FadeInStatuePiece();}
@@ -382,10 +382,10 @@ private void Start()
             {
                 if (teleporterFrom != null) teleporterFrom.Activate();
                 if (teleporterTo != null) teleporterTo.Activate();
-                if (hatchToOpenObj != null)
-                    hatchToOpenObj.transform.position += new Vector3(0, 2f);
-                if (hatchToOpen != null)
-                    hatchToOpen.sprite = openHatch;
+                if (ClosedHatch != null)
+                    ClosedHatch.SetActive(false);
+                if (OpenedHatch != null)
+                    OpenedHatch.SetActive(true);
             }
 
             // Also disable colliders if that’s what the success animation does
