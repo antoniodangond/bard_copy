@@ -396,6 +396,13 @@ private void Start()
             
             Destroy(gameObject);
         }
+
+        // 3) For Hint System
+        if (signName == "HintSystem")
+        {
+            InitializeHintDialogue(signName);
+            UpdateHintDialogue();
+        }
     }
 
 
