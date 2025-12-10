@@ -22,6 +22,7 @@ public class RegionBoundary : MonoBehaviour
         {
             // Debug.Log("enter trigger " + region);
             StartCoroutine(backgroundAudio.ChangeBackgroundMusic(region));
+            backgroundAudio.SetReverbParameters(region);
         }
 
     }
@@ -30,6 +31,7 @@ public class RegionBoundary : MonoBehaviour
         if (Utils.HasTargetLayer(playerLayer, other.gameObject))
         {
             // Debug.Log("exit trigger " + region);
+            backgroundAudio.ResetReverbParameters();
         }
     }
 }

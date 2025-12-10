@@ -189,7 +189,7 @@ private void Start()
     // Method called when a song is played nearby
     public bool OnSongPlayed(string melody)
     {
-        if (signName == "E_Grave" && eurydiceGrave && GameManager.Instance.NPCQuestsSolved == 3) 
+        if (signName == "E_Grave" && eurydiceGrave && GameManager.Instance.NPCQuestsSolved >= 3) 
         {
             eurydiceGrave.OnSongPlayed(melody);
             return true;
