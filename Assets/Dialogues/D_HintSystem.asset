@@ -15,15 +15,16 @@ MonoBehaviour:
   upLines: []
   downLines: []
   leftLines:
-  - Tail - Ghost Boy (Could be hidden in animal pen)
-  - Left Leg - The Captain (Could be hidden behind winged statue)
-  - The Right Leg lies in a clearing, hidden deep in the silent forest.
-  - A greedy bird guards the Left Arm in a desert graveyard.
-  - Right Arm - The Mountaineer (Could be hidden in ruins near Argus statue (new))
-  - The Torso is encased in a block of ice, high upon the tallest peak.
-  - The Left Head hides in the northern forest, in a cave obscured by trees.
-  - The Middle Head rests in the snake-infested dungeon, behind a wall of ice.
-  - Where ocean waves meet the land, travel south to find the Right Head.
+  - Slip through the gate where the animals lie to find THE TAIL.
+  - Seek the LEFT LEG veiled by wide, unmoving wings
+  - Deep in the forest, a quiet glade cracles the RIGHT LEG.
+  - A greedy bird guards the LEFT ARM in a desert graveyard.
+  - The RIGHT ARM is tucked in a hollow you passed without a second thought.
+  - High upon the tallest peak, winter's cold prism encases THE TORSO.
+  - In the northern forest, the LEFT HEAD rests in a perilous grotto.
+  - In the burrow of serpents, beyond a wall of frost, the MIDDLE HEAD lies still.
+  - Where tide greets earth, travel south and face restless shades to find the RIGHT
+    HEAD.
   rightLines:
   - Tail
   - LeftLeg
@@ -34,13 +35,4 @@ MonoBehaviour:
   - LeftHead
   - MiddleHead
   - RightHead
-  universalLines:
-  - Tail - Ghost Boy (Could be hidden in animal pen)
-  - Left Leg - The Captain (Could be hidden behind winged statue)
-  - The Right Leg lies in a clearing, hidden deep in the silent forest.
-  - A greedy bird guards the Left Arm in a desert graveyard.
-  - Right Arm - The Mountaineer (Could be hidden in ruins near Argus statue (new))
-  - The Torso is encased in a block of ice, high upon the tallest peak.
-  - The Left Head hides in the northern forest, in a cave obscured by trees.
-  - The Middle Head rests in the snake-infested dungeon, behind a wall of ice.
-  - Where ocean waves meet the land, travel south to find the Right Head.
+  universalLines: []
