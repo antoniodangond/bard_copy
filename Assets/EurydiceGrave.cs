@@ -24,28 +24,89 @@ public class EurydiceGrave : MonoBehaviour
     [SerializeField] private ParticleSystem glowingParticles;
     [Header("Other GameObjects")]
     [SerializeField] private GameObject endGameTrigger;
+
+    [Header("Quest / Song Mapping")]
+    [Tooltip("UniqueId.Id of the NPC whose quest is solved with Melody1")]
+    [SerializeField] private string questForMelody1Id;
+    [Tooltip("UniqueId.Id of the NPC whose quest is solved with Melody2")]
+    [SerializeField] private string questForMelody2Id;
+    [Tooltip("UniqueId.Id of the NPC whose quest is solved with Melody3")]
+    [SerializeField] private string questForMelody3Id;
+
+
     private int songsPlayed;
     private BoxCollider2D boxCollider;
-    private List<string> Melodies = new List<string>{"Melody1", "Melody2", "Melody3"};
+
+    // Track which songs are still available to affect the grave.
+    private HashSet<string> remainingMelodies;
 
     void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = spriteRendererObject.GetComponent<SpriteRenderer>();
+
+        remainingMelodies = new HashSet<string>
+        {
+            MelodyData.Melody1,
+            MelodyData.Melody2,
+            MelodyData.Melody3
+        };
     }
+
+    private bool IsQuestSolvedForMelody(string melody)
+    {
+        if (PlayerProgress.Instance == null)
+            return false;
+
+        string npcId = null;
+
+        if (melody == MelodyData.Melody1)
+        {
+            npcId = questForMelody1Id;
+        }
+        else if (melody == MelodyData.Melody2)
+        {
+            npcId = questForMelody2Id;
+        }
+        else if (melody == MelodyData.Melody3)
+        {
+            npcId = questForMelody3Id;
+        }
+
+        if (string.IsNullOrEmpty(npcId))
+            return false; // nothing configured = treat as locked
+
+        // Uses the existing NPC status system
+        return PlayerProgress.Instance.GetNPCStatus(npcId) == "MelodySolved";
+    }
+
 
     public void OnSongPlayed(string melody)
     {
-        switch (Melodies.Contains<string>(melody))
+        // 1) Ignore anything that isn't one of our three grave songs
+        if (!remainingMelodies.Contains(melody))
         {
-            case true:
-                songsPlayed += 1;
-                HandleGameCompleteProgression(songsPlayed);
-                Melodies.Remove(melody);
-                break;
-            case false:
-                break;
+            // Either not a grave song, or this song has already been used here
+            return;
         }
+
+        // 2) Check whether the corresponding quest for this song is solved
+        if (!IsQuestSolvedForMelody(melody))
+        {
+            // Quest not solved yet means this song has no effect but remains available for later once the quest IS solved.
+            return;
+        }
+
+        // 3) Consume this melody so it can't trigger again
+        remainingMelodies.Remove(melody);
+
+        // 4) Persist to PlayerProgress
+        PlayerProgress.Instance?.MarkGraveMelodyUsed(melody);
+
+        // 5) Advance visual grave progression
+        songsPlayed += 1;
+        HandleGameCompleteProgression(songsPlayed);
+
         // Old approach; save in case i break it
         // switch (melody)
         // {
@@ -227,4 +288,140 @@ public class EurydiceGrave : MonoBehaviour
     void OnTriggerExit2D(Collider2D other)
     {
     }
+
+
+
+    private void OnEnable()
+    {
+        if (PlayerProgress.Instance != null)
+        {
+            PlayerProgress.Instance.OnLoaded += ApplySavedStateFromProgress;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerProgress.Instance != null)
+        {
+            PlayerProgress.Instance.OnLoaded -= ApplySavedStateFromProgress;
+        }
+    }
+
+    private void Start()
+    {
+        ApplySavedStateFromProgress();  // handles case where load already happened
+    }
+
+    private void ApplySavedStateFromProgress()
+    {
+        // Rebuild remainingMelodies and songsPlayed from PlayerProgress
+        remainingMelodies = new HashSet<string>
+        {
+            MelodyData.Melody1,
+            MelodyData.Melody2,
+            MelodyData.Melody3
+        };
+
+        songsPlayed = 0;
+
+        if (PlayerProgress.Instance != null)
+        {
+            foreach (var m in PlayerProgress.Instance.GetGraveUsedMelodies())
+            {
+                if (remainingMelodies.Remove(m))
+                {
+                    songsPlayed++;
+                }
+            }
+        }
+
+        // Reset visuals to a known baseline
+        if (pieceOne != null) { pieceOne.SetActive(false); }
+        if (pieceTwo != null) { pieceTwo.SetActive(false); }
+        if (pieceThree != null) { pieceThree.SetActive(false); }
+
+        if (underworldGateway != null) { underworldGateway.SetActive(false); }
+        if (endGameTransporter != null) { endGameTransporter.SetActive(false); }
+
+        // Make sure base sprite is visible by default
+        if (spriteRenderer != null)
+        {
+            var c = spriteRenderer.color;
+            c.a = 1f;
+            spriteRenderer.color = c;
+        }
+
+        // Now apply state according to how many songs have been used:
+        if (songsPlayed >= 1)
+        {
+            InstantShowPiece(pieceOne);
+        }
+
+        if (songsPlayed >= 2)
+        {
+            InstantShowPiece(pieceTwo);
+        }
+
+        if (songsPlayed >= 3)
+        {
+            // Completed grave state
+            InstantShowPiece(pieceThree);
+
+            if (spriteRenderer != null && completedGrave != null)
+            {
+                spriteRenderer.sprite = completedGrave;
+            }
+
+            // Match the "doorway opened" end-state (without re-running coroutines)
+            if (underworldGateway != null)
+            {
+                underworldGateway.SetActive(true);
+            }
+
+            // Move the grave up like in MoveGrave(distance=0.8f), but instantly
+            spriteRenderer.transform.localPosition += new Vector3(0f, 0.8f, 0f);
+
+            // Fade out grave sprite instantly (end of FadeOutSprite)
+            if (spriteRenderer != null)
+            {
+                var c = spriteRenderer.color;
+                c.a = 0f;
+                spriteRenderer.color = c;
+            }
+
+            if (endGameTransporter != null)
+            {
+                endGameTransporter.SetActive(true);
+            }
+
+            // Collider removed after completion
+            if (boxCollider != null)
+            {
+                Destroy(boxCollider);
+            }
+
+            // Optional: pieces are destroyed in GameCompleteRoutine; you can either:
+            // - destroy them here, or
+            // - leave them inactive. Here we mirror the destruction:
+            DestroyGravePieces();
+        }
+    }
+
+    // Helper: instantly show a piece (no fade)
+    private void InstantShowPiece(GameObject go)
+    {
+        if (go == null) return;
+        var sr = go.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            var c = sr.color;
+            c.a = 1f;
+            sr.color = c;
+        }
+        go.SetActive(true);
+    }
+
+
 }
+
+    

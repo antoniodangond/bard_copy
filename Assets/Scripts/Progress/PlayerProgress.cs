@@ -29,6 +29,7 @@ public class SaveData // Data structure for saving/loading player progress
     public List<string> removedObstacles = new List<string>();
     public List<NPCStatusData> npcStatuses = new List<NPCStatusData>();
     public List<string> savedSongs = new List<string>();
+    public List<string> graveUsedMelodies = new List<string>();
 }
 
 [Serializable]
@@ -62,6 +63,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     private HashSet<string> removedObstacles = new HashSet<string>();
     private Dictionary<string, string> npcStatuses = new Dictionary<string, string>();
     private HashSet<string> savedSongs = new HashSet<string>();
+    private HashSet<string> graveUsedMelodies = new HashSet<string>();
 
     public bool HasSaveFile() => System.IO.File.Exists(GetSavePath());
     public void SaveNow() => Save();          // simple public wrapper
@@ -136,6 +138,26 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     }
 
     #endregion
+
+
+    #region Grave Progress
+
+    public bool IsGraveMelodyUsed(string melodyId) => graveUsedMelodies.Contains(melodyId);
+
+    public void MarkGraveMelodyUsed(string melodyId)
+    {
+        if (string.IsNullOrEmpty(melodyId)) return;
+
+        if (graveUsedMelodies.Add(melodyId))
+        {
+            Save();
+        }
+    }
+
+    public IReadOnlyCollection<string> GetGraveUsedMelodies() => graveUsedMelodies;
+
+    #endregion
+
 
     #region Enemies / Obstacles / Collectibles / NPCs
 
@@ -303,6 +325,8 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
             foreach (var npc in data.npcStatuses) npcStatuses[npc.npcId] = npc.status;
 
         savedSongs = new HashSet<string>(data.savedSongs ?? new List<string>());
+
+        graveUsedMelodies = new HashSet<string>(data.graveUsedMelodies ?? new List<string>());
     }
 
     // Build JSON from current in-memory progress (used by Save)
@@ -335,6 +359,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
             data.npcStatuses.Add(new NPCStatusData { npcId = kvp.Key, status = kvp.Value });
 
         data.savedSongs = new List<string>(savedSongs);
+        data.graveUsedMelodies = new List<string>(graveUsedMelodies);
 
         return JsonUtility.ToJson(data);
     }
@@ -372,6 +397,7 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         removedObstacles.Clear();
         npcStatuses.Clear();
         savedSongs.Clear();
+        graveUsedMelodies.Clear();
         GameManager.Instance.collectedStatuePieces = 0;
         DeleteSave();
         Debug.Log("[Progress] Cleared all progress.");
