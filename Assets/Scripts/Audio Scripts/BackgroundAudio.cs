@@ -1,6 +1,8 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.AI;
+using UnityEngine.Video;
 
 public class BackgroundAudio : AudioController
 {
@@ -18,9 +20,6 @@ public class BackgroundAudio : AudioController
 
     private Sound currentBackgroundMusic;
     private Sound currentAmbience;
-    private AudioReverbZone reverbZone;
-    // for now, we'll just apply the reverb to player sfx
-    public AudioMixerGroup playerSFX;
 
     void Awake()
     {
@@ -39,7 +38,6 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
-        InstantiateReverb();
         
         statuePiecePickupSting = statuePiecePickupStingSource.clip;
         // Old approach, may have been getting unloaded at initialization in the build
@@ -388,101 +386,5 @@ public class BackgroundAudio : AudioController
         }
         // currentBackgroundMusic.SetVolume(currentBackgroundMusic.DefaultVolume);
         
-    }
-
-    private void InstantiateReverb()
-    {
-        // reverbZone = gameObject.AddComponent<AudioReverbZone>();
-        // reverbZone.minDistance = 10000f;
-        // reverbZone.enabled = true;
-    }
-
-    public void SetReverbParameters(string region)
-    {
-        float decayTime; 
-        int reverb; 
-        float room;
-        // float reverbDelay;
-        // int room;
-        // float DecayHFRatio;
-        // int reflections;
-        // float reflectionsDelay;
-
-        switch (region)
-        {
-            case "Overworld":
-            case "Forest":
-            case "Beach":
-            case "Mountain":
-                decayTime = 0f;
-                reverb = 0;
-                room = -10000f;
-                // reverbDelay = 0;
-                // room = -1000;
-                // DecayHFRatio = 0f;
-                // reflections = 0;
-                // reflectionsDelay = 0f;
-                break;
-            case "Underworld":
-                decayTime = 1.6f;
-                reverb = 300;
-                room = 0f;
-                // reverbDelay = 0.022f;
-                // room = -700;
-                // DecayHFRatio = 1.3f;
-                // reflections = 90;
-                // reflectionsDelay = 0.047f;
-                break;
-            case "Mausoleum":
-                decayTime = 2.5f;
-                reverb = 619;
-                room = 0f;
-                // reverbDelay = 0.022f;
-                // room = -700;
-                // DecayHFRatio = 1.3f;
-                // reflections = 90;
-                // reflectionsDelay = 0.047f;
-                break;
-            case "DungeonA":
-            case "DungeonB":
-            case "DungeonC":
-                decayTime = 1.0f;
-                reverb = 215;
-                room = 0f;
-                // reverbDelay = 0.022f;
-                // room = -700;
-                // DecayHFRatio = 1.3f;
-                // reflections = 90;
-                // reflectionsDelay = 0.047f;
-                break;
-            default:
-                decayTime = 0f;
-                reverb = 0;
-                room = -10000f;                
-                // reverbDelay = 0;
-                // room = -1000;
-                // DecayHFRatio = 0f;
-                // reflections = 0;
-                // reflectionsDelay = 0f;
-                break;
-        }
-
-        playerSFX.audioMixer.SetFloat("SFXReverbDecayTime", decayTime);
-        playerSFX.audioMixer.SetFloat("SFXReverbReverb", reverb);
-        playerSFX.audioMixer.SetFloat("SFXReverbRoom", room);
-        // reverbZone.reverbDelay = reverbDelay;
-        // reverbZone.room = room;
-        // reverbZone.decayHFRatio = DecayHFRatio;
-        // reverbZone.reflections = reflections;
-        // reverbZone.reflectionsDelay = reflectionsDelay;
-    }
-
-    public void ResetReverbParameters()
-    {
-        playerSFX.audioMixer.SetFloat("SFXReverbDecayTime", 0f);
-        playerSFX.audioMixer.SetFloat("SFXReverbReverb", 0f);
-        playerSFX.audioMixer.SetFloat("SFXReverbRoom", 0f);
-        // reverbZone.reverb = 0;
-        // reverbZone.reverbDelay = 0f;
     }
 }
