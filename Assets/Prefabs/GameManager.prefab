@@ -74,6 +74,7 @@ MonoBehaviour:
   quietBirdsAudioSource: {fileID: 2046532448163417574}
   statuePiecePickupStingSource: {fileID: 4511011080916874034}
   FadeDuration: 2
+  playerSFX: {fileID: 2027215125535092849, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
 --- !u!114 &3818202030386125784
 MonoBehaviour:
   m_ObjectHideFlags: 0
