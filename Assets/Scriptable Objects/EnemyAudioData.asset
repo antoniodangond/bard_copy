@@ -20,16 +20,23 @@ MonoBehaviour:
   OwlHits:
   - {fileID: 8300000, guid: 0398c89d355b646ea9b8b9f07d382a53, type: 3}
   - {fileID: 8300000, guid: f4cfb296f8323482e9bf430165df18fd, type: 3}
+  PhantomHits:
+  - {fileID: 8300000, guid: 9f5ddc3cfc29c4ef996be9689bc20288, type: 3}
+  - {fileID: 8300000, guid: dab8286b8022e433eb7f59ccf9a09744, type: 3}
   Aggro:
   - {fileID: 8300000, guid: 5d712c32b2e2249c9af197d19b40757f, type: 3}
   OwlAggro:
   - {fileID: 8300000, guid: 00aea431091894fc196a186a0848d46b, type: 3}
   - {fileID: 8300000, guid: 81dafc268b86449a08dfc31f22d45f06, type: 3}
+  PhantomAggro:
+  - {fileID: 8300000, guid: 5aadd5cad0ef24f409ad2d15abc0a948, type: 3}
   Attacks:
   - {fileID: 8300000, guid: c068c87267d7c44e698af3061498a716, type: 3}
   OwlAttacks:
   - {fileID: 8300000, guid: a0985e58aa61a4dcda470f25ceb56ea5, type: 3}
   - {fileID: 8300000, guid: fb6c94b6c25d846cdbdfc10fe340ddd2, type: 3}
+  PhantomAttacks:
+  - {fileID: 8300000, guid: fb8fe19d22cb141a5b7381094c19330b, type: 3}
   OwlIdle_1:
   - {fileID: 8300000, guid: 88ed4d465008f4e508f25fd590ada46e, type: 3}
   - {fileID: 8300000, guid: 07c1a3f71cf5d4a52801d5f785bf0690, type: 3}

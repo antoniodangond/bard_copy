@@ -35,11 +35,11 @@ public class EnemyAudio : AudioController
                 AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlHits, 0.8f, 1.15f, true, audioSource);
                 break;
             case "Phantom":
-                if (AudioData.Hits.Length == 0) {
+                if (AudioData.PhantomHits.Length == 0) {
                     Debug.LogError("Enemy audio 'hits' length is 0");
                     return;
                 }
-                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Hits, 0.8f, 1.15f, true, audioSource);
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomHits, 0.8f, 1.15f, true, audioSource);
                 break;
             default:
                 return;
@@ -65,11 +65,11 @@ public class EnemyAudio : AudioController
                 AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlAttacks, 0.8f, 1.15f, true, audioSource);
                 break;
             case "Phantom":
-                if (AudioData.Attacks.Length == 0) {
+                if (AudioData.PhantomAttacks.Length == 0) {
                     Debug.LogError("Enemy audio 'attacks' length is 0");
                     return;
                 }
-                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Attacks, 0.8f, 1.15f, true, audioSource);
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAttacks, 0.8f, 1.15f, true, audioSource);
                 break;
             default:
                 break;
@@ -97,12 +97,12 @@ public class EnemyAudio : AudioController
                 AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlAggro, 0.8f, 1.15f, true, audioSource);
                 break;
             case "Phantom":
-                if (AudioData.Aggro.Length == 0)
+                if (AudioData.PhantomAggro.Length == 0)
                 {
                     Debug.LogError("Enemy audio 'aggro' length is 0");
                     return;
                 }
-                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.Aggro, 0.8f, 1.15f, true, audioSource);
+                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAggro, 0.8f, 1.15f, true, audioSource);
                 break;
             default:
                 return;
