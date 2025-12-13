@@ -293,9 +293,24 @@ private void Start()
         if (statuePieceToGive) {FadeInStatuePiece();}
 
         // STEP 2: Play success animation
-        if (successAnimator != null)
+        if (successAnimator != null && signName != "Charon")
         {
             StartCoroutine(PlaySuccessAnimation(signName));
+        }
+        else if (signName == "Charon")
+        {
+            // move Charon, first argument in coroutine is distance up, second is time;
+            StartCoroutine(MoveCharon(2.5f, 1.5f));
+
+            foreach (Collider2D collider in gameObject.GetComponents<BoxCollider2D>())
+            {
+                collider.enabled = false;
+            }
+            foreach (Collider2D collider in gameObject.GetComponents<PolygonCollider2D>())
+            {
+                collider.enabled = false;
+            }
+
         }
     }
 
@@ -663,6 +678,24 @@ private void Start()
         else
         {
             return index + 1;
+        }
+    }
+
+    private IEnumerator MoveCharon(float distance, float moveTime)
+    {
+        Vector3 currentPos = gameObject.transform.position;
+        Vector3 targetPos = currentPos + new Vector3(0, distance);
+
+        float elapsedTime = 0;
+
+        while (elapsedTime < moveTime)
+        {
+            float t = elapsedTime/moveTime;
+            gameObject.transform.position = Vector3.Lerp(currentPos, targetPos, t);
+
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
         }
     }
 }
