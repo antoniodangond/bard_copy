@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 [DefaultExecutionOrder(-1000)]
 
@@ -15,12 +16,24 @@ public class DialogueManager : MonoBehaviour
     private FacingDirection currentDirection;
     private List<string> currentLines;
     private int currentLineIndex;
+
+    // New, for accessibility on larger font sizes
+    private int currentPageIndex = 1;  // TMP pages are 1-based
+    private int currentPageCount = 1;
+    private string currentProcessedLine = null;
+    private int _currentPageStartChar = 0;
+    private int _currentPageLastChar = 0;
+
+
+
+
     private bool isTyping = false;
     public static SignController CurrentSpeaker { get; private set; }
     public static void SetCurrentSpeaker(SignController speaker) => CurrentSpeaker = speaker;
 
 
     public static bool IsOpen => Instance != null && Instance.currentLines != null && Instance.currentLines.Count > 0;
+    
 
     void Awake()
     {
@@ -37,6 +50,11 @@ public class DialogueManager : MonoBehaviour
 
         //Deactivate the dialogue box at the start
         dialogueBox.SetActive(false);
+
+        //Make sure we are in proper overflow mode
+        dialogueText.overflowMode = TextOverflowModes.Page;
+        dialogueText.pageToDisplay = 1;
+
 
         // Subscribe to custom events
         CustomEvents.OnDialogueStart.AddListener(OnDialogueStart);
@@ -91,7 +109,6 @@ public class DialogueManager : MonoBehaviour
             canvasGroup.alpha = 1f;
 
         CustomEvents.OnDialogueStart?.Invoke(dialogue);
-        Instance.DisplayLine();
     }
 
 
@@ -121,13 +138,63 @@ public class DialogueManager : MonoBehaviour
                 return;
             }
             string processedLine = ReplaceControlPlaceholders(line);
-            StartCoroutine(TypeLine(processedLine));
+            currentProcessedLine = processedLine;
+
+            dialogueText.text = processedLine;
+            dialogueText.ForceMeshUpdate();
+
+            currentPageCount = Mathf.Max(1, dialogueText.textInfo.pageCount);
+            currentPageIndex = 1;
+            dialogueText.pageToDisplay = 1;
+
+            StartCoroutine(TypeCurrentPage());
+
         }
         else
         {
             EndDialogue();
         }
     }
+
+
+    private IEnumerator TypeCurrentPage()
+    {
+        isTyping = true;
+
+        // Ensure full line text is present for TMP to compute page boundaries
+        dialogueText.text = currentProcessedLine ?? "";
+        dialogueText.maxVisibleCharacters = 0;
+
+        dialogueText.pageToDisplay = currentPageIndex;
+        dialogueText.ForceMeshUpdate();
+
+
+        var info = dialogueText.textInfo;
+        int page = currentPageIndex - 1;
+
+        if (page >= info.pageInfo.Length)
+        {
+            isTyping = false;
+            yield break;
+        }
+
+        int start = info.pageInfo[page].firstCharacterIndex;
+        int count = info.pageInfo[page].lastCharacterIndex - start + 1;
+
+        _currentPageStartChar = start;
+        _currentPageLastChar = info.pageInfo[page].lastCharacterIndex;
+
+
+        for (int i = 0; i < count; i++)
+        {
+            dialogueText.maxVisibleCharacters = start + i + 1;
+            yield return new WaitForSeconds(letterSpeed);
+        }
+
+        dialogueText.maxVisibleCharacters = int.MaxValue;
+        isTyping = false;
+    }
+
 
 
     private System.Collections.IEnumerator TypeLine(string line)
@@ -147,6 +214,14 @@ public class DialogueManager : MonoBehaviour
         }
 
         isTyping = false;
+
+        // Now that the full line is present, TMP can compute pages
+        dialogueText.pageToDisplay = 1;
+        dialogueText.ForceMeshUpdate();
+
+        currentPageCount = Mathf.Max(1, dialogueText.textInfo.pageCount);
+        currentPageIndex = 1;
+
     }
 
     /// <summary>
@@ -191,20 +266,42 @@ public class DialogueManager : MonoBehaviour
     {
         if (Instance == null) return;
 
-        // If no dialogue is active, ignore the call safely.
         if (Instance.currentLines == null || Instance.currentLines.Count == 0)
-        {
             return;
-        }
 
+        // 1) If typing, finish the current line immediately (and compute pages)
         if (Instance.isTyping)
         {
+            // Stop only the page-typing coroutine
             Instance.StopAllCoroutines();
-            Instance.dialogueText.text = Instance.currentLines[Instance.currentLineIndex];
             Instance.isTyping = false;
+
+            // Ensure text is set to the full current line (so TMP indices are valid)
+            Instance.dialogueText.text = Instance.currentProcessedLine ??
+                                        ReplaceControlPlaceholders(Instance.currentLines[Instance.currentLineIndex]);
+
+            Instance.dialogueText.pageToDisplay = Instance.currentPageIndex;
+            Instance.dialogueText.ForceMeshUpdate();
+
+            // Reveal the rest of the CURRENT PAGE (not the next page / not the next line)
+            // +1 because maxVisibleCharacters is a count, and lastCharacterIndex is 0-based index.
+            Instance.dialogueText.maxVisibleCharacters = Instance._currentPageLastChar + 1;
+
             return;
         }
 
+
+        // 2) If there are more TMP pages for this same line, advance page first
+        if (Instance.currentPageIndex < Instance.currentPageCount)
+        {
+            Instance.currentPageIndex++;
+            Instance.StopAllCoroutines();
+            Instance.StartCoroutine(Instance.TypeCurrentPage());
+            return;
+        }
+
+
+        // 3) Otherwise advance to next dialogue line
         if (Instance.currentLineIndex + 1 < Instance.currentLines.Count)
         {
             Instance.currentLineIndex++;
@@ -215,6 +312,7 @@ public class DialogueManager : MonoBehaviour
             Instance.EndDialogue();
         }
     }
+
 
 
     public void EndDialogue()
