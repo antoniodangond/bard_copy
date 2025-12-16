@@ -431,9 +431,8 @@ private void Start()
 
             string[] lyreNotes = new string[] { "NoteB", "NoteC", "NoteD", "NoteE" };
 
-            defaultDialogue.upLines.Add("Orpheus. I have found a way. Beyond life and death.");
-            defaultDialogue.upLines.Add("A place where we will never part...");
-            defaultDialogue.upLines.Add("Use your LYRE to quell lost souls.");
+            defaultDialogue.upLines.Add("Orpheus. I will relinquish your beloved Eurydice if you soothe THREE RESTLESS SOULS.");
+            defaultDialogue.upLines.Add("Return to this grave and play their songs for me.");
             if (Gamepad.current == null)
             {
                 attackButton_1 = mapper.getCorrectButton("Player", "Attack", currentControlScheme, true, playerInput).Split(",")[0];

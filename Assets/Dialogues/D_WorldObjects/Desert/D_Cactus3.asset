@@ -16,4 +16,5 @@ MonoBehaviour:
   downLines: []
   leftLines: []
   rightLines: []
-  universalLines: []
+  universalLines:
+  - The cactus feels cool to the touch. The flower shows no flaws.

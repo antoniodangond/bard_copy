@@ -19,11 +19,11 @@ public class PopUpController : MonoBehaviour
         gamepadDialogueButton = playerInput.actions.FindActionMap("Player").FindAction("Dialogue").GetBindingDisplayString(1);
         if (Gamepad.current != null)
         {
-            startingText = $"Press {mapper.MapGamepadIcons(gamepadDialogueButton)} on gamepad to interact";
+            startingText = $"Press {mapper.MapGamepadIcons(gamepadDialogueButton)} on gamepad to interact.";
         }
         else
         {
-            startingText = $"Press {keyboardDialogueButton} to interact";
+            startingText = $"Press {keyboardDialogueButton} to interact.";
         }
         defaultDialogue.universalLines.Add(startingText);
         DialogueManager.StartDialogue(defaultDialogue, FacingDirection.Up);
