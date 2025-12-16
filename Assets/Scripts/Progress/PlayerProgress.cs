@@ -68,6 +68,8 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     public bool HasSaveFile() => System.IO.File.Exists(GetSavePath());
     public void SaveNow() => Save();          // simple public wrapper
     public string GetSavedSceneName() => CurrentScene; // already tracked
+    public bool HasUpgradeId(string id) => !string.IsNullOrEmpty(id) && upgrades.Contains(id);
+
 
 
     // --- Meta/state tracking ---
