@@ -21,7 +21,8 @@ public class EnemyAudio : AudioController
         switch (name)
         {
             case "Snake":
-                if (AudioData.Hits.Length == 0) {
+                if (AudioData.Hits.Length == 0)
+                {
                     Debug.LogError("Enemy audio 'hits' length is 0");
                     return;
                 }
@@ -39,7 +40,12 @@ public class EnemyAudio : AudioController
                     Debug.LogError("Enemy audio 'hits' length is 0");
                     return;
                 }
-                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomHits, 0.8f, 1.15f, true, audioSource);
+                if (GameManager.Instance.EnemyVoices.CanPlaySound("Phantom"))
+                {
+                    GameManager.Instance.EnemyVoices.IncreaseVoiceCount("Phantom");
+                    AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomHits, 0.8f, 1.15f, true, audioSource);
+                    StartCoroutine(DecreaseEnemyAudioVoices(audioSource.clip, "Phantom"));
+                }
                 break;
             default:
                 return;
@@ -65,11 +71,18 @@ public class EnemyAudio : AudioController
                 AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlAttacks, 0.8f, 1.15f, true, audioSource);
                 break;
             case "Phantom":
-                if (AudioData.PhantomAttacks.Length == 0) {
+                if (AudioData.PhantomAttacks.Length == 0)
+                {
                     Debug.LogError("Enemy audio 'attacks' length is 0");
                     return;
                 }
-                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAttacks, 0.8f, 1.15f, true, audioSource);
+                if (GameManager.Instance.EnemyVoices.CanPlaySound("Phantom"))
+                {
+                    GameManager.Instance.EnemyVoices.IncreaseVoiceCount("Phantom");
+                    Debug.Log("Phantom Attck Sound");
+                    AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAttacks, 0.8f, 1.15f, true, audioSource);
+                    StartCoroutine(DecreaseEnemyAudioVoices(audioSource.clip, "Phantom"));
+                }   
                 break;
             default:
                 break;
@@ -97,12 +110,14 @@ public class EnemyAudio : AudioController
                 AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.OwlAggro, 0.8f, 1.15f, true, audioSource);
                 break;
             case "Phantom":
-                if (AudioData.PhantomAggro.Length == 0)
-                {
-                    Debug.LogError("Enemy audio 'aggro' length is 0");
-                    return;
-                }
-                AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAggro, 0.8f, 1.15f, true, audioSource);
+                // if (AudioData.PhantomAggro.Length == 0)
+                // {
+                //     Debug.LogError("Enemy audio 'aggro' length is 0");
+                //     return;
+                // }
+                // AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAggro, 0.8f, 1.15f, true, audioSource);
+                // Phantom's aggro is too fast
+                // no time for aggro sound
                 break;
             default:
                 return;
@@ -125,7 +140,15 @@ public class EnemyAudio : AudioController
         yield return new WaitForSeconds(AudioData.OwlIdle_1[0].length + 0.5f);
         AudioData.OwlRandomIdle.PlayRandomAudioNoDelayWithFX(AudioData.OwlIdle_2, 1f, 1.2f, false, audioSource);
         yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 1.2f));
-        
+
+    }
+    
+    private IEnumerator DecreaseEnemyAudioVoices(AudioClip audioClip, string enemyName)
+    {
+        yield return new WaitForSecondsRealtime(audioClip.length);
+        GameManager.Instance.EnemyVoices.DecreaseVoiceCount(enemyName);
+        Debug.Log("decreased voice count");
+
     }
 
     // TODO: implement

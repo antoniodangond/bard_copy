@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
     [HideInInspector] public int collectedStatuePieces;
     [HideInInspector] public bool allStatuePiecesCollected;
+    public EnemyVoiceCountManager EnemyVoices = new EnemyVoiceCountManager();
 
     void Awake()
     {
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
             allStatuePiecesCollected = true;
             Debug.Log("all statue pieces collected");
         }
+        Debug.Log("currently " + GameManager.Instance.EnemyVoices.currentPhantomVoices + "phantom voices");
     }
 
     public void ResetGameProgress()
