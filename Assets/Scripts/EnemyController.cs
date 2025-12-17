@@ -21,6 +21,7 @@ public class EnemyController : MonoBehaviour
     public float AttackCooldownTime;
     public float MoveSpeed;
     public float AttackDurationSeconds;
+    public float retreatLength;
     public float Health;
     [SerializeField] private ParticleSystem damageParticles;
     private ParticleSystem damageParticlesInstance;
@@ -255,7 +256,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator AttackCooldown()
     {
-        float retreatLength = AttackDurationSeconds / 4;
+        // float retreatLength = AttackDurationSeconds / 10;
         // Exit early if enemy has died
         if (currentState == EnemyState.Dead) { yield break; }
         StartCoroutine(Retreat(retreatLength));
@@ -281,10 +282,19 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator Retreat(float retreatLength)
     {
+        float retreatSpeed = UnityEngine.Random.Range(0,1.5f);
+        float retreatTime = UnityEngine.Random.Range(0.125f, retreatLength);
+        float origMoveSpeed = MoveSpeed;
+
+        // Don't retreat if dead
         if (currentState == EnemyState.Dead) { yield break; }
-        rb.linearVelocity = rb.linearVelocity * 2.5f;
+
+        // rb.linearVelocity = rb.linearVelocity * retreatSpeed;
+        MoveSpeed = rb.linearVelocity.magnitude * retreatSpeed;
         targetDirection = targetDirection * new Vector2(-1,-1);
-        yield return new WaitForSeconds(retreatLength);
+
+        yield return new WaitForSeconds(retreatTime);
+        MoveSpeed = origMoveSpeed;
     }
 
     // TODO: consolidate with PlayerController function

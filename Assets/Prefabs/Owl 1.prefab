@@ -175,6 +175,7 @@ MonoBehaviour:
   AttackCooldownTime: 0.5
   MoveSpeed: 7
   AttackDurationSeconds: 2
+  retreatLength: 0.25
   Health: 10
   damageParticles: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}
   audioSource: {fileID: 5234482412080490077}

@@ -147,7 +147,8 @@ public class BackgroundAudio : AudioController
 
     public void StopAllAmbienceOneShots()
     {
-        StopRandomBreaths();
+        // Breaths are in all regions
+        // StopRandomBreaths();
         StopRandomFrogs();
         StopRandomLoudBirds();
         StopRandomQuietBirds();
