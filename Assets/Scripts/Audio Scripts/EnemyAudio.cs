@@ -79,7 +79,6 @@ public class EnemyAudio : AudioController
                 if (GameManager.Instance.EnemyVoices.CanPlaySound("Phantom"))
                 {
                     GameManager.Instance.EnemyVoices.IncreaseVoiceCount("Phantom");
-                    Debug.Log("Phantom Attck Sound");
                     AudioData.RandomHits.PlayRandomAudioNoDelayWithFX(AudioData.PhantomAttacks, 0.8f, 1.15f, true, audioSource);
                     StartCoroutine(DecreaseEnemyAudioVoices(audioSource.clip, "Phantom"));
                 }   

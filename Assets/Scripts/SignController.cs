@@ -251,7 +251,7 @@ private void Start()
         // Play all available sounds using inspector-defined volume & delay
         foreach (var audiosource in audioSources)
         {
-            if (signName != "Charon")
+            if (signName != "Charon" && signName != "Cerberus")
             {
                 audiosource.volume = soundVolume;  // Uses adjustable volume
                 audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
