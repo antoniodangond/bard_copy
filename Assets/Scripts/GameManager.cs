@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
             allStatuePiecesCollected = true;
             Debug.Log("all statue pieces collected");
         }
-        Debug.Log("currently " + GameManager.Instance.EnemyVoices.currentPhantomVoices + "phantom voices");
     }
 
     public void ResetGameProgress()

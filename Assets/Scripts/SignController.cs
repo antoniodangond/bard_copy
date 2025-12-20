@@ -251,7 +251,7 @@ private void Start()
         // Play all available sounds using inspector-defined volume & delay
         foreach (var audiosource in audioSources)
         {
-            if (signName != "Charon")
+            if (signName != "Charon" && signName != "Cerberus")
             {
                 audiosource.volume = soundVolume;  // Uses adjustable volume
                 audiosource.PlayDelayed(soundPlayDelay);  // Uses adjustable delay
@@ -430,7 +430,8 @@ private void Start()
             defaultDialogue.upLines.Clear();
 
             string[] lyreNotes = new string[] { "NoteB", "NoteC", "NoteD", "NoteE" };
-
+            defaultDialogue.upLines.Add("Here lies Eurydice.");
+            defaultDialogue.upLines.Add("A message is gouged beneath her name:");
             defaultDialogue.upLines.Add("Orpheus. I will relinquish your beloved Eurydice if you soothe THREE RESTLESS SOULS.");
             defaultDialogue.upLines.Add("Return to this grave and play their songs for me.");
             if (Gamepad.current == null)

@@ -28,7 +28,6 @@ public class EnemyVoiceCountManager
             case "Phantom":
                 if (currentPhantomVoices + 1 <= maxPhantomVoices)
                 {
-                    Debug.Log("debugging");
                     return true;
                 }
                 else return false;

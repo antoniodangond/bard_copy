@@ -16,6 +16,7 @@ public class CerberusStatue : MonoBehaviour
     private Dictionary<string, GameObject> statuePiecesDict = new Dictionary<string, GameObject> { };
     public Dictionary<string, string> statuePieceHintsDict = new Dictionary<string, string> { };
     private int foundPieces;
+    [SerializeField] private SignController signController;
     void Awake()
     {
         if (Instance == null) { Instance = this; }
@@ -32,6 +33,7 @@ public class CerberusStatue : MonoBehaviour
         foreach (Transform pieceTransform in gameObject.transform)
         {
             GameObject piece = pieceTransform.gameObject;
+            if (piece.name == "CerberusStatueText") continue;
             piece.SetActive(false);
             statuePiecesDict[piece.name] = piece;
         }
@@ -50,7 +52,7 @@ public class CerberusStatue : MonoBehaviour
 
         // Once we've found a specific piece, update the list of pieces in the hint list
         statuePieceHintsDict.Remove(statuePieceName);
-        Debug.Log("Deactivating " + statuePieceName);
+        // Debug.Log("Deactivating " + statuePieceName);
 
         if (foundPieces == 9) { CompleteQuest(); }
         else { statuePiecesDict[statuePieceName].SetActive(true); }
@@ -83,6 +85,13 @@ public class CerberusStatue : MonoBehaviour
                 ActivateStatuePiece(statuePiece.Key);
             }
         }
+
+        if (foundPieces >= 9 && signController != null)
+        {
+            signController.MarkDialogueUpdated();
+        }
+
+
     }
     
     private void CompleteQuest()
@@ -90,6 +99,7 @@ public class CerberusStatue : MonoBehaviour
         CompleteStatue();
         // commenting this out because right now it will just fade out as soon as player has collected the last tablet
         // StartCoroutine(QuestCompleteRoutine());
+        signController.MarkDialogueUpdated();
     }
     private IEnumerator QuestCompleteRoutine()
     {
