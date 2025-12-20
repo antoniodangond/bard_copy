@@ -1913,6 +1913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427482666}
   - component: {fileID: 1427482665}
+  - component: {fileID: 1427482667}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -1948,6 +1949,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1427482667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427482664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35f2c88179e6574a9af400148544d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
+  masterParam: MasterVolume
+  sfxParam: SFXVolume
+  musicParam: MusicVolume
+  playerSfxParam: PlayerSFXVolume
+  uiParam: UIVolume
+  defaultDialogueFontSize: 36
 --- !u!1 &1446270425
 GameObject:
   m_ObjectHideFlags: 0

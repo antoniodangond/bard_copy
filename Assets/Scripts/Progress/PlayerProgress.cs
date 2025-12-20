@@ -21,6 +21,14 @@ public class SaveData // Data structure for saving/loading player progress
     // public string[] collectedTablets = new string[5] { null, null, null, null, null };
     // public int numTabletsCollected;
 
+    // --- Settings Payload ---
+    public float masterVol01 = 1f;
+    public float sfxVol01 = 1f;
+    public float musicVol01 = 1f;
+    public float playerSfxVol01 = 1f;
+    public float uiVol01 = 1f;
+    public float dialogueFontSize = 36f;
+
     public float[] playerPosition = new float[3]; // x, y, z
     public int playerHealth;
 
@@ -78,6 +86,50 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
     private double _accumulatedPlaySeconds;   // From saves prior to this session
 
     const string SaveFileName = "savefile.json";
+
+    // Settings (in-memory)
+    private float _masterVol01    = 1f;
+    private float _sfxVol01       = 1f;
+    private float _musicVol01     = 1f;
+    private float _playerSfxVol01 = 1f;
+    private float _uiVol01        = 1f;
+
+    private float _dialogueFontSize = 36f;
+
+    // Getters
+    public float GetMasterVol01()     => _masterVol01;
+    public float GetSfxVol01()        => _sfxVol01;
+    public float GetMusicVol01()      => _musicVol01;
+    public float GetPlayerSfxVol01()  => _playerSfxVol01;
+    public float GetUiVol01()         => _uiVol01;
+
+    public float GetDialogueFontSize() => _dialogueFontSize;
+
+    // Setters (save only if changed)
+    public void SetMasterVol01(float v01)     => Set01(ref _masterVol01, v01);
+    public void SetSfxVol01(float v01)        => Set01(ref _sfxVol01, v01);
+    public void SetMusicVol01(float v01)      => Set01(ref _musicVol01, v01);
+    public void SetPlayerSfxVol01(float v01)  => Set01(ref _playerSfxVol01, v01);
+    public void SetUiVol01(float v01)         => Set01(ref _uiVol01, v01);
+
+    public void SetDialogueFontSize(float size)
+    {
+        if (!Mathf.Approximately(_dialogueFontSize, size))
+        {
+            _dialogueFontSize = size;
+            Save();
+        }
+    }
+
+    private void Set01(ref float field, float v01)
+    {
+        v01 = Mathf.Clamp01(v01);
+        if (!Mathf.Approximately(field, v01))
+        {
+            field = v01;
+            Save();
+        }
+    }
 
     void Awake()
     {
@@ -329,6 +381,16 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         savedSongs = new HashSet<string>(data.savedSongs ?? new List<string>());
 
         graveUsedMelodies = new HashSet<string>(data.graveUsedMelodies ?? new List<string>());
+
+        // Settings
+        _masterVol01     = data.masterVol01;
+        _sfxVol01        = data.sfxVol01;
+        _musicVol01      = data.musicVol01;
+        _playerSfxVol01  = data.playerSfxVol01;
+        _uiVol01         = data.uiVol01;
+
+        _dialogueFontSize = (data.dialogueFontSize > 0) ? data.dialogueFontSize : 36f;
+
     }
 
     // Build JSON from current in-memory progress (used by Save)
@@ -362,6 +424,15 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
 
         data.savedSongs = new List<string>(savedSongs);
         data.graveUsedMelodies = new List<string>(graveUsedMelodies);
+
+        // Settings
+        data.masterVol01      = _masterVol01;
+        data.sfxVol01         = _sfxVol01;
+        data.musicVol01       = _musicVol01;
+        data.playerSfxVol01   = _playerSfxVol01;
+        data.uiVol01          = _uiVol01;
+
+        data.dialogueFontSize = _dialogueFontSize;
 
         return JsonUtility.ToJson(data);
     }

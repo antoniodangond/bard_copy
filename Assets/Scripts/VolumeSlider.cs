@@ -6,40 +6,72 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    public Slider volumeSlider;
-    public string mixerGroupToControl;
-    private float volume;
-    private float currentVolume;
-    // private AudioMixerGroup groupToControl;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("UI")]
+    [SerializeField] private Slider volumeSlider;
+
+    [Header("Audio")]
+    [SerializeField] private AudioMixer mixer;          // assign in inspector or pulled from MenuManager
+    [SerializeField] private string mixerParam = "MasterVolume"; // exposed param name
+
+    public enum Channel { Master, SFX, Music, PlayerSFX, UI }
+    [SerializeField] private Channel channel;
+
+    private void Awake()
     {
-        volumeSlider = gameObject.GetComponent<Slider>();
-        // groupToControl = MenuManager.Instance.audioMixer.FindMatchingGroups(mixerGroupToControl)[0];
-        volumeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
+        if (volumeSlider == null) volumeSlider = GetComponent<Slider>();
+        if (mixer == null && MenuManager.Instance != null) mixer = MenuManager.Instance.audioMixer;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
-    }
-
-    void SliderChanged()
-    {
-        UpdateVolume();
-    }
-
-    void UpdateVolume()
-    {
-        float currentVolume;
-        if (MenuManager.Instance.audioMixer.GetFloat(mixerGroupToControl, out currentVolume))
+        float saved01 = 1f;
+        if (PlayerProgress.Instance != null)
         {
-            volume = (float)Mathf.Log10(volumeSlider.value)*20;
-            MenuManager.Instance.audioMixer.SetFloat(mixerGroupToControl, volume);
-            // Debug.Log((float)Mathf.Log10(volumeSlider.value)*20);
+            saved01 = channel switch
+            {
+                Channel.Master    => PlayerProgress.Instance.GetMasterVol01(),
+                Channel.SFX       => PlayerProgress.Instance.GetSfxVol01(),
+                Channel.Music     => PlayerProgress.Instance.GetMusicVol01(),
+                Channel.PlayerSFX => PlayerProgress.Instance.GetPlayerSfxVol01(),
+                Channel.UI        => PlayerProgress.Instance.GetUiVol01(),
+                _ => 1f
+            };
         }
-        else { Debug.Log($"{mixerGroupToControl} doens't exist!"); }
-        
+
+        volumeSlider.SetValueWithoutNotify(saved01);
+        ApplyToMixer(saved01);
+
+        volumeSlider.onValueChanged.AddListener(OnSliderChanged);
+    }
+
+    private void OnDestroy()
+    {
+        if (volumeSlider != null)
+            volumeSlider.onValueChanged.RemoveListener(OnSliderChanged);
+    }
+
+    private void OnSliderChanged(float v01)
+    {
+        ApplyToMixer(v01);
+
+        if (PlayerProgress.Instance == null) return;
+
+        switch (channel)
+        {
+            case Channel.Master:    PlayerProgress.Instance.SetMasterVol01(v01); break;
+            case Channel.SFX:       PlayerProgress.Instance.SetSfxVol01(v01); break;
+            case Channel.Music:     PlayerProgress.Instance.SetMusicVol01(v01); break;
+            case Channel.PlayerSFX: PlayerProgress.Instance.SetPlayerSfxVol01(v01); break;
+            case Channel.UI:        PlayerProgress.Instance.SetUiVol01(v01); break;
+        }
+    }
+
+    private void ApplyToMixer(float v01)
+    {
+        if (mixer == null) return;
+
+        float safe01 = Mathf.Clamp(v01, 0.0001f, 1f);
+        float db = Mathf.Log10(safe01) * 20f;
+        mixer.SetFloat(mixerParam, db);
     }
 }

@@ -2,32 +2,44 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class TextAccessibilityScript : MonoBehaviour
 {
-    public TextMeshProUGUI text;
-    private Slider textSizeSlider;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private Slider textSizeSlider;
+
+    private void Awake()
     {
-        textSizeSlider = gameObject.GetComponent<Slider>();
-        textSizeSlider.onValueChanged.AddListener(delegate { SliderChanged(); });
+        if (textSizeSlider == null) textSizeSlider = GetComponent<Slider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        float savedSize = (PlayerProgress.Instance != null)
+            ? PlayerProgress.Instance.GetDialogueFontSize()
+            : (text != null ? text.fontSize : 36f);
 
+        textSizeSlider.SetValueWithoutNotify(savedSize);
+        ApplySize(savedSize);
+
+        textSizeSlider.onValueChanged.AddListener(OnSliderChanged);
     }
 
-    void SliderChanged()
+    private void OnDestroy()
     {
-        ChangeDialogueTextSize();
+        if (textSizeSlider != null)
+            textSizeSlider.onValueChanged.RemoveListener(OnSliderChanged);
     }
 
-    void ChangeDialogueTextSize()
+    private void OnSliderChanged(float size)
     {
-        text.fontSize = textSizeSlider.value;
-        Debug.Log(textSizeSlider.value);
+        ApplySize(size);
+
+        if (PlayerProgress.Instance != null)
+            PlayerProgress.Instance.SetDialogueFontSize(size);
+    }
+
+    private void ApplySize(float size)
+    {
+        if (text != null) text.fontSize = size;
     }
 }

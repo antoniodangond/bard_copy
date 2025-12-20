@@ -55,15 +55,22 @@ public class DialogueManager : MonoBehaviour
         dialogueText.overflowMode = TextOverflowModes.Page;
         dialogueText.pageToDisplay = 1;
 
-
         // Subscribe to custom events
         CustomEvents.OnDialogueStart.AddListener(OnDialogueStart);
+
+        ApplySavedDialogueFontSize();
+
+        if (PlayerProgress.Instance != null)
+        PlayerProgress.Instance.OnLoaded += ApplySavedDialogueFontSize;
     }
 
     void OnDestroy()
     {
         // Remove listener on destroy to prevent memory leaks
         CustomEvents.OnDialogueStart.RemoveListener(OnDialogueStart);
+
+        if (PlayerProgress.Instance != null)
+        PlayerProgress.Instance.OnLoaded -= ApplySavedDialogueFontSize;
     }
 
     private void OnDialogueStart(Dialogue dialogue)
@@ -72,6 +79,9 @@ public class DialogueManager : MonoBehaviour
         currentDirection = PlayerController.FacingDirection;
         currentLines = dialogue.GetLines(currentDirection);
         currentLineIndex = 0;
+        
+        ApplySavedDialogueFontSize();
+
 
         dialogueBox.SetActive(true); // Show the dialogue box
         var canvasGroup = dialogueBox.GetComponent<CanvasGroup>();
@@ -345,6 +355,19 @@ public class DialogueManager : MonoBehaviour
             .Replace("{INTERACT_KEY}", interactKey)
             .Replace("{OPEN_MENU_KEY}", openMenuKey);
     }
+
+    private void ApplySavedDialogueFontSize()
+    {
+        if (dialogueText == null) return;
+
+        float size = 36f;
+        if (PlayerProgress.Instance != null)
+            size = PlayerProgress.Instance.GetDialogueFontSize();
+
+        if (size > 0)
+            dialogueText.fontSize = size;
+    }
+
 
 
 }
