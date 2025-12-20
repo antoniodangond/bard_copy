@@ -17,4 +17,6 @@ MonoBehaviour:
   leftLines: []
   rightLines: []
   universalLines:
-  - A broken statue...
+  - The statue is broken... it looks like there are pieces missing.
+  - 'An inscription below reads:'
+  - None may enter, none may depart unless The Guardian is whole.
