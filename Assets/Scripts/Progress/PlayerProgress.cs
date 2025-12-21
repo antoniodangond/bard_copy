@@ -472,6 +472,11 @@ public class PlayerProgress : MonoBehaviour // Singleton class to manage player 
         savedSongs.Clear();
         graveUsedMelodies.Clear();
         GameManager.Instance.collectedStatuePieces = 0;
+        SetMasterVol01(1);
+        SetSfxVol01(1);
+        SetMusicVol01(1);
+        SetPlayerSfxVol01(1);
+        SetUiVol01(1);
         DeleteSave();
         Debug.Log("[Progress] Cleared all progress.");
         RaiseLoaded();
