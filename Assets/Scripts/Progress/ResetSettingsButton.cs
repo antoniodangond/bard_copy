@@ -31,9 +31,18 @@ public class ResetSettingsButton : MonoBehaviour
     [SerializeField] private string playerSfxParam = "PlayerSFXVolume";
     [SerializeField] private string uiParam = "UIVolume";
 
+    private Button resetToDefault;
+
     /// <summary>
     /// Hook this up to your Options Menu "Reset to Defaults" button OnClick().
     /// </summary>
+     
+    void Start()
+    {
+        resetToDefault = gameObject.GetComponent<Button>();
+        resetToDefault.onClick.AddListener(ResetToDefaults);
+    }
+     
     public void ResetToDefaults()
     {
         // 1) Move sliders immediately without triggering their onValueChanged listeners
@@ -90,4 +99,5 @@ public class ResetSettingsButton : MonoBehaviour
 
         mixer.SetFloat(param, db);
     }
+
 }
