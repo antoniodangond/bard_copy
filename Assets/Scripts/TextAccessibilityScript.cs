@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class TextAccessibilityScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI choiceText;
     [SerializeField] private Slider textSizeSlider;
 
     private void Awake()
@@ -41,5 +42,6 @@ public class TextAccessibilityScript : MonoBehaviour
     private void ApplySize(float size)
     {
         if (text != null) text.fontSize = size;
+        if (choiceText != null) choiceText.fontSize = size;
     }
 }
