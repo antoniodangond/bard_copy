@@ -66,6 +66,47 @@ public class VolumeSlider : MonoBehaviour
         }
     }
 
+    private void RefreshFromProgress()
+    {
+        float saved01 = 1f;
+
+        if (PlayerProgress.Instance != null)
+        {
+            saved01 = channel switch
+            {
+                Channel.Master    => PlayerProgress.Instance.GetMasterVol01(),
+                Channel.SFX       => PlayerProgress.Instance.GetSfxVol01(),
+                Channel.Music     => PlayerProgress.Instance.GetMusicVol01(),
+                Channel.PlayerSFX => PlayerProgress.Instance.GetPlayerSfxVol01(),
+                Channel.UI        => PlayerProgress.Instance.GetUiVol01(),
+                _ => 1f
+            };
+        }
+
+        volumeSlider.SetValueWithoutNotify(saved01);
+        ApplyToMixer(saved01);
+    }
+
+    private void OnEnable()
+    {
+        if (volumeSlider == null) volumeSlider = GetComponent<Slider>();
+        if (mixer == null && MenuManager.Instance != null) mixer = MenuManager.Instance.audioMixer;
+
+        // Re-sync slider + mixer any time this UI element becomes active
+        RefreshFromProgress();
+
+        // Also refresh when a save is loaded (Continue/New Game load flow)
+        if (PlayerProgress.Instance != null)
+            PlayerProgress.Instance.OnLoaded += RefreshFromProgress;
+    }
+
+    private void OnDisable()
+    {
+        if (PlayerProgress.Instance != null)
+            PlayerProgress.Instance.OnLoaded -= RefreshFromProgress;
+    }
+
+
     private void ApplyToMixer(float v01)
     {
         if (mixer == null) return;

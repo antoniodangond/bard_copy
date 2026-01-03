@@ -34,11 +34,16 @@ public class DialogueChoiceUI : MonoBehaviour
 
     private GameObject lastSelected;  // the last option we told to "select"
     private float nextNavTime;
+    private TextAccessibilityScript acc;
 
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+
+        acc = FindFirstObjectByType<TextAccessibilityScript>();
+        StartCoroutine(RegisterChoiceTextWhenReady());
+
 
         options = new[] { optionYes, optionNo };
 
@@ -75,48 +80,64 @@ public class DialogueChoiceUI : MonoBehaviour
         }
     }
 
-
-void Update()
-{
-    if (!isOpen) return;
-
-    // --- Navigation (arrows / WASD) ---
-    if (Time.unscaledTime >= nextNavTime)
+    private IEnumerator RegisterChoiceTextWhenReady()
     {
-        bool moved = false;
+        // Ensure at least one frame passes so other singletons can initialize
+        yield return null;
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) ||
-            Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-            SetIndex(Mathf.Min(index + 1, options.Length - 1));
-            moved = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) ||
-                 Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
-            SetIndex(Mathf.Max(index - 1, 0));
-            moved = true;
-        }
+        // Wait until PlayerProgress exists (and has likely loaded or is about to)
+        while (PlayerProgress.Instance == null)
+            yield return null;
 
-        if (moved) nextNavTime = Time.unscaledTime + navRepeatDelay;
+        // Apply the saved size to the choice prompt as soon as the choice box exists
+        if (acc != null && bodyText != null)
+            acc.RegisterChoiceText(bodyText);
+        else if (bodyText != null)
+            bodyText.fontSize = PlayerProgress.Instance.GetDialogueFontSize();
     }
 
-    // Confirm via Dialogue (Z / Enter / LMB / etc.)
-    if (PlayerInputManager.WasDialoguePressed)
-    {
-        // Before we close, align index with the currently selected UI object
-        SyncIndexWithCurrentSelection();
 
-        if (debugLog)
+    void Update()
+    {
+        if (!isOpen) return;
+
+        // --- Navigation (arrows / WASD) ---
+        if (Time.unscaledTime >= nextNavTime)
         {
-            var sel = EventSystem.current ? EventSystem.current.currentSelectedGameObject : null;
-            Debug.Log($"[ChoiceUI] Confirm via Dialogue. index={index} selected={sel?.name}");
+            bool moved = false;
+
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) ||
+                Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                SetIndex(Mathf.Min(index + 1, options.Length - 1));
+                moved = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) ||
+                    Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                SetIndex(Mathf.Max(index - 1, 0));
+                moved = true;
+            }
+
+            if (moved) nextNavTime = Time.unscaledTime + navRepeatDelay;
         }
 
-        Close((DialogueChoice)index);
-        return;
+        // Confirm via Dialogue (Z / Enter / LMB / etc.)
+        if (PlayerInputManager.WasDialoguePressed)
+        {
+            // Before we close, align index with the currently selected UI object
+            SyncIndexWithCurrentSelection();
+
+            if (debugLog)
+            {
+                var sel = EventSystem.current ? EventSystem.current.currentSelectedGameObject : null;
+                Debug.Log($"[ChoiceUI] Confirm via Dialogue. index={index} selected={sel?.name}");
+            }
+
+            Close((DialogueChoice)index);
+            return;
+        }
     }
-}
 
 
     public void Ask(string prompt, Action<DialogueChoice> onComplete, int defaultIndex = 0)
@@ -135,6 +156,13 @@ void Update()
         // Activate FIRST so coroutines are legal and layout can run
         if (!gameObject.activeInHierarchy)
             gameObject.SetActive(true);
+
+        if (acc == null) acc = FindFirstObjectByType<TextAccessibilityScript>();
+        if (acc != null && bodyText != null)
+            acc.RegisterChoiceText(bodyText);
+        else if (bodyText != null && PlayerProgress.Instance != null)
+            bodyText.fontSize = PlayerProgress.Instance.GetDialogueFontSize();
+
 
         // Make sure the layout has valid sizes/positions before we select
         Canvas.ForceUpdateCanvases();
@@ -247,7 +275,8 @@ void Update()
                 canvasGroup.alpha = 1f;
             }
         }
-
+        if (acc != null && bodyText != null)
+            acc.RegisterChoiceText(bodyText);
         isOpen = true;
     }
 

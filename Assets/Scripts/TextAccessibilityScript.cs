@@ -31,6 +31,38 @@ public class TextAccessibilityScript : MonoBehaviour
             textSizeSlider.onValueChanged.RemoveListener(OnSliderChanged);
     }
 
+    private void HandleProgressLoaded()
+    {
+        // Progress is now guaranteed loaded -> apply the real saved size
+        float size = GetSavedOrFallbackSize();
+        if (textSizeSlider != null)
+            textSizeSlider.SetValueWithoutNotify(size);
+        ApplySize(size);
+    }
+
+    public void RegisterChoiceText(TextMeshProUGUI newChoiceText)
+    {
+        choiceText = newChoiceText;
+
+        // Apply immediately using the best known value
+        float size = GetSavedOrFallbackSize();
+        ApplySize(size);
+    }
+
+    private float GetSavedOrFallbackSize()
+    {
+        if (PlayerProgress.Instance != null)
+            return PlayerProgress.Instance.GetDialogueFontSize();
+
+        if (textSizeSlider != null)
+            return textSizeSlider.value;
+
+        if (text != null)
+            return text.fontSize;
+
+        return 36f;
+    }
+
     private void OnSliderChanged(float size)
     {
         ApplySize(size);
