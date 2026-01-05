@@ -16,6 +16,8 @@ public class CerberusStatue : MonoBehaviour
     private Dictionary<string, GameObject> statuePiecesDict = new Dictionary<string, GameObject> { };
     public Dictionary<string, string> statuePieceHintsDict = new Dictionary<string, string> { };
     private int foundPieces;
+    public bool isDevMode;
+
     [SerializeField] private SignController signController;
     void Awake()
     {
@@ -27,7 +29,7 @@ public class CerberusStatue : MonoBehaviour
         transparentStatue = opaqueStatue;
         opaqueStatue.a = 1;
         transparentStatue.a = 0;
-        
+
         foundPieces = 0;
 
         foreach (Transform pieceTransform in gameObject.transform)
@@ -39,6 +41,13 @@ public class CerberusStatue : MonoBehaviour
         }
 
         InitializeHintDictionary();
+        if (isDevMode) { DeveloperModeEnabled(); }
+    }
+
+    private void DeveloperModeEnabled()
+    {
+        foreach (string statuePiece in statuePiecesDict.Keys) 
+            ActivateStatuePiece(statuePiece);
     }
 
     void Start()
