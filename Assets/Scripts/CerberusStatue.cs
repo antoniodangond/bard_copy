@@ -60,8 +60,8 @@ public class CerberusStatue : MonoBehaviour
         foundPieces++;
 
         // Once we've found a specific piece, update the list of pieces in the hint list
+        // Debug.Log("Hints has " + statuePieceHintsDict[statuePieceName]);
         statuePieceHintsDict.Remove(statuePieceName);
-        // Debug.Log("Deactivating " + statuePieceName);
 
         if (foundPieces == 9) { CompleteQuest(); }
         else { statuePiecesDict[statuePieceName].SetActive(true); }
@@ -86,12 +86,12 @@ public class CerberusStatue : MonoBehaviour
         if (PlayerProgress.Instance == null)
             return;
 
-        foreach (KeyValuePair<string, GameObject> statuePiece in statuePiecesDict)
+        foreach (string statuePiece in statuePiecesDict.Keys)
         {
-            if (PlayerProgress.Instance.HasCollected(statuePiece.Key))
+            if (PlayerProgress.Instance.HasCollected(statuePiece))
             {
                 // statuePiece.Value.SetActive(true);
-                ActivateStatuePiece(statuePiece.Key);
+                ActivateStatuePiece(statuePiece);
             }
         }
 

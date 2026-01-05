@@ -42,7 +42,7 @@ public class SignController : MonoBehaviour
     public bool IsPlayingSuccessAudio = false;
     private List<string> statueHintList = new List<string>(9);
     private int currentHintIndex;
-    private bool firstTimeHintInteract = true;
+    private bool firstTimeHintInteract;
 
     [Header("Audio Settings")]
     [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
@@ -89,15 +89,6 @@ private void OnDisable()
         }
     }
 
-// This handles the case where PlayerProgress has already loaded
-// by the time this SignController appears in the scene.
-private void Start()
-{
-    // Debug.Log($"[SignController:{name}] Start → calling ApplySavedStateFromProgress");
-    ApplySavedStateFromProgress();
-    if (signName == "E_Grave") { eurydiceGrave = gameObject.GetComponent<EurydiceGrave>();}
-}
-
     public void Awake()
     {
         if (uniqueId == null)
@@ -137,8 +128,17 @@ private void Start()
         handleTutorialDialog(signName);
         currentHintIndex = 0;
         InitializeHintDialogue(signName);
+        firstTimeHintInteract = true;
     }
 
+    // This handles the case where PlayerProgress has already loaded
+    // by the time this SignController appears in the scene.
+    private void Start()
+    {
+        // Debug.Log($"[SignController:{name}] Start → calling ApplySavedStateFromProgress");
+        ApplySavedStateFromProgress();
+        if (signName == "E_Grave") { eurydiceGrave = gameObject.GetComponent<EurydiceGrave>();}
+    }
 
     public void Interact()
     {
@@ -381,7 +381,14 @@ private void Start()
             return;
         }
 
-        // 2) NPCs / interactive signs with advanced dialogue or world effects
+        // 2) For Hint System
+        if (signName == "HintSystem")
+        {
+            InitializeHintDialogue(signName);
+            // UpdateHintDialogue();
+        }
+
+        // 3) NPCs / interactive signs with advanced dialogue or world effects
         string npcStatus = PlayerProgress.Instance.GetNPCStatus(uniqueId.Id);
         if (string.IsNullOrEmpty(npcStatus))
             return;
@@ -411,13 +418,6 @@ private void Start()
             //     collider.enabled = false;
             
             Destroy(gameObject);
-        }
-
-        // 3) For Hint System
-        if (signName == "HintSystem")
-        {
-            InitializeHintDialogue(signName);
-            UpdateHintDialogue();
         }
     }
 
@@ -641,30 +641,41 @@ private void Start()
 
         if (defaultDialogue.universalLines.Count > 0) {defaultDialogue.universalLines.Clear();}
 
+        // There should only be 9 hints (one for each statue piece)
+        if (statueHintList.Count >= 9) return;
+
         for (int i = 0; i < defaultDialogue.leftLines.Count; i++)
         {
             statueHintList.Add(defaultDialogue.leftLines[i]);
+            // Debug.Log("Added " + defaultDialogue.leftLines[i]);
         }
 
     }
 
     private void UpdateHintDialogue()
     {
+        Debug.Log(firstTimeHintInteract);
         string firstTimeDialogue = "Altar of Argus, the All-Seeing. A message is illuminated in the stained glass.";
         defaultDialogue.universalLines.Clear();
 
-
         // Loop through each statue piece in the list of contained in statueHintList
-        for (int i = 0; i < statueHintList.Count; i++) 
+        for (int i = 0; i < statueHintList.Count; i++)
         {
             // If that piece isn't in the corresponding list maintained by the cerberus statue, it has been found!
             // We should remove it from the list
+
+            // I was running into issues doing this on load since the size of the list
+            // would change and the loop would terminate too soon,
+            // so instead we'll set matches to null and remove all nulls after the loop
             if (!CerberusStatue.Instance.statuePieceHintsDict.Values.Contains<string>(statueHintList[i]))
             {
-                Debug.Log(name);
-                statueHintList.Remove(statueHintList[i]);
+                // Debug.Log("loop " + i + ". removing " + statueHintList[i] + ". there are " + statueHintList.Count + " hints left");
+                // statueHintList.Remove(statueHintList[i]);
+                statueHintList[i] = null;
             }
         }
+
+        statueHintList.RemoveAll(item => item == null);
 
         // (Hopefully) update currentHitIndex to account for size changes to the list
         currentHintIndex = GetCorrectHintIndex(currentHintIndex);
