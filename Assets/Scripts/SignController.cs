@@ -653,15 +653,6 @@ private void Start()
         string firstTimeDialogue = "Altar of Argus, the All-Seeing. A message is illuminated in the stained glass.";
         defaultDialogue.universalLines.Clear();
 
-        if (firstTimeHintInteract) 
-        {
-            defaultDialogue.universalLines.Add(firstTimeDialogue);
-            firstTimeHintInteract = false;
-        }
-        else if (statueHintList.Contains(firstTimeDialogue))
-        {
-            statueHintList.Remove(firstTimeDialogue); 
-        }
 
         // Loop through each statue piece in the list of contained in statueHintList
         for (int i = 0; i < statueHintList.Count; i++) 
@@ -677,7 +668,18 @@ private void Start()
 
         // (Hopefully) update currentHitIndex to account for size changes to the list
         currentHintIndex = GetCorrectHintIndex(currentHintIndex);
-        defaultDialogue.universalLines.Add(statueHintList[currentHintIndex]);
+
+        // If it's the first time interacting with the statue, add the intro text
+        // and update the stored variable for future interactions
+        if (firstTimeHintInteract)
+        {
+            defaultDialogue.universalLines.Add(firstTimeDialogue);
+            firstTimeHintInteract = false;
+        }
+
+        // Only add dialogue from hint list if there are hints in list
+        if (statueHintList.Count > 0) { defaultDialogue.universalLines.Add(statueHintList[currentHintIndex]); }
+        else { defaultDialogue.universalLines.Add("The glass shows no message."); }
 
     }
 
