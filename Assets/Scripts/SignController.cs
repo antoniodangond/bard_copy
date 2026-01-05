@@ -42,6 +42,7 @@ public class SignController : MonoBehaviour
     public bool IsPlayingSuccessAudio = false;
     private List<string> statueHintList = new List<string>(9);
     private int currentHintIndex;
+    private bool firstTimeHintInteract = true;
 
     [Header("Audio Settings")]
     [SerializeField] private float soundVolume = 0.8f;  // Adjustable in Inspector
@@ -649,8 +650,19 @@ private void Start()
 
     private void UpdateHintDialogue()
     {
-
+        string firstTimeDialogue = "Altar of Argus, the All-Seeing. A message is illuminated in the stained glass.";
         defaultDialogue.universalLines.Clear();
+
+        if (firstTimeHintInteract) 
+        {
+            defaultDialogue.universalLines.Add(firstTimeDialogue);
+            firstTimeHintInteract = false;
+        }
+        else if (statueHintList.Contains(firstTimeDialogue))
+        {
+            statueHintList.Remove(firstTimeDialogue); 
+        }
+
         // Loop through each statue piece in the list of contained in statueHintList
         for (int i = 0; i < statueHintList.Count; i++) 
         {
