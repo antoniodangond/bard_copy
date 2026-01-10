@@ -9,6 +9,7 @@ public class EurydiceGrave : MonoBehaviour
 {
     [Header("Settings")]
     public float fadeInTime;
+    public bool isDevMode;
     [SerializeField] private LayerMask playerLayer;
     [Header("Grave Pieces")] 
     [SerializeField] private GameObject pieceOne;
@@ -51,6 +52,16 @@ public class EurydiceGrave : MonoBehaviour
             MelodyData.Melody2,
             MelodyData.Melody3
         };
+
+        if (isDevMode)
+        {
+            ActivateDevMode();
+        }
+    }
+
+    private void Start()
+    {
+        ApplySavedStateFromProgress();  // handles case where load already happened
     }
 
     private bool IsQuestSolvedForMelody(string melody)
@@ -80,6 +91,12 @@ public class EurydiceGrave : MonoBehaviour
         return PlayerProgress.Instance.GetNPCStatus(npcId) == "MelodySolved";
     }
 
+    private void ActivateDevMode()
+    {
+        HandleGameCompleteProgression(1);
+        HandleGameCompleteProgression(2);
+        HandleGameCompleteProgression(3);
+    }
 
     public void OnSongPlayed(string melody)
     {
@@ -305,11 +322,6 @@ public class EurydiceGrave : MonoBehaviour
         {
             PlayerProgress.Instance.OnLoaded -= ApplySavedStateFromProgress;
         }
-    }
-
-    private void Start()
-    {
-        ApplySavedStateFromProgress();  // handles case where load already happened
     }
 
     private void ApplySavedStateFromProgress()

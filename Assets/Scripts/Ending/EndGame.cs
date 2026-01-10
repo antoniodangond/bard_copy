@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BadEnd : MonoBehaviour
+public class EndGame : MonoBehaviour
 {
     public Image imageComponent;
     public EndingData endingData;
@@ -14,6 +14,11 @@ public class BadEnd : MonoBehaviour
     }
     public endingType ending;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        imageComponent = GetComponent<Image>();
+    }
+    
     void Start()
     {
         PlayEnding();
