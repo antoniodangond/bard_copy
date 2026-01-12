@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upLines: []
   downLines:
-  - Whatever you do, DO NOT PUSH this grave northward.
+  - Just a normal, regular grave. Nothing to see here.
   leftLines: []
   rightLines: []
   universalLines:
-  - Just a normal, regular grave. Nothing to see here.
+  - The grave seems loose in the ground. Maybe it will move if pushed northward.
