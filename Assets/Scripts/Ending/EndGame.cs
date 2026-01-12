@@ -35,13 +35,23 @@ public class EndGame : MonoBehaviour
         if (ending == endingType.bad)
         {
             Sprite[] sprites = endingData.badEndingSprites;
+            Sprite[] creditsSprites = endingData.badEndingCreditsSprites;
             Sprite creditsBG = endingData.badEndCreditsBG;
             // imageComponent.sprite = sprites[0];
-            StartCoroutine(PlayEndRoutine(sprites, creditsBG,imageCycleTime));
+            StartCoroutine(PlayEndRoutine(sprites, creditsBG, creditsSprites, imageCycleTime));
+        }
+        else if (ending == endingType.good)
+        {
+            Sprite[] sprites = endingData.goodEndingSprites;
+            Sprite[] creditsSprites = endingData.goodEndingCreditsSprites;
+            Sprite creditsBG = endingData.goodEndCreditsBG;
+            // imageComponent.sprite = sprites[0];
+            StartCoroutine(PlayEndRoutine(sprites, creditsBG, creditsSprites, imageCycleTime));
+            
         }
     }
     
-    private IEnumerator PlayEndRoutine(Sprite[] endingSprites, Sprite creditsSprite,float imageCycleTime)
+    private IEnumerator PlayEndRoutine(Sprite[] endingSprites, Sprite creditsBGSprite, Sprite[] creditsSprites,float imageCycleTime)
     {
         int cycles = endingSprites.Length;
 
@@ -55,9 +65,9 @@ public class EndGame : MonoBehaviour
 
         StartCoroutine(FadeOutSprite(imageComponent, imageComponent.sprite, fadeOutTime));
         yield return new WaitForSeconds(fadeOutTime);
-        StartCoroutine(FadeInSprite(imageComponent, creditsSprite, fadeInTime));
+        StartCoroutine(FadeInSprite(imageComponent, creditsBGSprite, fadeInTime));
         yield return new WaitForSeconds(fadeInTime);
-        HandleCredits();
+        HandleCredits(creditsSprites);
     }
 
     private IEnumerator FadeInSprite(Image image, Sprite sprite, float fadeInTime)
@@ -106,7 +116,7 @@ public class EndGame : MonoBehaviour
         }
     }
 
-    private void HandleCredits()
+    private void HandleCredits(Sprite[] sprites)
     {
         // set color on credits image to transparent
         Color transparent = creditsImage.color;
@@ -116,19 +126,19 @@ public class EndGame : MonoBehaviour
         // activate GameObject
         creditsObject.SetActive(true);
         // loop "num credit images" times
-        StartCoroutine(HandleCreditsRoutine());
+        StartCoroutine(HandleCreditsRoutine(sprites));
     }
     
-    private IEnumerator HandleCreditsRoutine()
+    private IEnumerator HandleCreditsRoutine(Sprite[] sprites)
     {
-        for (int i = 0; i < endingData.badEndingCreditsSprites.Length; i++)
+        for (int i = 0; i < sprites.Length; i++)
         {
             // set credits image
-            creditsImage.sprite = endingData.badEndingCreditsSprites[i];
+            creditsImage.sprite = sprites[i];
             // // fade in credits image
             StartCoroutine(FadeInSprite(creditsImage, creditsImage.sprite, fadeInTime));
             yield return new WaitForSeconds(fadeInTime);
-            if (i != endingData.badEndingCreditsSprites.Length - 1)
+            if (i != sprites.Length - 1)
             {
                 // // fade out credits image
                 StartCoroutine(FadeOutSprite(creditsImage, creditsImage.sprite, fadeOutTime));
