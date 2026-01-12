@@ -1,55 +1,49 @@
 fileFormatVersion: 2
-guid: 4788234601c2b48c8ac9e57c07e36b66
+guid: 7d4cdb53e60ed43d7b5874983edb10c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1947516712632866284
-    second: BadEnding_Credits_5_txt_0
+      213: -6672555840311897189
+    second: BadEnding_Credits_5_txt 1_0
   - first:
-      213: 593994346815865246
-    second: BadEnding_Credits_5_txt_1
+      213: 3340113369902143670
+    second: BadEnding_Credits_5_txt 1_1
   - first:
-      213: 1769869561062523780
-    second: BadEnding_Credits_5_txt_2
+      213: 7309155132202233653
+    second: BadEnding_Credits_5_txt 1_2
   - first:
-      213: -7367119328473141526
-    second: BadEnding_Credits_5_txt_3
+      213: -6808445229773344045
+    second: BadEnding_Credits_5_txt 1_3
   - first:
-      213: 5911501645231357528
-    second: BadEnding_Credits_5_txt_4
+      213: -8140131631441892910
+    second: BadEnding_Credits_5_txt 1_4
   - first:
-      213: 7330413724759687506
-    second: BadEnding_Credits_5_txt_5
+      213: 3767625869555106330
+    second: BadEnding_Credits_5_txt 1_5
   - first:
-      213: -181301628736676187
-    second: BadEnding_Credits_5_txt_6
+      213: -7212074449384632614
+    second: BadEnding_Credits_5_txt 1_6
   - first:
-      213: -5503939519955976462
-    second: BadEnding_Credits_5_txt_7
+      213: 2607853667826466382
+    second: BadEnding_Credits_5_txt 1_7
   - first:
-      213: -550494527409335343
-    second: BadEnding_Credits_5_txt_8
+      213: 6026961278634496407
+    second: BadEnding_Credits_5_txt 1_8
   - first:
-      213: -1933959779779832373
-    second: BadEnding_Credits_5_txt_9
+      213: -5497381895510752459
+    second: BadEnding_Credits_5_txt 1_9
   - first:
-      213: -5006609436208902815
-    second: BadEnding_Credits_5_txt_10
+      213: 5312689131115786090
+    second: BadEnding_Credits_5_txt 1_10
   - first:
-      213: 1904305124338958594
-    second: BadEnding_Credits_5_txt_11
+      213: -440814268434232502
+    second: BadEnding_Credits_5_txt 1_11
   - first:
-      213: 6606716711535486020
-    second: BadEnding_Credits_5_txt_12
+      213: -6705913846871143585
+    second: BadEnding_Credits_5_txt 1_12
   - first:
-      213: -8565832488439325097
-    second: BadEnding_Credits_5_txt_13
-  - first:
-      213: 3820888009991770853
-    second: BadEnding_Credits_5_txt_14
-  - first:
-      213: -5164593425340402193
-    second: BadEnding_Credits_5_txt_15
+      213: 4422097978422364427
+    second: BadEnding_Credits_5_txt 1_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -145,98 +139,32 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_0
+      name: BadEnding_Credits_5_txt 1_0
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 382
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b935042e0d15663a0800000000000000
+      internalID: -6672555840311897189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BadEnding_Credits_5_txt 1_1
       rect:
         serializedVersion: 2
         x: 158
-        y: 334
-        width: 25
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce55e9ab128f60b10800000000000000
-      internalID: 1947516712632866284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_1
-      rect:
-        serializedVersion: 2
-        x: 187
-        y: 333
-        width: 35
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e91cc8816ba4e3800800000000000000
-      internalID: 593994346815865246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_2
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 334
-        width: 38
-        height: 43
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 48388e51df6df8810800000000000000
-      internalID: 1769869561062523780
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_3
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 333
-        width: 46
-        height: 67
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: aeea170e00cb2c990800000000000000
-      internalID: -7367119328473141526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_4
-      rect:
-        serializedVersion: 2
-        x: 360
         y: 309
         width: 45
         height: 70
@@ -248,17 +176,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85ef6250d6fd90250800000000000000
-      internalID: 5911501645231357528
+      spriteID: 6b8dc8ac9677a5e20800000000000000
+      internalID: 3340113369902143670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_5
+      name: BadEnding_Credits_5_txt 1_2
       rect:
         serializedVersion: 2
-        x: 411
+        x: 208
         y: 334
         width: 30
         height: 42
@@ -270,17 +198,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25103f8c17cdab560800000000000000
-      internalID: 7330413724759687506
+      spriteID: 53f232ffdd55f6560800000000000000
+      internalID: 7309155132202233653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_6
+      name: BadEnding_Credits_5_txt 1_3
       rect:
         serializedVersion: 2
-        x: 446
+        x: 243
         y: 333
         width: 45
         height: 43
@@ -292,17 +220,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ae53f51123eb7df0800000000000000
-      internalID: -181301628736676187
+      spriteID: 3d238aed22b8381a0800000000000000
+      internalID: -6808445229773344045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_7
+      name: BadEnding_Credits_5_txt 1_4
       rect:
         serializedVersion: 2
-        x: 495
+        x: 292
         y: 306
         width: 49
         height: 71
@@ -314,17 +242,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fe3acfea241e93b0800000000000000
-      internalID: -5503939519955976462
+      spriteID: 2d92cf2d861780f80800000000000000
+      internalID: -8140131631441892910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_8
+      name: BadEnding_Credits_5_txt 1_5
       rect:
         serializedVersion: 2
-        x: 548
+        x: 345
         y: 334
         width: 30
         height: 42
@@ -336,17 +264,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d358fad4204c58f0800000000000000
-      internalID: -550494527409335343
+      spriteID: a12876144cb494430800000000000000
+      internalID: 3767625869555106330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_9
+      name: BadEnding_Credits_5_txt 1_6
       rect:
         serializedVersion: 2
-        x: 582
+        x: 379
         y: 334
         width: 38
         height: 43
@@ -358,17 +286,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc5945ca3d13925e0800000000000000
-      internalID: -1933959779779832373
+      spriteID: ade02cedf7099eb90800000000000000
+      internalID: -7212074449384632614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_10
+      name: BadEnding_Credits_5_txt 1_7
       rect:
         serializedVersion: 2
-        x: 624
+        x: 422
         y: 333
         width: 76
         height: 45
@@ -380,17 +308,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16d46a17e33f48ab0800000000000000
-      internalID: -5006609436208902815
+      spriteID: e4efef80815f03420800000000000000
+      internalID: 2607853667826466382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_11
+      name: BadEnding_Credits_5_txt 1_8
       rect:
         serializedVersion: 2
-        x: 704
+        x: 501
         y: 333
         width: 76
         height: 45
@@ -402,19 +330,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2010e20db637d6a10800000000000000
-      internalID: 1904305124338958594
+      spriteID: 7911b08c95114a350800000000000000
+      internalID: 6026961278634496407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_12
+      name: BadEnding_Credits_5_txt 1_9
       rect:
         serializedVersion: 2
-        x: 783
+        x: 580
+        y: 334
+        width: 24
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5330b6bda4065b3b0800000000000000
+      internalID: -5497381895510752459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BadEnding_Credits_5_txt 1_10
+      rect:
+        serializedVersion: 2
+        x: 607
         y: 333
-        width: 35
+        width: 48
         height: 43
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -424,20 +374,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 444a5b268d5cfab50800000000000000
-      internalID: 6606716711535486020
+      spriteID: a6f2c3eed967ab940800000000000000
+      internalID: 5312689131115786090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_13
+      name: BadEnding_Credits_5_txt 1_11
       rect:
         serializedVersion: 2
-        x: 824
-        y: 334
-        width: 30
-        height: 42
+        x: 658
+        y: 306
+        width: 49
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,14 +396,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 75ed2194cbc002980800000000000000
-      internalID: -8565832488439325097
+      spriteID: a4bcd0622c9e1e9f0800000000000000
+      internalID: -440814268434232502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_14
+      name: BadEnding_Credits_5_txt 1_12
       rect:
         serializedVersion: 2
         x: 0
@@ -468,14 +418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e2db12b665860530800000000000000
-      internalID: 3820888009991770853
+      spriteID: f5b4fdeb2eecfe2a0800000000000000
+      internalID: -6705913846871143585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BadEnding_Credits_5_txt_15
+      name: BadEnding_Credits_5_txt 1_13
       rect:
         serializedVersion: 2
         x: 1392
@@ -490,8 +440,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fe5744194ada358b0800000000000000
-      internalID: -5164593425340402193
+      spriteID: b0986dd9ea27e5d30800000000000000
+      internalID: 4422097978422364427
       vertices: []
       indices: 
       edges: []
@@ -510,22 +460,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BadEnding_Credits_5_txt_0: 1947516712632866284
-      BadEnding_Credits_5_txt_1: 593994346815865246
-      BadEnding_Credits_5_txt_10: -5006609436208902815
-      BadEnding_Credits_5_txt_11: 1904305124338958594
-      BadEnding_Credits_5_txt_12: 6606716711535486020
-      BadEnding_Credits_5_txt_13: -8565832488439325097
-      BadEnding_Credits_5_txt_14: 3820888009991770853
-      BadEnding_Credits_5_txt_15: -5164593425340402193
-      BadEnding_Credits_5_txt_2: 1769869561062523780
-      BadEnding_Credits_5_txt_3: -7367119328473141526
-      BadEnding_Credits_5_txt_4: 5911501645231357528
-      BadEnding_Credits_5_txt_5: 7330413724759687506
-      BadEnding_Credits_5_txt_6: -181301628736676187
-      BadEnding_Credits_5_txt_7: -5503939519955976462
-      BadEnding_Credits_5_txt_8: -550494527409335343
-      BadEnding_Credits_5_txt_9: -1933959779779832373
+      BadEnding_Credits_5_txt 1_0: -6672555840311897189
+      BadEnding_Credits_5_txt 1_1: 3340113369902143670
+      BadEnding_Credits_5_txt 1_10: 5312689131115786090
+      BadEnding_Credits_5_txt 1_11: -440814268434232502
+      BadEnding_Credits_5_txt 1_12: -6705913846871143585
+      BadEnding_Credits_5_txt 1_13: 4422097978422364427
+      BadEnding_Credits_5_txt 1_2: 7309155132202233653
+      BadEnding_Credits_5_txt 1_3: -6808445229773344045
+      BadEnding_Credits_5_txt 1_4: -8140131631441892910
+      BadEnding_Credits_5_txt 1_5: 3767625869555106330
+      BadEnding_Credits_5_txt 1_6: -7212074449384632614
+      BadEnding_Credits_5_txt 1_7: 2607853667826466382
+      BadEnding_Credits_5_txt 1_8: 6026961278634496407
+      BadEnding_Credits_5_txt 1_9: -5497381895510752459
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
