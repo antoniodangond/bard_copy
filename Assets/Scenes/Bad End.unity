@@ -276,6 +276,8 @@ MonoBehaviour:
   imageComponent: {fileID: 0}
   endingData: {fileID: 11400000, guid: e55aeee327c03a745811fdaaccf8c5dd, type: 2}
   imageCycleTime: 1.5
+  fadeInTime: 2
+  fadeOutTime: 2
   ending: 0
 --- !u!1 &954813980
 GameObject:

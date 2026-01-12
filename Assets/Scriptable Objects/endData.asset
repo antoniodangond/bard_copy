@@ -22,3 +22,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2f878a6c3ef7f4c98af7f41a1999b41a, type: 3}
   - {fileID: 21300000, guid: 68299d5336db747108d851b291574f35, type: 3}
   goodEndingSprites: []
+  badEndCreditsBG:
+  - {fileID: 21300000, guid: bf7e04cfe05784bf58863aea36513e3c, type: 3}
+  goodEndCreditsBG: []
+  creditsSprites:
+  - {fileID: 21300000, guid: 67800f112b7a146698302ebc5c82a5fd, type: 3}
+  - {fileID: 21300000, guid: 69750a913aa404b79aa4f6163cf72a5b, type: 3}
+  - {fileID: 21300000, guid: ff4475c0c667642378c4e92ec350a600, type: 3}
+  - {fileID: 21300000, guid: 212dd8d170e0a421ca972925c0d7caae, type: 3}
+  - {fileID: 21300000, guid: 4788234601c2b48c8ac9e57c07e36b66, type: 3}
+  - {fileID: 21300000, guid: e326ea3a0902e4ea8ac9b9added983df, type: 3}
+  - {fileID: 21300000, guid: 30b27ae04b38949c7969c4b2458096bd, type: 3}
+  - {fileID: 21300000, guid: fa50ba3dfb19c4b618648248b8537279, type: 3}

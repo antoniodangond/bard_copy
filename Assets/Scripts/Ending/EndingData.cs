@@ -5,4 +5,7 @@ public class EndingData : ScriptableObject
 {
     public Sprite[] badEndingSprites;
     public Sprite[] goodEndingSprites;
+    public Sprite badEndCreditsBG;
+    public Sprite goodEndCreditsBG;
+    public Sprite[] creditsSprites;
 }
