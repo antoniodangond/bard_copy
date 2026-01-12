@@ -7,5 +7,6 @@ public class EndingData : ScriptableObject
     public Sprite[] goodEndingSprites;
     public Sprite badEndCreditsBG;
     public Sprite goodEndCreditsBG;
-    public Sprite[] creditsSprites;
+    public Sprite[] badEndingCreditsSprites;
+    public Sprite[] goodEndingCreditsSprites;
 }

@@ -15,10 +15,14 @@ public class EndGame : MonoBehaviour
         , good
     }
     public endingType ending;
+    private GameObject creditsObject;
+    private Image creditsImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         imageComponent = GetComponent<Image>();
+        creditsObject = gameObject.transform.GetChild(0).gameObject;
+        creditsImage = creditsObject.GetComponent<Image>();
     }
     
     void Start()
@@ -52,6 +56,8 @@ public class EndGame : MonoBehaviour
         StartCoroutine(FadeOutSprite(imageComponent, imageComponent.sprite, fadeOutTime));
         yield return new WaitForSeconds(fadeOutTime);
         StartCoroutine(FadeInSprite(imageComponent, creditsSprite, fadeInTime));
+        yield return new WaitForSeconds(fadeInTime);
+        HandleCredits();
     }
 
     private IEnumerator FadeInSprite(Image image, Sprite sprite, float fadeInTime)
@@ -91,12 +97,44 @@ public class EndGame : MonoBehaviour
 
         while (elapsedTime < fadeOutTime)
         {
-            float t = elapsedTime/fadeOutTime;
+            float t = elapsedTime / fadeOutTime;
 
             image.color = Color.Lerp(opaque, transparent, t);
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void HandleCredits()
+    {
+        // set color on credits image to transparent
+        Color transparent = creditsImage.color;
+        Color opaque = transparent;
+        transparent.a = 0;
+        creditsImage.color = transparent;
+        // activate GameObject
+        creditsObject.SetActive(true);
+        // loop "num credit images" times
+        StartCoroutine(HandleCreditsRoutine());
+    }
+    
+    private IEnumerator HandleCreditsRoutine()
+    {
+        for (int i = 0; i < endingData.badEndingCreditsSprites.Length; i++)
+        {
+            // set credits image
+            creditsImage.sprite = endingData.badEndingCreditsSprites[i];
+            // // fade in credits image
+            StartCoroutine(FadeInSprite(creditsImage, creditsImage.sprite, fadeInTime));
+            yield return new WaitForSeconds(fadeInTime);
+            if (i != endingData.badEndingCreditsSprites.Length - 1)
+            {
+                // // fade out credits image
+                StartCoroutine(FadeOutSprite(creditsImage, creditsImage.sprite, fadeOutTime));
+                yield return new WaitForSeconds(fadeOutTime);
+            }
+        }
+        
     }
 }

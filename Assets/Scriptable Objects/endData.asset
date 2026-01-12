@@ -21,16 +21,32 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1b9dd1365259d4ca685ce0bcbff0bc47, type: 3}
   - {fileID: 21300000, guid: 2f878a6c3ef7f4c98af7f41a1999b41a, type: 3}
   - {fileID: 21300000, guid: 68299d5336db747108d851b291574f35, type: 3}
-  goodEndingSprites: []
-  badEndCreditsBG:
-  - {fileID: 21300000, guid: bf7e04cfe05784bf58863aea36513e3c, type: 3}
-  goodEndCreditsBG: []
-  creditsSprites:
+  goodEndingSprites:
+  - {fileID: 21300000, guid: 393272f07834b4a76b5439ca2dc60787, type: 3}
+  - {fileID: 21300000, guid: 5d867ee28003e46c49a41357641f950b, type: 3}
+  - {fileID: 21300000, guid: b67239f2eef1d4648bcd24c50d326079, type: 3}
+  - {fileID: 21300000, guid: 2fd19294db46b4cadbf3e3250d1eba15, type: 3}
+  - {fileID: 21300000, guid: 9571c51f1c5b747baa16eb76a85a709a, type: 3}
+  - {fileID: 21300000, guid: 2d149100fd1d54a008c193f2b90bf18a, type: 3}
+  - {fileID: 21300000, guid: 4a1c0feae8dfc4759927a1c9ac8fa58a, type: 3}
+  - {fileID: 21300000, guid: 41187814d5a344be695c4d2d827407fb, type: 3}
+  - {fileID: 21300000, guid: c8b33eb6bd7854d2a90dec3988f54d6a, type: 3}
+  - {fileID: 21300000, guid: 2979c26a1dd644ca2a8f02bc465353a3, type: 3}
+  - {fileID: 21300000, guid: c3fc7664490ae4f0ea65dcad0d8cbfed, type: 3}
+  - {fileID: 21300000, guid: 6b10c9f53ef424cf2a00f12cec448246, type: 3}
+  - {fileID: 21300000, guid: 6b446f585d14c49f78a885f49d6318e9, type: 3}
+  - {fileID: 21300000, guid: a46d36670a9df4f159f5d1927e21299b, type: 3}
+  - {fileID: 21300000, guid: 4b810e540b31e45d4911695da61eb1a8, type: 3}
+  - {fileID: 21300000, guid: 022ebb9fc103e4c5da4ee0c8601580f3, type: 3}
+  badEndCreditsBG: {fileID: 21300000, guid: bf7e04cfe05784bf58863aea36513e3c, type: 3}
+  goodEndCreditsBG: {fileID: 0}
+  badEndingCreditsSprites:
   - {fileID: 21300000, guid: 67800f112b7a146698302ebc5c82a5fd, type: 3}
   - {fileID: 21300000, guid: 69750a913aa404b79aa4f6163cf72a5b, type: 3}
   - {fileID: 21300000, guid: ff4475c0c667642378c4e92ec350a600, type: 3}
   - {fileID: 21300000, guid: 212dd8d170e0a421ca972925c0d7caae, type: 3}
-  - {fileID: 21300000, guid: 4788234601c2b48c8ac9e57c07e36b66, type: 3}
+  - {fileID: 21300000, guid: 7d4cdb53e60ed43d7b5874983edb10c4, type: 3}
   - {fileID: 21300000, guid: e326ea3a0902e4ea8ac9b9added983df, type: 3}
   - {fileID: 21300000, guid: 30b27ae04b38949c7969c4b2458096bd, type: 3}
   - {fileID: 21300000, guid: fa50ba3dfb19c4b618648248b8537279, type: 3}
+  goodEndingCreditsSprites: []
