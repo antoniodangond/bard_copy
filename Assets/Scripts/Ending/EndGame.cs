@@ -34,6 +34,7 @@ public class EndGame : MonoBehaviour
     {
         if (ending == endingType.bad)
         {
+            StartCoroutine(GameManager.Instance.backgroundAudio.ChangeBackgroundMusic("BadEnding"));
             Sprite[] sprites = endingData.badEndingSprites;
             Sprite[] creditsSprites = endingData.badEndingCreditsSprites;
             Sprite creditsBG = endingData.badEndCreditsBG;
@@ -42,6 +43,7 @@ public class EndGame : MonoBehaviour
         }
         else if (ending == endingType.good)
         {
+            StartCoroutine(GameManager.Instance.backgroundAudio.ChangeBackgroundMusic("GoodEnding"));
             Sprite[] sprites = endingData.goodEndingSprites;
             Sprite[] creditsSprites = endingData.goodEndingCreditsSprites;
             Sprite creditsBG = endingData.goodEndCreditsBG;

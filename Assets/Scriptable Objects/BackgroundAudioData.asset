@@ -72,6 +72,18 @@ MonoBehaviour:
     DefaultVolume: 0
     ShouldLoop: 1
     Source: {fileID: 0}
+  BackgroundMusicBadEnd:
+    Clip: {fileID: 8300000, guid: f07655daf4325ec4399c29adbf1c24e2, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+    Source: {fileID: 0}
+  BackgroundMusicGoodEnd:
+    Clip: {fileID: 8300000, guid: fc05bc5de2bac0c4a989c6f84c16b97a, type: 3}
+    DefaultPitch: 1
+    DefaultVolume: 1
+    ShouldLoop: 1
+    Source: {fileID: 0}
   BackgroundMusicInstrumentVolume: 0.5
   BackgroundMusicInstrumentMelodyVolume: 0
   BackgroundMusicPauseVolume: 0.5

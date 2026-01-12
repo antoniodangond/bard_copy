@@ -35,6 +35,8 @@ public class BackgroundAudio : AudioController
         InitializeSound(AudioData.BackgroundMusicDungeonC);
         InitializeSound(AudioData.BackgroundMusicBeach);
         InitializeSound(AudioData.BackgroundMusicMainMenu);
+        InitializeSound(AudioData.BackgroundMusicBadEnd);
+        InitializeSound(AudioData.BackgroundMusicGoodEnd);
         InitializeSound(AudioData.OverworldAmbience);
         InitializeSound(AudioData.UnderworldAmbience);
         InitializeSound(AudioData.BeachAmbience);
@@ -169,14 +171,14 @@ public class BackgroundAudio : AudioController
                 newSound = AudioData.BackgroundMusicUnderworld;
                 newAmbience = AudioData.UnderworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 break;
             case "MainMenu":
                 StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicMainMenu;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 PlayRandomFrogs();
                 break;
             case "Mausoleum":
@@ -198,35 +200,47 @@ public class BackgroundAudio : AudioController
                 newSound = AudioData.BackgroundMusicForest;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 break;
             case "Mountain":
                 StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicMountain;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 break;
             case "DungeonA":
                 StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicDungeonA;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 break;
             case "DungeonB":
                 StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicDungeonA;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 break;
             case "DungeonC":
                 StopAllAmbienceOneShots();
                 newSound = AudioData.BackgroundMusicDungeonA;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Stone";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
+                break;
+            case "BadEnding":
+                StopAllAmbienceOneShots();
+                newSound = AudioData.BackgroundMusicBadEnd;
+                newAmbience = null;
+                // PlayRandomBreaths();
+                break;
+            case "GoodEnding":
+                StopAllAmbienceOneShots();
+                newSound = AudioData.BackgroundMusicGoodEnd;
+                newAmbience = null;
+                // PlayRandomBreaths();
                 break;
             default:
                 // Use for Overworld
@@ -244,7 +258,7 @@ public class BackgroundAudio : AudioController
             {
                 // Start crossfade for background music and ambience simultaneously
                 StartCoroutine(AudioFader.CrossfadeCoroutine(currentBackgroundMusic.Source, newSound.Source, FadeDuration, newSound.DefaultVolume));
-                StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));
+                if (newAmbience != null) {StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));}
 
                 // Update references
                 currentBackgroundMusic = newSound;
