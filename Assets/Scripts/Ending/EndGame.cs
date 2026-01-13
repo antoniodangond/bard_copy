@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class EndGame : MonoBehaviour
@@ -17,17 +19,37 @@ public class EndGame : MonoBehaviour
     public endingType ending;
     private GameObject creditsObject;
     private Image creditsImage;
+    [SerializeField] private GameObject buttonObject;
+    private Button button;
+    private bool endingPlayed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         imageComponent = GetComponent<Image>();
         creditsObject = gameObject.transform.GetChild(0).gameObject;
         creditsImage = creditsObject.GetComponent<Image>();
+        button = buttonObject.GetComponent<Button>();
+        button.onClick.AddListener(ReturnToMenu);
+        endingPlayed = false;
     }
-    
+
     void Start()
     {
         PlayEnding();
+    }
+
+    private void HandlePostCredits()
+    {
+        endingPlayed = true;
+        buttonObject.SetActive(true);
+    }
+
+    private void ReturnToMenu()
+    {
+        if (endingPlayed)
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 
     private void PlayEnding()
@@ -49,7 +71,6 @@ public class EndGame : MonoBehaviour
             Sprite creditsBG = endingData.goodEndCreditsBG;
             // imageComponent.sprite = sprites[0];
             StartCoroutine(PlayEndRoutine(sprites, creditsBG, creditsSprites, imageCycleTime));
-            
         }
     }
     
@@ -147,6 +168,8 @@ public class EndGame : MonoBehaviour
                 yield return new WaitForSeconds(fadeOutTime);
             }
         }
+
+        HandlePostCredits();
         
     }
 }
