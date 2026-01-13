@@ -160,7 +160,7 @@ public class EndGame : MonoBehaviour
             creditsImage.sprite = sprites[i];
             // // fade in credits image
             StartCoroutine(FadeInSprite(creditsImage, creditsImage.sprite, fadeInTime));
-            yield return new WaitForSeconds(fadeInTime);
+            yield return new WaitForSeconds(fadeInTime*1.5f);
             if (i != sprites.Length - 1)
             {
                 // // fade out credits image
