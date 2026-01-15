@@ -270,6 +270,13 @@ private void OnDisable()
         }
         else
         {
+            if (signName == "Ghostboy" || signName == "Captain" || signName == "Mountaineer")
+                {
+                    if (gameObject.GetComponent<QuestObjectIndicator>() != null)
+                    {
+                        gameObject.GetComponent<QuestObjectIndicator>().EndParticles();
+                    }
+                }
             // NPCs whose dialog/state should advance
             Debug.Log($"[SignController:{name}] SetNPCStatus MelodySolved for UniqueId={uniqueId.Id}");
             PlayerProgress.Instance.SetNPCStatus(uniqueId.Id, "MelodySolved");
@@ -568,7 +575,11 @@ private void OnDisable()
         Debug.Log($"[Sign] BeginDialogue {name} ask={askYesNoAfterDialogue} " +
                   $"hasReward={choiceReward != null} claimed={(choiceReward != null && choiceReward.IsAlreadyClaimed())} " +
                   $"waiting={waitingForChoice}");
-        if (signName == "HintSystem") {UpdateHintDialogue();}
+        if (signName == "HintSystem") { UpdateHintDialogue(); }
+        if (signName == "E_Grave")
+        {
+            gameObject.GetComponent<QuestObjectIndicator>().EndParticles();
+        }
         DialogueManager.SetCurrentSpeaker(this);
         DialogueManager.StartDialogue(CurrentDialogue, direction);
         if (signName == "Charon") {HandleSuccessFeedback(signName);}
