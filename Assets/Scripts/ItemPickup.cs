@@ -72,10 +72,17 @@ public class ItemPickup : MonoBehaviour
             // Persist this pickup
             if (uid != null)
                 PlayerProgress.Instance.MarkCollected(uid.Id);
-                
+
             CerberusStatue.Instance.ActivateStatuePiece(pieceName);
             GameManager.Instance.backgroundAudio.PlayStatuePiecePickupSting();
             GameManager.Instance.collectedStatuePieces += 1;
+        }
+        else if (pieceName == "GravePiece")
+        {
+            if (GameManager.Instance.backgroundAudio.gravePiecePickupSting != null)
+            {
+                GameManager.Instance.backgroundAudio.gravePiecePickupSting.Play();
+            }
         }
 
         collected = true;

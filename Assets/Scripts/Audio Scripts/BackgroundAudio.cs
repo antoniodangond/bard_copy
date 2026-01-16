@@ -1,8 +1,5 @@
 using System.Collections;
-using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Video;
 
 public class BackgroundAudio : AudioController
 {
@@ -16,6 +13,7 @@ public class BackgroundAudio : AudioController
     public AudioSource quietBirdsAudioSource;
     public AudioSource statuePiecePickupStingSource;
     private AudioClip statuePiecePickupSting;
+    public AudioSource gravePiecePickupSting;
     public float FadeDuration;
 
     private Sound currentBackgroundMusic;
