@@ -5,6 +5,7 @@ public class QuestObjectIndicator : MonoBehaviour
 
     public SignController sign;
     public ParticleSystem particleSystem;
+    public bool endedParticles;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,6 +14,7 @@ public class QuestObjectIndicator : MonoBehaviour
             sign = gameObject.GetComponent<SignController>();
         }
         particleSystem.Play();
+        endedParticles = false;
     }
 
     // Update is called once per frame
@@ -23,7 +25,12 @@ public class QuestObjectIndicator : MonoBehaviour
     
     public void EndParticles()
     {
-        particleSystem.Stop();
-        Debug.Log("stopping particles");
+        if (!endedParticles)
+        {
+            particleSystem.Stop();
+            endedParticles = true;
+        }
+        else { return; }
+        // Debug.Log("stopping particles");
     }
 }
