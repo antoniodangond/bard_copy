@@ -58,5 +58,3 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5ec2d90cdd82a4ee7a2e6ea8d9a53dd3, type: 3}
   - {fileID: 21300000, guid: 0c47e1482cd6943d78b3221ed20e5628, type: 3}
   - {fileID: 21300000, guid: 781a073c8e6ad4457badd5dceb03b231, type: 3}
-  badEndMus: {fileID: 8300000, guid: f07655daf4325ec4399c29adbf1c24e2, type: 3}
-  goodEndMus: {fileID: 8300000, guid: fc05bc5de2bac0c4a989c6f84c16b97a, type: 3}
