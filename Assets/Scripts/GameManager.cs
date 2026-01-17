@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string playerSfxParam = "PlayerSFXVolume";
     [SerializeField] private string uiParam = "UIVolume";
     [SerializeField] private string crowParam = "CrowVolume";
+    private Dictionary<string, float> defaultAudioValues = new Dictionary<string, float> { };
     [SerializeField] private int numQuestNPCs = 3;
     private string[] questNPCs = new string[] { "NPC_Ghostboy", "NPC_Captain", "NPC_Mountaineer"};
     [HideInInspector] public int NPCQuestsSolved;
@@ -145,14 +146,20 @@ public class GameManager : MonoBehaviour
     {
         if (snapshot)
         {
+            string[] exposedParamNames = new string[] { masterParam, sfxParam, musicParam, playerSfxParam, uiParam, crowParam };
             string[] names = new string[] { "master", "sfx", "music", "playersfx", "ui", "crow" };
-            float[] values = new float[] { 0.8f, 0.025f, 0.025f, 1.0f, 1.0f, 1.0f };
+            float[] values = new float[]  { 1f      , 0.025f, 0.025f, 1f         , 1f  , 1f };
+            for (int i = 0; i < names.Length; i++)
+            {
+                float value;
+                if (mixer.GetFloat(exposedParamNames[i], out value))
+                { defaultAudioValues[names[i]] = Mathf.Pow(10f, value / 20f); }
+            }
             Dictionary<string, float> settings = CreateSnapshotDictionary(names, values);
             ApplyAudio(settings);
         }
         else
-        {
-        }
+        { ApplyAudio(defaultAudioValues); }
     }
 
     private Dictionary<string, float> CreateSnapshotDictionary(string[] names, float[] values)
@@ -181,7 +188,7 @@ public class GameManager : MonoBehaviour
         Apply01ToMixer(masterParam,   settings["master"]);
         Apply01ToMixer(sfxParam,      settings["sfx"]);
         Apply01ToMixer(musicParam,    settings["music"]);
-        Apply01ToMixer(playerSfxParam,settings["playersfx"]);
+        Apply01ToMixer(playerSfxParam, settings["playersfx"]);
         Apply01ToMixer(uiParam,       settings["ui"]);
         Apply01ToMixer(crowParam,     settings["crow"]);
     }

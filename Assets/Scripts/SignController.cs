@@ -511,17 +511,18 @@ private void OnDisable()
     {
         if (choice == DialogueChoice.Yes)
         {
-            // TODO: set up state where player enters instrument state and can focus on puzzle
-            if (signName == "Crow") {
-                // Toggle instrument mode
-                PlayerInputManager.Instance.ExternalToggleInstrumentMode();
-                // Trigger audio snapshot
-                GameManager.Instance.TriggerSnapshot(true);
-
-                if (PlayerInputManager.WasToggleInstrumentPressed)
+            // set up state where player enters instrument state and can focus on puzzle
+            if (signName == "Crow")
+            {
+                PlayerController pc = FindAnyObjectByType<PlayerController>();
+                if ( !pc.isLearningSong )
                 {
-                    // return audio to default
-                    GameManager.Instance.TriggerSnapshot(false);
+                    // Toggle instrument mode
+                    pc.ToggleInstrument();
+                    // Trigger audio snapshot
+                    GameManager.Instance.TriggerSnapshot(true);
+                    // let player controller know that we are learning the song
+                    pc.isLearningSong = true;
                     return;
                 }
                 return;

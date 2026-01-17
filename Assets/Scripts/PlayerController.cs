@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     private ControlsMapper controlsMapper = new ControlsMapper();
     private Vector2 movement;
     private bool isPlayingLyre;
+    public bool isLearningSong = false;
     private bool isAttacking;
     private bool isAOEAttacking;
     public static bool isDashing;
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
     AbilityGate.AOEUnlocked = enabled;
     }
 
-    private void ToggleInstrument()
+    public void ToggleInstrument()
     {
         if (CurrentState == PlayerState.Default)
         {
@@ -194,6 +195,11 @@ public class PlayerController : MonoBehaviour
 
             // Clear the note queue when lyre is put away (to prevent accidental triggers)
             lastPlayedNotes = BuildEmptyNotesQueue();
+            if (isLearningSong)
+            {
+                GameManager.Instance.TriggerSnapshot(false);
+                isLearningSong = false;
+            }
         }
         // Set animation params after determining movement and isPlayingLyre
         playerAnimation.SetAnimationParams(movement, isPlayingLyre, isAttacking, isAOEAttacking);

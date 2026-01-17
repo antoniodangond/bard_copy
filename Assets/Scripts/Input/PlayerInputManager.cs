@@ -245,11 +245,6 @@ public class PlayerInputManager : MonoBehaviour
         // CloseAllMenus();
     }
 
-    public void ExternalToggleInstrumentMode()
-    {
-        WasToggleInstrumentPressed = true;
-    }
-
     void Update()
 {
     // Pause toggle
