@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
       propertyPath: Health
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
       propertyPath: MoveSpeed
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 830770180008751195, guid: 859c234214669476186e24188d770445, type: 3}
       propertyPath: enemyName
