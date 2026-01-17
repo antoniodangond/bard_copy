@@ -46,9 +46,10 @@ public class PlayerInputManager : MonoBehaviour
     public static PlayerInputManager Instance {get; private set; }
     // Giving up and adding pause functionality here
     // public static bool isPaused {get; private set;}
-    public bool isPaused;
+    [HideInInspector] public bool isPaused;
     // Assigned in editor
     public InputActionAsset InputActionAsset;
+    public GameObject dialogueGO;
 
     // Public properties for reading captured input
     public static Vector2 Movement;
@@ -162,10 +163,19 @@ public class PlayerInputManager : MonoBehaviour
         if(isPaused)
         {
             Unpause();
+            if(dialogueGO && !dialogueGO.activeSelf)
+            {
+                dialogueGO.SetActive(true);
+            }
         }
         else
         {
             Pause();
+            if(dialogueGO && dialogueGO.activeSelf)
+            {
+                dialogueGO.SetActive(false);
+            }
+
         }
     }
     public void SwitchToActionMap(string mapName)
