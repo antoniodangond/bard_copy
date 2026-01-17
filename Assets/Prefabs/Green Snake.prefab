@@ -309,7 +309,7 @@ MonoBehaviour:
   MoveSpeed: 6
   AttackDurationSeconds: 2
   retreatLength: 0.3
-  Health: 5
+  Health: 6
   damageParticles: {fileID: 549252561177035705, guid: 78a820d31948bac46b20ac7d45079ee0, type: 3}
   audioSource: {fileID: 0}
   audioSource3D: {fileID: 0}
