@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
+using UnityEditor.SettingsManagement;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(BackgroundAudio))]
 public class GameManager : MonoBehaviour
@@ -8,6 +11,14 @@ public class GameManager : MonoBehaviour
 
     public BackgroundAudio backgroundAudio;
     private AudioMixerScript audioMixerScript;
+    public AudioMixer mixer;
+    [Tooltip("Exposed AudioMixer parameter names")]
+    [SerializeField] private string masterParam = "MasterVolume";
+    [SerializeField] private string sfxParam = "SFXVolume";
+    [SerializeField] private string musicParam = "MusicVolume";
+    [SerializeField] private string playerSfxParam = "PlayerSFXVolume";
+    [SerializeField] private string uiParam = "UIVolume";
+    [SerializeField] private string crowParam = "CrowVolume";
     [SerializeField] private int numQuestNPCs = 3;
     private string[] questNPCs = new string[] { "NPC_Ghostboy", "NPC_Captain", "NPC_Mountaineer"};
     [HideInInspector] public int NPCQuestsSolved;
@@ -128,5 +139,50 @@ public class GameManager : MonoBehaviour
         collectedStatuePieces = PlayerProgress.Instance.GetNumCollectedCollectibles();
 
         if (collectedStatuePieces == numOfStatuePieces) allStatuePiecesCollected = true;
+    }
+
+    public void TriggerSnapshot(bool snapshot)
+    {
+        if (snapshot)
+        {
+            string[] names = new string[] { "master", "sfx", "music", "playersfx", "ui", "crow" };
+            float[] values = new float[] { 0.8f, 0.025f, 0.025f, 1.0f, 1.0f, 1.0f };
+            Dictionary<string, float> settings = CreateSnapshotDictionary(names, values);
+            ApplyAudio(settings);
+        }
+        else
+        {
+        }
+    }
+
+    private Dictionary<string, float> CreateSnapshotDictionary(string[] names, float[] values)
+    {
+        Dictionary<string, float> dict = new Dictionary<string, float> { };
+        for (int i = 0; i < names.Length; i++)
+        {
+            dict[names[i]] = values[i];
+        }
+        return dict;
+    }
+
+    private void Apply01ToMixer(string param, float v01)
+    {
+        if (string.IsNullOrEmpty(param)) return;
+
+        float safe01 = Mathf.Clamp(v01, 0.0001f, 1f);
+        float db = Mathf.Log10(safe01) * 20f;
+        mixer.SetFloat(param, db);
+    }
+    
+    private void ApplyAudio(Dictionary<string, float> settings)
+    {
+        if (mixer == null || PlayerProgress.Instance == null) return;
+
+        Apply01ToMixer(masterParam,   settings["master"]);
+        Apply01ToMixer(sfxParam,      settings["sfx"]);
+        Apply01ToMixer(musicParam,    settings["music"]);
+        Apply01ToMixer(playerSfxParam,settings["playersfx"]);
+        Apply01ToMixer(uiParam,       settings["ui"]);
+        Apply01ToMixer(crowParam,     settings["crow"]);
     }
 }

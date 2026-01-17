@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections.Generic;
 
 public class SettingsApplier : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SettingsApplier : MonoBehaviour
     [SerializeField] private string musicParam = "MusicVolume";
     [SerializeField] private string playerSfxParam = "PlayerSFXVolume";
     [SerializeField] private string uiParam = "UIVolume";
+    [SerializeField] private string crowParam = "CrowVolume";
 
     [Header("Text (optional)")]
     [Tooltip("If you have a global default text size for dialogue, put it here.")]
@@ -91,6 +93,29 @@ public class SettingsApplier : MonoBehaviour
         {
             var tmp = go.GetComponent<TextMeshProUGUI>();
             if (tmp != null) tmp.fontSize = size;
+        }
+    }
+
+    public void ApplyAudioPublic(bool snapshot, Dictionary<string, float> settings=null)
+    {
+        if (!snapshot)
+        {
+            if (mixer == null || PlayerProgress.Instance == null) return;
+
+            Apply01ToMixer(masterParam, PlayerProgress.Instance.GetMasterVol01());
+            Apply01ToMixer(sfxParam, PlayerProgress.Instance.GetSfxVol01());
+            Apply01ToMixer(musicParam, PlayerProgress.Instance.GetMusicVol01());
+            Apply01ToMixer(playerSfxParam, PlayerProgress.Instance.GetPlayerSfxVol01());
+            Apply01ToMixer(uiParam, PlayerProgress.Instance.GetUiVol01());
+        }
+        else
+        {
+            Apply01ToMixer(masterParam, settings["master"]);
+            Apply01ToMixer(sfxParam, settings["sfx"]);
+            Apply01ToMixer(musicParam, settings["music"]);
+            Apply01ToMixer(playerSfxParam, settings["playersfx"]);
+            Apply01ToMixer(uiParam, settings["ui"]);
+            Apply01ToMixer(crowParam, settings["crow"]);
         }
     }
 }

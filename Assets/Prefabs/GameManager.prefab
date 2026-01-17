@@ -50,6 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundAudio: {fileID: 0}
+  mixer: {fileID: 24100000, guid: c17a88a5fdfaadb4ca5f03f320867fb3, type: 2}
+  masterParam: MasterVolume
+  sfxParam: SFXVolume
+  musicParam: MusicVolume
+  playerSfxParam: PlayerSFXVolume
+  uiParam: UIVolume
+  crowParam: CrowVolume
   numQuestNPCs: 3
   NPCQuestsSolved: 0
   collectedStatuePieces: 0

@@ -516,11 +516,12 @@ private void OnDisable()
                 // Toggle instrument mode
                 PlayerInputManager.Instance.ExternalToggleInstrumentMode();
                 // Trigger audio snapshot
-                GetComponentInParent<CrowSong>().TransitionToAudioSnapshot();
+                GameManager.Instance.TriggerSnapshot(true);
 
                 if (PlayerInputManager.WasToggleInstrumentPressed)
                 {
                     // return audio to default
+                    GameManager.Instance.TriggerSnapshot(false);
                     return;
                 }
                 return;
