@@ -297,6 +297,12 @@ private void OnDisable()
             ClosedHatch.SetActive(false);
             OpenedHatch.SetActive(true);
         }
+        if (signName == "Crow")
+        {
+            PlayerController pc = FindAnyObjectByType<PlayerController>();
+            GameManager.Instance.TriggerSnapshot(false);
+            StartCoroutine(pc.PlayMelodyAfterDelay(MelodyData.Melody2));
+        }
 
         if (statuePieceToGive) {FadeInStatuePiece();}
 

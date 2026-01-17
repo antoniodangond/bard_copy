@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
         return null;
     }
 
-    private IEnumerator PlayMelodyAfterDelay(string melody)
+    public IEnumerator PlayMelodyAfterDelay(string melody)
     {
         CurrentState = PlayerState.InstrumentMelody;
         // After playing last note, wait before starting the melody audio
