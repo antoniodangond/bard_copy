@@ -19,6 +19,22 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &-1123118431948672345
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LearningCrowSong
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 758248d5c07ed4e44bbe594d52db3b48
+  m_FloatValues:
+    7bbc2be074bd34c4e8bb843fa11a331a: -44.22914
+    95612a920bbe9214a97b041676b61c51: 0
+    89511bea9eeb50e4ab34583c58ccb89a: -44.9371
+    4f862e2c8e78d854ca5c5152a532b758: 6.4119883
+    1146f8fcb66299e47a0ba9cbf1fb4c24: 0
+  m_TransitionOverrides: {}
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -29,12 +45,15 @@ AudioMixerController:
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
+  - {fileID: -1123118431948672345}
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 4f862e2c8e78d854ca5c5152a532b758
+    name: CrowVolume
   - guid: 89511bea9eeb50e4ab34583c58ccb89a
     name: MusicVolume
   - guid: 1146f8fcb66299e47a0ba9cbf1fb4c24
@@ -52,9 +71,10 @@ AudioMixerController:
     - add1cbae034e35c43901f3abdabe274d
     - bcc55002bd72df0418313560862f9fca
     - 4838dcb79cec4d149ae19efd6a68a6e1
+    - 3db749d5057c9124d9cdc1db29842a5a
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500006}
+  m_TargetSnapshot: {fileID: -1123118431948672345}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -69,6 +89,7 @@ AudioMixerGroupController:
   - {fileID: -2025694341733272982}
   - {fileID: 2027215125535092849}
   - {fileID: 5036861899147896210}
+  - {fileID: 4395832658666082346}
   m_Volume: 1146f8fcb66299e47a0ba9cbf1fb4c24
   m_Pitch: 26660014eeda7c147b6038e9812d595f
   m_Send: 00000000000000000000000000000000
@@ -98,7 +119,7 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Default
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: fae82438bbf7e6547a23f18d20075acd
   m_FloatValues:
@@ -187,6 +208,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &4395832658666082346
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Crow
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 3db749d5057c9124d9cdc1db29842a5a
+  m_Children: []
+  m_Volume: 4f862e2c8e78d854ca5c5152a532b758
+  m_Pitch: e4aad00c17ef0584f9bd3ba9bafad69e
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 7171578846292806157}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &5036861899147896210
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -216,6 +256,20 @@ AudioMixerEffectController:
   m_EffectID: 58428ec2755e40d4c9bf7da7b238d853
   m_EffectName: Attenuation
   m_MixLevel: d37e443964ec81946ad2edbbc3fb1331
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &7171578846292806157
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 6f7b1b8ab8ba68f4e95fb0f378678d15
+  m_EffectName: Attenuation
+  m_MixLevel: 4abe0857022712641969bbc82b1d22b6
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

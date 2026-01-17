@@ -511,6 +511,23 @@ private void OnDisable()
     {
         if (choice == DialogueChoice.Yes)
         {
+            // TODO: set up state where player enters instrument state and can focus on puzzle
+            if (signName == "Crow") {
+                // Toggle instrument mode
+                PlayerInputManager.Instance.ExternalToggleInstrumentMode();
+                // Trigger audio snapshot
+                GetComponentInParent<CrowSong>().TransitionToAudioSnapshot();
+
+                if (PlayerInputManager.WasToggleInstrumentPressed)
+                {
+                    // return audio to default
+                    return;
+                }
+                return;
+
+                // TODO: if player learned song of growth, stop asking the question
+                // and update the dialogue
+            }
             StartCoroutine(BestowRoutine());
 
             if (disableAfterYes) // disable this sign after accepting

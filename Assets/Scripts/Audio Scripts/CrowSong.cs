@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 [System.Serializable]
 public struct NoteData
@@ -24,8 +25,11 @@ public class CrowSong : MonoBehaviour
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioMixerSnapshot snapshot;
     [SerializeField, Range(0f, 1f)] private float maxVolume = 1.0f;
     [SerializeField, Range(1f, 30f)] private float maxHearingRadius = 20.0f;
+    [SerializeField, Range(0f, 2f)] private float transitionTime = 1.0f;
+
 
     [Header("Visual Settings")]
     [SerializeField, Range(0f, 1f)] private float minOpacity = 0.2f;
@@ -191,5 +195,10 @@ public class CrowSong : MonoBehaviour
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, maxHearingRadius);
+    }
+
+    public void TransitionToAudioSnapshot()
+    {
+        snapshot.TransitionTo(transitionTime);
     }
 }
