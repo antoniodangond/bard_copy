@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5974238658672876685, guid: b24c4e082bc1c694f90135ff6cf36dc7, type: 3}
       propertyPath: EmissionModule.m_BurstCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5974238658672876685, guid: b24c4e082bc1c694f90135ff6cf36dc7, type: 3}
       propertyPath: ShapeModule.radiusThickness
@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5974238658672876685, guid: b24c4e082bc1c694f90135ff6cf36dc7, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5974238658672876685, guid: b24c4e082bc1c694f90135ff6cf36dc7, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
@@ -218,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5974238658672876685, guid: b24c4e082bc1c694f90135ff6cf36dc7, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[3].countCurve.scalar
-      value: 15
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5974238658672876685, guid: b24c4e082bc1c694f90135ff6cf36dc7, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[4].countCurve.scalar
