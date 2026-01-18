@@ -231,8 +231,12 @@ public class PlayerInputManager : MonoBehaviour
     {
         if (MenuManager.Instance != null)
         {
+            // set all options ui screens to inactive
             GameObject PauseMenu = MenuManager.Instance.MenuUI;
             PauseMenu.SetActive(false);
+            MenuManager.Instance.OptionsMenuUI.SetActive(false);
+            MenuManager.Instance.ControlsMenuUI.SetActive(false);
+            // activate player stats ui
             MenuManager.Instance.PlayerUIManager.SetActive(true);
         }
         isPaused = false;
