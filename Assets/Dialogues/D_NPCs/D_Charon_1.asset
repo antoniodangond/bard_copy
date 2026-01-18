@@ -17,5 +17,6 @@ MonoBehaviour:
   leftLines: []
   rightLines: []
   universalLines:
-  - Well done...this boat will return you to the graveyard.
+  - Greeting traveller... I am Charon, Ferryman of the Dead.
+  - You've done well. This boat will return you to the graveyard.
   - From there, you can finish your quest.
