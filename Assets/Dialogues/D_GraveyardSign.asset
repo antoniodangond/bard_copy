@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: D_GraveyardSign
   m_EditorClassIdentifier: 
   upLines:
+  - ISLE OF THE DEAD
   - 'SOUTH: VILLAGE'
   - 'NORTH: MAUSOLEUM'
   downLines:
