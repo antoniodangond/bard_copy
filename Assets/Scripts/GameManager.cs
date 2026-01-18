@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         {
             string[] exposedParamNames = new string[] { masterParam, sfxParam, musicParam, playerSfxParam, uiParam, crowParam };
             string[] names = new string[] { "master", "sfx", "music", "playersfx", "ui", "crow" };
-            float[] values = new float[]  { 1f      , 0.025f, 0.025f, 1f         , 1f  , 1f };
+            float[] values = new float[]  { 1f      , 0.075f, 0.075f, 1f         , 1f  , 1f };
             for (int i = 0; i < names.Length; i++)
             {
                 float value;

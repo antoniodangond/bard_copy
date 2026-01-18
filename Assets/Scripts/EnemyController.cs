@@ -92,6 +92,11 @@ public class EnemyController : MonoBehaviour
     private IEnumerator handleDeathRoutine()
     {
         enemyAudio.PlayHit(audioSource, enemyName);
+        Collider2D[] colliders = gameObject.GetComponents<Collider2D>();
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            colliders[i].enabled = false;
+        }
         // yield return new WaitForSeconds(audioSource.clip.length);
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
         Destroy(gameObject);
@@ -151,6 +156,7 @@ public class EnemyController : MonoBehaviour
             animator.SetBool(AnimatorParams.IsDead, true);
             // TODO: BUG - don't destroy game object before attempting to play hit
             StartCoroutine(handleDeathRoutine());
+            return;
         }
         KnockBack(playerController);
     }
