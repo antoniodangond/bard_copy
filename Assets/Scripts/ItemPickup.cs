@@ -81,7 +81,7 @@ public class ItemPickup : MonoBehaviour
         {
             if (GameManager.Instance.backgroundAudio.gravePiecePickupSting != null)
             {
-                GameManager.Instance.backgroundAudio.gravePiecePickupSting.Play();
+                GameManager.Instance.backgroundAudio.PlayGravePiecePickupSting();
             }
         }
 

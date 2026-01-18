@@ -377,16 +377,21 @@ public class BackgroundAudio : AudioController
 
     public void PlayStatuePiecePickupSting()
     {
-        StartCoroutine(StatuePickupRoutine(1f));
+        StartCoroutine(StatuePickupRoutine(statuePiecePickupStingSource, statuePiecePickupSting, 1f, 1f));
+    }
+    
+    public void PlayGravePiecePickupSting()
+    {
+        StartCoroutine(StatuePickupRoutine(gravePiecePickupSting, gravePiecePickupSting.clip, 1f, 4f));
     }
 
-    private IEnumerator StatuePickupRoutine(float fadeInTime)
+    private IEnumerator StatuePickupRoutine(AudioSource source, AudioClip clip, float fadeInTime, float waitTime)
     {
         // Set current bg music to 0 so we can hear sting
         currentBackgroundMusic.Source.volume = 0;
         // play sting and wait for it to be almost finished before fading in music again
-        statuePiecePickupStingSource.PlayOneShot(statuePiecePickupSting);
-        yield return new WaitForSeconds(statuePiecePickupSting.length - 1f);
+        source.PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length - waitTime);
 
         // fadeInTime in background music again
         float targetVolume = 0.65f;
