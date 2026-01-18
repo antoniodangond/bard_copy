@@ -518,7 +518,7 @@ private void OnDisable()
         if (choice == DialogueChoice.Yes)
         {
             // set up state where player enters instrument state and can focus on puzzle
-            if (signName == "Crow")
+            if (signName == "Crow" && GameManager.Instance.playerTalkedToCaptain)
             {
                 PlayerController pc = FindAnyObjectByType<PlayerController>();
                 if ( !pc.isLearningSong )
@@ -532,9 +532,6 @@ private void OnDisable()
                     return;
                 }
                 return;
-
-                // TODO: if player learned song of growth, stop asking the question
-                // and update the dialogue
             }
             StartCoroutine(BestowRoutine());
 
@@ -606,8 +603,13 @@ private void OnDisable()
             gameObject.GetComponent<QuestObjectIndicator>().EndParticles();
         }
         DialogueManager.SetCurrentSpeaker(this);
+        if (signName == "Captain") { GameManager.Instance.playerTalkedToCaptain = true; }
+        if (signName == "Crow" && GameManager.Instance.playerTalkedToCaptain)
+        {
+            CurrentDialogue.universalLines.Add("[CHOICE]");
+        }
         DialogueManager.StartDialogue(CurrentDialogue, direction);
-        if (signName == "Charon") {HandleSuccessFeedback(signName);}
+        if (signName == "Charon") { HandleSuccessFeedback(signName); }
     }
 
     private void FadeInStatuePiece()

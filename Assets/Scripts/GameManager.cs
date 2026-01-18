@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
     [HideInInspector] public int collectedStatuePieces;
     [HideInInspector] public bool allStatuePiecesCollected;
+    public bool playerTalkedToCaptain  = false;
     public EnemyVoiceCountManager EnemyVoices = new EnemyVoiceCountManager();
 
     void Awake()
