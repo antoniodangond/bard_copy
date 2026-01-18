@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
             ApplySavedStateFromProgress();
             Debug.Log(collectedStatuePieces + " pieces collected");
         }
-        // backgroundAudio.PlayRandomBreaths();
-        // backgroundAudio.PlayRandomFrogs();
     }
 
     void Update()

@@ -93,6 +93,7 @@ public class BackgroundAudio : AudioController
         // Play alternate bg clips at 0 volume
         AudioData.UnderworldAmbience.Play(1f, 0f);
         AudioData.BeachAmbience.Play(1f, 0f);
+        PlayRandomBreaths();
     }
 
    //public void PlayOverworldAmbience()
@@ -246,7 +247,7 @@ public class BackgroundAudio : AudioController
                 newSound = AudioData.BackgroundMusic;
                 newAmbience = AudioData.OverworldAmbience;
                 PlayerAudio.instance.currentTerrain = "Grass";
-                PlayRandomBreaths();
+                // PlayRandomBreaths();
                 PlayRandomFrogs();
                 break;
         }
