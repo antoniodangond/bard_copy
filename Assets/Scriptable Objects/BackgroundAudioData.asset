@@ -69,7 +69,7 @@ MonoBehaviour:
   BackgroundMusicMainMenu:
     Clip: {fileID: 8300000, guid: 95d64e936b16e954d8e2ed7985cf493e, type: 3}
     DefaultPitch: 1
-    DefaultVolume: 0
+    DefaultVolume: 0.5
     ShouldLoop: 1
     Source: {fileID: 0}
   BackgroundMusicBadEnd:

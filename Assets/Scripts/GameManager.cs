@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool allStatuePiecesCollected;
     public bool playerTalkedToCaptain  = false;
     public EnemyVoiceCountManager EnemyVoices = new EnemyVoiceCountManager();
+    public bool gameCompleted = false;
 
     void Awake()
     {

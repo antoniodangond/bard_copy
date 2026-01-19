@@ -54,6 +54,7 @@ public class EndGame : MonoBehaviour
 
     private void PlayEnding()
     {
+        GameManager.Instance.gameCompleted = true;
         if (ending == endingType.bad)
         {
             StartCoroutine(GameManager.Instance.backgroundAudio.ChangeBackgroundMusic("BadEnding"));

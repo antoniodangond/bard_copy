@@ -29,6 +29,15 @@ public class MainMenu : MonoBehaviour
         RefreshButtons();
     }
 
+    void Update()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.gameCompleted == true)
+        {
+            StartCoroutine(GameManager.Instance.backgroundAudio.ChangeBackgroundMusic("MainMenu"));
+            GameManager.Instance.gameCompleted = false;
+        }
+    }
+
     void RefreshButtons()
     {
         bool hasSave = HasValidSave();

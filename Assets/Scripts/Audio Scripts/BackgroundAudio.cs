@@ -257,18 +257,21 @@ public class BackgroundAudio : AudioController
             {
                 // Start crossfade for background music and ambience simultaneously
                 StartCoroutine(AudioFader.CrossfadeCoroutine(currentBackgroundMusic.Source, newSound.Source, FadeDuration, newSound.DefaultVolume));
-                if (newAmbience != null) {StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));}
+                // if (newAmbience != null && currentAmbience != null) {StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));}
 
                 // Update references
                 currentBackgroundMusic = newSound;
                 currentAmbience = newAmbience;
             }
-            else if (newAmbience != currentAmbience && currentAmbience != null)
+            if (newAmbience != currentAmbience && currentAmbience != null)
             {
                 // Only crossfade ambience if it changed
                 StartCoroutine(AudioFader.CrossfadeCoroutine(currentAmbience.Source, newAmbience.Source, FadeDuration, newAmbience.DefaultVolume));
                 currentAmbience = newAmbience;
             }
+            // Handle the case of ending going back to main menu
+            else if (newAmbience != null && currentAmbience == null) {StartAmbience();}
+            Debug.Log("playing " + currentBackgroundMusic.Source.clip.name);
 
             yield return null; // Keep the coroutine structure
         }
