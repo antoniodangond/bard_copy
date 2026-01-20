@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     private string[] statuePieces = new string[] { "LeftHead", "RightHead", "MiddleHead", "LeftArm", "RightArm", "LeftLeg", "RightArm", "Torso", "Tail" };
     [HideInInspector] public int collectedStatuePieces;
     [HideInInspector] public bool allStatuePiecesCollected;
-    public bool playerTalkedToCaptain  = false;
+    public bool playerTalkedToCaptain;
     public EnemyVoiceCountManager EnemyVoices = new EnemyVoiceCountManager();
     public bool gameCompleted = false;
 
@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
         allQuestsSolved = false;
         collectedStatuePieces = 0;
         allStatuePiecesCollected = false;
+        playerTalkedToCaptain = false;
     }
 
     void OnDestroy()

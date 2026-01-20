@@ -604,7 +604,7 @@ private void OnDisable()
         }
         DialogueManager.SetCurrentSpeaker(this);
         if (signName == "Captain") { GameManager.Instance.playerTalkedToCaptain = true; }
-        if (signName == "Crow" && GameManager.Instance.playerTalkedToCaptain)
+        if (signName == "Crow" && GameManager.Instance.playerTalkedToCaptain && !PlayerProgress.Instance.HasSong(MelodyData.Melody2))
         {
             CurrentDialogue.universalLines.Add("[CHOICE]");
         }
