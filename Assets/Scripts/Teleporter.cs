@@ -16,7 +16,7 @@ public class Teleporter : MonoBehaviour
     [HideInInspector]
     public Teleporter destinationTeleporter;
     public bool hasBeenEntered = false;
-    private bool isActive;
+    public bool isActive;
     private GameObject player;
 
     void Awake()
@@ -56,6 +56,10 @@ public class Teleporter : MonoBehaviour
         {
             Debug.Log("Teleporting player from current position " + player.transform.position + " to landing point position " + destinationTeleporter.LandingPoint.transform.position);
             player.transform.position = destinationTeleporter.LandingPoint.transform.position;
+        }
+        if (gameObject.name == "Charon Teleporter")
+        {
+            DestinationTeleporter.GetComponent<Teleporter>().Activate();
         }
     }
 
