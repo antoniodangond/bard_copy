@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public enum DialogueChoice { Yes = 0, No = 1 }
 
@@ -30,6 +31,7 @@ public class DialogueChoiceUI : MonoBehaviour
     private RectTransform[] options;
     private int index;
     private bool isOpen;
+    private Gamepad gamepad;
     private Action<DialogueChoice> onDone;
 
     private GameObject lastSelected;  // the last option we told to "select"
@@ -107,13 +109,19 @@ public class DialogueChoiceUI : MonoBehaviour
             bool moved = false;
 
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) ||
-                Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) ||
+                gamepad.dpad.right.wasPressedThisFrame || gamepad.dpad.down.wasPressedThisFrame ||
+                gamepad.leftStick.right.wasPressedThisFrame || gamepad.leftStick.down.wasPressedThisFrame
+                )
             {
                 SetIndex(Mathf.Min(index + 1, options.Length - 1));
                 moved = true;
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) ||
-                    Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                    Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) ||
+                    gamepad.dpad.left.wasPressedThisFrame || gamepad.dpad.up.wasPressedThisFrame ||
+                    gamepad.leftStick.left.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame
+                    )
             {
                 SetIndex(Mathf.Max(index - 1, 0));
                 moved = true;
@@ -302,6 +310,11 @@ public class DialogueChoiceUI : MonoBehaviour
 
         isOpen = false;
         StartCoroutine(CloseRoutine(choice));
+    }
+
+    void Start()
+    {
+        if (Gamepad.current != null) { gamepad = Gamepad.current; }
     }
 
     private IEnumerator CloseRoutine(DialogueChoice choice)
