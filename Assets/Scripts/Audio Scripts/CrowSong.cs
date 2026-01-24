@@ -25,9 +25,7 @@ public class CrowSong : MonoBehaviour
 
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField, Range(0f, 1f)] private float maxVolume = 1.0f;
     [SerializeField, Range(1f, 30f)] private float maxHearingRadius = 20.0f;
-    [SerializeField, Range(0f, 2f)] private float transitionTime = 1.0f;
 
 
     [Header("Visual Settings")]
@@ -101,10 +99,12 @@ public class CrowSong : MonoBehaviour
         double total = 0;
         for (int i = 0; i < index; i++)
         {
-            total += noteSequence[i].noteTiming;
+            float t = noteSequence[i].noteTiming;
+            total += (t > 0f) ? t : noteSpawnInterval;
         }
         return total;
     }
+
 
     private IEnumerator ScheduleNote(NoteData noteData, int index, float distance, double scheduledTime)
     {
@@ -117,7 +117,7 @@ public class CrowSong : MonoBehaviour
 
         // Spawn visual
         string spriteNoteName = songSequence[index % songSequence.Length];
-        Vector3 moveDirection = Vector3.right;
+        Vector3 moveDirection = RotateVector(Vector3.right, movementAngle);
         Vector3 spawnPosition = transform.position + noteSpawnOffset;
         SpawnNoteVisual(spriteNoteName, spawnPosition, distance, moveDirection);
     }
