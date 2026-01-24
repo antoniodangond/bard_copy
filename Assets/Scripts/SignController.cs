@@ -283,7 +283,7 @@ private void OnDisable()
             if (signName != "Charon") GameManager.Instance.NPCQuestsSolved += 1;
         }
         }
-        if (signName != "Log" && signName != "Vines" && signName != "Ice" && signName != "Crow")
+        if (signName != "Log" && signName != "Vines" && signName != "Ice" && signName != "Crow" && signName != "Charon")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;
