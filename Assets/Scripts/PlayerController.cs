@@ -652,6 +652,7 @@ public class PlayerController : MonoBehaviour
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteD.Source);
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteE.Source);
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.PlayerSoundsSource);
+        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.PlayerDashSource);
         audioMixerScript.assignPlayerSFXGroup(combatAudioSource);
         audioMixerScript.assignPlayerSFXGroup(footstepsAudioSource);
 
