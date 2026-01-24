@@ -110,8 +110,9 @@ public class DialogueChoiceUI : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D) ||
                 Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S) ||
+                (gamepad != null && (
                 gamepad.dpad.right.wasPressedThisFrame || gamepad.dpad.down.wasPressedThisFrame ||
-                gamepad.leftStick.right.wasPressedThisFrame || gamepad.leftStick.down.wasPressedThisFrame
+                gamepad.leftStick.right.wasPressedThisFrame || gamepad.leftStick.down.wasPressedThisFrame))
                 )
             {
                 SetIndex(Mathf.Min(index + 1, options.Length - 1));
@@ -119,8 +120,9 @@ public class DialogueChoiceUI : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A) ||
                     Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) ||
+                    (gamepad != null && (
                     gamepad.dpad.left.wasPressedThisFrame || gamepad.dpad.up.wasPressedThisFrame ||
-                    gamepad.leftStick.left.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame
+                    gamepad.leftStick.left.wasPressedThisFrame || gamepad.leftStick.up.wasPressedThisFrame))
                     )
             {
                 SetIndex(Mathf.Max(index - 1, 0));
