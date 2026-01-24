@@ -43,5 +43,4 @@ public class PlayerAudioData : ScriptableObject
     public RandomAudioManager RandomAttackChords;
     public RandomAudioManager RandomHits;
     public AudioSource PlayerSoundsSource;
-    public AudioSource PlayerDashSource;
 }

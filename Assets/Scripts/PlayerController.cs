@@ -55,6 +55,7 @@ public class PlayerController : MonoBehaviour
     private PlayerAudio playerAudio;
     // One audio source for just footsteps, becauase you can theoretically walk and attack at the same tie
     private AudioSource footstepsAudioSource;
+    public AudioSource playerDashSource;
     // other audiosource for everything else (attacks and damage)
     private AudioSource combatAudioSource;
     private PlayerMovement playerMovement;
@@ -652,7 +653,7 @@ public class PlayerController : MonoBehaviour
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteD.Source);
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.NoteE.Source);
         audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.PlayerSoundsSource);
-        audioMixerScript.assignPlayerSFXGroup(playerAudio.AudioData.PlayerDashSource);
+        audioMixerScript.assignPlayerSFXGroup(playerDashSource);
         audioMixerScript.assignPlayerSFXGroup(combatAudioSource);
         audioMixerScript.assignPlayerSFXGroup(footstepsAudioSource);
 
