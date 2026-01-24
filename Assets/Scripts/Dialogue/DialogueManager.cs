@@ -104,6 +104,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogue == null)
         {
             Debug.LogWarning("Attempted to start dialogue with a null Dialogue object!");
+            Instance.dialogueBox.SetActive(false);
             return;
         }
 

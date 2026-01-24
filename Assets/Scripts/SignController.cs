@@ -283,7 +283,7 @@ private void OnDisable()
             if (signName != "Charon") GameManager.Instance.NPCQuestsSolved += 1;
         }
         }
-        if (signName != "Log" && signName != "Vines" && signName != "Ice")
+        if (signName != "Log" && signName != "Vines" && signName != "Ice" && signName != "Crow")
         {
             HasDialogueOnMelody = true;
             isDialogueUpdated = true;
@@ -299,9 +299,17 @@ private void OnDisable()
         }
         if (signName == "Crow")
         {
+            HasDialogueOnMelody = true;
+            isDialogueUpdated = true;
+            // store updated dialogue, set it to null so the crow doesn't talk
+            // then set it back so that subsequent interactions work
+            Dialogue origDialog = updatedDialogue;
+            updatedDialogue = null;
+            DialogueManager.StartDialogue(updatedDialogue, PlayerController.FacingDirection);
             PlayerController pc = FindAnyObjectByType<PlayerController>();
             GameManager.Instance.TriggerSnapshot(false);
             StartCoroutine(pc.PlayMelodyAfterDelay(MelodyData.Melody2));
+            updatedDialogue = origDialog;
         }
 
         if (statuePieceToGive) {FadeInStatuePiece();}
