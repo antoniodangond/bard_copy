@@ -37,7 +37,6 @@ public class PlayerUIManager : MonoBehaviour
     // public GameObject emptyHeartObj; // Assign in inspector
     // private Transform emptyHeartStartLocation;
     // Tablets Info
-    private int totalTablets = 5;
     private Transform collectedTabletStartLocation;
     private ImagePool collectedTabletsImages;
     public GameObject collectedTabletObj; // Assign in inspector

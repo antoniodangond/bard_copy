@@ -10,7 +10,8 @@ public class SaveGameButton : MonoBehaviour
     public void SaveGame()
     {
         // If you track position/health dynamically, update before saving
-        var player = FindObjectOfType<PlayerController>();
+        var player = FindAnyObjectByType<PlayerController>();
+
         if (player)
             PlayerProgress.Instance.SetPlayerPosition(player.transform.position);
 
