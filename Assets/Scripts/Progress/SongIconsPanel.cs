@@ -2,63 +2,68 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // for TextMeshProUGUI
+using TMPro;
 
 public class SongIconsPanel : MonoBehaviour
 {
+    [SerializeField] private GamepadIconLibrary iconLibrary;
+
     [Serializable]
     public class Entry
     {
         [Header("Song Info")]
-        public string songId;     // e.g., "Melody1"
+        public string songId; // e.g., "Melody1"
 
         [Header("Icon")]
-        public Image image;       // UI Image to update
-        public Sprite locked;     // gray sprite
-        public Sprite learned;    // colored sprite
+        public Image image;
+        public Sprite locked;
+        public Sprite learned;
 
         [Header("Notes Display")]
-        [Tooltip("The Instrument action names for this song in order, e.g. NoteC, NoteB, ...")]
-        public string[] noteActions;    // e.g., [ "NoteC", "NoteB", "NoteC", "NoteD", "NoteE" ]
+        [Tooltip("Instrument action names for this song in order, e.g. NoteC, NoteB, ...")]
+        public string[] noteActions;
 
-        [Tooltip("Text objects for each note position under the icon.")]
-        public List<TextMeshProUGUI> noteLabels = new();   // 1 label per note slot (e.g. 5)
+        [Header("Keyboard Row (TMP)")]
+        public GameObject keyboardRowRoot;                   // KeyboardInputs#
+        public List<TextMeshProUGUI> keyboardLabels = new();  // N1-N5
+
+        [Header("Controller Row (Images)")]
+        public GameObject controllerRowRoot;                 // ControllerInputs#
+        public List<Image> controllerIcons = new();           // I1-I5
     }
 
     [SerializeField] private List<Entry> entries = new();
 
-    void OnEnable()
+    private void OnEnable()
     {
         var pp = PlayerProgress.Instance;
         if (pp != null)
         {
-            pp.OnLoaded += OnProgressChanged;
-            pp.OnSaved  += OnProgressChanged;
+            pp.OnLoaded += Refresh;
+            pp.OnSaved  += Refresh;
         }
         Refresh();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         var pp = PlayerProgress.Instance;
         if (pp != null)
         {
-            pp.OnLoaded -= OnProgressChanged;
-            pp.OnSaved  -= OnProgressChanged;
+            pp.OnLoaded -= Refresh;
+            pp.OnSaved  -= Refresh;
         }
     }
 
-    void Start() => Refresh();
-
-    private void OnProgressChanged()
-    {
-        Refresh();
-    }
+    private void Start() => Refresh();
 
     public void Refresh()
     {
         var pp = PlayerProgress.Instance;
         if (pp == null) return;
+
+        var mode = InputDisplayUtil.GetPromptMode();
+        bool showKeyboard = (mode == InputDisplayUtil.PromptMode.Keyboard);
 
         foreach (var e in entries)
         {
@@ -67,50 +72,73 @@ public class SongIconsPanel : MonoBehaviour
             bool learned = pp.HasSong(e.songId);
             e.image.sprite = learned ? e.learned : e.locked;
 
-            // If you don't have note labels set up for this entry, skip
-            if (e.noteLabels == null || e.noteLabels.Count == 0)
-                continue;
+            // Toggle rows (hide both if not learned)
+            if (e.keyboardRowRoot)   e.keyboardRowRoot.SetActive(learned && showKeyboard);
+            if (e.controllerRowRoot) e.controllerRowRoot.SetActive(learned && !showKeyboard);
 
-            // If song not learned yet → clear labels & bail
+            // If not learned -> clear both and continue
             if (!learned)
             {
-                foreach (var label in e.noteLabels)
-                {
-                    if (label) label.text = "";
-                }
+                if (e.keyboardLabels != null)
+                    foreach (var label in e.keyboardLabels)
+                        if (label) label.text = "";
+
+                if (e.controllerIcons != null)
+                    foreach (var icon in e.controllerIcons)
+                        if (icon) { icon.sprite = null; icon.enabled = false; }
+
                 continue;
             }
 
-            // Song is learned → display the per-note inputs
+            // Learned but no actions -> clear both and continue
             if (e.noteActions == null || e.noteActions.Length == 0)
             {
-                // No note data assigned; avoid errors but clear labels
-                foreach (var label in e.noteLabels)
-                {
-                    if (label) label.text = "";
-                }
+                if (e.keyboardLabels != null)
+                    foreach (var label in e.keyboardLabels)
+                        if (label) label.text = "";
+
+                if (e.controllerIcons != null)
+                    foreach (var icon in e.controllerIcons)
+                        if (icon) { icon.sprite = null; icon.enabled = false; }
+
                 continue;
             }
 
-            // Use InputDisplayUtil to get the button string for this song
-            // e.g. "A, W, A, S, D" on keyboard or a series of <sprite> tags on gamepad
-            string buttonsString = InputDisplayUtil.GetLyreButtons(e.noteActions);
-            string[] parts = buttonsString.Split(new[] { ", " }, StringSplitOptions.None);
-
-            // Assign each part into the corresponding text label
-            for (int i = 0; i < e.noteLabels.Count; i++)
+            if (showKeyboard)
             {
-                var label = e.noteLabels[i];
-                if (!label) continue;
+                // Keyboard: show letters (or whatever your util returns)
+                string buttonsString = InputDisplayUtil.GetLyreButtons(e.noteActions);
+                string[] parts = buttonsString.Split(new[] { ", " }, StringSplitOptions.None);
 
-                if (i < parts.Length)
+                for (int i = 0; i < e.keyboardLabels.Count; i++)
                 {
-                    label.text = parts[i];
+                    var label = e.keyboardLabels[i];
+                    if (!label) continue;
+
+                    label.text = (i < parts.Length) ? parts[i] : "";
                 }
-                else
+            }
+            else
+            {
+                // Controller: derive actual bound control paths from Input System, then map to sprites once via ScriptableObject
+                string[] paths = InputDisplayUtil.GetLyreButtonPaths(e.noteActions);
+
+                for (int i = 0; i < e.controllerIcons.Count; i++)
                 {
-                    // No corresponding note for this slot
-                    label.text = "";
+                    var img = e.controllerIcons[i];
+                    if (!img) continue;
+
+                    if (i < paths.Length)
+                    {
+                        Sprite sp = iconLibrary ? iconLibrary.Get(paths[i], mode) : null;
+                        img.sprite = sp;
+                        img.enabled = (sp != null);
+                    }
+                    else
+                    {
+                        img.sprite = null;
+                        img.enabled = false;
+                    }
                 }
             }
         }

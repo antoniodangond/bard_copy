@@ -1,14 +1,85 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+
 
 public static class InputDisplayUtil
 {
+
+    public enum PromptMode { Keyboard, PlayStation, Xbox }
+
+    public static PromptMode GetPromptMode(PlayerInput playerInput = null)
+    {
+        if (Gamepad.current == null)
+            return PromptMode.Keyboard;
+
+        var desc = Gamepad.current.description;
+
+        // Manufacturer-based detection (most reliable across versions)
+        string manufacturer = (desc.manufacturer ?? "").ToLowerInvariant();
+        string product      = (desc.product ?? "").ToLowerInvariant();
+
+        // PlayStation controllers
+        if (manufacturer.Contains("sony") ||
+            product.Contains("dualshock") ||
+            product.Contains("dualsense") ||
+            product.Contains("playstation"))
+        {
+            return PromptMode.PlayStation;
+        }
+
+        // Xbox controllers (XInput and others)
+        if (manufacturer.Contains("microsoft") ||
+            product.Contains("xbox") ||
+            product.Contains("xinput"))
+        {
+            return PromptMode.Xbox;
+        }
+
+        // Generic gamepads default to Xbox icon language
+        return PromptMode.Xbox;
+ 
+
+    }
+
+        public static string[] GetLyreButtonPaths(string[] noteActions, PlayerInput playerInput = null)
+    {
+        playerInput = GetPlayerInput(playerInput);
+        if (playerInput == null || noteActions == null) return Array.Empty<string>();
+
+        var map = playerInput.actions.FindActionMap("Instrument", false);
+        if (map == null) return Array.Empty<string>();
+
+        bool gamepadActive = Gamepad.current != null;
+        string[] paths = new string[noteActions.Length];
+
+        for (int i = 0; i < noteActions.Length; i++)
+        {
+            var act = map.FindAction(noteActions[i], false);
+            if (act == null)
+            {
+                paths[i] = "";
+                continue;
+            }
+
+            // This assumes: binding 0 = keyboard, binding 1 = gamepad.
+            int bindingIndex = gamepadActive ? 1 : 0;
+
+            if (act.bindings.Count > bindingIndex)
+                paths[i] = act.bindings[bindingIndex].effectivePath;
+            else
+                paths[i] = "";
+        }
+
+        return paths;
+    }
+
     private static ControlsMapper mapper = new ControlsMapper();
 
     private static PlayerInput GetPlayerInput(PlayerInput playerInput = null)
     {
         if (playerInput != null) return playerInput;
-        return Object.FindFirstObjectByType<PlayerInput>();
+        return UnityEngine.Object.FindFirstObjectByType<PlayerInput>();
     }
 
     public static bool IsGamepad(PlayerInput playerInput = null)
